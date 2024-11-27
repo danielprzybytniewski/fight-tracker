@@ -19,7 +19,14 @@ export default function ChangeLogo() {
 
   return (
     <li>
-      <Image src={logo} alt="Fight Tracker Logo" width={40} height={40} />
+      <Image
+        data-testid="imgTestId"
+        src={logo}
+        alt="Fight Tracker Logo"
+        width={40}
+        height={40}
+        priority={true}
+      />
     </li>
   );
 }

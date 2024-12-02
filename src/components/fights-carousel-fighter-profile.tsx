@@ -1,0 +1,32 @@
+import { FighterType } from "@/types/fight-cards-schema.types";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function FightsCarouselFighterProfile({
+  fighter,
+}: {
+  fighter: FighterType;
+}) {
+  return (
+    <div className="flex flex-col items-center">
+      <Image
+        src={fighter.picture}
+        alt={fighter.name}
+        width={128}
+        height={128}
+        className="w-32 h-32 object-cover rounded-full"
+        priority
+      />
+      <p className="text-xl font-bold uppercase mt-1 text-zinc-900 dark:text-gray-100">
+        <Link
+          href={fighter.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          {fighter.name}
+        </Link>
+      </p>
+    </div>
+  );
+}

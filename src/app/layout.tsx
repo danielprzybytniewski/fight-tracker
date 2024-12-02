@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
+import ReactQueryProvider from "@/providers/react-query-provider";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "700", "900"],
@@ -25,20 +26,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.className} antialiased`}>
-        <div className="flex flex-col min-h-screen">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <main className="flex-1 container mx-auto pt-20 pb-16">
-              {children}
-            </main>
-            <Footer />
-          </ThemeProvider>
-        </div>
+        <ReactQueryProvider>
+          <div className="flex flex-col min-h-screen">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              <main className="flex-1 container mx-auto pt-20 pb-16">
+                {children}
+              </main>
+              <Footer />
+            </ThemeProvider>
+          </div>
+        </ReactQueryProvider>
       </body>
     </html>
   );

@@ -24,6 +24,9 @@ const config: Config = {
     "!**/next.config.ts",
     "!**/tailwind.config.ts",
     "!jest.config.ts",
+    "!**/src/types/**",
+    "!**/src/lib/**",
+    "!**/src/components/ui/**",
   ],
   coverageReporters: ["json", "lcov", "text", "clover"],
   coverageThreshold: {

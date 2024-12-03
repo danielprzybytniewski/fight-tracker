@@ -1,18 +1,25 @@
 "use client";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ModeToggler() {
   const { theme, setTheme } = useTheme();
-
+  const [mounted, setMounted] = useState(false);
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <button
       onClick={toggleTheme}
-      className="focus-visible:ring-0"
+      className="focus-visible:ring-0 hover:opacity-70"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

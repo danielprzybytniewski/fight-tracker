@@ -1,9 +1,8 @@
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 
-// Mocking the NextThemesProvider
 jest.mock("next-themes", () => ({
   ThemeProvider: jest.fn(({ children, theme = "light", ...props }) => {
     const [currentTheme, setCurrentTheme] = useState(theme);

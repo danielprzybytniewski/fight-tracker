@@ -1,12 +1,18 @@
 "use server";
 
 import {
-  FightCardsResponseType,
+  FightCardsResponse,
   FightCardsResponseSchema,
 } from "@/types/fight-cards-schema.types";
 
-export async function fetchFightCards(): Promise<FightCardsResponseType> {
-  const response = await fetch("https://mmafightcardsapi.adaptable.app/");
+export async function fetchFightCards(): Promise<FightCardsResponse> {
+  const fightCardsApiUrl = process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+
+  if (!fightCardsApiUrl) {
+    throw new Error("API URL is not defined in environment variables");
+  }
+
+  const response = await fetch(fightCardsApiUrl);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");

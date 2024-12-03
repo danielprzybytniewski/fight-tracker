@@ -8,7 +8,7 @@ export default function Footer() {
           Created with 💖 by{" "}
           <Link
             href={"https://github.com/danielprzybytniewski"}
-            className="underline hover:text-white dark:hover:text-black"
+            className="underline transition-all hover:text-white dark:hover:text-black"
           >
             Daniel Przybytniewski
           </Link>

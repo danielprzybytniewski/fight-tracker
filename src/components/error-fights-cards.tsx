@@ -1,5 +1,5 @@
 import Image from "next/image";
-import errorImg from "../../public/error.png";
+import errorImg from "../../public/images/error.png";
 
 type ErrorProps = {
   message: string;

@@ -6,12 +6,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useFetchFightCards } from "@/hooks/useFetchFightCards";
+import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import LoadingFightsCards from "@/components/loading-fights-cards";
 import ErrorFightCards from "@/components/error-fights-cards";
 import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
 
-export default function HomePage() {
+export default function FightsCarousel() {
   const {
     data: fightCards = [],
     isLoading,

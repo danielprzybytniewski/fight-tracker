@@ -1,11 +1,11 @@
-import { FighterType } from "@/types/fight-cards-schema.types";
+import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function FightsCarouselFighterProfile({
   fighter,
 }: {
-  fighter: FighterType;
+  fighter: Fighter;
 }) {
   return (
     <div className="flex flex-col items-center">
@@ -22,7 +22,7 @@ export default function FightsCarouselFighterProfile({
           href={fighter.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
+          className="transition-all hover:underline"
         >
           {fighter.name}
         </Link>

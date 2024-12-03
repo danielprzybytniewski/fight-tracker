@@ -23,5 +23,5 @@ export const FightCardsResponseSchema = z.object({
   data: z.array(EventSchema),
 });
 
-export type FightCardsResponseType = z.infer<typeof FightCardsResponseSchema>;
-export type FighterType = z.infer<typeof FighterSchema>;
+export type FightCardsResponse = z.infer<typeof FightCardsResponseSchema>;
+export type Fighter = z.infer<typeof FighterSchema>;

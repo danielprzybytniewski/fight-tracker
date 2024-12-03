@@ -1,6 +1,6 @@
 "use client";
-import lightLogo from "../../public/lightLogo.png";
-import darkLogo from "../../public/darkLogo.png";
+import lightLogo from "../../public/images/lightLogo.png";
+import darkLogo from "../../public/images/darkLogo.png";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";

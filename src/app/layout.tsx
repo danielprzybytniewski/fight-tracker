@@ -25,22 +25,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
+      <body
+        className={`${roboto.className} antialiased bg-slate-200 dark:bg-gray-800`}
+      >
         <ReactQueryProvider>
-          <div className="flex flex-col min-h-screen">
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="flex flex-col min-h-screen">
               <Navbar />
-              <main className="flex-1 container mx-auto pt-20 pb-16">
+              <main className="container mx-auto flex-1 pt-20 pb-16">
                 {children}
               </main>
               <Footer />
-            </ThemeProvider>
-          </div>
+            </div>
+          </ThemeProvider>
         </ReactQueryProvider>
       </body>
     </html>

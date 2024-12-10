@@ -9,7 +9,7 @@ jest.mock("next-themes", () => ({
 }));
 
 describe("ChangeLogo", () => {
-  test("should change the logo source based on the theme", async () => {
+  test("renders correct logo based on active theme", async () => {
     (useTheme as jest.Mock).mockReturnValueOnce({ theme: "light" });
 
     render(<ChangeLogo />);

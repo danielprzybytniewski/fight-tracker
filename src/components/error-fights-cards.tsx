@@ -6,7 +6,7 @@ type ErrorProps = {
   onRetry?: () => void;
 };
 
-export default function ErrorFightCards({ message, onRetry }: ErrorProps) {
+export default function ErrorFightsCards({ message, onRetry }: ErrorProps) {
   const isNetworkError = message.toLowerCase().includes("network");
 
   return (

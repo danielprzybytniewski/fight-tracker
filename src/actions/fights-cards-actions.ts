@@ -1,11 +1,10 @@
 "use server";
-
 import {
   FightCardsResponse,
   FightCardsResponseSchema,
 } from "@/types/fight-cards-schema.types";
 
-export async function fetchFightCards(): Promise<FightCardsResponse> {
+export async function fetchFightsCards(): Promise<FightCardsResponse> {
   const fightCardsApiUrl = process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
 
   if (!fightCardsApiUrl) {

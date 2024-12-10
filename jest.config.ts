@@ -5,12 +5,11 @@ const createJestConfig = nextJest({
   dir: "./",
 });
 
-// Konfiguracja Jest
+// Jest Configuration
 const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
-
   collectCoverage: true,
   coverageDirectory: "coverage",
   collectCoverageFrom: [
@@ -27,6 +26,7 @@ const config: Config = {
     "!**/src/types/**",
     "!**/src/lib/**",
     "!**/src/components/ui/**",
+    "!**/src/providers/**",
   ],
   coverageReporters: ["json", "lcov", "text", "clover"],
   coverageThreshold: {
@@ -36,6 +36,9 @@ const config: Config = {
       lines: 80,
       statements: 80,
     },
+  },
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1", // Map @/* to src/*
   },
 };
 

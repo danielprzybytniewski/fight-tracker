@@ -7,8 +7,10 @@ export default function Footer() {
         <p>
           Created with 💖 by{" "}
           <Link
-            href={"https://github.com/danielprzybytniewski"}
+            href={"https://github.com/danielprzybytniewski/fight-tracker"}
             className="underline transition-all hover:text-white dark:hover:text-black"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Daniel Przybytniewski
           </Link>

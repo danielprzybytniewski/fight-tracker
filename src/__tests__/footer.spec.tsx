@@ -12,7 +12,7 @@ describe("Footer", () => {
     const footerElement = screen.getByRole("contentinfo");
     expect(footerElement).toBeInTheDocument();
 
-    const creatorText = screen.getByText(/Created/i);
+    const creatorText = screen.getByText(/Daniel Przybytniewski/i);
     expect(creatorText).toBeInTheDocument();
 
     const copyrightText = screen.getByText(/Copyright ©/i);
@@ -30,7 +30,7 @@ describe("Footer", () => {
 
     expect(linkElement).toHaveAttribute(
       "href",
-      "https://github.com/danielprzybytniewski"
+      "https://github.com/danielprzybytniewski/fight-tracker"
     );
   });
 });

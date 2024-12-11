@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import LoadingFightsCards from "@/components/loading-fights-cards";
-import ErrorFightCards from "@/components/error-fights-cards";
+import ErrorFightsCards from "@/components/error-fights-cards";
 import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
 
 export default function FightsCarousel() {
@@ -24,11 +24,11 @@ export default function FightsCarousel() {
   }
 
   if (error) {
-    return <ErrorFightCards message={error.message} onRetry={refetch} />;
+    return <ErrorFightsCards message={error.message} onRetry={refetch} />;
   }
 
   return (
-    <div className="flex items-center justify-center pt-48">
+    <div className="flex items-center justify-center pt-[10vh] sm:pt-[15vh]">
       <Carousel className="w-full max-w-4xl relative bg-zinc-300 dark:bg-gray-600 rounded-lg shadow-md">
         <CarouselContent>
           {fightCards.map((event, index) => {
@@ -36,7 +36,7 @@ export default function FightsCarousel() {
             return (
               <CarouselItem
                 key={index}
-                className="flex flex-col items-center justify-center h-96 p-8"
+                className="flex flex-col items-center justify-center h-96 p-8 text-center"
               >
                 <p className="text-2xl font-bold text-zinc-900 dark:text-gray-100">
                   {event.title}
@@ -57,8 +57,8 @@ export default function FightsCarousel() {
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-7 md:left-2 top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
-        <CarouselNext className="absolute right-7 md:right-2 top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
+        <CarouselPrevious className="absolute left-4 md:left-2 top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
+        <CarouselNext className="absolute right-4 md:right-2 top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
       </Carousel>
     </div>
   );

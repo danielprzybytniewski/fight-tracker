@@ -11,15 +11,15 @@ const mockApiUrl = "https://example.com/api/fight-cards";
 describe("fetchFightsCards", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL = mockApiUrl;
+    process.env.TEST_MMA_FIGHT_CARDS_API_HOST_URL = mockApiUrl;
   });
 
   afterEach(() => {
-    delete process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+    delete process.env.TEST_MMA_FIGHT_CARDS_API_HOST_URL;
   });
 
   test("throws an error if API URL is not defined", async () => {
-    delete process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+    delete process.env.TEST_MMA_FIGHT_CARDS_API_HOST_URL;
 
     await expect(fetchFightsCards()).rejects.toThrow(
       "API URL is not defined in environment variables"
@@ -74,7 +74,6 @@ describe("fetchFightsCards", () => {
       success: true,
       data: mockApiResponse,
     } as z.SafeParseSuccess<FightCardsResponse>);
-
     const result = await fetchFightsCards();
     expect(result).toEqual(mockApiResponse);
     expect(fetch).toHaveBeenCalledWith(mockApiUrl);

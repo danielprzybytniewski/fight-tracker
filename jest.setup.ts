@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 
-// Mock matchMedia for tests that depend on it
+// Mock matchMedia globally
 global.matchMedia =
   global.matchMedia ||
   function () {
@@ -27,7 +27,6 @@ global.IntersectionObserver = class IntersectionObserver {
 
 // Mock ResizeObserver globally
 global.ResizeObserver = class ResizeObserver {
-  // Mocking required properties and methods
   constructor() {}
   observe() {}
   unobserve() {}

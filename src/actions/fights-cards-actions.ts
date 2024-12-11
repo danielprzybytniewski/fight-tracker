@@ -5,7 +5,10 @@ import {
 } from "@/types/fight-cards-schema.types";
 
 export async function fetchFightsCards(): Promise<FightCardsResponse> {
-  const fightCardsApiUrl = process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+  const isTestEnv = process.env.NODE_ENV === "test";
+  const fightCardsApiUrl = isTestEnv
+    ? process.env.TEST_MMA_FIGHT_CARDS_API_HOST_URL
+    : process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
 
   if (!fightCardsApiUrl) {
     throw new Error("API URL is not defined in environment variables");

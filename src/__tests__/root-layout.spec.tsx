@@ -33,20 +33,10 @@ describe("RootLayout", () => {
     });
   });
 
-  test("sets the correct title", async () => {
+  test("sets the correct metadata", async () => {
     await waitFor(() => {
       expect(metadata.title).toBe("Fight Tracker");
-    });
-  });
-
-  test("sets the correct description", async () => {
-    await waitFor(() => {
       expect(metadata.description).toBe("Info about upcoming MMA events");
-    });
-  });
-
-  test("sets the correct keywords", async () => {
-    await waitFor(() => {
       expect(metadata.keywords).toContain("upcoming fights");
     });
   });

@@ -10,6 +10,7 @@ const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFiles: ["dotenv/config"], //Loading Environment Variables
   collectCoverage: true,
   coverageDirectory: "coverage",
   collectCoverageFrom: [

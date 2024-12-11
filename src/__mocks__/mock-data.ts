@@ -1,4 +1,6 @@
-export const mockFightsCards = [
+import { Event, Fighter } from "@/types/fight-cards-schema.types";
+
+export const mockFightsCards: Event[] = [
   {
     title: "Fight Night",
     date: "2025-12-31",
@@ -23,7 +25,7 @@ export const mockFightsCards = [
   },
 ];
 
-export const mockFighter = {
+export const mockFighter: Fighter = {
   name: "John Doe",
   record: "15-0",
   country: "England",

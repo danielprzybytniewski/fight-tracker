@@ -10,8 +10,15 @@ export default function ErrorFightsCards({ message, onRetry }: ErrorProps) {
   const isNetworkError = message.toLowerCase().includes("network");
 
   return (
-    <div className="flex flex-col items-center justify-center pt-48">
-      <Image src={errorImg} alt="error" width={200} height={200} />
+    <div className="flex flex-col items-center justify-center pt-30 sm:pt-36 p-2 text-center">
+      <Image
+        src={errorImg}
+        alt="error"
+        width={200}
+        height={200}
+        priority
+        className="w-auto h-auto"
+      />
       <p className="text-2xl font-bold text-red-500 uppercase mb-5">
         {isNetworkError
           ? "Network error occurred. Please check your connection and try again."

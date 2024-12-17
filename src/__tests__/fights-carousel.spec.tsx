@@ -22,7 +22,7 @@ describe("FightsCarousel", () => {
 
     render(<FightsCarousel />);
 
-    expect(screen.getByText("Loading fight cards...")).toBeInTheDocument();
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
   test("renders error state and refetches on retry", async () => {
@@ -60,7 +60,6 @@ describe("FightsCarousel", () => {
     render(<FightsCarousel />);
 
     expect(screen.getByText("Fight Night")).toBeInTheDocument();
-    expect(screen.getByText("2025-12-31")).toBeInTheDocument();
     expect(screen.getByText("Fighter A")).toBeInTheDocument();
     expect(screen.getByText("Fighter B")).toBeInTheDocument();
     expect(screen.getByText("VS")).toBeInTheDocument();

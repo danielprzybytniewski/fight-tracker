@@ -40,4 +40,20 @@ describe("RootLayout", () => {
       expect(metadata.keywords).toContain("upcoming fights");
     });
   });
+
+  test("sets the correct OpenGraph metadata", async () => {
+    await waitFor(() => {
+      expect(metadata.openGraph).toBeDefined();
+      if (metadata.openGraph) {
+        expect(metadata.openGraph.title).toBe("Fight Tracker");
+        expect(metadata.openGraph.description).toBe(
+          "Info about upcoming MMA events"
+        );
+        expect(metadata.openGraph.images).toContain(
+          "https://fight-tracker.vercel.app/images/og-image.png"
+        );
+        expect(metadata.openGraph.url).toBe("https://fight-tracker.vercel.app");
+      }
+    });
+  });
 });

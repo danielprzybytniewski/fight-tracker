@@ -3,7 +3,7 @@ import { Event, Fighter } from "@/types/fight-cards-schema.types";
 export const mockFightsCards: Event[] = [
   {
     title: "Fight Night",
-    date: "2025-12-31",
+    date: "Sunday, 16 February 2025, 00:00",
     fights: [
       {
         fighterA: {

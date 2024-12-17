@@ -13,7 +13,7 @@ describe("LoadingFightsCards", () => {
     const spinner = screen.getByRole("status");
     expect(spinner).toBeInTheDocument();
 
-    const loadingText = screen.getByText(/loading fight cards/i);
+    const loadingText = screen.getByText(/loading/i);
     expect(loadingText).toBeInTheDocument();
   });
 });

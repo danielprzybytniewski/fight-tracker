@@ -1,10 +1,15 @@
 import EventFightCard from "@/components/event-fight-card";
 import { Metadata } from "next";
 
+// Define a type for your params
+type Params = {
+  title: string;
+};
+
 export async function generateMetadata({
   params,
 }: {
-  params: { title: string };
+  params: Promise<Params>;
 }): Promise<Metadata> {
   const { title } = await params;
 
@@ -20,10 +25,11 @@ export async function generateMetadata({
     },
   };
 }
+
 export default async function EventsPage({
   params,
 }: {
-  params: { title: string };
+  params: Promise<Params>;
 }) {
   const { title } = await params;
 

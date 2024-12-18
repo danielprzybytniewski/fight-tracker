@@ -23,11 +23,5 @@ export function convertApiDateToLocalTime(apiDate: string) {
   }
 
   const localDate = parsedDate.tz("Europe/Warsaw");
-  const convertedDay = localDate.format("dddd");
-  const convertedMonth = localDate.format("MMMM");
-  const convertedDate = localDate.format("D");
-  const convertedHour = localDate.format("HH:mm");
-  const convertedYear = localDate.format("YYYY");
-
-  return `${convertedDay}, ${convertedDate} ${convertedMonth} ${convertedYear}, ${convertedHour}`;
+  return localDate.format("dddd, D MMMM YYYY, HH:mm");
 }

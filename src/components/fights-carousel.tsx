@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
-import { v4 as uuidv4 } from "uuid";
 import { slugify } from "@/lib/slugify";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
 export default function FightsCarousel() {
@@ -38,7 +37,7 @@ export default function FightsCarousel() {
             const firstFight = event.fights[0];
             return (
               <CarouselItem
-                key={uuidv4()}
+                key={`${event.title}-${event.date}`}
                 className="flex flex-col items-center justify-items-start sm:justify-center h-auto p-2 sm:p-8 px-5 sm:px-0  text-center"
               >
                 <Link

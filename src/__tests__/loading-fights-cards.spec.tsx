@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import LoadingFightsCards from "@/components/loading-fights-cards";
 

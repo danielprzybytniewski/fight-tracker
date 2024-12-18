@@ -43,7 +43,6 @@ describe("RootLayout", () => {
 
   test("sets the correct OpenGraph metadata", async () => {
     await waitFor(() => {
-      expect(metadata.openGraph).toBeDefined();
       if (metadata.openGraph) {
         expect(metadata.openGraph.title).toBe("Fight Tracker");
         expect(metadata.openGraph.description).toBe(

@@ -1,8 +1,10 @@
+import { fighterFullNameSplitter } from "@/lib/fighter-full-name-splitter";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function EventFights({ fighter }: { fighter: Fighter }) {
+export default function EventFighter({ fighter }: { fighter: Fighter }) {
+  const { firstName, lastName } = fighterFullNameSplitter(fighter.name);
   return (
     <>
       <Image
@@ -21,9 +23,9 @@ export default function EventFights({ fighter }: { fighter: Fighter }) {
           className="block mt-2 sm:mt-0 text-sm sm:text-lg uppercase font-bold text-zinc-900 dark:text-gray-100 
           hover:underline transition-all"
         >
-          <span className="block sm:inline">{fighter.name.split(" ")[0]}</span>
+          <span className="block sm:inline">{firstName}</span>
           <span className="hidden sm:inline">&nbsp;</span>
-          <span className="block sm:inline">{fighter.name.split(" ")[1]}</span>
+          <span className="block sm:inline">{lastName}</span>
         </Link>
         <Image
           src={fighter.country}

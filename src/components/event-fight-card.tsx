@@ -3,7 +3,6 @@ import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import LoadingFightsCards from "@/components/loading-fights-cards";
 import ErrorFightsCards from "@/components/error-fights-cards";
 import { slugify } from "@/lib/slugify";
-import { v4 as uuidv4 } from "uuid";
 import NotFoundFightCard from "@/components/not-found-fight-card";
 import {
   Card,
@@ -12,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import EventFights from "@/components/event-fights";
+import EventFighter from "@/components/event-fighter";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
 
 export default function EventFightCard({ title }: { title: string }) {
@@ -52,12 +51,12 @@ export default function EventFightCard({ title }: { title: string }) {
       <CardContent className="p-2 lg:p-4">
         {fightEvent.fights.map((fighter) => (
           <div
-            key={uuidv4()}
+            key={`${fighter.fighterA.name}-${fighter.fighterB.name}`}
             className="flex flex-row items-center justify-between bg-slate-200 dark:bg-gray-800 p-2 sm:p-4 mb-4 
             rounded-lg"
           >
             <div className="flex flex-col items-center flex-1 md:flex-row space-x-4 text-center md:text-left">
-              <EventFights fighter={fighter.fighterA} />
+              <EventFighter fighter={fighter.fighterA} />
             </div>
             <div className="flex items-center justify-center w-auto mx-4">
               <p className="text-zinc-600 dark:text-gray-400 font-semibold text-lg">
@@ -65,7 +64,7 @@ export default function EventFightCard({ title }: { title: string }) {
               </p>
             </div>
             <div className="flex flex-col items-center flex-1 md:flex-row-reverse space-x-4 space-x-reverse text-center md:text-right">
-              <EventFights fighter={fighter.fighterB} />
+              <EventFighter fighter={fighter.fighterB} />
             </div>
           </div>
         ))}

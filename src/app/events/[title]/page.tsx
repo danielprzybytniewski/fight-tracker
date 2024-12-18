@@ -1,7 +1,6 @@
 import EventFightCard from "@/components/event-fight-card";
 import { Metadata } from "next";
 
-// Define a type for your params
 type Params = {
   title: string;
 };

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import notFoundImg from "../../public/images/notFound.png";
+import notFoundImg from "../../public/images/not-found.png";
 export default function NotFoundFightCard() {
   return (
     <div className="flex flex-col items-center justify-center pt-36 p-2 text-red-500 text-center">

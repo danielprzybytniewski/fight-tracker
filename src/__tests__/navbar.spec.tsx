@@ -9,9 +9,11 @@ const MockNavbar = () => (
 );
 
 describe("Navbar", () => {
-  test("renders Navbar with Fight Tracker title", () => {
+  test("renders Navbar with Fight Tracker title as a link", () => {
     render(<MockNavbar />);
-    expect(screen.getByText(/Fight Tracker/i)).toBeInTheDocument();
+    const linkElement = screen.getByRole("link", { name: /Fight Tracker/i });
+    expect(linkElement).toBeInTheDocument();
+    expect(linkElement).toHaveAttribute("href", "/");
   });
 
   test("renders logo", () => {

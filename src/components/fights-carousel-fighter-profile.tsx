@@ -8,15 +8,17 @@ export default function FightsCarouselFighterProfile({
   fighter: Fighter;
 }) {
   return (
-    <div className="flex flex-col items-center">
-      <Image
-        src={fighter.picture}
-        alt={fighter.name}
-        width={128}
-        height={128}
-        className="w-32 h-32 object-cover rounded-full"
-        priority
-      />
+    <div className="flex flex-col items-center sm:px-3">
+      <div className="relative w-32 h-32">
+        <Image
+          src={fighter.picture}
+          alt={fighter.name}
+          fill
+          sizes="128px"
+          className="object-cover rounded-full"
+          priority
+        />
+      </div>
       <p className="text-xl font-bold uppercase mt-1 text-zinc-900 dark:text-gray-100">
         <Link
           href={fighter.link}

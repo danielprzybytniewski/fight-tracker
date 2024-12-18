@@ -15,7 +15,14 @@ export const metadata: Metadata = {
   title: "Fight Tracker",
   description: "Info about upcoming MMA events",
   keywords:
-    "MMA,UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, fight tracker",
+    "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, fight tracker",
+  openGraph: {
+    title: "Fight Tracker",
+    description: "Info about upcoming MMA events",
+    images: ["https://fight-tracker.vercel.app/images/og-image.png"],
+    type: "website",
+    url: "https://fight-tracker.vercel.app",
+  },
 };
 
 export default function RootLayout({

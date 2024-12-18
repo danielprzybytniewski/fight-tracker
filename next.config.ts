@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.tapology.com",
+        hostname: "**.tapology.com",
         port: "",
         pathname: "/**",
       },

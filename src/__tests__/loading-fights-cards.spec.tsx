@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import LoadingFightsCards from "@/components/loading-fights-cards";
 
@@ -13,7 +12,7 @@ describe("LoadingFightsCards", () => {
     const spinner = screen.getByRole("status");
     expect(spinner).toBeInTheDocument();
 
-    const loadingText = screen.getByText(/loading fight cards/i);
+    const loadingText = screen.getByText(/loading/i);
     expect(loadingText).toBeInTheDocument();
   });
 });

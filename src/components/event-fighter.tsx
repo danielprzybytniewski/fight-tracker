@@ -1,10 +1,10 @@
-import { fighterFullNameSplitter } from "@/lib/fighter-full-name-splitter";
+import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function EventFighter({ fighter }: { fighter: Fighter }) {
-  const { firstName, lastName } = fighterFullNameSplitter(fighter.name);
+  const { firstName, lastName } = splitFighterFullName(fighter.name);
   return (
     <>
       <Image

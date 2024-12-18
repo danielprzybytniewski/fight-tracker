@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 
 // workaround for API invalid date
-export function convertApiDateToLocalTime(apiDate: string) {
+export function convertApiDateToLocalTime(apiDate: string): string {
   const currentYear = moment().year();
   const [, monthName, day, time, period, timeZone] = apiDate.split(/[ ,]+/);
   let formattedDate = `${monthName} ${day} ${currentYear} ${time} ${period} ${timeZone}`;

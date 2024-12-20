@@ -1,0 +1,89 @@
+import { render, screen } from "@testing-library/react";
+import EventFightCard from "@/components/event-fight-card";
+import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
+import { mockEventFightCard } from "@/__mocks__/mock-data";
+import { splitFighterFullName } from "@/lib/split-fighter-full-name";
+
+jest.mock("@/hooks/use-fetch-fight-cards");
+
+jest.mock("@/lib/split-fighter-full-name", () => ({
+  splitFighterFullName: jest.fn((name) => {
+    const [firstName, lastName] = name.split(" ");
+    return { firstName, lastName };
+  }),
+}));
+
+describe("EventFightCard", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("renders loading state", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: [],
+      isLoading: true,
+      error: null,
+      refetch: jest.fn(),
+    });
+
+    render(<EventFightCard title="Some Event" />);
+
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
+  });
+
+  test("renders error state", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: { message: "Network error" },
+      refetch: jest.fn(),
+    });
+
+    render(<EventFightCard title="Some Event" />);
+
+    expect(screen.getByText(/network error/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
+  });
+
+  test("renders not found state when no event matches", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: [],
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+    });
+
+    render(<EventFightCard title="Nonexistent Event" />);
+
+    expect(screen.getByText("Event Not Found!")).toBeInTheDocument();
+  });
+
+  test("renders fight card when data is loaded", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: mockEventFightCard,
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+    });
+
+    render(<EventFightCard title={mockEventFightCard[0].title} />);
+
+    expect(screen.getByText(mockEventFightCard[0].title)).toBeInTheDocument();
+
+    const fighterA = mockEventFightCard[0].fights[0].fighterA;
+    const { firstName: firstNameFighterA, lastName: lastNameFighterA } =
+      splitFighterFullName(fighterA.name);
+
+    expect(screen.getByText(firstNameFighterA)).toBeInTheDocument();
+    expect(screen.getByText(lastNameFighterA)).toBeInTheDocument();
+
+    const fighterB = mockEventFightCard[0].fights[0].fighterB;
+    const { firstName: firstNameFighterB, lastName: lastNameFighterB } =
+      splitFighterFullName(fighterB.name);
+
+    expect(screen.getByText(firstNameFighterB)).toBeInTheDocument();
+    expect(screen.getByText(lastNameFighterB)).toBeInTheDocument();
+
+    expect(screen.getByText("VS")).toBeInTheDocument();
+  });
+});

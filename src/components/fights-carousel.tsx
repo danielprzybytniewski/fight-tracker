@@ -13,6 +13,7 @@ import Link from "next/link";
 import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
 import { slugify } from "@/lib/slugify";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+
 export default function FightsCarousel() {
   const {
     data: fightCards = [],
@@ -52,7 +53,7 @@ export default function FightsCarousel() {
                 <div className="flex flex-col sm:flex-row justify-between w-full mt-4 p-4 sm:p-8 pt-5 sm:pt-10 border-t border-zinc-300 sm:border-zinc-200 dark:border-gray-500">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
                   <div className="flex items-center justify-center mx-4">
-                    <h2 className="text-xl font-bold text-zinc-900 dark:text-gray-100 mt-5 mb-5 sm:mt-0 sm:mb-0">
+                    <h2 className="text-xl font-bold text-zinc-900 dark:text-gray-100 mt-5 sm:mt-0 mb-5 sm:mb-0">
                       VS
                     </h2>
                   </div>

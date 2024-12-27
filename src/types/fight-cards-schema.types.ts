@@ -4,7 +4,7 @@ export const FighterSchema = z.object({
   name: z.string(),
   record: z.string(),
   country: z.string().url(),
-  picture: z.string().url(),
+  picture: z.union([z.string().url(), z.string()]),
   link: z.string().url(),
 });
 

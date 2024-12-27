@@ -2,16 +2,36 @@ import { mockEventFighter } from "@/__mocks__/mock-data";
 import EventFighter from "@/components/event-fighter";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import fallbackImage from "../../public/images/og-image.png";
 
 describe("EventFighter", () => {
-  test("renders fighter image", () => {
+  test("renders fighter image from url", () => {
     render(<EventFighter fighter={mockEventFighter} />);
 
     const fighterImage = screen.getByAltText("Jan Kowalski");
+
     expect(fighterImage).toBeInTheDocument();
     expect(fighterImage).toHaveAttribute(
       "src",
       expect.stringContaining(encodeURIComponent(mockEventFighter.picture))
+    );
+    expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
+  });
+
+  test("renders fallback image when fighter image is not a valid URL", () => {
+    const modifiedFighter = {
+      ...mockEventFighter,
+      picture: "/images/logo.png",
+    };
+
+    render(<EventFighter fighter={modifiedFighter} />);
+
+    const fighterImage = screen.getByAltText(modifiedFighter.name);
+
+    expect(fighterImage).toBeInTheDocument();
+    expect(fighterImage).toHaveAttribute(
+      "src",
+      expect.stringContaining(encodeURIComponent(fallbackImage.src))
     );
     expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
   });
@@ -21,6 +41,7 @@ describe("EventFighter", () => {
     render(<EventFighter fighter={mockEventFighter} />);
 
     const link = screen.getByRole("link");
+
     expect(link).toBeInTheDocument();
     expect(link).toHaveTextContent(mockEventFighter.name);
     expect(link).toHaveAttribute("href", mockEventFighter.link);

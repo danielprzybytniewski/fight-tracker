@@ -2,13 +2,18 @@ import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
+import fallbackImage from "../../public/images/og-image.png";
 
 export default function EventFighter({ fighter }: { fighter: Fighter }) {
   const { firstName, lastName } = splitFighterFullName(fighter.name);
+  const imageUrl = fighter.picture.startsWith("https")
+    ? fighter.picture
+    : fallbackImage;
+
   return (
     <>
       <Image
-        src={fighter.picture}
+        src={imageUrl}
         alt={fighter.name}
         width={84}
         height={84}

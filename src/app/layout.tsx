@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/providers/theme-provider";
 import ReactQueryProvider from "@/providers/react-query-provider";
+import { FavoritesProvider } from "@/providers/favorites-provider";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "700", "900"],
@@ -42,13 +43,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="container mx-auto flex-1 pt-20 pb-16">
-                {children}
-              </main>
-              <Footer />
-            </div>
+            <FavoritesProvider>
+              <div className="flex flex-col min-h-screen">
+                <Navbar />
+                <main className="container mx-auto flex-1 pt-20 pb-16">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </FavoritesProvider>
           </ThemeProvider>
         </ReactQueryProvider>
       </body>

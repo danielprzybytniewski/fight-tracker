@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import EventFightCard from "@/components/event-fight-card";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import { mockEventFightCard } from "@/__mocks__/mock-data";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
+import { MockEventFightCard } from "@/__mocks__/mock-components";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
 
@@ -26,7 +26,7 @@ describe("EventFightCard", () => {
       refetch: jest.fn(),
     });
 
-    render(<EventFightCard title="Some Event" />);
+    render(<MockEventFightCard title="Some Event" />);
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
@@ -39,7 +39,7 @@ describe("EventFightCard", () => {
       refetch: jest.fn(),
     });
 
-    render(<EventFightCard title="Some Event" />);
+    render(<MockEventFightCard title="Some Event" />);
 
     expect(screen.getByText(/network error/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /retry/i })).toBeInTheDocument();
@@ -53,7 +53,7 @@ describe("EventFightCard", () => {
       refetch: jest.fn(),
     });
 
-    render(<EventFightCard title="Nonexistent Event" />);
+    render(<MockEventFightCard title="Nonexistent Event" />);
 
     expect(screen.getByText("Event Not Found!")).toBeInTheDocument();
   });
@@ -66,7 +66,7 @@ describe("EventFightCard", () => {
       refetch: jest.fn(),
     });
 
-    render(<EventFightCard title={mockEventFightCard[0].title} />);
+    render(<MockEventFightCard title={mockEventFightCard[0].title} />);
 
     expect(screen.getByText(mockEventFightCard[0].title)).toBeInTheDocument();
 

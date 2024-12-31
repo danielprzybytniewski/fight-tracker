@@ -1,12 +1,12 @@
 import { mockEventFighter } from "@/__mocks__/mock-data";
-import EventFighter from "@/components/event-fighter";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import fallbackImage from "../../public/images/og-image.png";
+import { MockEventFighter } from "@/__mocks__/mock-components";
 
 describe("EventFighter", () => {
   test("renders fighter image from url", () => {
-    render(<EventFighter fighter={mockEventFighter} />);
+    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
 
     const fighterImage = screen.getByAltText("Jan Kowalski");
 
@@ -24,7 +24,7 @@ describe("EventFighter", () => {
       picture: "/images/logo.png",
     };
 
-    render(<EventFighter fighter={modifiedFighter} />);
+    render(<MockEventFighter fighter={modifiedFighter} position="A" />);
 
     const fighterImage = screen.getByAltText(modifiedFighter.name);
 
@@ -33,12 +33,12 @@ describe("EventFighter", () => {
       "src",
       expect.stringContaining(encodeURIComponent(fallbackImage.src))
     );
-    expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
+    expect(fighterImage).toHaveAttribute("alt", modifiedFighter.name);
   });
 
   test("renders fighter name as a clickable link", async () => {
     const user = userEvent.setup();
-    render(<EventFighter fighter={mockEventFighter} />);
+    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
 
     const link = screen.getByRole("link");
 
@@ -51,7 +51,8 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter country flag", () => {
-    render(<EventFighter fighter={mockEventFighter} />);
+    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+
     const countryImage = screen.getByAltText(/jan kowalski country/i);
 
     expect(countryImage).toBeInTheDocument();
@@ -62,8 +63,27 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter record", () => {
-    render(<EventFighter fighter={mockEventFighter} />);
+    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+
     const fighterRecord = screen.getByText(mockEventFighter.record);
+
     expect(fighterRecord).toBeInTheDocument();
+  });
+
+  test("renders and toggles the favorite state", async () => {
+    const user = userEvent.setup();
+    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+
+    const favoriteIcon = screen.getByTestId("favorite-icon");
+    const favoriteButton = screen.getByRole("button", { name: /favorite/i });
+
+    expect(favoriteIcon).toBeInTheDocument();
+    expect(favoriteIcon).toHaveClass("text-gray-500");
+
+    await user.click(favoriteButton);
+    expect(favoriteIcon).toHaveClass("fill-yellow-500 text-yellow-500");
+
+    await user.click(favoriteButton);
+    expect(favoriteIcon).toHaveClass("text-gray-500");
   });
 });

@@ -74,6 +74,7 @@ describe("fetchFightsCards", () => {
       success: true,
       data: mockApiResponse,
     } as z.SafeParseSuccess<FightCardsResponse>);
+
     const result = await fetchFightsCards();
     expect(result).toEqual(mockApiResponse);
     expect(fetch).toHaveBeenCalledWith(mockApiUrl);

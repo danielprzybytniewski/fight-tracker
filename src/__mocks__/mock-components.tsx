@@ -1,0 +1,40 @@
+import EventFightCard from "@/components/event-fight-card";
+import EventFighter from "@/components/event-fighter";
+import Navbar from "@/components/navbar";
+import { FavoritesProvider } from "@/providers/favorites-provider";
+import { Fighter } from "@/types/fight-cards-schema.types";
+import { ThemeProvider } from "next-themes";
+
+export const MockEventFightCard = ({ title }: { title: string }) => (
+  <FavoritesProvider>
+    <EventFightCard title={title} />
+  </FavoritesProvider>
+);
+
+export const MockEventFighter = ({
+  fighter,
+  position,
+}: {
+  fighter: Fighter;
+  position: string;
+}) => (
+  <FavoritesProvider>
+    <EventFighter fighter={fighter} position={position} />
+  </FavoritesProvider>
+);
+
+export const MockNavbar = () => (
+  <ThemeProvider>
+    <FavoritesProvider>
+      <Navbar />
+    </FavoritesProvider>
+  </ThemeProvider>
+);
+
+export const MockLayout = ({ children }: { children: React.ReactNode }) => (
+  <div>
+    <nav role="navigation">Navbar</nav>
+    <main>{children}</main>
+    <footer role="contentinfo">Footer</footer>
+  </div>
+);

@@ -1,12 +1,5 @@
+import { MockNavbar } from "@/__mocks__/mock-components";
 import { render, screen } from "@testing-library/react";
-import Navbar from "@/components/navbar";
-import { ThemeProvider } from "next-themes";
-
-const MockNavbar = () => (
-  <ThemeProvider>
-    <Navbar />
-  </ThemeProvider>
-);
 
 describe("Navbar", () => {
   test("renders Navbar with Fight Tracker title as a link", () => {
@@ -25,5 +18,12 @@ describe("Navbar", () => {
     render(<MockNavbar />);
     const toggler = screen.getByRole("button", { name: /Toggle theme/i });
     expect(toggler).toBeInTheDocument();
+  });
+
+  test("renders the FavoritesCounter", () => {
+    render(<MockNavbar />);
+
+    const countText = screen.getByText("(0)");
+    expect(countText).toBeInTheDocument();
   });
 });

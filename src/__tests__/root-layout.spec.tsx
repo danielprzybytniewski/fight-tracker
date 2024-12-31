@@ -1,13 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { metadata } from "@/app/layout";
-
-const MockLayout = ({ children }: { children: React.ReactNode }) => (
-  <div>
-    <nav role="navigation">Navbar</nav>
-    <main>{children}</main>
-    <footer role="contentinfo">Footer</footer>
-  </div>
-);
+import { MockLayout } from "@/__mocks__/mock-components";
 
 describe("RootLayout", () => {
   const setup = () =>

@@ -1,10 +1,20 @@
+"use client";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
 import fallbackImage from "../../public/images/og-image.png";
+import { useFavorites } from "@/hooks/use-favorites";
+import { StarIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-export default function EventFighter({ fighter }: { fighter: Fighter }) {
+type EventFighterProps = {
+  fighter: Fighter;
+  position: string;
+};
+
+export default function EventFighter({ fighter, position }: EventFighterProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
   const { firstName, lastName } = splitFighterFullName(fighter.name);
   const imageUrl = fighter.picture.startsWith("https")
     ? fighter.picture
@@ -12,14 +22,35 @@ export default function EventFighter({ fighter }: { fighter: Fighter }) {
 
   return (
     <>
-      <Image
-        src={imageUrl}
-        alt={fighter.name}
-        width={84}
-        height={84}
-        className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-full border-2 border-zinc-300 dark:border-gray-500"
-        priority
-      />
+      <div className="relative">
+        <Image
+          src={imageUrl}
+          alt={fighter.name}
+          width={84}
+          height={84}
+          className="w-20 h-20 md:w-24 md:h-24 object-cover rounded-full border-2 border-zinc-300 dark:border-gray-500"
+          priority
+        />
+        <button
+          aria-label="favorite"
+          className={cn(
+            "absolute top-1 p-1 rounded-full bg-white dark:bg-gray-700 shadow-md",
+            position === "A" ? "left-[-12px]" : "right-[-12px]"
+          )}
+          onClick={() => toggleFavorite(fighter)}
+        >
+          <StarIcon
+            data-testid="favorite-icon"
+            size={20}
+            className={cn(
+              "transition-all",
+              isFavorite(fighter)
+                ? "fill-yellow-500 text-yellow-500 hover:fill-yellow-600 hover:text-yellow-600"
+                : "text-gray-500 hover:text-gray-400"
+            )}
+          />
+        </button>
+      </div>
       <div>
         <Link
           href={fighter.link}

@@ -56,7 +56,7 @@ export default function EventFightCard({ title }: { title: string }) {
             rounded-lg"
           >
             <div className="flex flex-col items-center flex-1 md:flex-row space-x-4 text-center md:text-left">
-              <EventFighter fighter={fighter.fighterA} />
+              <EventFighter fighter={fighter.fighterA} position="A" />
             </div>
             <div className="flex items-center justify-center w-auto mx-4">
               <p className="text-zinc-600 dark:text-gray-400 font-semibold text-lg">
@@ -64,7 +64,7 @@ export default function EventFightCard({ title }: { title: string }) {
               </p>
             </div>
             <div className="flex flex-col items-center flex-1 md:flex-row-reverse space-x-4 space-x-reverse text-center md:text-right">
-              <EventFighter fighter={fighter.fighterB} />
+              <EventFighter fighter={fighter.fighterB} position="B" />
             </div>
           </div>
         ))}

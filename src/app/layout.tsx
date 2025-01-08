@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { ThemeProvider } from "@/providers/theme-provider";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { FavoritesProvider } from "@/providers/favorites-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "700", "900"],
@@ -50,6 +51,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
+                <Toaster />
               </div>
             </FavoritesProvider>
           </ThemeProvider>

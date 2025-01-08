@@ -49,7 +49,7 @@ describe("FightsCarousel", () => {
     expect(refetchMock).toHaveBeenCalledTimes(1);
   });
 
-  test("renders fight cards when data is loaded", async () => {
+  test("renders fight cards when data is loaded", () => {
     (useFetchFightCards as jest.Mock).mockReturnValue({
       data: mockFightsCards,
       isLoading: false,

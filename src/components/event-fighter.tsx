@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import fallbackImage from "../../public/images/og-image.png";
 import { useFavorites } from "@/hooks/use-favorites";
-import { StarIcon } from "lucide-react";
+import { CircleCheck, CircleX, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 type EventFighterProps = {
   fighter: Fighter;
@@ -15,10 +16,36 @@ type EventFighterProps = {
 
 export default function EventFighter({ fighter, position }: EventFighterProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { toast } = useToast();
   const { firstName, lastName } = splitFighterFullName(fighter.name);
   const imageUrl = fighter.picture.startsWith("https")
     ? fighter.picture
     : fallbackImage;
+
+  const handleToggleFavorite = (fighter: Fighter) => {
+    toggleFavorite(fighter);
+
+    if (isFavorite(fighter)) {
+      toast({
+        description: (
+          <div className="flex items-center">
+            <CircleX className="mr-2" />
+            <span>{`${fighter.name} removed from favorites!`}</span>
+          </div>
+        ),
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        description: (
+          <div className="flex items-center">
+            <CircleCheck className="mr-2" />
+            <span>{`${fighter.name} added to favorites!`}</span>
+          </div>
+        ),
+      });
+    }
+  };
 
   return (
     <>
@@ -37,7 +64,7 @@ export default function EventFighter({ fighter, position }: EventFighterProps) {
             "absolute top-1 p-1 rounded-full bg-white dark:bg-gray-700 shadow-md",
             position === "A" ? "left-[-12px]" : "right-[-12px]"
           )}
-          onClick={() => toggleFavorite(fighter)}
+          onClick={() => handleToggleFavorite(fighter)}
         >
           <StarIcon
             data-testid="favorite-icon"

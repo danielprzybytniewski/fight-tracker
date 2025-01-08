@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("FightsCarouselFighterProfile", () => {
-  it("renders fighter image", () => {
+  test("renders fighter image", () => {
     render(<FightsCarouselFighterProfile fighter={mockFighter} />);
 
     const image = screen.getByRole("img");

@@ -2,10 +2,26 @@
 import { useFavorites } from "@/hooks/use-favorites";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import EventFighter from "@/components/event-fighter";
-import { Trash2 } from "lucide-react";
+import { CircleX, Trash2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function FavoritesFighters() {
   const { favorites, resetFavorites } = useFavorites();
+  const { toast } = useToast();
+
+  const handleResetFavorites = () => {
+    resetFavorites();
+
+    toast({
+      description: (
+        <div className="flex items-center">
+          <CircleX className="mr-2" />
+          <span>{"All fighters removed from favorites!"}</span>
+        </div>
+      ),
+      variant: "destructive",
+    });
+  };
 
   return (
     <Card className="max-w-7xl mx-auto bg-white dark:bg-gray-700 rounded-lg">
@@ -14,7 +30,7 @@ export default function FavoritesFighters() {
           Favorite Fighters ({favorites.length})
         </CardTitle>
         {favorites.length > 0 && (
-          <button className="mx-auto" onClick={resetFavorites}>
+          <button className="mx-auto" onClick={handleResetFavorites}>
             <Trash2 className="text-red-600 hover:text-red-500 hover:cursor-pointer" />
           </button>
         )}

@@ -25,9 +25,8 @@ const config: Config = {
     "!**/tailwind.config.ts",
     "!jest.config.ts",
     "!**/src/types/**",
-    "!**/src/lib/**",
     "!**/src/components/ui/**",
-    "!**/src/providers/**",
+    "!**/src/hooks/use-toast.ts",
   ],
   coverageReporters: ["json", "lcov", "text", "clover"],
   coverageThreshold: {

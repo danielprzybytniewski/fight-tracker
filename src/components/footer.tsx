@@ -15,7 +15,7 @@ export default function Footer() {
             Daniel Przybytniewski
           </Link>
         </p>
-        <p className="text-sm">Copyright © 2024 - All rights reserved</p>
+        <p className="text-sm">Copyright © 2025 - All rights reserved</p>
       </div>
     </footer>
   );

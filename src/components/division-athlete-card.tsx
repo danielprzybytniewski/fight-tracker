@@ -35,7 +35,7 @@ export default function DivisionAthleteCard({
                   fill
                   priority
                   className="object-contain object-center"
-                  sizes="(max-width: 640px) 112px, (max-width: 1024px) 128px, 128px"
+                  sizes="(max-width: 640px) 7rem, (max-width: 1024px) 8rem, 8rem"
                 />
               </div>
             )}

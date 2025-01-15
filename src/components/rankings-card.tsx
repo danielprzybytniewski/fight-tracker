@@ -12,7 +12,6 @@ export default function RankingsCard({ division }: RankingsCardProps) {
   return (
     <Link
       href={`/rankings/${division.id}`}
-      key={division.id}
       className="block transition-transform duration-300 hover:scale-105"
     >
       <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-md hover:shadow-xl transition-shadow">

@@ -25,7 +25,7 @@ export default async function AthletePage({
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
       <div className="transition-all duration-300 text-center sm:text-left">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-          <div className="relative h-64 lg:h-full overflow-hidden rounded-lg">
+          <div className="relative h-64 sm:h-full overflow-hidden rounded-lg">
             {fighter.imgUrl && (
               <Image
                 src={fighter.imgUrl}

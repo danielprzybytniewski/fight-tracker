@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import ChampionBadge from "@/components/champion-badge";
-import { Division, Fighter } from "@/types/rankings-schema.types";
+import { DivisionWithChampion } from "@/types/rankings-schema.types";
 
 type DivisionChampionCardProps = {
-  division: Division & { champion: Fighter };
+  division: DivisionWithChampion;
 };
 
 export default function DivisionChampionCard({
@@ -33,7 +33,7 @@ export default function DivisionChampionCard({
                   fill
                   priority
                   className="object-contain object-center"
-                  sizes="256px"
+                  sizes="16rem"
                 />
               </div>
             )}

@@ -1,77 +1,55 @@
 "use server";
+import { fetchFromApiWithCachingAndValidation } from "@/lib/fetch-from-api-with-caching-and-validation";
 import {
   Fighter,
   FighterSchema,
   RankingsResponseSchema,
   FightersResponseSchema,
-  Division,
   FightersResponse,
   DivisionSchema,
+  DivisionWithChampion,
+  DivisionWithChampionAndFighters,
 } from "@/types/rankings-schema.types";
 
-const UFC_RANKINGS_BASE_URL = process.env.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
+const UFC_RANKINGS_BASE_URL = process.env
+  .NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL as string;
+
+if (!UFC_RANKINGS_BASE_URL) {
+  throw new Error("API URL is not defined in environment variables");
+}
 
 export async function getFighterDetails(fighterId: string): Promise<Fighter> {
-  const response = await fetch(
-    `${UFC_RANKINGS_BASE_URL}/fighter/${fighterId}`,
-    {
-      cache: "force-cache",
-    }
+  return fetchFromApiWithCachingAndValidation(
+    UFC_RANKINGS_BASE_URL,
+    `/fighter/${fighterId}`,
+    FighterSchema,
+    "Invalid fighter data received from API"
   );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch fighter");
-  }
-
-  const json = await response.json();
-  const validation = FighterSchema.safeParse(json);
-
-  if (!validation.success) {
-    console.error("Validation errors:", validation.error.errors);
-    throw new Error("Invalid fighter data received from API");
-  }
-
-  return validation.data;
 }
 
 export async function getAllFighters(): Promise<FightersResponse> {
-  const response = await fetch(`${UFC_RANKINGS_BASE_URL}/fighters`, {
-    cache: "force-cache",
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch fighters");
-  }
-
-  const json = await response.json();
-  const validation = FightersResponseSchema.safeParse(json);
-
-  if (!validation.success) {
-    console.error("Validation errors:", validation.error.errors);
-    throw new Error("Invalid fighters data received from API");
-  }
-
-  return validation.data;
+  return fetchFromApiWithCachingAndValidation(
+    UFC_RANKINGS_BASE_URL,
+    "/fighters",
+    FightersResponseSchema,
+    "Invalid fighters data received from API"
+  );
 }
 
 export async function getRankingsWithImages(): Promise<
-  Array<Division & { champion: Fighter }>
+  Array<DivisionWithChampion>
 > {
-  const [rankingsResponse, allFighters] = await Promise.all([
-    fetch(`${UFC_RANKINGS_BASE_URL}/rankings`, {
-      cache: "force-cache",
-    }).then((res) => res.json()),
+  const [rankings, allFighters] = await Promise.all([
+    fetchFromApiWithCachingAndValidation(
+      UFC_RANKINGS_BASE_URL,
+      "/rankings",
+      RankingsResponseSchema,
+      "Invalid rankings data received from API"
+    ),
     getAllFighters(),
   ]);
 
-  const rankingsValidation = RankingsResponseSchema.safeParse(rankingsResponse);
-
-  if (!rankingsValidation.success) {
-    console.error("Validation errors:", rankingsValidation.error.errors);
-    throw new Error("Invalid rankings data received from API");
-  }
-
-  return rankingsValidation.data.map((division) => ({
+  return rankings.map((division) => ({
     ...division,
     champion: {
       ...division.champion,
@@ -82,22 +60,16 @@ export async function getRankingsWithImages(): Promise<
 
 export async function getDivisionWithImages(
   divisionId: string
-): Promise<Division & { champion: Fighter; fighters: Fighter[] }> {
-  const [divisionResponse, allFighters] = await Promise.all([
-    fetch(`${UFC_RANKINGS_BASE_URL}/division/${divisionId}`, {
-      cache: "force-cache",
-    }).then((res) => res.json()),
+): Promise<DivisionWithChampionAndFighters> {
+  const [division, allFighters] = await Promise.all([
+    fetchFromApiWithCachingAndValidation(
+      UFC_RANKINGS_BASE_URL,
+      `/division/${divisionId}`,
+      DivisionSchema,
+      "Invalid division data received from API"
+    ),
     getAllFighters(),
   ]);
-
-  const divisionValidation = DivisionSchema.safeParse(divisionResponse);
-
-  if (!divisionValidation.success) {
-    console.error("Validation errors:", divisionValidation.error.errors);
-    throw new Error("Invalid division data received from API");
-  }
-
-  const division = divisionValidation.data;
 
   return {
     ...division,

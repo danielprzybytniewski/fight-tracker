@@ -47,6 +47,11 @@ export type Fighter = z.infer<typeof FighterSchema>;
 export type Division = z.infer<typeof DivisionSchema>;
 export type RankingsResponse = z.infer<typeof RankingsResponseSchema>;
 export type FightersResponse = z.infer<typeof FightersResponseSchema>;
+export type DivisionWithChampion = Division & { champion: Fighter };
+export type DivisionWithChampionAndFighters = Division & {
+  champion: Fighter;
+  fighters: Fighter[];
+};
 
 export type DetailItem = {
   label: string;

@@ -24,19 +24,8 @@ describe("convertApiDateToLocalTime", () => {
     Date.now = originalNow;
   });
 
-  test("converts 'Friday, January 10, 8:00 PM ET' to local time correctly", () => {
-    const mockDate = "Friday, January 10, 8:00 PM ET";
-    const expectedLocalTime = moment
-      .tz(mockDate, "dddd, MMMM D, hh:mm A z", "America/New_York")
-      .tz("Europe/Warsaw")
-      .format("dddd, D MMMM YYYY, HH:mm");
-
-    const result = convertApiDateToLocalTime(mockDate);
-    expect(result).toBe(expectedLocalTime);
-  });
-
-  test("converts 'Saturday, February 15, 3:30 PM ET' to local time correctly", () => {
-    const mockDate = "Saturday, February 15, 3:30 PM ET";
+  test("converts future date to local time correctly", () => {
+    const mockDate = "Monday, December 29, 3:30 PM ET";
     const expectedLocalTime = moment
       .tz(mockDate, "dddd, MMMM D, hh:mm A z", "America/New_York")
       .tz("Europe/Warsaw")

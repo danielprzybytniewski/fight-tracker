@@ -5,7 +5,7 @@ export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
   {
     label: "Record",
     value: `${fighter.wins}-${fighter.losses}${
-      fighter.draws !== "0" ? `-${fighter.draws}` : ""
+      fighter.draws !== 0 ? `-${fighter.draws}` : ""
     }`,
   },
   { label: "Division", value: fighter.category || "N/A" },

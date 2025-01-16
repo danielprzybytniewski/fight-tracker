@@ -4,6 +4,7 @@ import DivisionChampionCard from "@/components/division-champion-card";
 import DivisionAthleteCard from "@/components/division-athlete-card";
 import { Metadata } from "next";
 import BackButton from "@/components/back-button";
+import { createMetadata } from "@/lib/create-metadata";
 
 type Params = {
   divisionId: string;
@@ -16,18 +17,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { divisionId } = await params;
 
-  return {
-    title: `UFC ${divisionId.toUpperCase()} | Fight Tracker`,
-    description: `Division: ${divisionId}. Check out the current champion and top fighters in this weight class.`,
-    keywords: `${divisionId}, ${divisionId} rankings, ${divisionId} fighters`,
-    openGraph: {
-      title: `UFC ${divisionId} | Fight Tracker`,
-      description: `Division: ${divisionId}. Check out the current champion and top fighters in this weight class.`,
-      images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-      type: "website",
-      url: `https://fight-tracker.vercel.app/rankings/${divisionId}`,
-    },
-  };
+  return createMetadata({
+    title: `${divisionId.toUpperCase()} UFC Division`,
+    description: `${divisionId.toUpperCase()} UFC division. Check out the current champion and top fighters in this weight class.`,
+    keywords: [
+      `UFC ${divisionId} division, UFC ${divisionId} champion, UFC ${divisionId} fighters, UFC ${divisionId} rankings`,
+    ],
+    path: `/rankings/${divisionId}`,
+  });
 }
 
 export default async function DivisionPage({

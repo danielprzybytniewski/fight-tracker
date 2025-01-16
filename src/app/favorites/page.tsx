@@ -1,18 +1,12 @@
 import FavoritesFighters from "@/components/favorites-fighters";
+import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Favorites | Fight Tracker",
+export const metadata: Metadata = createMetadata({
+  title: "Favorites",
   description: "Check out your favorite fighters",
-  keywords: "favorites, your favorite fighters, top fighters",
-  openGraph: {
-    title: "Favorites | Fight Tracker",
-    description: "Check out your favorite fighters",
-    images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-    type: "website",
-    url: "https://fight-tracker.vercel.app/favorites",
-  },
-};
+  path: "/favorites",
+});
 
 export default function FavoritesPage() {
   return <FavoritesFighters />;

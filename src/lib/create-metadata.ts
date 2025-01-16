@@ -1,0 +1,60 @@
+const baseUrl = "https://fight-tracker.vercel.app";
+
+type MetadataParams = {
+  title: string;
+  description: string;
+  keywords?: string[];
+  path?: string;
+};
+
+export const sharedMetadata = {
+  keywords: [
+    "MMA",
+    "UFC",
+    "Mixed Martial Arts",
+    "fight events",
+    "upcoming fights",
+    "upcoming fight events",
+    "sports events",
+    "fight tracker",
+    "UFC rankings",
+    "rankings",
+    "athletes",
+    "fighters",
+    "best fighters",
+    "top fighters",
+    "favorites",
+    "favorite fighters",
+    "your favorite fighters",
+    "UFC fighters",
+    "divisions",
+    "champions",
+    "weight classes",
+    "weight divisions",
+  ],
+  openGraph: {
+    type: "website",
+    images: [`${baseUrl}/images/og-image.png`],
+  },
+};
+
+export function createMetadata({
+  title,
+  description,
+  keywords = [],
+  path = "",
+}: MetadataParams) {
+  const allKeywords = [...sharedMetadata.keywords, ...keywords].join(", ");
+
+  return {
+    title: `${title} | Fight Tracker`,
+    description,
+    keywords: allKeywords,
+    openGraph: {
+      ...sharedMetadata.openGraph,
+      title: `${title} | Fight Tracker`,
+      description,
+      url: `${baseUrl}${path}`,
+    },
+  };
+}

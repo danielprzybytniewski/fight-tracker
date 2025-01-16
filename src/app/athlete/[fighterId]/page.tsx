@@ -8,6 +8,7 @@ import { AthleteDetails } from "@/components/athlete-details";
 import AthleteRecordChart from "@/components/athlete-record-chart";
 import { Metadata } from "next";
 import BackButton from "@/components/back-button";
+import { createMetadata } from "@/lib/create-metadata";
 
 type Params = {
   fighterId: string;
@@ -20,17 +21,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { fighterId } = await params;
 
-  return {
-    title: `${fighterId.toUpperCase()} | Fight Tracker`,
-    description: `Check out the info about athlete: ${fighterId}`,
-    openGraph: {
-      title: `${fighterId} | Fight Tracker`,
-      description: `Check out the info about athlete: ${fighterId}`,
-      images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-      type: "website",
-      url: `https://fight-tracker.vercel.app/athlete/${fighterId}`,
-    },
-  };
+  return createMetadata({
+    title: `${fighterId.toUpperCase()}`,
+    description: `Check out the info about athlete: ${fighterId.toUpperCase()}`,
+    keywords: [
+      `${fighterId.toUpperCase()} profile, ${fighterId.toUpperCase()} info, ${fighterId.toUpperCase()} stats,`,
+    ],
+    path: `/athlete/${fighterId}`,
+  });
 }
 
 export default async function AthletePage({
@@ -44,9 +42,9 @@ export default async function AthletePage({
   const generalDetails = getGeneralDetails(fighter);
   const additionalDetails = getAdditionalDetails(fighter);
 
-  const wins = fighter.wins || "0";
-  const losses = fighter.losses || "0";
-  const draws = fighter.draws || "0";
+  const wins = fighter.wins || 0;
+  const losses = fighter.losses || 0;
+  const draws = fighter.draws || 0;
 
   return (
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">

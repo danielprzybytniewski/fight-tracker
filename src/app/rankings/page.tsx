@@ -2,18 +2,13 @@ import { Division } from "@/types/rankings-schema.types";
 import { getRankingsWithImages } from "@/actions/rankings-actions";
 import RankingsCard from "@/components/rankings-card";
 import { Metadata } from "next";
+import { createMetadata } from "@/lib/create-metadata";
 
-export const metadata: Metadata = {
-  title: "UFC Rankings | Fight Tracker",
+export const metadata: Metadata = createMetadata({
+  title: "UFC Rankings",
   description: "Check out current UFC rankings",
-  openGraph: {
-    title: "UFC Rankings | Fight Tracker",
-    description: "Check out current UFC rankings",
-    images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-    type: "website",
-    url: "https://fight-tracker.vercel.app/rankings",
-  },
-};
+  path: "/rankings",
+});
 
 export default async function RankingsPage() {
   const rankings = await getRankingsWithImages();

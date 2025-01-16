@@ -4,18 +4,9 @@ export const FighterSchema = z.object({
   id: z.string().optional(),
   name: z.string(),
   imgUrl: z.string().url().optional(),
-  wins: z
-    .string()
-    .optional()
-    .transform((value) => (value ? parseInt(value) : undefined)),
-  losses: z
-    .string()
-    .optional()
-    .transform((value) => (value ? parseInt(value) : undefined)),
-  draws: z
-    .string()
-    .optional()
-    .transform((value) => (value ? parseInt(value) : undefined)),
+  wins: z.coerce.number().optional(),
+  losses: z.coerce.number().optional(),
+  draws: z.coerce.number().optional(),
   category: z.string().optional(),
   nickname: z.string().optional(),
   status: z.string().optional(),

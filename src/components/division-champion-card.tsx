@@ -40,8 +40,7 @@ export default function DivisionChampionCard({
               </div>
               <p className="text-xl mt-4 font-semibold">
                 Record: {division.champion.wins}-{division.champion.losses}
-                {division.champion.draws !== "0" &&
-                  `-${division.champion.draws}`}
+                {division.champion.draws !== 0 && `-${division.champion.draws}`}
               </p>
             </div>
           </div>

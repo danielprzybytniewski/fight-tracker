@@ -14,10 +14,11 @@ export async function generateMetadata({
 
   return {
     title: `${title.toUpperCase()} | Fight Tracker`,
-    description: `Upcoming MMA event: ${title}`,
+    description: `Check out the upcoming MMA event: ${title}`,
+    keywords: `${title}, ${title} event, ${title} fighters`,
     openGraph: {
       title: `${title} | Fight Tracker`,
-      description: `Upcoming MMA event: ${title}`,
+      description: `Check out the upcoming MMA event: ${title}`,
       images: ["https://fight-tracker.vercel.app/images/og-image.png"],
       type: "website",
       url: `https://fight-tracker.vercel.app/events/${title}`,

@@ -12,27 +12,21 @@ export default function DivisionChampionCard({
   division,
 }: DivisionChampionCardProps) {
   return (
-    <Link
-      href={`/athlete/${division.champion.id}`}
-      className="block transition-transform duration-300 hover:scale-105"
-    >
+    <Link href={`/athlete/${division.champion.id}`} className="block">
       <Card
-        className="mb-12 overflow-hidden bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 
-        dark:from-yellow-700 dark:via-yellow-600 dark:to-yellow-500 shadow-lg"
+        className="mb-12 overflow-hidden bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 
+        dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 shadow-lg group"
       >
         <CardContent className="p-6 flex justify-center">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             {division.champion.imgUrl && (
-              <div
-                className="relative w-64 h-64 rounded-full overflow-hidden border-4 border-black 
-                dark:border-white shadow-lg"
-              >
+              <div className="relative w-64 h-64 rounded-full border-2 border-gray-900 dark:border-gray-100 overflow-hidden   group-hover:border-yellow-400 transition-colors duration-200">
                 <Image
                   src={division.champion.imgUrl}
                   alt={division.champion.championName}
                   fill
                   priority
-                  className="object-contain object-center"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   sizes="16rem"
                 />
               </div>

@@ -3,12 +3,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Favorites | Fight Tracker",
-  description: "Your favorite fighters",
-  keywords:
-    "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, fight tracker, Favorites, your favorite fighters, fight tracker",
+  description: "Check out your favorite fighters",
+  keywords: "favorites, your favorite fighters, top fighters",
   openGraph: {
     title: "Favorites | Fight Tracker",
-    description: "Your favorite fighters",
+    description: "Check out your favorite fighters",
     images: ["https://fight-tracker.vercel.app/images/og-image.png"],
     type: "website",
     url: "https://fight-tracker.vercel.app/favorites",

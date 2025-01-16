@@ -14,11 +14,8 @@ export default function DivisionAthleteCard({
   index,
 }: DivisionFighterCardProps) {
   return (
-    <Link
-      href={`/athlete/${fighter.id}`}
-      className="block transition-transform duration-300 hover:scale-105"
-    >
-      <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow">
+    <Link href={`/athlete/${fighter.id}`} className="block ">
+      <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-lg group">
         <CardContent className="p-6 text-center sm:text-left">
           <div className="flex flex-col items-center sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Badge
@@ -28,13 +25,13 @@ export default function DivisionAthleteCard({
               #{index + 1}
             </Badge>
             {fighter.imgUrl && (
-              <div className="relative w-28 h-32 sm:w-32 sm:h-32 rounded-full overflow-hidden">
+              <div className="relative w-28 h-32 sm:w-32 sm:h-32 overflow-hidden">
                 <Image
                   src={fighter.imgUrl}
                   alt={fighter.name}
                   fill
                   priority
-                  className="object-contain object-center"
+                  className="object-cover object-top py-2 group-hover:scale-110 transition-transform duration-300"
                   sizes="(max-width: 640px) 7rem, (max-width: 1024px) 8rem, 8rem"
                 />
               </div>

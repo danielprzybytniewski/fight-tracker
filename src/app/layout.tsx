@@ -15,12 +15,12 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Fight Tracker",
-  description: "Info about upcoming MMA events",
+  description: "Info about UFC rankings and upcoming MMA events",
   keywords:
-    "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, fight tracker",
+    "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, rankings,  athletes, fighters, UFC fighters, divisions, champions, weight classes, weight divisions",
   openGraph: {
     title: "Fight Tracker",
-    description: "Info about upcoming MMA events",
+    description: "Info about UFC rankings and upcoming MMA events",
     images: ["https://fight-tracker.vercel.app/images/og-image.png"],
     type: "website",
     url: "https://fight-tracker.vercel.app",

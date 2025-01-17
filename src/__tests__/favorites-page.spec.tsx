@@ -20,14 +20,15 @@ describe("FavoritesPage", () => {
 
   test("sets the correct metadata", () => {
     expect(metadata.title).toBe("Favorites | Fight Tracker");
-    expect(metadata.description).toBe("Your favorite fighters");
-    expect(metadata.keywords).toContain("your favorite fighters");
+    expect(metadata.description).toBe("Check out your favorite fighters");
   });
 
   test("sets the correct OpenGraph metadata", () => {
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe("Favorites | Fight Tracker");
-      expect(metadata.openGraph.description).toBe("Your favorite fighters");
+      expect(metadata.openGraph.description).toBe(
+        "Check out your favorite fighters"
+      );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"
       );

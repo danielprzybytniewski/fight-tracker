@@ -1,4 +1,5 @@
 import EventFightCard from "@/components/event-fight-card";
+import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 
 type Params = {
@@ -12,17 +13,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { title } = await params;
 
-  return {
-    title: `${title.toUpperCase()} | Fight Tracker`,
-    description: `Upcoming MMA event: ${title}`,
-    openGraph: {
-      title: `${title} | Fight Tracker`,
-      description: `Upcoming MMA event: ${title}`,
-      images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-      type: "website",
-      url: `https://fight-tracker.vercel.app/events/${title}`,
-    },
-  };
+  return createMetadata({
+    title: `${title.toUpperCase()}`,
+    description: `Check out the upcoming MMA event: ${title.toUpperCase()}`,
+    keywords: [
+      `${title.toUpperCase()} event, ${title.toUpperCase()} fighters,`,
+    ],
+    path: `/events/${title}`,
+  });
 }
 
 export default async function EventsPage({

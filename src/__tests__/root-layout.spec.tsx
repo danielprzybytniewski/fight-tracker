@@ -47,16 +47,22 @@ describe("RootLayout", () => {
   });
 
   test("sets the correct metadata", () => {
-    expect(metadata.title).toBe("Fight Tracker");
-    expect(metadata.description).toBe("Info about upcoming MMA events");
-    expect(metadata.keywords).toContain("upcoming fights");
+    expect(metadata.title).toBe("Upcoming MMA Events | Fight Tracker");
+    expect(metadata.description).toBe(
+      "Info about UFC rankings and upcoming MMA events"
+    );
+    expect(metadata.keywords).toEqual(
+      "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, rankings, athletes, fighters, best fighters, top fighters, favorites, favorite fighters, your favorite fighters, UFC fighters, divisions, champions, weight classes, weight divisions"
+    );
   });
 
   test("sets the correct OpenGraph metadata", () => {
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("Fight Tracker");
+      expect(metadata.openGraph.title).toBe(
+        "Upcoming MMA Events | Fight Tracker"
+      );
       expect(metadata.openGraph.description).toBe(
-        "Info about upcoming MMA events"
+        "Info about UFC rankings and upcoming MMA events"
       );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"

@@ -5,10 +5,31 @@ import {
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
 import { AthleteDetails } from "@/components/athlete-details";
+import AthleteRecordChart from "@/components/athlete-record-chart";
+import { Metadata } from "next";
+import BackButton from "@/components/back-button";
+import { createMetadata } from "@/lib/create-metadata";
 
 type Params = {
   fighterId: string;
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { fighterId } = await params;
+
+  return createMetadata({
+    title: `${fighterId.toUpperCase()}`,
+    description: `Check out the info about athlete: ${fighterId.toUpperCase()}`,
+    keywords: [
+      `${fighterId.toUpperCase()} profile, ${fighterId.toUpperCase()} info, ${fighterId.toUpperCase()} stats,`,
+    ],
+    path: `/athlete/${fighterId}`,
+  });
+}
 
 export default async function AthletePage({
   params,
@@ -21,37 +42,43 @@ export default async function AthletePage({
   const generalDetails = getGeneralDetails(fighter);
   const additionalDetails = getAdditionalDetails(fighter);
 
+  const wins = fighter.wins || 0;
+  const losses = fighter.losses || 0;
+  const draws = fighter.draws || 0;
+
   return (
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
-      <div className="transition-all duration-300 text-center sm:text-left">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-          <div className="relative h-64 sm:h-full overflow-hidden rounded-lg">
-            {fighter.imgUrl && (
-              <Image
-                src={fighter.imgUrl}
-                alt={fighter.name}
-                fill
-                priority
-                className="object-contain object-center"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            )}
-          </div>
-          <div>
-            <h1 className="text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">
-              {fighter.name}
-            </h1>
-            {fighter.nickname && (
-              <p className="text-xl italic mb-6 opacity-80 text-gray-700 dark:text-gray-300">
-                &quot;{fighter.nickname}&quot;
-              </p>
-            )}
-            <AthleteDetails
-              generalDetails={generalDetails}
-              additionalDetails={additionalDetails}
+      <BackButton />
+      <div className="grid grid-cols-1 gap-8 items-center p-6">
+        <div className="relative h-72 sm:h-96 overflow-hidden">
+          {fighter.imgUrl && (
+            <Image
+              src={fighter.imgUrl}
+              alt={fighter.name}
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
-          </div>
+          )}
         </div>
+        <div>
+          <AthleteRecordChart wins={wins} losses={losses} draws={draws} />
+        </div>
+      </div>
+      <div className="mt-8 text-center">
+        <h1 className="text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">
+          {fighter.name}
+        </h1>
+        {fighter.nickname && (
+          <p className="text-xl italic mb-6 opacity-80 text-gray-700 dark:text-gray-300">
+            &quot;{fighter.nickname}&quot;
+          </p>
+        )}
+        <AthleteDetails
+          generalDetails={generalDetails}
+          additionalDetails={additionalDetails}
+        />
       </div>
     </div>
   );

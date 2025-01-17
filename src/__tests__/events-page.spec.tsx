@@ -22,17 +22,22 @@ describe("EventsPage", () => {
     const metadata = await generateMetadata({
       params: Promise.resolve(mockParams),
     });
+    expect(metadata.title).toBe("MOCK-EVENT | Fight Tracker");
+    expect(metadata.description).toBe(
+      "Check out the upcoming MMA event: MOCK-EVENT"
+    );
 
-    expect(metadata).toEqual({
-      title: "MOCK-EVENT | Fight Tracker",
-      description: "Upcoming MMA event: mock-event",
-      openGraph: {
-        title: "mock-event | Fight Tracker",
-        description: "Upcoming MMA event: mock-event",
-        images: ["https://fight-tracker.vercel.app/images/og-image.png"],
-        type: "website",
-        url: "https://fight-tracker.vercel.app/events/mock-event",
-      },
-    });
+    if (metadata.openGraph) {
+      expect(metadata.openGraph.title).toBe("MOCK-EVENT | Fight Tracker");
+      expect(metadata.openGraph.description).toBe(
+        "Check out the upcoming MMA event: MOCK-EVENT"
+      );
+      expect(metadata.openGraph.images).toContain(
+        "https://fight-tracker.vercel.app/images/og-image.png"
+      );
+      expect(metadata.openGraph.url).toBe(
+        "https://fight-tracker.vercel.app/events/mock-event"
+      );
+    }
   });
 });

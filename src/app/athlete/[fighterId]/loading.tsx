@@ -1,10 +1,11 @@
 export default function Loading() {
   return (
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
-      <div className="animate-pulse text-center sm:text-left">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-          <div className="relative h-64 sm:h-full bg-gray-300 dark:bg-gray-700 rounded-lg" />
+      <div className="animate-pulse text-center">
+        <div className="grid grid-cols-1 gap-8 p-6">
           <div>
+            <div className="relative h-64 bg-gray-300 dark:bg-gray-700 rounded-lg" />
+            <div className="h-10 bg-gray-300 dark:bg-gray-700 rounded mb-4" />
             <div className="h-10 bg-gray-300 dark:bg-gray-700 rounded mb-4" />
             <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-6 w-3/4" />
             <div className="grid grid-cols-2 gap-5">

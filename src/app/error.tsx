@@ -1,6 +1,8 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import errorImg from "../../public/images/error.png";
 
 export default function Error({
   error,
@@ -20,6 +22,14 @@ export default function Error({
       className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-red-500 text-center
     px-2"
     >
+      <Image
+        src={errorImg}
+        alt="error"
+        width={200}
+        height={200}
+        priority
+        className="w-auto h-auto"
+      />
       <h1 className="text-4xl font-bold mb-4">Something went wrong</h1>
       <p className="text-lg text-center mb-6">
         We encountered an unexpected error. Please try again later.
@@ -33,9 +43,9 @@ export default function Error({
         </button>
         <button
           onClick={() => router.push("/")}
-          className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
+          className="px-4 py-2 bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white rounded-md"
         >
-          Go Home
+          Go To Homepage
         </button>
       </div>
     </div>

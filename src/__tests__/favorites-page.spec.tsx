@@ -12,12 +12,6 @@ describe("FavoritesPage", () => {
     expect(screen.getByText("Mocked Favorites Fighters")).toBeInTheDocument();
   });
 
-  test("does not render any unexpected elements", () => {
-    render(<FavoritesPage />);
-
-    expect(screen.queryByText("Some unexpected text")).not.toBeInTheDocument();
-  });
-
   test("sets the correct metadata", () => {
     expect(metadata.title).toBe("Favorites | Fight Tracker");
     expect(metadata.description).toBe("Check out your favorite fighters");

@@ -1,6 +1,9 @@
-export default function Loading() {
+export default function AthleteLoading() {
   return (
-    <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
+    <div
+      className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg"
+      aria-label="loading-container"
+    >
       <div className="animate-pulse text-center">
         <div className="grid grid-cols-1 gap-8 p-6">
           <div>

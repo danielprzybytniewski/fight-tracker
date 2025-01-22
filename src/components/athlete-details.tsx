@@ -1,12 +1,12 @@
 import { DetailItem } from "@/types/rankings-schema.types";
-import { AthleteDetailCard } from "@/components/athlete-detail-card";
+import AthleteDetailCard from "@/components/athlete-detail-card";
 
 type FighterDetailsProps = {
   generalDetails: DetailItem[];
   additionalDetails: DetailItem[];
 };
 
-export function AthleteDetails({
+export default function AthleteDetails({
   generalDetails,
   additionalDetails,
 }: FighterDetailsProps) {

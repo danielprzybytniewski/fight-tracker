@@ -1,6 +1,9 @@
-export default function Loading() {
+export default function RankingsLoading() {
   return (
-    <div className="container mx-auto p-4 py-8 dark:bg-gray-900 rounded-lg">
+    <div
+      className="container mx-auto p-4 py-8 dark:bg-gray-900 rounded-lg"
+      aria-label="loading-container"
+    >
       <h1 className="text-3xl md:text-4xl font-extrabold mb-2 pb-3 text-center text-gray-800 dark:text-gray-200 animate-pulse">
         UFC Rankings
       </h1>

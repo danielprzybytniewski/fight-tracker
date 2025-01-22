@@ -1,4 +1,10 @@
 import { Event, Fighter } from "@/types/fight-cards-schema.types";
+import {
+  Fighter as Athlete,
+  DetailItem,
+  Division,
+  DivisionWithChampion,
+} from "@/types/rankings-schema.types";
 
 export const mockFightsCards: Event[] = [
   {
@@ -65,3 +71,83 @@ export const mockEventFighter: Fighter = {
   country: "https://example.com/poland.png",
   picture: "https://example.com/fighter.png",
 };
+
+export const mockAthlete: Athlete = {
+  name: "Jonh Doe",
+  wins: 20,
+  losses: 5,
+  draws: 1,
+  category: "Lightweight",
+  status: "Active",
+  age: "30",
+  height: 70,
+  weight: 155,
+  reach: 72,
+  legReach: 40,
+  fightingStyle: "Striker",
+  trainsAt: "AKA",
+  placeOfBirth: "California, USA",
+  octagonDebut: "2015-01-01",
+};
+
+export const mockAthleteCard: Athlete = {
+  ...mockAthlete,
+  id: "Jonh Doe",
+  imgUrl: "https://example.com/athlete.jpg",
+};
+
+export const mockIncompleteAthleteData: Athlete = {
+  wins: 10,
+  losses: 2,
+  draws: 0,
+} as Athlete;
+
+export const mockUndefinedAthleteRecord: Partial<Athlete> = {
+  wins: undefined,
+  losses: undefined,
+  draws: undefined,
+};
+
+export const mockDivision: Division = {
+  id: "lightweight",
+  categoryName: "Lightweight",
+  champion: {
+    id: "John Doe",
+    championName: "John Doe",
+    imgUrl: "https://example.com/champion.png",
+  },
+  fighters: [{ ...mockAthlete, id: "1" }],
+};
+
+export const mockDivisionWithChampion: DivisionWithChampion = {
+  ...mockDivision,
+  champion: {
+    ...mockDivision.champion,
+    ...mockAthlete,
+  },
+};
+
+export const mockGeneralDetails: DetailItem[] = [
+  { label: "Age", value: "30" },
+  { label: "Height", value: "6'2\"" },
+];
+
+export const mockAdditionalDetails: DetailItem[] = [
+  { label: "Fighting Style", value: "Striker" },
+  { label: "Trains At", value: "AKA" },
+];
+
+export const mockRankings: Division[] = [
+  {
+    id: "Lightweight",
+    categoryName: "Lightweight",
+    champion: { id: "Jonh Doe", championName: "John Doe" },
+    fighters: [],
+  },
+  {
+    id: "Heavyweight",
+    categoryName: "Heavyweight",
+    champion: { id: "Jane Doe", championName: "Jane Doe" },
+    fighters: [],
+  },
+];

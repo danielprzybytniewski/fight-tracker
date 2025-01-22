@@ -1,5 +1,5 @@
 import { DetailItem, Fighter } from "@/types/rankings-schema.types";
-import { inchesToCm, poundsToKg } from "@/lib/unitConversion";
+import { inchesToCm, poundsToKg } from "@/lib/unit-conversion";
 
 export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
   {
@@ -14,7 +14,7 @@ export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
   {
     label: "Height",
     value: fighter.height
-      ? `${fighter.height} (${inchesToCm(fighter.height)})`
+      ? `${fighter.height} in (${inchesToCm(fighter.height)})`
       : "N/A",
   },
   {
@@ -26,13 +26,13 @@ export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
   {
     label: "Reach",
     value: fighter.reach
-      ? `${fighter.reach} (${inchesToCm(fighter.reach)})`
+      ? `${fighter.reach} in (${inchesToCm(fighter.reach)})`
       : "N/A",
   },
   {
     label: "Leg Reach",
     value: fighter.legReach
-      ? `${fighter.legReach} (${inchesToCm(fighter.legReach)})`
+      ? `${fighter.legReach} in (${inchesToCm(fighter.legReach)})`
       : "N/A",
   },
 ];

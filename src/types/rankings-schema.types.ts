@@ -14,11 +14,11 @@ export const FighterSchema = z.object({
   trainsAt: z.string().optional(),
   fightingStyle: z.string().optional(),
   age: z.string().optional(),
-  height: z.string().optional(),
-  weight: z.string().optional(),
+  height: z.coerce.number().optional(),
+  weight: z.coerce.number().optional(),
   octagonDebut: z.string().optional(),
-  reach: z.string().optional(),
-  legReach: z.string().optional(),
+  reach: z.coerce.number().optional(),
+  legReach: z.coerce.number().optional(),
 });
 
 export const ChampionSchema = z.object({

@@ -1,6 +1,9 @@
-export default function Loading() {
+export default function RankingsDivisionLoading() {
   return (
-    <div className="container mx-auto p-4 py-8 dark:bg-gray-900 rounded-lg">
+    <div
+      className="container mx-auto p-4 py-8 dark:bg-gray-900 rounded-lg"
+      aria-label="loading-container"
+    >
       <div className="animate-pulse mb-8">
         <div className="bg-gray-300 dark:bg-gray-700 h-64 sm:h-72 rounded-lg mb-4" />
         <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded mb-2" />

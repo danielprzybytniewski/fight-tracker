@@ -4,11 +4,12 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-import { AthleteDetails } from "@/components/athlete-details";
+
 import AthleteRecordChart from "@/components/athlete-record-chart";
 import { Metadata } from "next";
 import BackButton from "@/components/back-button";
 import { createMetadata } from "@/lib/create-metadata";
+import AthleteDetails from "@/components/athlete-details";
 
 type Params = {
   fighterId: string;
@@ -47,7 +48,7 @@ export default async function AthletePage({
   const draws = fighter.draws || 0;
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
+    <div className="container mx-auto p-6 sm:p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
       <BackButton />
       <div className="grid grid-cols-1 gap-8 items-center p-6">
         <div className="relative h-72 sm:h-96 overflow-hidden">

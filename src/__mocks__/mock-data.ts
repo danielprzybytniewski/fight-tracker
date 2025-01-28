@@ -13,14 +13,14 @@ export const mockFightsCards: Event[] = [
     fights: [
       {
         fighterA: {
-          name: "Fighter A",
+          name: "Jing Li",
           record: "5-0",
           country: "China",
           picture: "https://example.com/fighter.png",
           link: "https://example.com/fighterA",
         },
         fighterB: {
-          name: "Fighter B",
+          name: "Adam Kowalski",
           record: "12-0",
           country: "Poland",
           picture: "https://example.com/fighter.png",

@@ -1,4 +1,5 @@
 "use server";
+import appConfig from "@/config/app-config";
 import { fetchFromApiWithCachingAndValidation } from "@/lib/fetch-from-api-with-caching-and-validation";
 import {
   Fighter,
@@ -11,12 +12,7 @@ import {
   DivisionWithChampionAndFighters,
 } from "@/types/rankings-schema.types";
 
-const UFC_RANKINGS_BASE_URL = process.env
-  .NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL as string;
-
-if (!UFC_RANKINGS_BASE_URL) {
-  throw new Error("API URL is not defined in environment variables");
-}
+const UFC_RANKINGS_BASE_URL = appConfig.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
 
 export async function getFighterDetails(fighterId: string): Promise<Fighter> {
   return fetchFromApiWithCachingAndValidation(

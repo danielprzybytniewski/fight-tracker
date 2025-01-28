@@ -1,6 +1,5 @@
 import EventFightCard from "@/components/event-fight-card";
 import EventFighter from "@/components/event-fighter";
-import Navbar from "@/components/navbar";
 import { FavoritesProvider } from "@/providers/favorites-provider";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { Fighter } from "@/types/fight-cards-schema.types";
@@ -24,12 +23,10 @@ export const MockEventFighter = ({
   </FavoritesProvider>
 );
 
-export const MockNavbar = () => (
-  <ThemeProvider>
-    <FavoritesProvider>
-      <Navbar />
-    </FavoritesProvider>
-  </ThemeProvider>
+export const MockLink = jest.fn(
+  ({ children }: { children: React.ReactNode }) => {
+    return <span>{children}</span>;
+  }
 );
 
 export const MockLayout = ({ children }: { children: React.ReactNode }) => (

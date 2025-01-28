@@ -59,7 +59,7 @@ export default async function AthletePage({
               fill
               priority
               className="object-contain object-center"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 640px) 100vw, 50vw"
             />
           )}
         </div>
@@ -68,7 +68,7 @@ export default async function AthletePage({
         </div>
       </div>
       <div className="mt-8 text-center">
-        <h1 className="text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">
           {fighter.name}
         </h1>
         {fighter.nickname && (

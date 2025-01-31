@@ -11,22 +11,10 @@ export const MockEventFightCard = ({ title }: { title: string }) => (
   </FavoritesProvider>
 );
 
-export const MockEventFighter = ({
-  fighter,
-  position,
-}: {
-  fighter: Fighter;
-  position: string;
-}) => (
+export const MockEventFighter = ({ fighter }: { fighter: Fighter }) => (
   <FavoritesProvider>
-    <EventFighter fighter={fighter} position={position} />
+    <EventFighter fighter={fighter} />
   </FavoritesProvider>
-);
-
-export const MockLink = jest.fn(
-  ({ children }: { children: React.ReactNode }) => {
-    return <span>{children}</span>;
-  }
 );
 
 export const MockLayout = ({ children }: { children: React.ReactNode }) => (

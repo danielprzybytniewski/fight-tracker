@@ -31,29 +31,32 @@ export default function FightsCarousel() {
   }
 
   return (
-    <div className="flex items-center justify-center sm:pt-[15vh]">
-      <Carousel className="w-full max-w-4xl relative sm:bg-zinc-300 sm:dark:bg-gray-600 sm:rounded-lg sm:shadow-md">
+    <div className="flex items-center justify-center sm:pt-20 px-4 sm:px-0">
+      <Carousel
+        className="w-full max-w-5xl relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800
+      dark:to-gray-900 rounded-2xl shadow-xl overflow-hidden"
+      >
         <CarouselContent>
           {fightCards.map((event) => {
             const firstFight = event.fights[0];
             return (
               <CarouselItem
                 key={`${event.title}-${event.date}`}
-                className="flex flex-col items-center justify-items-start sm:justify-center h-auto p-2 sm:p-8 px-5 sm:px-0  text-center"
+                className="flex flex-col items-center justify-items-start sm:justify-center h-auto p-6 sm:p-10 text-center"
               >
                 <Link
                   href={`/events/${slugify(event.title)}`}
-                  className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-gray-100 transition-all hover:underline"
+                  className="text-xl sm:text-3xl font-extrabold text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
                 >
                   {event.title}
                 </Link>
-                <p className="mt-2 text-zinc-600 dark:text-gray-400 text-sm sm:text-base">
+                <p className="mt-3 text-gray-600 dark:text-gray-400 text-sm sm:text-base font-medium">
                   {convertApiDateToLocalTime(event.date)}
                 </p>
-                <div className="flex flex-col sm:flex-row justify-between w-full mt-4 p-4 sm:p-8 pt-5 sm:pt-10 border-t border-zinc-300 sm:border-zinc-200 dark:border-gray-500">
+                <div className="flex flex-col sm:flex-row justify-between w-full mt-8 p-6 sm:p-10 border-t border-gray-300 dark:border-gray-700">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
-                  <div className="flex items-center justify-center mx-4">
-                    <h2 className="text-xl font-bold text-zinc-900 dark:text-gray-100 mt-5 sm:mt-0 mb-5 sm:mb-0">
+                  <div className="flex items-center justify-center sm:w-full mx-4 my-6 sm:my-0">
+                    <h2 className="text-base sm:text-3xl font-black text-gray-800 dark:text-gray-200">
                       VS
                     </h2>
                   </div>
@@ -63,8 +66,8 @@ export default function FightsCarousel() {
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 md:left-2 sm:top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
-        <CarouselNext className="absolute right-4 md:right-2 sm:top-[5.5rem] dark:bg-gray-500 dark:hover:bg-gray-600" />
+        <CarouselPrevious className="absolute left-4 top-1/3 sm:top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-colors duration-200" />
+        <CarouselNext className="absolute right-4 top-1/3 sm:top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-colors duration-200" />
       </Carousel>
     </div>
   );

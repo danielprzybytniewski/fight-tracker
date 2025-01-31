@@ -1,3 +1,4 @@
+import appConfig from "@/config/app-config";
 import { mockFightsCards } from "@/__mocks__/mock-data";
 import { fetchFightsCards } from "@/actions/fights-cards-actions";
 import {
@@ -6,24 +7,11 @@ import {
 } from "@/types/fight-cards-schema.types";
 import { z } from "zod";
 
-const mockApiUrl = "https://example.com/api/fight-cards";
+const mockApiUrl = appConfig.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
 
 describe("fetchFightsCards", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL = mockApiUrl;
-  });
-
-  afterEach(() => {
-    delete process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
-  });
-
-  test("throws an error if API URL is not defined", async () => {
-    delete process.env.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
-
-    await expect(fetchFightsCards()).rejects.toThrow(
-      "API URL is not defined in environment variables"
-    );
   });
 
   test("throws an error if the network response is not ok", async () => {

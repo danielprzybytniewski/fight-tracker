@@ -9,6 +9,8 @@ export const FighterSchema = z.object({
 });
 
 export const FightSchema = z.object({
+  main: z.boolean(),
+  weight: z.coerce.number(),
   fighterA: FighterSchema,
   fighterB: FighterSchema,
 });

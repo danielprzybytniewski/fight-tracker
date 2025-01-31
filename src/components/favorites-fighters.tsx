@@ -24,9 +24,12 @@ export default function FavoritesFighters() {
   };
 
   return (
-    <Card className="max-w-7xl mx-auto bg-white dark:bg-gray-700 rounded-lg">
-      <CardHeader className="text-center py-4 border-b border-zinc-200 dark:border-gray-500">
-        <CardTitle className="text-2xl font-semibold text-zinc-900 dark:text-gray-100">
+    <Card className="max-w-7xl mx-auto bg-gray-200 dark:bg-gray-900 shadow-lg">
+      <CardHeader className="text-center py-4 border-b border-gray-300 dark:border-gray-500">
+        <CardTitle
+          className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 
+        dark:to-gray-400 bg-clip-text text-transparent"
+        >
           Favorite Fighters ({favorites.length})
         </CardTitle>
         {favorites.length > 0 && (
@@ -35,20 +38,19 @@ export default function FavoritesFighters() {
           </button>
         )}
       </CardHeader>
-      <CardContent className="p-4">
+      <CardContent className="p-8 sm:p-4">
         {favorites.length === 0 ? (
-          <p className="text-center text-gray-500 dark:text-gray-400">
+          <p className="text-center text-gray-600 dark:text-gray-400">
             No favorite fighters yet
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-center">
             {favorites.map((fighter) => (
               <div
                 key={fighter.name}
-                className="flex flex-col items-center p-4 bg-slate-200 dark:bg-gray-800 rounded-lg hover:scale-105 
-                hover:shadow-lg dark:hover:shadow-xl transition-all duration-300"
+                className="flex flex-col items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
               >
-                <EventFighter fighter={fighter} position="A" />
+                <EventFighter fighter={fighter} />
               </div>
             ))}
           </div>

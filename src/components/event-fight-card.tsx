@@ -13,6 +13,9 @@ import {
 } from "@/components/ui/card";
 import EventFighter from "@/components/event-fighter";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+import EventFightCardDetails from "@/components/event-fight-card-details";
+import EventFightCardTypeBadge from "@/components/event-fight-card-type-badge";
+import EventFightCardWeightBadge from "@/components/event-fight-card-weight-badge";
 
 export default function EventFightCard({ title }: { title: string }) {
   const {
@@ -39,32 +42,39 @@ export default function EventFightCard({ title }: { title: string }) {
   const convertedDate = convertApiDateToLocalTime(fightEvent.date);
 
   return (
-    <Card className="max-w-7xl mx-auto bg-white dark:bg-gray-700 rounded-lg">
-      <CardHeader className="text-center py-4 border-b border-zinc-200 dark:border-gray-500">
-        <CardTitle className="text-2xl font-semibold text-zinc-900 dark:text-gray-100">
+    <Card
+      className="max-w-5xl mx-auto bg-gray-50 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-600 rounded-lg
+    shadow-md"
+    >
+      <CardHeader className="text-center py-6 border-b border-gray-300 dark:border-gray-600">
+        <CardTitle className="text-xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100">
           {fightEvent.title}
         </CardTitle>
-        <CardDescription className="text-md text-zinc-600 dark:text-gray-400">
+        <CardDescription className="text-base sm:text-base text-gray-600 dark:text-gray-400 mt-2">
           {convertedDate}
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-2 lg:p-4">
+      <CardContent className="p-2 lg:p-6">
         {fightEvent.fights.map((fighter) => (
           <div
             key={`${fighter.fighterA.name}-${fighter.fighterB.name}`}
-            className="flex flex-row items-center justify-between bg-slate-200 dark:bg-gray-800 p-2 sm:p-4 mb-4 
-            rounded-lg"
+            className="flex flex-col sm:flex-row items-center justify-center bg-gray-200 dark:bg-gray-900 gap-y-4 sm:gap-y-0 p-4 sm:p-6 mb-6 rounded-lg shadow-inner w-full"
           >
-            <div className="flex flex-col items-center flex-1 md:flex-row space-x-4 text-center md:text-left">
-              <EventFighter fighter={fighter.fighterA} position="A" />
+            <div className="group fighter-a flex flex-col md:flex-row justify-center sm:justify-normal items-center flex-1 gap-x-4 text-center md:text-left w-full">
+              <span className="inline-block sm:hidden mb-2">
+                <EventFightCardTypeBadge isMainCard={fighter.main} />
+              </span>
+              <span className="inline-block sm:hidden mb-2">
+                <EventFightCardWeightBadge weight={fighter.weight} />
+              </span>
+              <EventFighter fighter={fighter.fighterA} />
             </div>
-            <div className="flex items-center justify-center w-auto mx-4">
-              <p className="text-zinc-600 dark:text-gray-400 font-semibold text-lg">
-                VS
-              </p>
-            </div>
-            <div className="flex flex-col items-center flex-1 md:flex-row-reverse space-x-4 space-x-reverse text-center md:text-right">
-              <EventFighter fighter={fighter.fighterB} position="B" />
+            <EventFightCardDetails
+              isMainCard={fighter.main}
+              weight={fighter.weight}
+            />
+            <div className="group fighter-b flex flex-col md:flex-row-reverse justify-center sm:justify-normal items-center flex-1 gap-x-4 text-center md:text-right w-full">
+              <EventFighter fighter={fighter.fighterB} />
             </div>
           </div>
         ))}

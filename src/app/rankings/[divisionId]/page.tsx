@@ -38,11 +38,11 @@ export default async function DivisionPage({
   return (
     <div className="container mx-auto p-7 py-8 dark:bg-gray-900">
       <BackButton />
-      <h1 className="text-3xl sm:text-4xl font-extrabold mb-2 pb-3 text-center text-gray-800 dark:text-gray-200">
-        {division.categoryName}
+      <h1 className="text-2xl sm:text-4xl font-extrabold mb-2 pb-3 text-center text-gray-800 dark:text-gray-200">
+        {division.categoryName} UFC Divison
       </h1>
       <DivisionChampionCard division={division} />
-      <h2 className="text-3xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">
         Rankings
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -40,14 +40,17 @@ export default function MobileMenu() {
           <SheetClose asChild>
             <Link
               href="/"
-              onClick={handleClose}
               className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100"
+              onClick={handleClose}
             >
               Fight Tracker
             </Link>
           </SheetClose>
           <SheetClose asChild>
-            <button className="absolute top-1 right-1 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300" aria-label="Close mobile menu">
+            <button
+              className="absolute top-1 right-1 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+              aria-label="Close mobile menu"
+            >
               <X className="w-7 h-7 text-gray-600 dark:text-gray-300" />
             </button>
           </SheetClose>

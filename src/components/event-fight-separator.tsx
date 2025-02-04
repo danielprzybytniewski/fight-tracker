@@ -1,19 +1,19 @@
-import EventFightCardTypeBadge from "@/components/event-fight-card-type-badge";
-import EventFightCardWeightBadge from "@/components/event-fight-card-weight-badge";
+import EventTypeBadge from "@/components/event-type-badge";
+import EventWeightBadge from "@/components/event-weight-badge";
 
-type EventFightCardDetailsProps = {
+type EventFightSeparatorProps = {
   isMainCard: boolean;
   weight: number;
 };
 
-export default function EventFightCardDetails({
+export default function EventFightSeparator({
   isMainCard,
   weight,
-}: EventFightCardDetailsProps) {
+}: EventFightSeparatorProps) {
   return (
     <div className="flex flex-col items-center justify-center mx-2 w-auto min-w-[5rem]">
       <span className="hidden sm:inline-block mb-2">
-        <EventFightCardTypeBadge isMainCard={isMainCard} />
+        <EventTypeBadge isMainCard={isMainCard} />
       </span>
       <p
         className="text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-800 text-sm sm:text-lg py-1 px-2 font-semibold 
@@ -22,7 +22,7 @@ export default function EventFightCardDetails({
         VS
       </p>
       <span className="hidden sm:inline-block mt-2">
-        <EventFightCardWeightBadge weight={weight} />
+        <EventWeightBadge weight={weight} />
       </span>
     </div>
   );

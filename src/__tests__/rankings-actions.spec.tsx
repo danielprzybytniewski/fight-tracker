@@ -18,7 +18,7 @@ const mockFetch = fetchFromApiWithCachingAndValidation as jest.MockedFunction<
   typeof fetchFromApiWithCachingAndValidation
 >;
 
-const baseURL = appConfig.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
+const baseURL = appConfig.ufcRankingsApiHost;
 
 describe("UFC Rankings API Actions", () => {
   beforeEach(() => {

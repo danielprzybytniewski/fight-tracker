@@ -31,7 +31,7 @@ export default function FightsCarousel() {
   }
 
   return (
-    <div className="flex items-center justify-center sm:pt-20 px-4 sm:px-0">
+    <div className="flex items-center justify-center sm:pt-10 px-4 sm:px-0">
       <Carousel
         className="w-full max-w-5xl relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800
       dark:to-gray-900 rounded-2xl shadow-xl overflow-hidden"
@@ -46,7 +46,7 @@ export default function FightsCarousel() {
               >
                 <Link
                   href={`/events/${slugify(event.title)}`}
-                  className="text-xl sm:text-3xl font-extrabold text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+                  className="text-lg sm:text-2xl uppercase font-extrabold text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
                 >
                   {event.title}
                 </Link>
@@ -56,7 +56,7 @@ export default function FightsCarousel() {
                 <div className="flex flex-col sm:flex-row justify-between w-full mt-8 p-6 sm:p-10 border-t border-gray-300 dark:border-gray-700">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
                   <div className="flex items-center justify-center sm:w-full mx-4 my-6 sm:my-0">
-                    <h2 className="text-base sm:text-3xl font-black text-gray-800 dark:text-gray-200">
+                    <h2 className="text-lg sm:text-xl font-extrabold text-gray-800 dark:text-gray-200">
                       VS
                     </h2>
                   </div>

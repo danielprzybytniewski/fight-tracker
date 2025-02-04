@@ -1,13 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-type EventFightCardBadgeProps = {
+type EventTypeBadgeProps = {
   isMainCard: boolean;
 };
 
-export default function EventFightCardTypeBadge({
-  isMainCard,
-}: EventFightCardBadgeProps) {
+export default function EventTypeBadge({ isMainCard }: EventTypeBadgeProps) {
   return (
     <Badge
       variant="outline"

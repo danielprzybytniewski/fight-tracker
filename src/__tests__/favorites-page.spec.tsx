@@ -13,13 +13,15 @@ describe("FavoritesPage", () => {
   });
 
   test("sets the correct metadata", () => {
-    expect(metadata.title).toBe("Favorites | Fight Tracker");
+    expect(metadata.title).toBe("Favorite Fighters | Fight Tracker");
     expect(metadata.description).toBe("Check out your favorite fighters");
   });
 
   test("sets the correct OpenGraph metadata", () => {
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("Favorites | Fight Tracker");
+      expect(metadata.openGraph.title).toBe(
+        "Favorite Fighters | Fight Tracker"
+      );
       expect(metadata.openGraph.description).toBe(
         "Check out your favorite fighters"
       );

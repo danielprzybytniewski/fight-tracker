@@ -30,7 +30,7 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter image from url", () => {
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const fighterImage = screen.getByAltText("Jan Kowalski");
 
@@ -48,7 +48,7 @@ describe("EventFighter", () => {
       picture: "/images/logo.png",
     };
 
-    render(<MockEventFighter fighter={modifiedFighter} position="A" />);
+    render(<MockEventFighter fighter={modifiedFighter} />);
 
     const fighterImage = screen.getByAltText(modifiedFighter.name);
 
@@ -62,7 +62,7 @@ describe("EventFighter", () => {
 
   test("renders fighter name as a clickable link", async () => {
     const user = userEvent.setup();
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const link = screen.getByRole("link");
 
@@ -75,7 +75,7 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter country flag", () => {
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const countryImage = screen.getByAltText(/jan kowalski country/i);
 
@@ -87,7 +87,7 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter record", () => {
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const fighterRecord = screen.getByText(mockEventFighter.record);
 
@@ -99,7 +99,7 @@ describe("EventFighter", () => {
 
     mockIsFavorite.mockReturnValueOnce(false).mockReturnValueOnce(true);
 
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const favoriteButton = screen.getByRole("button", { name: /favorite/i });
     const favoriteIcon = screen.getByTestId("favorite-icon");
@@ -136,7 +136,7 @@ describe("EventFighter", () => {
       toggleFavorite: jest.fn(),
     });
 
-    render(<MockEventFighter fighter={mockEventFighter} position="A" />);
+    render(<MockEventFighter fighter={mockEventFighter} />);
 
     const favoriteIcon = screen.getByTestId("favorite-icon");
     expect(favoriteIcon).toHaveClass("fill-yellow-500");

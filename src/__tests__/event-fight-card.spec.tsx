@@ -6,13 +6,6 @@ import { MockEventFightCard } from "@/__mocks__/mock-components";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
 
-jest.mock("@/lib/split-fighter-full-name", () => ({
-  splitFighterFullName: jest.fn((name) => {
-    const [firstName, lastName] = name.split(" ");
-    return { firstName, lastName };
-  }),
-}));
-
 describe("EventFightCard", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -70,19 +63,15 @@ describe("EventFightCard", () => {
 
     expect(screen.getByText(mockEventFightCard[0].title)).toBeInTheDocument();
 
-    const fighterA = mockEventFightCard[0].fights[0].fighterA;
-    const { firstName: firstNameFighterA, lastName: lastNameFighterA } =
-      splitFighterFullName(fighterA.name);
+    const [{ fighterA, fighterB }] = mockEventFightCard[0].fights;
 
-    expect(screen.getByText(firstNameFighterA)).toBeInTheDocument();
-    expect(screen.getByText(lastNameFighterA)).toBeInTheDocument();
-
-    const fighterB = mockEventFightCard[0].fights[0].fighterB;
-    const { firstName: firstNameFighterB, lastName: lastNameFighterB } =
-      splitFighterFullName(fighterB.name);
-
-    expect(screen.getByText(firstNameFighterB)).toBeInTheDocument();
-    expect(screen.getByText(lastNameFighterB)).toBeInTheDocument();
+    ["A", "B"].forEach((fighter) => {
+      const { firstName, lastName } = splitFighterFullName(
+        fighter === "A" ? fighterA.name : fighterB.name
+      );
+      expect(screen.getByText(firstName)).toBeInTheDocument();
+      expect(screen.getByText(lastName)).toBeInTheDocument();
+    });
 
     expect(screen.getByText("VS")).toBeInTheDocument();
   });

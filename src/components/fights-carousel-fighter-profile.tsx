@@ -22,7 +22,7 @@ export default function FightsCarouselFighterProfile({
           priority
         />
       </div>
-      <p className="text-lg sm:text-2xl font-bold uppercase mt-2 text-gray-800 dark:text-gray-100">
+      <p className="text-lg sm:text-xl font-bold uppercase mt-2 text-gray-800 dark:text-gray-100">
         <Link
           href={fighter.link}
           target="_blank"

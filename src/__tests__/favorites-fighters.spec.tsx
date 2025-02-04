@@ -30,7 +30,8 @@ describe("FavoritesFighters", () => {
 
     render(<FavoritesFighters />);
 
-    expect(screen.getByText("Favorite Fighters (0)")).toBeInTheDocument();
+    expect(screen.getByText("Favorite Fighters")).toBeInTheDocument();
+    expect(screen.getByText("(0)")).toBeInTheDocument();
     expect(screen.getByText("No favorite fighters yet")).toBeInTheDocument();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
@@ -45,7 +46,8 @@ describe("FavoritesFighters", () => {
 
     render(<FavoritesFighters />);
 
-    expect(screen.getByText("Favorite Fighters (1)")).toBeInTheDocument();
+    expect(screen.getByText("Favorite Fighters")).toBeInTheDocument();
+    expect(screen.getByText("(1)")).toBeInTheDocument();
     expect(screen.getByRole("button")).toBeInTheDocument();
     expect(screen.getByTestId("event-fighter")).toBeInTheDocument();
   });
@@ -90,7 +92,8 @@ describe("FavoritesFighters", () => {
 
     render(<FavoritesFighters />);
 
-    expect(screen.getByText("Favorite Fighters (2)")).toBeInTheDocument();
+    expect(screen.getByText("Favorite Fighters")).toBeInTheDocument();
+    expect(screen.getByText("(2)")).toBeInTheDocument();
     expect(screen.getAllByTestId("event-fighter")).toHaveLength(2);
   });
 });

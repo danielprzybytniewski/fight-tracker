@@ -27,10 +27,11 @@ export default function FavoritesFighters() {
     <Card className="max-w-7xl mx-auto bg-gray-200 dark:bg-gray-900 shadow-lg">
       <CardHeader className="text-center py-4 border-b border-gray-300 dark:border-gray-500">
         <CardTitle
-          className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 
+          className="text-2xl sm:text-4xl font-bold bg-gradient-to-r from-gray-700 to-gray-900 dark:from-gray-200 
         dark:to-gray-400 bg-clip-text text-transparent"
         >
-          Favorite Fighters ({favorites.length})
+          <h1 className="inline mr-1">Favorite Fighters</h1>
+          <span className="inline">({favorites.length})</span>
         </CardTitle>
         {favorites.length > 0 && (
           <button className="mx-auto" onClick={handleResetFavorites}>

@@ -6,7 +6,7 @@ import {
 } from "@/types/fight-cards-schema.types";
 
 export async function fetchFightsCards(): Promise<FightCardsResponse> {
-  const fightCardsApiUrl = appConfig.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+  const fightCardsApiUrl = appConfig.fightCardsApiHost;
 
   const response = await fetch(fightCardsApiUrl);
 

@@ -7,7 +7,7 @@ import {
 } from "@/types/fight-cards-schema.types";
 import { z } from "zod";
 
-const mockApiUrl = appConfig.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+const mockApiUrl = appConfig.fightCardsApiHost;
 
 describe("fetchFightsCards", () => {
   beforeEach(() => {

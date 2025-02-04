@@ -63,7 +63,7 @@ describe("DivisionPage", () => {
     render(await DivisionPage({ params: Promise.resolve(mockParams) }));
 
     expect(
-      screen.getByRole("heading", { name: "Lightweight" })
+      screen.getByRole("heading", { name: "Lightweight UFC Divison" })
     ).toBeInTheDocument();
   });
 

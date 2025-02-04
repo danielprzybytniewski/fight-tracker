@@ -12,8 +12,8 @@ export default function Navbar() {
             <ChangeLogo />
           </li>
           <li>
-            <Link href="/">
-              <h1 className="text-3xl sm:text-4xl font-bold">Fight Tracker</h1>
+            <Link href="/" className="text-3xl sm:text-4xl font-bold">
+              Fight Tracker
             </Link>
           </li>
         </ul>

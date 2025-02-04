@@ -12,7 +12,7 @@ import {
   DivisionWithChampionAndFighters,
 } from "@/types/rankings-schema.types";
 
-const UFC_RANKINGS_BASE_URL = appConfig.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
+const UFC_RANKINGS_BASE_URL = appConfig.ufcRankingsApiHost;
 
 export async function getFighterDetails(fighterId: string): Promise<Fighter> {
   return fetchFromApiWithCachingAndValidation(

@@ -11,10 +11,12 @@ export default function MobileNavbarItems({
 }: MobileNavbarItemsProps) {
   return (
     <>
-      <Link href="/rankings" onClick={onItemClick}>
-        <p className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200">
-          UFC Rankings
-        </p>
+      <Link
+        href="/rankings"
+        className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+        onClick={onItemClick}
+      >
+        UFC Rankings
       </Link>
       <div onClick={onItemClick}>
         <FavoritesCounter />

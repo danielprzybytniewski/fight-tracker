@@ -1,37 +1,48 @@
-import Navbar from "@/components/navbar";
 import { render, screen } from "@testing-library/react";
-
-jest.mock("@/components/mode-toggler", () =>
-  jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>)
-);
+import Navbar from "@/components/navbar";
 
 jest.mock("@/components/change-logo", () =>
   jest.fn(() => <div data-testid="change-logo">Logo</div>)
 );
 
-jest.mock("@/components/favorites-counter", () =>
-  jest.fn(() => <div data-testid="favorites-counter">Favorites</div>)
+jest.mock("@/components/navbar-items", () =>
+  jest.fn(() => <div data-testid="navbar-items">NavbarItems</div>)
 );
 
+jest.mock("@/components/mobile-menu", () =>
+  jest.fn(() => <div data-testid="mobile-menu">MobileMenu</div>)
+);
+
+beforeEach(() => {
+  render(<Navbar />);
+});
+
 describe("Navbar", () => {
-  beforeEach(() => {
-    render(<Navbar />);
+  test("renders navigation element", () => {
+    const navElement = screen.getByRole("navigation");
+    expect(navElement).toBeInTheDocument();
   });
 
-  test("renders the navbar with logo and title", () => {
-    expect(screen.getByTestId("change-logo")).toBeInTheDocument();
-    expect(screen.getByText("Fight Tracker")).toBeInTheDocument();
+  test("renders ChangeLogo component", () => {
+    const changeLogo = screen.getByTestId("change-logo");
+    expect(changeLogo).toBeInTheDocument();
   });
 
-  test("renders the UFC Rankings link", () => {
-    expect(screen.getByText("UFC Rankings")).toBeInTheDocument();
+  test("renders Fight Tracker link with correct href", () => {
+    const fightTrackerLink = screen.getByRole("link", {
+      name: /fight tracker/i,
+    });
+    expect(fightTrackerLink).toBeInTheDocument();
+    expect(fightTrackerLink).toHaveAttribute("href", "/");
   });
 
-  test("renders the favorites counter", () => {
-    expect(screen.getByTestId("favorites-counter")).toBeInTheDocument();
+  test("renders NavbarItems component", () => {
+    const navbarItems = screen.getByTestId("navbar-items");
+    expect(navbarItems).toBeInTheDocument();
   });
 
-  test("renders the mode toggler", () => {
-    expect(screen.getByTestId("mode-toggler")).toBeInTheDocument();
+  test("renders MobileMenu component", () => {
+    const mobileMenu = screen.getByTestId("mobile-menu");
+    expect(mobileMenu).toBeInTheDocument();
   });
 });

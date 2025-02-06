@@ -5,11 +5,14 @@ const envSchema = z.object({
   NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL: z.string().url(),
 });
 
+const parsedEnv = envSchema.parse(process.env);
+
+const fightCardsApiHost = parsedEnv.NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL;
+const ufcRankingsApiHost = parsedEnv.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
+
 const appConfig = {
-  fightCardsApiHost: envSchema.parse(process.env)
-    .NEXT_PUBLIC_MMA_FIGHT_CARDS_API_HOST_URL,
-  ufcRankingsApiHost: envSchema.parse(process.env)
-    .NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL,
+  fightCardsApiHost,
+  ufcRankingsApiHost,
 };
 
 export default appConfig;

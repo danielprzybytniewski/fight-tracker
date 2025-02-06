@@ -4,6 +4,7 @@ import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import FightsCarousel from "@/components/fights-carousel";
 import LoadingFightsCards from "@/components/loading-fights-cards";
 import { mockFightsCards } from "@/__mocks__/mock-data";
+import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
 
@@ -58,10 +59,17 @@ describe("FightsCarousel", () => {
     });
 
     render(<FightsCarousel />);
-
     expect(screen.getByText("Fight Night")).toBeInTheDocument();
-    expect(screen.getByText("Fighter A")).toBeInTheDocument();
-    expect(screen.getByText("Fighter B")).toBeInTheDocument();
+    const [{ fighterA, fighterB }] = mockFightsCards[0].fights;
+
+    ["A", "B"].forEach((fighter) => {
+      const { firstName, lastName } = splitFighterFullName(
+        fighter === "A" ? fighterA.name : fighterB.name
+      );
+      expect(screen.getByText(firstName)).toBeInTheDocument();
+      expect(screen.getByText(lastName)).toBeInTheDocument();
+    });
+
     expect(screen.getByText("VS")).toBeInTheDocument();
   });
 });

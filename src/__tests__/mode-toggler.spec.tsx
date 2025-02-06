@@ -1,7 +1,7 @@
+import ModeToggler from "@/components/mode-toggler";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useTheme } from "next-themes";
-import { ModeToggler } from "@/components/mode-toggler";
 
 jest.mock("next-themes", () => ({
   useTheme: jest.fn(),
@@ -52,7 +52,7 @@ describe("ModeToggler", () => {
     expect(setThemeMock).toHaveBeenCalledWith("light");
   });
 
-  test("has an aria-label", () => {
+  test("has correct aria-label", () => {
     render(<ModeToggler />);
     const button = screen.getByRole("button");
     expect(button).toHaveAttribute("aria-label", "Toggle theme");

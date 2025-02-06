@@ -18,14 +18,12 @@ export default function ChangeLogo() {
   }, [theme]);
 
   return (
-    <li>
-      <Image
-        data-testid="imgTestId"
-        src={logo}
-        alt="Fight Tracker Logo"
-        width={40}
-        height={40}
-      />
-    </li>
+    <Image
+      data-testid="imgTestId"
+      src={logo}
+      alt="Fight Tracker Logo"
+      width={40}
+      height={40}
+    />
   );
 }

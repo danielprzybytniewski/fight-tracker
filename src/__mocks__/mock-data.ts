@@ -12,15 +12,17 @@ export const mockFightsCards: Event[] = [
     date: "Sunday, 16 February 2025, 00:00",
     fights: [
       {
+        main: true,
+        weight: 185,
         fighterA: {
-          name: "Fighter A",
+          name: "Jing Li",
           record: "5-0",
           country: "China",
           picture: "https://example.com/fighter.png",
           link: "https://example.com/fighterA",
         },
         fighterB: {
-          name: "Fighter B",
+          name: "Adam Kowalski",
           record: "12-0",
           country: "Poland",
           picture: "https://example.com/fighter.png",
@@ -37,6 +39,8 @@ export const mockEventFightCard: Event[] = [
     date: "Monday, 10 February 2025, 00:00",
     fights: [
       {
+        main: true,
+        weight: 185,
         fighterA: {
           link: "https://example.com/fighterA",
           name: "Jan Kowalski",

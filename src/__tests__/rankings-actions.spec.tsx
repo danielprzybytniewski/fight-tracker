@@ -1,3 +1,4 @@
+import appConfig from "@/config/app-config";
 import {
   getAllFighters,
   getDivisionWithImages,
@@ -17,16 +18,11 @@ const mockFetch = fetchFromApiWithCachingAndValidation as jest.MockedFunction<
   typeof fetchFromApiWithCachingAndValidation
 >;
 
-const mockApiUrl = "https://example.com/api/ufc-rankings";
+const baseURL = appConfig.ufcRankingsApiHost;
 
 describe("UFC Rankings API Actions", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    process.env.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL = mockApiUrl;
-  });
-
-  afterEach(() => {
-    delete process.env.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
   });
 
   test("fetches fighter details successfully", async () => {
@@ -35,7 +31,7 @@ describe("UFC Rankings API Actions", () => {
     const result = await getFighterDetails("Jonh");
 
     expect(mockFetch).toHaveBeenCalledWith(
-      mockApiUrl,
+      baseURL,
       "/fighter/Jonh",
       expect.any(Object),
       "Invalid fighter data received from API"
@@ -54,7 +50,7 @@ describe("UFC Rankings API Actions", () => {
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
     expect(mockFetch).toHaveBeenCalledWith(
-      mockApiUrl,
+      baseURL,
       "/fighters",
       expect.any(Object),
       "Invalid fighters data received from API"
@@ -71,14 +67,14 @@ describe("UFC Rankings API Actions", () => {
     expect(mockFetch).toHaveBeenCalledTimes(2);
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      mockApiUrl,
+      baseURL,
       "/rankings",
       expect.any(Object),
       "Invalid rankings data received from API"
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
-      mockApiUrl,
+      baseURL,
       "/fighters",
       expect.any(Object),
       "Invalid fighters data received from API"
@@ -101,14 +97,14 @@ describe("UFC Rankings API Actions", () => {
     expect(mockFetch).toHaveBeenCalledTimes(2);
     expect(mockFetch).toHaveBeenNthCalledWith(
       1,
-      mockApiUrl,
+      baseURL,
       "/division/lightweight",
       expect.any(Object),
       "Invalid division data received from API"
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
-      mockApiUrl,
+      baseURL,
       "/fighters",
       expect.any(Object),
       "Invalid fighters data received from API"
@@ -129,14 +125,5 @@ describe("UFC Rankings API Actions", () => {
     mockFetch.mockRejectedValueOnce(error);
 
     await expect(getFighterDetails("Jon Jones")).rejects.toThrow("API Error");
-  });
-
-  test("throws an error if API URL is not defined", async () => {
-    jest.resetModules();
-    delete process.env.NEXT_PUBLIC_UFC_RANKINGS_API_HOST_URL;
-
-    await expect(async () => {
-      await import("@/actions/rankings-actions");
-    }).rejects.toThrow("API URL is not defined in environment variables");
   });
 });

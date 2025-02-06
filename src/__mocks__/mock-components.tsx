@@ -1,6 +1,5 @@
 import EventFightCard from "@/components/event-fight-card";
 import EventFighter from "@/components/event-fighter";
-import Navbar from "@/components/navbar";
 import { FavoritesProvider } from "@/providers/favorites-provider";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { Fighter } from "@/types/fight-cards-schema.types";
@@ -12,24 +11,10 @@ export const MockEventFightCard = ({ title }: { title: string }) => (
   </FavoritesProvider>
 );
 
-export const MockEventFighter = ({
-  fighter,
-  position,
-}: {
-  fighter: Fighter;
-  position: string;
-}) => (
+export const MockEventFighter = ({ fighter }: { fighter: Fighter }) => (
   <FavoritesProvider>
-    <EventFighter fighter={fighter} position={position} />
+    <EventFighter fighter={fighter} />
   </FavoritesProvider>
-);
-
-export const MockNavbar = () => (
-  <ThemeProvider>
-    <FavoritesProvider>
-      <Navbar />
-    </FavoritesProvider>
-  </ThemeProvider>
 );
 
 export const MockLayout = ({ children }: { children: React.ReactNode }) => (

@@ -5,18 +5,19 @@ import {
   getFighterDetails,
   getRankingsWithImages,
 } from "@/actions/rankings-actions";
-import { fetchFromApiWithCachingAndValidation } from "@/lib/fetch-from-api-with-caching-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
 import {
   mockAthleteCard,
   mockDivision,
   mockRankings,
 } from "@/__mocks__/mock-data";
 
-jest.mock("@/lib/fetch-from-api-with-caching-and-validation");
+jest.mock("@/lib/fetch-from-api-with-revalidating-and-validation");
 
-const mockFetch = fetchFromApiWithCachingAndValidation as jest.MockedFunction<
-  typeof fetchFromApiWithCachingAndValidation
->;
+const mockFetch =
+  fetchFromApiWithRevalidatingAndValidation as jest.MockedFunction<
+    typeof fetchFromApiWithRevalidatingAndValidation
+  >;
 
 const baseURL = appConfig.ufcRankingsApiHost;
 

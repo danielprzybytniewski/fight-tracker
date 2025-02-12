@@ -20,7 +20,7 @@ export default function DivisionAthleteCard({
           <div className="flex flex-col items-center sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Badge
               variant="secondary"
-              className="text-lg px-3 py-1 bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-200"
+              className="text-lg px-3 py-1 bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-200 pointer-events-none"
             >
               #{index + 1}
             </Badge>

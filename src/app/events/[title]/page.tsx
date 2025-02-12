@@ -1,5 +1,6 @@
 import EventFightCard from "@/components/event-fight-card";
 import { createMetadata } from "@/lib/create-metadata";
+import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 import { Metadata } from "next";
 
 type Params = {
@@ -12,13 +13,12 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { title } = await params;
+  const formattedTitle = formatSlugToReadableText(title);
 
   return createMetadata({
-    title: `${title.toUpperCase()}`,
-    description: `Check out the upcoming MMA event: ${title.toUpperCase()}`,
-    keywords: [
-      `${title.toUpperCase()} event, ${title.toUpperCase()} fighters,`,
-    ],
+    title: `${formattedTitle}`,
+    description: `Check out the upcoming MMA event: ${formattedTitle}`,
+    keywords: [`${formattedTitle} event, ${formattedTitle} fighters,`],
     path: `/events/${title}`,
   });
 }

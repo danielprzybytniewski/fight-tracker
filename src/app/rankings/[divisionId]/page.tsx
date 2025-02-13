@@ -5,6 +5,7 @@ import DivisionAthleteCard from "@/components/division-athlete-card";
 import { Metadata } from "next";
 import BackButton from "@/components/back-button";
 import { createMetadata } from "@/lib/create-metadata";
+import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 
 type Params = {
   divisionId: string;
@@ -16,12 +17,13 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { divisionId } = await params;
+  const formattedDivisionId = formatSlugToReadableText(divisionId);
 
   return createMetadata({
-    title: `${divisionId.toUpperCase()} UFC Division`,
-    description: `${divisionId.toUpperCase()} UFC division. Check out the current champion and top fighters in this weight class.`,
+    title: `${formattedDivisionId} UFC Division`,
+    description: `${formattedDivisionId} UFC division. Check out the current champion and top fighters in this weight class.`,
     keywords: [
-      `UFC ${divisionId} division, UFC ${divisionId} champion, UFC ${divisionId} fighters, UFC ${divisionId} rankings`,
+      `UFC ${formattedDivisionId} division, UFC ${formattedDivisionId} champion, UFC ${formattedDivisionId} fighters, UFC ${formattedDivisionId} rankings`,
     ],
     path: `/rankings/${divisionId}`,
   });

@@ -1,13 +1,13 @@
 import { z } from "zod";
 
-export async function fetchFromApiWithCachingAndValidation<T>(
+export async function fetchFromApiWithRevalidatingAndValidation<T>(
   baseUrl: string,
   endpoint: string,
   schema: z.ZodSchema<T>,
   errorMessage: string = "Invalid data received from API"
 ): Promise<T> {
   const response = await fetch(`${baseUrl}${endpoint}`, {
-    cache: "force-cache",
+    next: { revalidate: 3600 },
   });
 
   if (!response.ok) {

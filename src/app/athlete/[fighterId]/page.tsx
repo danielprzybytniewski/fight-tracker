@@ -4,12 +4,15 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-
 import AthleteRecordChart from "@/components/athlete-record-chart";
 import { Metadata } from "next";
 import BackButton from "@/components/back-button";
 import { createMetadata } from "@/lib/create-metadata";
 import AthleteDetails from "@/components/athlete-details";
+import { getFightsHistory } from "@/actions/fights-history-actions";
+import FightsHistory from "@/components/fights-history";
+import normalizeName from "@/lib/normalize-name";
+import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 
 type Params = {
   fighterId: string;
@@ -21,13 +24,29 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { fighterId } = await params;
+  const formattedFighterId = formatSlugToReadableText(fighterId);
+
+  const fighterProfileKeywords = [
+    "profile",
+    "info",
+    "stats",
+    "fight history",
+    "UFC record",
+    "past fights",
+    "career highlights",
+    "UFC journey",
+    "fight results",
+    "UFC performance",
+  ];
+
+  const keywords = fighterProfileKeywords.map(
+    (keyword) => `${formattedFighterId} ${keyword}`
+  );
 
   return createMetadata({
-    title: `${fighterId.toUpperCase()}`,
-    description: `Check out the info about athlete: ${fighterId.toUpperCase()}`,
-    keywords: [
-      `${fighterId.toUpperCase()} profile, ${fighterId.toUpperCase()} info, ${fighterId.toUpperCase()} stats,`,
-    ],
+    title: `${formattedFighterId}`,
+    description: `Check out the info about athlete: ${formattedFighterId}`,
+    keywords: keywords,
     path: `/athlete/${fighterId}`,
   });
 }
@@ -40,6 +59,9 @@ export default async function AthletePage({
   const { fighterId } = await params;
   const fighter = await getFighterDetails(fighterId);
 
+  const normalizedFighterName = normalizeName(fighter.name);
+  const fightsHistory = await getFightsHistory(normalizedFighterName);
+
   const generalDetails = getGeneralDetails(fighter);
   const additionalDetails = getAdditionalDetails(fighter);
 
@@ -48,7 +70,7 @@ export default async function AthletePage({
   const draws = fighter.draws || 0;
 
   return (
-    <div className="container mx-auto p-6 sm:p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
+    <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
       <BackButton />
       <div className="grid grid-cols-1 gap-8 items-center p-6">
         <div className="relative h-72 sm:h-96 overflow-hidden">
@@ -79,6 +101,10 @@ export default async function AthletePage({
         <AthleteDetails
           generalDetails={generalDetails}
           additionalDetails={additionalDetails}
+        />
+        <FightsHistory
+          fightsHistory={fightsHistory}
+          mainFighterName={normalizedFighterName}
         />
       </div>
     </div>

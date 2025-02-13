@@ -7,7 +7,7 @@ type MetadataParams = {
   path?: string;
 };
 
-export const sharedMetadata = {
+const sharedMetadata = {
   keywords: [
     "MMA",
     "UFC",
@@ -31,6 +31,22 @@ export const sharedMetadata = {
     "champions",
     "weight classes",
     "weight divisions",
+    "UFC fight history",
+    "fighter records",
+    "past UFC events",
+    "fight results",
+    "UFC career",
+    "fighter performance",
+    "UFC matchups",
+    "fight statistics",
+    "UFC fight cards",
+    "historical fights",
+    "fighter journey",
+    "UFC timeline",
+    "fight analysis",
+    "UFC archives",
+    "fighter evolution",
+    "fighter progression",
   ],
   openGraph: {
     type: "website",

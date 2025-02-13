@@ -3,6 +3,7 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 jest.mock("@/lib/unit-conversion", () => ({
   inchesToCm: jest.fn((inches) => `${inches * 2.54} cm`),
@@ -39,7 +40,7 @@ describe("getGeneralDetails", () => {
       "Leg Reach",
     ];
     expectedLabels.forEach((label) => {
-      expect(details).toContainEqual({ label, value: "N/A" });
+      expect(details).toContainEqual({ label, value: NOT_AVAILABLE });
     });
   });
 });
@@ -68,7 +69,7 @@ describe("getAdditionalDetails", () => {
     ];
 
     expectedLabels.forEach((label) => {
-      expect(details).toContainEqual({ label, value: "N/A" });
+      expect(details).toContainEqual({ label, value: NOT_AVAILABLE });
     });
   });
 });

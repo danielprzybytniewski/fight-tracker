@@ -1,9 +1,9 @@
-import { fetchFromApiWithCachingAndValidation } from "@/lib/fetch-from-api-with-caching-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
 import { z } from "zod";
 
 global.fetch = jest.fn();
 
-describe("fetchFromApiWithCachingAndValidation", () => {
+describe("fetchFromApiWithRevalidatingAndValidation", () => {
   const baseUrl = "https://api.example.com";
   const endpoint = "/data";
   const schema = z.object({
@@ -24,10 +24,10 @@ describe("fetchFromApiWithCachingAndValidation", () => {
       json: async () => validResponse,
     });
 
-    await fetchFromApiWithCachingAndValidation(baseUrl, endpoint, schema);
+    await fetchFromApiWithRevalidatingAndValidation(baseUrl, endpoint, schema);
 
     expect(fetch).toHaveBeenCalledWith(`${baseUrl}${endpoint}`, {
-      cache: "force-cache",
+      next: { revalidate: 3600 },
     });
   });
 
@@ -37,7 +37,7 @@ describe("fetchFromApiWithCachingAndValidation", () => {
       json: async () => validResponse,
     });
 
-    const result = await fetchFromApiWithCachingAndValidation(
+    const result = await fetchFromApiWithRevalidatingAndValidation(
       baseUrl,
       endpoint,
       schema
@@ -57,7 +57,7 @@ describe("fetchFromApiWithCachingAndValidation", () => {
     });
 
     await expect(
-      fetchFromApiWithCachingAndValidation(
+      fetchFromApiWithRevalidatingAndValidation(
         baseUrl,
         endpoint,
         schema,
@@ -79,7 +79,7 @@ describe("fetchFromApiWithCachingAndValidation", () => {
     });
 
     await expect(
-      fetchFromApiWithCachingAndValidation(baseUrl, endpoint, schema)
+      fetchFromApiWithRevalidatingAndValidation(baseUrl, endpoint, schema)
     ).rejects.toThrow(`Failed to fetch data from ${endpoint}`);
   });
 });

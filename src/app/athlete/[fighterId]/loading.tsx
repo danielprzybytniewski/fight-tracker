@@ -22,16 +22,24 @@ export default function AthleteLoading() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 space-y-4">
-              {Array.from({ length: 3 }).map((_, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md"
-                >
-                  <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-2" />
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4" />
-                </div>
-              ))}
+            <div className="mt-8 space-y-6">
+              <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mx-auto" />
+              <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 dark:bg-gray-800/80 shadow-md rounded-2xl h-full flex flex-col justify-between p-4"
+                  >
+                    <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-4" />
+                    <div className="space-y-2">
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4" />
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2" />
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3" />
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/3" />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

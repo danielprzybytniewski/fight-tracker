@@ -1,0 +1,28 @@
+"use server";
+import appConfig from "@/config/app-config";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import {
+  ApiFightsHistoryResponseSchema,
+  AppFightSchema,
+  Fight,
+  ApiFight,
+} from "@/types/fights-history.schema.types";
+
+const BASE_URL = appConfig.ufcLegacyApiHost;
+
+export async function getFightsHistory(fighterName: string): Promise<Fight[]> {
+  const endpoint = `fights?name=${encodeURIComponent(fighterName)}`;
+
+  const response = await fetchFromApiWithRevalidatingAndValidation(
+    BASE_URL,
+    endpoint,
+    ApiFightsHistoryResponseSchema,
+    "Invalid fights history data"
+  );
+
+  const transformedFights = response.fights.map((fight: ApiFight) =>
+    AppFightSchema.parse(fight)
+  );
+
+  return transformedFights;
+}

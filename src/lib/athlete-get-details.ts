@@ -1,4 +1,8 @@
-import { DetailItem, Fighter } from "@/types/rankings-schema.types";
+import {
+  DetailItem,
+  Fighter,
+  NOT_AVAILABLE,
+} from "@/types/rankings-schema.types";
 import { inchesToCm, poundsToKg } from "@/lib/unit-conversion";
 
 export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
@@ -8,38 +12,38 @@ export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
       fighter.draws !== 0 ? `-${fighter.draws}` : ""
     }`,
   },
-  { label: "Division", value: fighter.category || "N/A" },
-  { label: "Status", value: fighter.status || "N/A" },
-  { label: "Age", value: fighter.age || "N/A" },
+  { label: "Division", value: fighter.category || NOT_AVAILABLE },
+  { label: "Status", value: fighter.status || NOT_AVAILABLE },
+  { label: "Age", value: fighter.age || NOT_AVAILABLE },
   {
     label: "Height",
     value: fighter.height
       ? `${fighter.height} in (${inchesToCm(fighter.height)})`
-      : "N/A",
+      : NOT_AVAILABLE,
   },
   {
     label: "Weight",
     value: fighter.weight
       ? `${fighter.weight} lbs (${poundsToKg(fighter.weight)})`
-      : "N/A",
+      : NOT_AVAILABLE,
   },
   {
     label: "Reach",
     value: fighter.reach
       ? `${fighter.reach} in (${inchesToCm(fighter.reach)})`
-      : "N/A",
+      : NOT_AVAILABLE,
   },
   {
     label: "Leg Reach",
     value: fighter.legReach
       ? `${fighter.legReach} in (${inchesToCm(fighter.legReach)})`
-      : "N/A",
+      : NOT_AVAILABLE,
   },
 ];
 
 export const getAdditionalDetails = (fighter: Fighter): DetailItem[] => [
-  { label: "Fighting Style", value: fighter.fightingStyle || "N/A" },
-  { label: "Trains At", value: fighter.trainsAt || "N/A" },
-  { label: "Place of Birth", value: fighter.placeOfBirth || "N/A" },
-  { label: "Octagon Debut", value: fighter.octagonDebut || "N/A" },
+  { label: "Fighting Style", value: fighter.fightingStyle || NOT_AVAILABLE },
+  { label: "Trains At", value: fighter.trainsAt || NOT_AVAILABLE },
+  { label: "Place of Birth", value: fighter.placeOfBirth || NOT_AVAILABLE },
+  { label: "Octagon Debut", value: fighter.octagonDebut || NOT_AVAILABLE },
 ];

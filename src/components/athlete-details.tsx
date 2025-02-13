@@ -21,7 +21,7 @@ export default function AthleteDetails({
           />
         ))}
       </div>
-      <div className="mt-6 space-y-4">
+      <div className="mt-5 grid grid-cols-2 gap-5">
         {additionalDetails.map((item, index) => (
           <AthleteDetailCard
             key={index}

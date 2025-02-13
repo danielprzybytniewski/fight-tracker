@@ -1,4 +1,5 @@
 import AthleteDetailCard from "@/components/athlete-detail-card";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 import { render, screen } from "@testing-library/react";
 
 describe("AthleteDetailCard", () => {
@@ -10,6 +11,6 @@ describe("AthleteDetailCard", () => {
 
   test("renders 'N/A' when the value is undefined", () => {
     render(<AthleteDetailCard label="Age" value={undefined} />);
-    expect(screen.getByText("N/A")).toBeInTheDocument();
+    expect(screen.getByText(NOT_AVAILABLE)).toBeInTheDocument();
   });
 });

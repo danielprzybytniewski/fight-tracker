@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const FighterSchema = z.object({
+const FighterSchema = z.object({
   name: z.string(),
   record: z.string(),
   country: z.string().url(),
@@ -8,14 +8,14 @@ export const FighterSchema = z.object({
   link: z.string().url(),
 });
 
-export const FightSchema = z.object({
+const FightSchema = z.object({
   main: z.boolean(),
   weight: z.coerce.number().transform((pounds) => pounds * 0.453592 || 0),
   fighterA: FighterSchema,
   fighterB: FighterSchema,
 });
 
-export const EventSchema = z.object({
+const EventSchema = z.object({
   title: z.string(),
   date: z.string(),
   fights: z.array(FightSchema),

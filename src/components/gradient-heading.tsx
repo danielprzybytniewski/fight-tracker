@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 
-export const gradientHeadingVariants = cva(
+const gradientHeadingVariants = cva(
   "font-bold text-center bg-gradient-to-r bg-clip-text text-transparent from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400",
   {
     variants: {

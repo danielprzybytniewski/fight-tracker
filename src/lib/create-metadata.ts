@@ -7,7 +7,7 @@ type MetadataParams = {
   path?: string;
 };
 
-export const sharedMetadata = {
+const sharedMetadata = {
   keywords: [
     "MMA",
     "UFC",

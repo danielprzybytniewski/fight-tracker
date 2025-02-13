@@ -21,7 +21,7 @@ export const FighterSchema = z.object({
   legReach: z.coerce.number().optional(),
 });
 
-export const ChampionSchema = z.object({
+const ChampionSchema = z.object({
   id: z.string(),
   championName: z.string(),
   imgUrl: z.string().optional(),
@@ -45,7 +45,6 @@ export const FightersResponseSchema = z.record(FighterSchema);
 
 export type Fighter = z.infer<typeof FighterSchema>;
 export type Division = z.infer<typeof DivisionSchema>;
-export type RankingsResponse = z.infer<typeof RankingsResponseSchema>;
 export type FightersResponse = z.infer<typeof FightersResponseSchema>;
 export type DivisionWithChampion = Division & { champion: Fighter };
 export type DivisionWithChampionAndFighters = Division & {
@@ -57,3 +56,5 @@ export type DetailItem = {
   label: string;
   value: string | undefined;
 };
+
+export const NOT_AVAILABLE = "N/A";

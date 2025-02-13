@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import AthleteDetails from "@/components/athlete-details";
-import { DetailItem } from "@/types/rankings-schema.types";
+import { DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 import {
   mockAdditionalDetails,
   mockGeneralDetails,
@@ -10,7 +10,7 @@ jest.mock("@/components/athlete-detail-card", () =>
   jest.fn(({ label, value }: DetailItem) => (
     <div data-testid="athlete-detail-card">
       <h2>{label}</h2>
-      <p>{value || "N/A"}</p>
+      <p>{value || NOT_AVAILABLE}</p>
     </div>
   ))
 );
@@ -29,7 +29,7 @@ describe("AthleteDetails", () => {
       if (value) {
         expect(screen.getByText(value)).toBeInTheDocument();
       } else {
-        expect(screen.getByText("N/A")).toBeInTheDocument();
+        expect(screen.getByText(NOT_AVAILABLE)).toBeInTheDocument();
       }
     });
   });
@@ -47,7 +47,7 @@ describe("AthleteDetails", () => {
       if (value) {
         expect(screen.getByText(value)).toBeInTheDocument();
       } else {
-        expect(screen.getByText("N/A")).toBeInTheDocument();
+        expect(screen.getByText(NOT_AVAILABLE)).toBeInTheDocument();
       }
     });
   });

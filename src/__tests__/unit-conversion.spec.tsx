@@ -1,4 +1,5 @@
 import { inchesToCm, poundsToKg } from "@/lib/unit-conversion";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 describe("inchesToCm", () => {
   test("converts inches to centimeters correctly", () => {
@@ -8,7 +9,7 @@ describe("inchesToCm", () => {
   });
 
   test('returns "N/A" for non-numeric input', () => {
-    expect(inchesToCm(NaN)).toBe("N/A");
+    expect(inchesToCm(NaN)).toBe(NOT_AVAILABLE);
   });
 });
 
@@ -20,6 +21,6 @@ describe("poundsToKg", () => {
   });
 
   test('returns "N/A" for non-numeric input', () => {
-    expect(poundsToKg(NaN)).toBe("N/A");
+    expect(poundsToKg(NaN)).toBe(NOT_AVAILABLE);
   });
 });

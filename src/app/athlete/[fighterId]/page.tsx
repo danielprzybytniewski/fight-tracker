@@ -104,7 +104,7 @@ export default async function AthletePage({
         />
         <FightsHistory
           fightsHistory={fightsHistory}
-          mainFighterName={fighter.name}
+          mainFighterName={normalizedFighterName}
         />
       </div>
     </div>

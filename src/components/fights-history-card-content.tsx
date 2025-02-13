@@ -9,12 +9,14 @@ import {
   Clock12,
   Clock2,
 } from "lucide-react";
-import { Fight } from "@/types/fights-history.schema.types";
+import {
+  Fight,
+  TransformedFightDetails,
+} from "@/types/fights-history.schema.types";
 import { FightsHistoryDetails } from "@/components/fights-history-details";
 import FightsHistoryResultBadge from "@/components/fights-history-result-badge";
-import { TransformedFightDetails } from "@/lib/fights-history-details";
 
-export type FightsHistoryCardContentProps = TransformedFightDetails & {
+type FightsHistoryCardContentProps = TransformedFightDetails & {
   fight: Fight;
 };
 

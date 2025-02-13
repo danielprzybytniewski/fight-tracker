@@ -1,69 +1,60 @@
-import { Fight } from "@/types/fights-history.schema.types";
+import {
+  Fight,
+  FightResult,
+  TransformedFightDetails,
+} from "@/types/fights-history.schema.types";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
-export type TransformedFightDetails = {
-  opponentName: string;
-  result: "Win" | "Loss" | "Draw";
-  methodDisplay: string;
-  roundDisplay: string;
-  timeDisplay: string;
-  locationDisplay: string;
-  weightClassDisplay: string;
-  endWithDisplay?: string;
-};
-
-export function formatLocation(location: string | undefined): string {
-  if (!location) return "N/A";
+function formatLocation(location: string | undefined): string {
+  if (!location) return NOT_AVAILABLE;
 
   const parts = location.split(", ");
-  return parts.length > 0 ? parts[parts.length - 1] : "N/A";
+  return parts.length > 0 ? parts[parts.length - 1] : NOT_AVAILABLE;
 }
 
-export function formatWeightClass(weightClass: string | undefined): string {
-  if (!weightClass || weightClass === "0") return "N/A";
+function formatWeightClass(weightClass: string | undefined): string {
+  if (!weightClass || weightClass === "0") return NOT_AVAILABLE;
   return weightClass;
 }
 
-export function formatEndWith(endWith: string | undefined): string {
+function formatEndWith(endWith: string | undefined): string {
   if (!endWith) return "";
   return endWith.toLowerCase();
 }
 
-export function sortFightsByDate(fights: Fight[]): Fight[] {
-  return [...fights].sort((a, b) => b.date.getTime() - a.date.getTime());
-}
-
-export function determineResult(
-  fight: Fight,
-  mainFighterName: string
-): "Win" | "Loss" | "Draw" {
+function determineResult(fight: Fight, mainFighterName: string): FightResult {
   if (fight.draw) {
-    return "Draw";
+    return "draw";
   }
-  return fight.winner === mainFighterName ? "Win" : "Loss";
+  return fight.winner === mainFighterName ? "win" : "loss";
 }
 
-export function getMethodDisplay(fight: Fight, result: string): string {
+function getMethodDisplay(fight: Fight, result: string): string {
   if (result === "Draw") {
     return "Decision";
   }
   if (fight.method && fight.endWith) {
     return `${fight.method} (${formatEndWith(fight.endWith)})`;
   }
-  return fight.method || formatEndWith(fight.endWith) || "N/A";
+  return fight.method || formatEndWith(fight.endWith) || NOT_AVAILABLE;
 }
 
-export function getRoundDisplay(fight: Fight, result: string): string {
+function getRoundDisplay(fight: Fight, result: string): string {
   if (result === "Draw") {
     return "3";
   }
-  return fight.round || "N/A";
+  return fight.round || NOT_AVAILABLE;
 }
 
-export function getTimeDisplay(fight: Fight, result: string): string {
+function getTimeDisplay(fight: Fight, result: string): string {
   if (result === "Draw") {
     return "5:00";
   }
-  return fight.time || "N/A";
+  return fight.time || NOT_AVAILABLE;
+}
+
+export function sortFightsByDate(fights: Fight[]): Fight[] {
+  return [...fights].sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
 export function transformFightDetails(

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ApiFightSchema = z.object({
+const ApiFightSchema = z.object({
   _id: z.string(),
   event: z.string(),
   date: z.coerce.date(),
@@ -50,3 +50,16 @@ export type Fight = z.infer<typeof AppFightSchema>;
 export type ApiFightsHistoryResponse = z.infer<
   typeof ApiFightsHistoryResponseSchema
 >;
+
+export type FightResult = "win" | "loss" | "draw";
+
+export type TransformedFightDetails = {
+  opponentName: string;
+  result: FightResult;
+  methodDisplay: string;
+  roundDisplay: string;
+  timeDisplay: string;
+  locationDisplay: string;
+  weightClassDisplay: string;
+  endWithDisplay?: string;
+};

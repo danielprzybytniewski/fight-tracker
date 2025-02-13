@@ -1,19 +1,20 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { FightResult } from "@/types/fights-history.schema.types";
 import { VariantProps, cva } from "class-variance-authority";
 
 const fightResultBadgeVariants = cva(
-  "text-xs sm:text-sm text-gray-100 pointer-events-none",
+  "text-xs text-gray-100 sm:py-1 rounded pointer-events-none",
   {
     variants: {
       result: {
-        Win: "bg-green-600",
-        Draw: "bg-yellow-500",
-        Loss: "bg-red-600",
+        win: "bg-green-600",
+        draw: "bg-yellow-500",
+        loss: "bg-red-600",
       },
     },
     defaultVariants: {
-      result: "Win",
+      result: "win",
     },
   }
 );
@@ -22,7 +23,7 @@ const FightsHistoryResultBadge = ({
   result,
   className,
 }: {
-  result: "Win" | "Draw" | "Loss";
+  result: FightResult;
   className?: string;
 } & VariantProps<typeof fightResultBadgeVariants>) => {
   return (
@@ -30,7 +31,7 @@ const FightsHistoryResultBadge = ({
       variant="secondary"
       className={cn(fightResultBadgeVariants({ result, className }))}
     >
-      {result}
+      {result.toUpperCase()}
     </Badge>
   );
 };

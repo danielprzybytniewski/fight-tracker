@@ -14,13 +14,20 @@ jest.mock("@/components/rankings-card", () =>
   ))
 );
 
+jest.mock("@/components/gradient-heading", () =>
+  jest.fn(() => <h1 data-testid="gradient-heading">UFC Rankings</h1>)
+);
+
 describe("RankingsPage", () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     (getRankingsWithImages as jest.Mock).mockResolvedValue(mockRankings);
   });
 
-  test("renders the page title", async () => {
+  test("renders GradientHeading component correctly", async () => {
     render(await RankingsPage());
+
+    expect(screen.getByTestId("gradient-heading")).toBeInTheDocument();
     expect(screen.getByText("UFC Rankings")).toBeInTheDocument();
   });
 

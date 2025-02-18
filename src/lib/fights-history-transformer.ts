@@ -6,10 +6,10 @@ import {
 import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 function formatLocation(location: string | undefined): string {
-  if (!location) return NOT_AVAILABLE;
+  if (!location || location.trim() === "") return NOT_AVAILABLE;
 
   const parts = location.split(", ");
-  return parts.length > 0 ? parts[parts.length - 1] : NOT_AVAILABLE;
+  return parts[parts.length - 1];
 }
 
 function formatWeightClass(weightClass: string | undefined): string {
@@ -30,7 +30,7 @@ function determineResult(fight: Fight, mainFighterName: string): FightResult {
 }
 
 function getMethodDisplay(fight: Fight, result: string): string {
-  if (result === "Draw") {
+  if (result === "draw") {
     return "Decision";
   }
   if (fight.method && fight.endWith) {
@@ -40,14 +40,14 @@ function getMethodDisplay(fight: Fight, result: string): string {
 }
 
 function getRoundDisplay(fight: Fight, result: string): string {
-  if (result === "Draw") {
+  if (result === "draw") {
     return "3";
   }
   return fight.round || NOT_AVAILABLE;
 }
 
 function getTimeDisplay(fight: Fight, result: string): string {
-  if (result === "Draw") {
+  if (result === "draw") {
     return "5:00";
   }
   return fight.time || NOT_AVAILABLE;

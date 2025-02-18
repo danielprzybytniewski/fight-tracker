@@ -1,12 +1,12 @@
 import type { LucideIcon } from "lucide-react";
 
-interface FightsHistoryDetailsProps {
+type FightsHistoryDetailsProps = {
   icon: LucideIcon;
   label: string;
   value: React.ReactNode;
-}
+};
 
-export function FightsHistoryDetails({
+export default function FightsHistoryDetails({
   icon: Icon,
   label,
   value,

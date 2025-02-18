@@ -14,6 +14,7 @@ jest.mock("@/components/mobile-menu", () =>
 );
 
 beforeEach(() => {
+  jest.clearAllMocks();
   render(<Navbar />);
 });
 

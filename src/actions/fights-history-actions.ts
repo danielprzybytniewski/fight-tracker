@@ -11,7 +11,7 @@ import {
 const BASE_URL = appConfig.ufcLegacyApiHost;
 
 export async function getFightsHistory(fighterName: string): Promise<Fight[]> {
-  const endpoint = `fights?name=${encodeURIComponent(fighterName)}`;
+  const endpoint = `/fights?name=${encodeURIComponent(fighterName)}`;
 
   const response = await fetchFromApiWithRevalidatingAndValidation(
     BASE_URL,

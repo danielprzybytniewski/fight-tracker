@@ -15,8 +15,9 @@ describe("ErrorPage", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
     consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    (useRouter as jest.Mock).mockReturnValue({ push: mockPush });
+    render(<ErrorPage error={mockError} reset={mockReset} />);
   });
 
   afterEach(() => {
@@ -24,8 +25,6 @@ describe("ErrorPage", () => {
   });
 
   test("renders the error message and image", () => {
-    render(<ErrorPage error={mockError} reset={mockReset} />);
-
     expect(
       screen.getByRole("heading", { name: "Something went wrong" })
     ).toBeInTheDocument();
@@ -38,7 +37,6 @@ describe("ErrorPage", () => {
   });
 
   test("logs the error to the console", () => {
-    render(<ErrorPage error={mockError} reset={mockReset} />);
     expect(consoleErrorSpy).toHaveBeenCalledWith(
       "An error occurred:",
       expect.any(Error)
@@ -47,7 +45,6 @@ describe("ErrorPage", () => {
 
   test("triggers the reset function when clicking the Retry button", async () => {
     const user = userEvent.setup();
-    render(<ErrorPage error={mockError} reset={mockReset} />);
 
     const retryButton = screen.getByRole("button", { name: "Retry" });
     await user.click(retryButton);
@@ -57,7 +54,6 @@ describe("ErrorPage", () => {
 
   test("navigates to the homepage when clicking the 'Go To Homepage button'", async () => {
     const user = userEvent.setup();
-    render(<ErrorPage error={mockError} reset={mockReset} />);
 
     const homeButton = screen.getByRole("button", { name: "Go To Homepage" });
     await user.click(homeButton);

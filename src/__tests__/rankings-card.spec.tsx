@@ -7,18 +7,20 @@ jest.mock("@/components/champion-badge", () =>
 );
 
 describe("RankingsCard", () => {
-  test("renders the division category name", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     render(<RankingsCard division={mockDivision} />);
+  });
+
+  test("renders the division category name", () => {
     expect(screen.getByText("Lightweight")).toBeInTheDocument();
   });
 
   test("renders the champion's name", () => {
-    render(<RankingsCard division={mockDivision} />);
     expect(screen.getByText("John Doe")).toBeInTheDocument();
   });
 
   test("renders the champion's image", () => {
-    render(<RankingsCard division={mockDivision} />);
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
     if (mockDivision.champion.imgUrl) {
@@ -33,13 +35,11 @@ describe("RankingsCard", () => {
   });
 
   test("has the correct link", () => {
-    render(<RankingsCard division={mockDivision} />);
     const linkElement = screen.getByRole("link");
     expect(linkElement).toHaveAttribute("href", `/rankings/${mockDivision.id}`);
   });
 
   test("renders the ChampionBadge component", () => {
-    render(<RankingsCard division={mockDivision} />);
     expect(screen.getByTestId("champion-badge")).toBeInTheDocument();
   });
 });

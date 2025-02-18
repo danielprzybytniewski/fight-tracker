@@ -14,11 +14,12 @@ describe("MobileNavbarItems", () => {
   let onItemClick: jest.Mock;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     onItemClick = jest.fn();
+    render(<MobileNavbarItems onItemClick={onItemClick} />);
   });
 
   test('renders the "UFC Rankings" link with correct href and text', () => {
-    render(<MobileNavbarItems onItemClick={onItemClick} />);
     const linkElement = screen.getByRole("link", { name: /ufc rankings/i });
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute("href", "/rankings");
@@ -26,7 +27,7 @@ describe("MobileNavbarItems", () => {
 
   test("calls onItemClick props when clicking on the navbar item", async () => {
     const user = userEvent.setup();
-    render(<MobileNavbarItems onItemClick={onItemClick} />);
+
     await user.click(screen.getByTestId("favorites-counter"));
     expect(onItemClick).toHaveBeenCalledTimes(1);
   });

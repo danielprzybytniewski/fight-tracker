@@ -6,6 +6,10 @@ jest.mock("@/components/favorites-fighters", () =>
 );
 
 describe("FavoritesPage", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("renders FavoritesFighters component", () => {
     render(<FavoritesPage />);
 

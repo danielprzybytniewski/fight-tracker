@@ -9,6 +9,10 @@ jest.mock("next/font/google", () => ({
 }));
 
 describe("RootLayout", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const setup = () =>
     render(
       <MockLayout>
@@ -52,7 +56,7 @@ describe("RootLayout", () => {
       "Info about UFC rankings and upcoming MMA events"
     );
     expect(metadata.keywords).toEqual(
-      "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, rankings, athletes, fighters, best fighters, top fighters, favorites, favorite fighters, your favorite fighters, UFC fighters, divisions, champions, weight classes, weight divisions"
+      "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, rankings, athletes, fighters, best fighters, top fighters, favorites, favorite fighters, your favorite fighters, UFC fighters, divisions, champions, weight classes, weight divisions, UFC fight history, fighter records, past UFC events, fight results, UFC career, fighter performance, UFC matchups, fight statistics, UFC fight cards, historical fights, fighter journey, UFC timeline, fight analysis, UFC archives, fighter evolution, fighter progression"
     );
   });
 

@@ -72,20 +72,20 @@ describe("DivisionPage", () => {
       params: Promise.resolve(mockParams),
     });
 
-    expect(metadata.title).toBe("LIGHTWEIGHT UFC Division | Fight Tracker");
+    expect(metadata.title).toBe("Lightweight UFC Division | Fight Tracker");
     expect(metadata.description).toBe(
-      "LIGHTWEIGHT UFC division. Check out the current champion and top fighters in this weight class."
+      "Lightweight UFC division. Check out the current champion and top fighters in this weight class."
     );
     expect(metadata.keywords).toContain(
-      "UFC lightweight division, UFC lightweight champion, UFC lightweight fighters, UFC lightweight rankings"
+      "UFC Lightweight division, UFC Lightweight champion, UFC Lightweight fighters, UFC Lightweight rankings"
     );
 
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe(
-        "LIGHTWEIGHT UFC Division | Fight Tracker"
+        "Lightweight UFC Division | Fight Tracker"
       );
       expect(metadata.openGraph.description).toBe(
-        "LIGHTWEIGHT UFC division. Check out the current champion and top fighters in this weight class."
+        "Lightweight UFC division. Check out the current champion and top fighters in this weight class."
       );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"

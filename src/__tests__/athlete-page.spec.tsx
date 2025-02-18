@@ -1,16 +1,22 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import AthletePage, { generateMetadata } from "@/app/athlete/[fighterId]/page";
 import { getFighterDetails } from "@/actions/rankings-actions";
+import { getFightsHistory } from "@/actions/fights-history-actions";
 import {
   mockAthlete,
   mockGeneralDetails,
   mockAdditionalDetails,
   mockUndefinedAthleteRecord,
+  mockApiFight,
 } from "@/__mocks__/mock-data";
 import { DetailItem } from "@/types/rankings-schema.types";
 
 jest.mock("@/actions/rankings-actions", () => ({
   getFighterDetails: jest.fn(),
+}));
+
+jest.mock("@/actions/fights-history-actions", () => ({
+  getFightsHistory: jest.fn(),
 }));
 
 jest.mock("@/lib/athlete-get-details", () => ({
@@ -54,8 +60,16 @@ jest.mock("@/components/athlete-details", () =>
   )
 );
 
+jest.mock("@/components/fights-history", () =>
+  jest.fn(() => <div data-testid="fights-history">Mocked FightsHistory</div>)
+);
+
 jest.mock("@/components/back-button", () =>
   jest.fn(() => <button>Mocked BackButton</button>)
+);
+
+jest.mock("@/lib/normalize-name", () =>
+  jest.fn((name: string) => `Normalized ${name}`)
 );
 
 describe("AthletePage", () => {
@@ -64,6 +78,7 @@ describe("AthletePage", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     (getFighterDetails as jest.Mock).mockResolvedValue(mockAthlete);
+    (getFightsHistory as jest.Mock).mockResolvedValue(mockApiFight);
   });
 
   test("renders the athlete's record correctly", async () => {
@@ -96,8 +111,6 @@ describe("AthletePage", () => {
     render(await AthletePage({ params: Promise.resolve(mockParams) }));
 
     await waitFor(() => {
-      expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
-
       expect(screen.getByText("Mocked AthleteDetails")).toBeInTheDocument();
 
       mockGeneralDetails.forEach((detail) => {
@@ -142,23 +155,39 @@ describe("AthletePage", () => {
     });
   });
 
+  test("renders fights history", async () => {
+    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+
+    await waitFor(() => {
+      expect(screen.getByTestId("fights-history")).toBeInTheDocument();
+    });
+  });
+
+  test("renders back button correctly", async () => {
+    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+
+    await waitFor(() => {
+      expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
+    });
+  });
+
   test("generates correct metadata", async () => {
     const metadata = await generateMetadata({
       params: Promise.resolve(mockParams),
     });
 
-    expect(metadata.title).toBe("JOHN-DOE | Fight Tracker");
+    expect(metadata.title).toBe("John Doe | Fight Tracker");
     expect(metadata.description).toBe(
-      "Check out the info about athlete: JOHN-DOE"
+      "Check out the info about athlete: John Doe"
     );
     expect(metadata.keywords).toContain(
-      "JOHN-DOE profile, JOHN-DOE info, JOHN-DOE stats,"
+      "John Doe profile, John Doe info, John Doe stats, John Doe fight history, John Doe UFC record, John Doe past fights, John Doe career highlights, John Doe UFC journey, John Doe fight results, John Doe UFC performance"
     );
 
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("JOHN-DOE | Fight Tracker");
+      expect(metadata.openGraph.title).toBe("John Doe | Fight Tracker");
       expect(metadata.openGraph.description).toBe(
-        "Check out the info about athlete: JOHN-DOE"
+        "Check out the info about athlete: John Doe"
       );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"

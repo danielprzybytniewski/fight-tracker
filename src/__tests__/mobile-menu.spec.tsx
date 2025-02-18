@@ -21,8 +21,12 @@ const getFightTrackerLink = () =>
   screen.getByRole("link", { name: /fight tracker/i });
 
 describe("MobileMenu", () => {
-  test("opens menu when toggle button is clicked", async () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     render(<MobileMenu />);
+  });
+
+  test("opens menu when toggle button is clicked", async () => {
     expect(screen.queryByText("Menu")).not.toBeInTheDocument();
 
     await userEvent.click(getToggleButton());
@@ -33,7 +37,6 @@ describe("MobileMenu", () => {
   });
 
   test("closes menu when Fight Tracker link is clicked", async () => {
-    render(<MobileMenu />);
     await userEvent.click(getToggleButton());
     await waitFor(() => expect(screen.getByText("Menu")).toBeInTheDocument());
     await userEvent.click(getFightTrackerLink());
@@ -43,7 +46,6 @@ describe("MobileMenu", () => {
   });
 
   test("closes menu when close button (X icon) is clicked", async () => {
-    render(<MobileMenu />);
     await userEvent.click(getToggleButton());
     await waitFor(() => expect(screen.getByText("Menu")).toBeInTheDocument());
     const closeButton = screen.getByRole("button", {
@@ -56,7 +58,6 @@ describe("MobileMenu", () => {
   });
 
   test("closes menu when MobileNavbarItems is clicked", async () => {
-    render(<MobileMenu />);
     await userEvent.click(getToggleButton());
     await waitFor(() => expect(screen.getByText("Menu")).toBeInTheDocument());
     const mobileNavbarItems = screen.getByTestId("mobile-navbar-items");

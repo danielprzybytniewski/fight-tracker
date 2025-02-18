@@ -5,6 +5,10 @@ import FavoritesCounter from "@/components/favorites-counter";
 jest.mock("@/hooks/use-favorites");
 
 describe("FavoritesCounter", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("renders correctly with no favorites", () => {
     (useFavorites as jest.Mock).mockReturnValue({
       favorites: [],

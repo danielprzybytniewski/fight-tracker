@@ -26,7 +26,7 @@ const mockUseFetchFightCardsHook = () => {
 };
 
 describe("useFetchFightCards", () => {
-  afterEach(() => {
+  beforeEach(() => {
     jest.clearAllMocks();
   });
 

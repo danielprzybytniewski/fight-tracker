@@ -7,15 +7,18 @@ jest.mock("@/components/champion-badge", () =>
 );
 
 describe("DivisionChampionCard", () => {
-  test("renders the champion's name", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     render(<DivisionChampionCard division={mockDivisionWithChampion} />);
+  });
+
+  test("renders the champion's name", () => {
     expect(
       screen.getByText(mockDivisionWithChampion.champion.championName)
     ).toBeInTheDocument();
   });
 
   test("renders the champion's image", () => {
-    render(<DivisionChampionCard division={mockDivisionWithChampion} />);
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
     if (mockDivisionWithChampion.champion.imgUrl) {
@@ -33,14 +36,12 @@ describe("DivisionChampionCard", () => {
   });
 
   test("renders the champion's record", () => {
-    render(<DivisionChampionCard division={mockDivisionWithChampion} />);
     const { wins, losses, draws } = mockDivisionWithChampion.champion;
     const expectedRecord = `${wins}-${losses}${draws !== 0 ? `-${draws}` : ""}`;
     expect(screen.getByText(`Record: ${expectedRecord}`)).toBeInTheDocument();
   });
 
   test("has the correct link", () => {
-    render(<DivisionChampionCard division={mockDivisionWithChampion} />);
     const linkElement = screen.getByRole("link");
     expect(linkElement).toHaveAttribute(
       "href",
@@ -49,7 +50,6 @@ describe("DivisionChampionCard", () => {
   });
 
   test("renders the ChampionBadge component", () => {
-    render(<DivisionChampionCard division={mockDivisionWithChampion} />);
     expect(screen.getByTestId("champion-badge")).toBeInTheDocument();
   });
 });

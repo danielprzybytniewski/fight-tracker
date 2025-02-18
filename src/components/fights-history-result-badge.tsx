@@ -13,9 +13,6 @@ const fightResultBadgeVariants = cva(
         loss: "bg-red-600",
       },
     },
-    defaultVariants: {
-      result: "win",
-    },
   }
 );
 

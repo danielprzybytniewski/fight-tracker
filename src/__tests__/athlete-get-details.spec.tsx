@@ -11,6 +11,10 @@ jest.mock("@/lib/unit-conversion", () => ({
 }));
 
 describe("getGeneralDetails", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("returns correct details", () => {
     const details = getGeneralDetails(mockAthlete);
 

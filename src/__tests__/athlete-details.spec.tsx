@@ -16,14 +16,17 @@ jest.mock("@/components/athlete-detail-card", () =>
 );
 
 describe("AthleteDetails", () => {
-  test("renders all general details", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     render(
       <AthleteDetails
         generalDetails={mockGeneralDetails}
         additionalDetails={mockAdditionalDetails}
       />
     );
+  });
 
+  test("renders all general details", () => {
     mockGeneralDetails.forEach(({ label, value }) => {
       expect(screen.getByText(label)).toBeInTheDocument();
       if (value) {
@@ -35,13 +38,6 @@ describe("AthleteDetails", () => {
   });
 
   test("renders all additional details", () => {
-    render(
-      <AthleteDetails
-        generalDetails={mockGeneralDetails}
-        additionalDetails={mockAdditionalDetails}
-      />
-    );
-
     mockAdditionalDetails.forEach(({ label, value }) => {
       expect(screen.getByText(label)).toBeInTheDocument();
       if (value) {
@@ -55,13 +51,6 @@ describe("AthleteDetails", () => {
   test("renders the correct number of AthleteDetailCard components", () => {
     const totalDetails =
       mockGeneralDetails.length + mockAdditionalDetails.length;
-
-    render(
-      <AthleteDetails
-        generalDetails={mockGeneralDetails}
-        additionalDetails={mockAdditionalDetails}
-      />
-    );
 
     expect(screen.getAllByTestId("athlete-detail-card").length).toBe(
       totalDetails

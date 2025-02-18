@@ -8,6 +8,10 @@ jest.mock("@/components/event-fight-card", () =>
 );
 
 describe("EventsPage", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const mockParams = { title: "mock-event" };
 
   test("renders EventFightCard with the correct title", async () => {
@@ -22,15 +26,18 @@ describe("EventsPage", () => {
     const metadata = await generateMetadata({
       params: Promise.resolve(mockParams),
     });
-    expect(metadata.title).toBe("MOCK-EVENT | Fight Tracker");
+    expect(metadata.title).toBe("Mock Event | Fight Tracker");
     expect(metadata.description).toBe(
-      "Check out the upcoming MMA event: MOCK-EVENT"
+      "Check out the upcoming MMA event: Mock Event"
+    );
+    expect(metadata.keywords).toContain(
+      "Mock Event event, Mock Event fighters"
     );
 
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("MOCK-EVENT | Fight Tracker");
+      expect(metadata.openGraph.title).toBe("Mock Event | Fight Tracker");
       expect(metadata.openGraph.description).toBe(
-        "Check out the upcoming MMA event: MOCK-EVENT"
+        "Check out the upcoming MMA event: Mock Event"
       );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"

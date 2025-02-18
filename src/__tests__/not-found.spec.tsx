@@ -3,9 +3,11 @@ import userEvent from "@testing-library/user-event";
 import NotFound from "@/app/not-found";
 
 describe("NotFound", () => {
-  test("renders the not found message and image", () => {
+  beforeEach(() => {
     render(<NotFound />);
+  });
 
+  test("renders the not found message and image", () => {
     expect(
       screen.getByRole("heading", { name: "Page Not Found" })
     ).toBeInTheDocument();
@@ -19,7 +21,6 @@ describe("NotFound", () => {
 
   test("renders the 'Go to Homepage' link with correct href and simulates user interaction", async () => {
     const user = userEvent.setup();
-    render(<NotFound />);
 
     const homeLink = screen.getByRole("link", { name: "Go to Homepage" });
     expect(homeLink).toBeInTheDocument();

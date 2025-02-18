@@ -11,6 +11,7 @@ describe("ModeToggler", () => {
   let setThemeMock: jest.Mock<(theme: string) => void>;
 
   beforeEach(() => {
+    jest.clearAllMocks();
     setThemeMock = jest.fn();
     (useTheme as jest.Mock).mockReturnValue({
       theme: "light",

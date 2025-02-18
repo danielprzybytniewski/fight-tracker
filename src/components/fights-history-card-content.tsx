@@ -13,14 +13,14 @@ import {
   Fight,
   TransformedFightDetails,
 } from "@/types/fights-history.schema.types";
-import { FightsHistoryDetails } from "@/components/fights-history-details";
 import FightsHistoryResultBadge from "@/components/fights-history-result-badge";
+import FightsHistoryDetails from "@/components/fights-history-details";
 
-type FightsHistoryCardContentProps = TransformedFightDetails & {
+export type FightsHistoryCardContentProps = TransformedFightDetails & {
   fight: Fight;
 };
 
-export const FightsHistoryCardContent = ({
+export default function FightsHistoryCardContent({
   fight,
   locationDisplay,
   opponentName,
@@ -29,7 +29,7 @@ export const FightsHistoryCardContent = ({
   methodDisplay,
   roundDisplay,
   timeDisplay,
-}: FightsHistoryCardContentProps) => {
+}: FightsHistoryCardContentProps) {
   return (
     <CardContent className="space-y-4 text-sm sm:text-base">
       <FightsHistoryDetails
@@ -58,4 +58,4 @@ export const FightsHistoryCardContent = ({
       <FightsHistoryDetails icon={Clock2} label="Time" value={timeDisplay} />
     </CardContent>
   );
-};
+}

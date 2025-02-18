@@ -16,6 +16,10 @@ jest.mock("@/components/event-weight-badge", () =>
 );
 
 describe("EventFightSeparator", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders "VS" text', () => {
     render(<EventFightSeparator isMainCard={true} weight={93} />);
     expect(screen.getByText("VS")).toBeInTheDocument();

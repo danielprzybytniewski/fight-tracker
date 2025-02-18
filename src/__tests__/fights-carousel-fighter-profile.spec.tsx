@@ -4,9 +4,12 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("FightsCarouselFighterProfile", () => {
-  test("renders fighter image", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
     render(<FightsCarouselFighterProfile fighter={mockFighter} />);
+  });
 
+  test("renders fighter image", () => {
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
@@ -18,7 +21,6 @@ describe("FightsCarouselFighterProfile", () => {
 
   test("renders fighter name as a clickable link", async () => {
     const user = userEvent.setup();
-    render(<FightsCarouselFighterProfile fighter={mockFighter} />);
 
     const link = screen.getByRole("link");
     expect(link).toBeInTheDocument();

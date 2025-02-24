@@ -7,7 +7,7 @@ export const FighterSchema = z.object({
   wins: z.coerce.number().optional(),
   losses: z.coerce.number().optional(),
   draws: z.coerce.number().optional(),
-  category: z.string().optional(),
+  category: z.string(),
   nickname: z.string().optional(),
   status: z.string().optional(),
   placeOfBirth: z.string().optional(),

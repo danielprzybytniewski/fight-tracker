@@ -1,4 +1,4 @@
-import EventFightCard from "@/components/event-fight-card";
+import EventFightCard from "@/components/events/event-fight-card";
 import { createMetadata } from "@/lib/create-metadata";
 import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 import { Metadata } from "next";

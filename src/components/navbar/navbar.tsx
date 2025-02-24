@@ -1,7 +1,7 @@
-import ChangeLogo from "@/components/change-logo";
+import ChangeLogo from "@/components/navbar/change-logo";
 import Link from "next/link";
-import NavbarItems from "@/components/navbar-items";
-import MobileMenu from "@/components/mobile-menu";
+import NavbarItems from "@/components/navbar/navbar-items";
+import MobileMenu from "@/components/navbar/mobile-menu";
 
 export default function Navbar() {
   return (

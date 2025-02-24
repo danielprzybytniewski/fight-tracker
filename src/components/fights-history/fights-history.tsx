@@ -4,8 +4,8 @@ import {
   sortFightsByDate,
   transformFightDetails,
 } from "@/lib/fights-history-transformer";
-import GradientHeading from "@/components/gradient-heading";
-import FightsHistoryCardContent from "@/components/fights-history-card-content";
+import GradientHeading from "@/components/shared/gradient-heading";
+import FightsHistoryCardContent from "@/components/fights-history/fights-history-card-content";
 
 type FightsHistoryProps = {
   fightsHistory: Fight[];

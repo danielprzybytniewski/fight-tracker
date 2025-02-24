@@ -8,13 +8,13 @@ jest.mock("@/actions/rankings-actions", () => ({
   getRankingsWithImages: jest.fn(),
 }));
 
-jest.mock("@/components/rankings-card", () =>
+jest.mock("@/components/rankings/rankings-card", () =>
   jest.fn(({ division }: { division: Division }) => (
     <div data-testid="rankings-card">{division.categoryName}</div>
   ))
 );
 
-jest.mock("@/components/gradient-heading", () =>
+jest.mock("@/components/shared/gradient-heading", () =>
   jest.fn(() => <h1 data-testid="gradient-heading">UFC Rankings</h1>)
 );
 

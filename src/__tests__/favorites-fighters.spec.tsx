@@ -1,13 +1,13 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import FavoritesFighters from "@/components/favorites-fighters";
+import FavoritesFighters from "@/components/favorites/favorites-fighters";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
 import { mockFighter } from "@/__mocks__/mock-data";
 
 jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-toast");
-jest.mock("@/components/event-fighter", () =>
+jest.mock("@/components/events/event-fighter", () =>
   jest.fn(() => <div data-testid="event-fighter">Mocked Fighter</div>)
 );
 

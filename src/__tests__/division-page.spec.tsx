@@ -9,13 +9,13 @@ jest.mock("@/actions/rankings-actions", () => ({
   getDivisionWithImages: jest.fn(),
 }));
 
-jest.mock("@/components/division-champion-card", () =>
+jest.mock("@/components/division/division-champion-card", () =>
   jest.fn(({ division }) => (
     <div>Mocked DivisionChampionCard: {division.categoryName}</div>
   ))
 );
 
-jest.mock("@/components/division-athlete-card", () =>
+jest.mock("@/components/division/division-athlete-card", () =>
   jest.fn(({ fighter, index }) => (
     <div>
       Mocked DivisionAthleteCard: {fighter.name} at rank {index + 1}
@@ -23,7 +23,7 @@ jest.mock("@/components/division-athlete-card", () =>
   ))
 );
 
-jest.mock("@/components/back-button", () =>
+jest.mock("@/components/shared/back-button", () =>
   jest.fn(() => <button>Mocked BackButton</button>)
 );
 

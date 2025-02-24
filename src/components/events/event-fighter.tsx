@@ -3,7 +3,7 @@ import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import Link from "next/link";
-import fallbackImage from "../../public/images/og-image.png";
+import fallbackImage from "../../../public/images/og-image.png";
 import { useFavorites } from "@/hooks/use-favorites";
 import { CircleCheck, CircleX, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";

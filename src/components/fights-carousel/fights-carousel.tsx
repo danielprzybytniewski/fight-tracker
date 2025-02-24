@@ -1,7 +1,7 @@
 "use client";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import LoadingFightsCards from "@/components/loading-fights-cards";
-import ErrorFightsCards from "@/components/error-fights-cards";
+import LoadingFightsCards from "@/components/shared/loading-fights-cards";
+import ErrorFightsCards from "@/components/shared/error-fights-cards";
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from "next/link";
-import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
+import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
 import { slugify } from "@/lib/slugify";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
 

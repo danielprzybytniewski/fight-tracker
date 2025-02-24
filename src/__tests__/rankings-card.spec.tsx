@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import RankingsCard from "@/components/rankings-card";
+import RankingsCard from "@/components/rankings/rankings-card";
 import { mockDivision } from "@/__mocks__/mock-data";
 
-jest.mock("@/components/champion-badge", () =>
+jest.mock("@/components/shared/champion-badge", () =>
   jest.fn(() => <div data-testid="champion-badge">🏆 Champion</div>)
 );
 

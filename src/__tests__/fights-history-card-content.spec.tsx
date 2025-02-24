@@ -3,10 +3,10 @@ import {
   mockAppFight,
   mockFightsHistoryCardContentProps,
 } from "@/__mocks__/mock-data";
-import FightsHistoryCardContent from "@/components/fights-history-card-content";
+import FightsHistoryCardContent from "@/components/fights-history/fights-history-card-content";
 import { FightResult } from "@/types/fights-history.schema.types";
 
-jest.mock("@/components/fights-history-details", () =>
+jest.mock("@/components/fights-history/fights-history-details", () =>
   jest.fn(({ label, value }: { label: string; value: string }) => (
     <div data-testid="fights-history-details">
       {label}: {value}
@@ -14,7 +14,7 @@ jest.mock("@/components/fights-history-details", () =>
   ))
 );
 
-jest.mock("@/components/fights-history-result-badge", () =>
+jest.mock("@/components/fights-history/fights-history-result-badge", () =>
   jest.fn(({ result }: { result: FightResult }) => (
     <span data-testid="result-badge">{result.toUpperCase()}</span>
   ))

@@ -1,5 +1,5 @@
-import FightsCarousel from "@/components/fights-carousel";
-import GradientHeading from "@/components/gradient-heading";
+import FightsCarousel from "@/components/fights-carousel/fights-carousel";
+import GradientHeading from "@/components/shared/gradient-heading";
 
 export default function HomePage() {
   return (

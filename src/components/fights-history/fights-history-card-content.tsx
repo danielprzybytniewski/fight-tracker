@@ -13,8 +13,8 @@ import {
   Fight,
   TransformedFightDetails,
 } from "@/types/fights-history.schema.types";
-import FightsHistoryResultBadge from "@/components/fights-history-result-badge";
-import FightsHistoryDetails from "@/components/fights-history-details";
+import FightsHistoryResultBadge from "@/components/fights-history/fights-history-result-badge";
+import FightsHistoryDetails from "@/components/fights-history/fights-history-details";
 
 export type FightsHistoryCardContentProps = TransformedFightDetails & {
   fight: Fight;

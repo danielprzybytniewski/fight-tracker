@@ -1,5 +1,5 @@
-import EventFightCard from "@/components/event-fight-card";
-import EventFighter from "@/components/event-fighter";
+import EventFightCard from "@/components/events/event-fight-card";
+import EventFighter from "@/components/events/event-fighter";
 import { FavoritesProvider } from "@/providers/favorites-provider";
 import ReactQueryProvider from "@/providers/react-query-provider";
 import { Fighter } from "@/types/fight-cards-schema.types";

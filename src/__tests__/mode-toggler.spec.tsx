@@ -1,4 +1,4 @@
-import ModeToggler from "@/components/mode-toggler";
+import ModeToggler from "@/components/navbar/mode-toggler";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useTheme } from "next-themes";

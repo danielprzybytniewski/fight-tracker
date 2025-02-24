@@ -4,13 +4,13 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-import AthleteRecordChart from "@/components/athlete-record-chart";
+import AthleteRecordChart from "@/components/athlete/athlete-record-chart";
 import { Metadata } from "next";
-import BackButton from "@/components/back-button";
+import BackButton from "@/components/shared/back-button";
 import { createMetadata } from "@/lib/create-metadata";
-import AthleteDetails from "@/components/athlete-details";
+import AthleteDetails from "@/components/athlete/athlete-details";
 import { getFightsHistory } from "@/actions/fights-history-actions";
-import FightsHistory from "@/components/fights-history";
+import FightsHistory from "@/components/fights-history/fights-history";
 import normalizeName from "@/lib/normalize-name";
 import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 
@@ -68,6 +68,8 @@ export default async function AthletePage({
   const wins = fighter.wins || 0;
   const losses = fighter.losses || 0;
   const draws = fighter.draws || 0;
+
+  console.log(normalizedFighterName);
 
   return (
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">

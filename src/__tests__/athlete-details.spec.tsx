@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import AthleteDetails from "@/components/athlete-details";
+import AthleteDetails from "@/components/athlete/athlete-details";
 import { DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 import {
   mockAdditionalDetails,
   mockGeneralDetails,
 } from "@/__mocks__/mock-data";
 
-jest.mock("@/components/athlete-detail-card", () =>
+jest.mock("@/components/athlete/athlete-detail-card", () =>
   jest.fn(({ label, value }: DetailItem) => (
     <div data-testid="athlete-detail-card">
       <h2>{label}</h2>

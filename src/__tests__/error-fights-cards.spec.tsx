@@ -1,4 +1,4 @@
-import ErrorFightsCards from "@/components/error-fights-cards";
+import ErrorFightsCards from "@/components/shared/error-fights-cards";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

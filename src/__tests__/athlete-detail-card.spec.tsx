@@ -1,4 +1,4 @@
-import AthleteDetailCard from "@/components/athlete-detail-card";
+import AthleteDetailCard from "@/components/athlete/athlete-detail-card";
 import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 import { render, screen } from "@testing-library/react";
 

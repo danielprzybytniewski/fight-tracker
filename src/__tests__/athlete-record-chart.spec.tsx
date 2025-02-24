@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AthleteRecordChart from "@/components/athlete-record-chart";
+import AthleteRecordChart from "@/components/athlete/athlete-record-chart";
 
 describe("AthleteRecordChart", () => {
   test("renders the wins, losses, and draws correctly", () => {

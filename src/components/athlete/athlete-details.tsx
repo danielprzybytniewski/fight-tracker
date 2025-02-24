@@ -1,5 +1,5 @@
 import { DetailItem } from "@/types/rankings-schema.types";
-import AthleteDetailCard from "@/components/athlete-detail-card";
+import AthleteDetailCard from "@/components/athlete/athlete-detail-card";
 
 type FighterDetailsProps = {
   generalDetails: DetailItem[];

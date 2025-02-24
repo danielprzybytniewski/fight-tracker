@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import EventTypeBadge from "@/components/event-type-badge";
+import EventTypeBadge from "@/components/events/event-type-badge";
 
 describe("EventTypeBadge", () => {
   test("renders MAIN CARD badge when props isMainCard is true", () => {

@@ -1,9 +1,9 @@
 "use client";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import LoadingFightsCards from "@/components/loading-fights-cards";
-import ErrorFightsCards from "@/components/error-fights-cards";
+import LoadingFightsCards from "@/components/shared/loading-fights-cards";
+import ErrorFightsCards from "@/components/shared/error-fights-cards";
 import { slugify } from "@/lib/slugify";
-import NotFoundFightCard from "@/components/not-found-fight-card";
+import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import {
   Card,
   CardContent,
@@ -11,11 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import EventFighter from "@/components/event-fighter";
+import EventFighter from "@/components/events/event-fighter";
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
-import EventFightSeparator from "@/components/event-fight-separator";
-import EventTypeBadge from "@/components/event-type-badge";
-import EventWeightBadge from "@/components/event-weight-badge";
+import EventFightSeparator from "@/components/events/event-fight-separator";
+import EventTypeBadge from "@/components/events/event-type-badge";
+import EventWeightBadge from "@/components/events/event-weight-badge";
 
 export default function EventFightCard({ title }: { title: string }) {
   const {

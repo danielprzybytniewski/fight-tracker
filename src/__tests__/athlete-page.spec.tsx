@@ -24,7 +24,7 @@ jest.mock("@/lib/athlete-get-details", () => ({
   getAdditionalDetails: jest.fn(() => mockAdditionalDetails),
 }));
 
-jest.mock("@/components/athlete-record-chart", () =>
+jest.mock("@/components/athlete/athlete-record-chart", () =>
   jest.fn(({ wins, losses, draws }) => (
     <div>
       Mocked AthleteRecordChart: Wins {wins}, Losses {losses}, Draws {draws}
@@ -32,7 +32,7 @@ jest.mock("@/components/athlete-record-chart", () =>
   ))
 );
 
-jest.mock("@/components/athlete-details", () =>
+jest.mock("@/components/athlete/athlete-details", () =>
   jest.fn(
     ({
       generalDetails,
@@ -60,11 +60,11 @@ jest.mock("@/components/athlete-details", () =>
   )
 );
 
-jest.mock("@/components/fights-history", () =>
+jest.mock("@/components/fights-history/fights-history", () =>
   jest.fn(() => <div data-testid="fights-history">Mocked FightsHistory</div>)
 );
 
-jest.mock("@/components/back-button", () =>
+jest.mock("@/components/shared/back-button", () =>
   jest.fn(() => <button>Mocked BackButton</button>)
 );
 

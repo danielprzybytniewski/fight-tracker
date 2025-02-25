@@ -1,7 +1,7 @@
 import FavoritesPage, { metadata } from "@/app/favorites/page";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("@/components/favorites-fighters", () =>
+jest.mock("@/components/favorites/favorites-fighters", () =>
   jest.fn(() => <div>Mocked Favorites Fighters</div>)
 );
 

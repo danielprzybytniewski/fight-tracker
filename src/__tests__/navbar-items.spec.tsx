@@ -1,12 +1,12 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavbarItems from "@/components/navbar-items";
+import NavbarItems from "@/components/navbar/navbar-items";
 
-jest.mock("@/components/favorites-counter", () =>
+jest.mock("@/components/favorites/favorites-counter", () =>
   jest.fn(() => <div data-testid="favorites-counter">Favorites</div>)
 );
 
-jest.mock("@/components/mode-toggler", () =>
+jest.mock("@/components/navbar/mode-toggler", () =>
   jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>)
 );
 

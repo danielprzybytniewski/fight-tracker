@@ -1,4 +1,4 @@
-import LoadingSpinner from "@/components/loading-spinner";
+import LoadingSpinner from "@/components/shared/loading-spinner";
 import { render, screen } from "@testing-library/react";
 
 describe("LoadingSpinner", () => {

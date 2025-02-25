@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import FightsHistoryResultBadge from "@/components/fights-history-result-badge";
+import FightsHistoryResultBadge from "@/components/fights-history/fights-history-result-badge";
 
 describe("FightsHistoryResultBadge", () => {
   const mockBaseClasses = "text-xs text-gray-100";

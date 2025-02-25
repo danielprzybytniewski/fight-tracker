@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import EventsPage, { generateMetadata } from "@/app/events/[title]/page";
 
-jest.mock("@/components/event-fight-card", () =>
+jest.mock("@/components/events/event-fight-card", () =>
   jest.fn(({ title }: { title: string }) => (
     <div>Mocked EventFightCard: {title}</div>
   ))

@@ -1,4 +1,4 @@
-import NotFoundFightCard from "@/components/not-found-fight-card";
+import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import { render, screen } from "@testing-library/react";
 import notFound from "../../public/images/not-found.png";
 

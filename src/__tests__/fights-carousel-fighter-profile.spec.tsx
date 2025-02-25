@@ -1,5 +1,5 @@
 import { mockFighter } from "@/__mocks__/mock-data";
-import FightsCarouselFighterProfile from "@/components/fights-carousel-fighter-profile";
+import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

@@ -1,4 +1,4 @@
-import FightsHistoryDetails from "@/components/fights-history-details";
+import FightsHistoryDetails from "@/components/fights-history/fights-history-details";
 import { render, screen } from "@testing-library/react";
 import { User } from "lucide-react";
 

@@ -1,4 +1,4 @@
-import FavoritesFighters from "@/components/favorites-fighters";
+import FavoritesFighters from "@/components/favorites/favorites-fighters";
 import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 

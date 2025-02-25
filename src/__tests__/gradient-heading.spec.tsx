@@ -1,4 +1,4 @@
-import GradientHeading from "@/components/gradient-heading";
+import GradientHeading from "@/components/shared/gradient-heading";
 import { render, screen } from "@testing-library/react";
 
 describe("GradientHeading", () => {

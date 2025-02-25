@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import DivisionAthleteCard from "@/components/division-athlete-card";
+import DivisionAthleteCard from "@/components/division/division-athlete-card";
 import { mockAthleteCard } from "@/__mocks__/mock-data";
 
 describe("DivisionAthleteCard", () => {

@@ -1,9 +1,9 @@
 import { Division } from "@/types/rankings-schema.types";
 import { getRankingsWithImages } from "@/actions/rankings-actions";
-import RankingsCard from "@/components/rankings-card";
+import RankingsCard from "@/components/rankings/rankings-card";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/create-metadata";
-import GradientHeading from "@/components/gradient-heading";
+import GradientHeading from "@/components/shared/gradient-heading";
 
 export const metadata: Metadata = createMetadata({
   title: "UFC Rankings",

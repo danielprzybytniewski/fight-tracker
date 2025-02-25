@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/footer";
 
 describe("Footer", () => {
   beforeEach(() => {

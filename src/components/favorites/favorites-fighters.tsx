@@ -1,7 +1,7 @@
 "use client";
 import { useFavorites } from "@/hooks/use-favorites";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import EventFighter from "@/components/event-fighter";
+import EventFighter from "@/components/events/event-fighter";
 import { CircleX, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 

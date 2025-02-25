@@ -9,9 +9,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
-import ChangeLogo from "@/components/change-logo";
+import ChangeLogo from "@/components/navbar/change-logo";
 import Link from "next/link";
-import MobileNavbarItems from "@/components/mobile-navbar-items";
+import MobileNavbarItems from "@/components/navbar/mobile-navbar-items";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);

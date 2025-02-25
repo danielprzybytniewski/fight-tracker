@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ChampionBadge from "@/components/champion-badge";
+import ChampionBadge from "@/components/shared/champion-badge";
 import Link from "next/link";
 import { Division } from "@/types/rankings-schema.types";
 

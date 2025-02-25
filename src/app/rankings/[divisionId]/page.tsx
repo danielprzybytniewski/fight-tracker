@@ -1,9 +1,9 @@
 import { getDivisionWithImages } from "@/actions/rankings-actions";
 import { Fighter } from "@/types/rankings-schema.types";
-import DivisionChampionCard from "@/components/division-champion-card";
-import DivisionAthleteCard from "@/components/division-athlete-card";
+import DivisionChampionCard from "@/components/division/division-champion-card";
+import DivisionAthleteCard from "@/components/division/division-athlete-card";
 import { Metadata } from "next";
-import BackButton from "@/components/back-button";
+import BackButton from "@/components/shared/back-button";
 import { createMetadata } from "@/lib/create-metadata";
 import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 

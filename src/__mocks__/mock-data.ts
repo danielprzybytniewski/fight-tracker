@@ -1,4 +1,4 @@
-import { FightsHistoryCardContentProps } from "@/components/fights-history-card-content";
+import { FightsHistoryCardContentProps } from "@/components/fights-history/fights-history-card-content";
 import { Event, Fighter } from "@/types/fight-cards-schema.types";
 import {
   ApiFight,

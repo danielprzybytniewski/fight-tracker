@@ -1,12 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import MobileMenu from "@/components/mobile-menu";
+import MobileMenu from "@/components/navbar/mobile-menu";
 
-jest.mock("@/components/change-logo", () =>
+jest.mock("@/components/navbar/change-logo", () =>
   jest.fn(() => <div data-testid="change-logo">Logo</div>)
 );
 
-jest.mock("@/components/mobile-navbar-items", () =>
+jest.mock("@/components/navbar/mobile-navbar-items", () =>
   jest.fn(({ onItemClick }) => (
     <div data-testid="mobile-navbar-items" onClick={onItemClick}>
       Mobile Navbar Items

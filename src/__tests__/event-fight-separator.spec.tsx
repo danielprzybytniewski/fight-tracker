@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import EventFightSeparator from "@/components/event-fight-separator";
+import EventFightSeparator from "@/components/events/event-fight-separator";
 
-jest.mock("@/components/event-type-badge", () =>
+jest.mock("@/components/events/event-type-badge", () =>
   jest.fn(({ isMainCard }) => (
     <div data-testid="event-type-badge">
       {isMainCard ? "MAIN CARD" : "PRELIMS"}
@@ -9,7 +9,7 @@ jest.mock("@/components/event-type-badge", () =>
   ))
 );
 
-jest.mock("@/components/event-weight-badge", () =>
+jest.mock("@/components/events/event-weight-badge", () =>
   jest.fn(({ weight }) => (
     <div data-testid="event-weight-badge">{weight} kg</div>
   ))

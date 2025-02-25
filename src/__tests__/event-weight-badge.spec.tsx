@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import EventWeightBadge from "@/components/event-weight-badge";
+import EventWeightBadge from "@/components/events/event-weight-badge";
 
 describe("EventWeightBadge", () => {
   test("renders the correct weight with one decimal place", () => {

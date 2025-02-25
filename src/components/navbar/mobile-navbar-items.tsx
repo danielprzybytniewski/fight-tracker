@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FavoritesCounter from "@/components/favorites-counter";
-import ModeToggler from "@/components/mode-toggler";
+import FavoritesCounter from "@/components/favorites/favorites-counter";
+import ModeToggler from "@/components/navbar/mode-toggler";
 
 type MobileNavbarItemsProps = {
   onItemClick: () => void;

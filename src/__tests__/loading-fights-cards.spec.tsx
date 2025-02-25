@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import LoadingFightsCards from "@/components/loading-fights-cards";
+import LoadingFightsCards from "@/components/shared/loading-fights-cards";
 
-jest.mock("@/components/loading-spinner", () =>
+jest.mock("@/components/shared/loading-spinner", () =>
   jest.fn(() => <div role="status" aria-label="Loading..."></div>)
 );
 

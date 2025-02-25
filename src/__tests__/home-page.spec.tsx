@@ -1,11 +1,11 @@
 import HomePage from "@/app/page";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("@/components/fights-carousel", () =>
+jest.mock("@/components/fights-carousel/fights-carousel", () =>
   jest.fn(() => <div>Mocked Fights Carousel</div>)
 );
 
-jest.mock("@/components/gradient-heading", () =>
+jest.mock("@/components/shared/gradient-heading", () =>
   jest.fn(() => <h1 data-testid="gradient-heading">Upcoming MMA Events</h1>)
 );
 

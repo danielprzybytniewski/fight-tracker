@@ -1,5 +1,5 @@
 import Image from "next/image";
-import notFoundImg from "../../public/images/not-found.png";
+import notFoundImg from "../../../public/images/not-found.png";
 
 export default function NotFoundFightCard() {
   return (

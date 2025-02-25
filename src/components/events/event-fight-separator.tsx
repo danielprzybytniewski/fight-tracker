@@ -1,5 +1,5 @@
-import EventTypeBadge from "@/components/event-type-badge";
-import EventWeightBadge from "@/components/event-weight-badge";
+import EventTypeBadge from "@/components/events/event-type-badge";
+import EventWeightBadge from "@/components/events/event-weight-badge";
 
 type EventFightSeparatorProps = {
   isMainCard: boolean;

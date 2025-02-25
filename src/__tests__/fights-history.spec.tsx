@@ -3,7 +3,7 @@ import {
   sortFightsByDate,
   transformFightDetails,
 } from "@/lib/fights-history-transformer";
-import FightsHistory from "@/components/fights-history";
+import FightsHistory from "@/components/fights-history/fights-history";
 import { mockAppFight, mockTransformedDetails } from "@/__mocks__/mock-data";
 
 jest.mock("@/lib/fights-history-transformer", () => ({
@@ -11,11 +11,11 @@ jest.mock("@/lib/fights-history-transformer", () => ({
   transformFightDetails: jest.fn(),
 }));
 
-jest.mock("@/components/gradient-heading", () =>
+jest.mock("@/components/shared/gradient-heading", () =>
   jest.fn(() => <h2 data-testid="gradient-heading">UFC Fights History</h2>)
 );
 
-jest.mock("@/components/fights-history-card-content", () =>
+jest.mock("@/components/fights-history/fights-history-card-content", () =>
   jest.fn(() => <div data-testid="fights-history-card-content" />)
 );
 

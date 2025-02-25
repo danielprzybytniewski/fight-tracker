@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { useFavorites } from "@/hooks/use-favorites";
-import FavoritesCounter from "@/components/favorites-counter";
+import FavoritesCounter from "@/components/favorites/favorites-counter";
 
 jest.mock("@/hooks/use-favorites");
 

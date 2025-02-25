@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import FightsCarousel from "@/components/fights-carousel";
-import LoadingFightsCards from "@/components/loading-fights-cards";
+import FightsCarousel from "@/components/fights-carousel/fights-carousel";
+import LoadingFightsCards from "@/components/shared/loading-fights-cards";
 import { mockFightsCards } from "@/__mocks__/mock-data";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 

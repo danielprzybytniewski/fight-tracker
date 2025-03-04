@@ -69,8 +69,6 @@ export default async function AthletePage({
   const losses = fighter.losses || 0;
   const draws = fighter.draws || 0;
 
-  console.log(normalizedFighterName);
-
   return (
     <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
       <BackButton />

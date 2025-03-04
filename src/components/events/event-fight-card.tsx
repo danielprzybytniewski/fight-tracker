@@ -1,8 +1,7 @@
 "use client";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import LoadingFightsCards from "@/components/shared/loading-fights-cards";
+import LoadingContainer from "@/components/shared/loading-container";
 import ErrorFightsCards from "@/components/shared/error-fights-cards";
-import { slugify } from "@/lib/slugify";
 import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import {
   Card,
@@ -16,6 +15,7 @@ import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time"
 import EventFightSeparator from "@/components/events/event-fight-separator";
 import EventTypeBadge from "@/components/events/event-type-badge";
 import EventWeightBadge from "@/components/events/event-weight-badge";
+import slugify from "@/lib/slugify";
 
 export default function EventFightCard({ title }: { title: string }) {
   const {
@@ -26,7 +26,7 @@ export default function EventFightCard({ title }: { title: string }) {
   } = useFetchFightCards();
 
   if (isLoading) {
-    return <LoadingFightsCards />;
+    return <LoadingContainer />;
   }
 
   if (error) {

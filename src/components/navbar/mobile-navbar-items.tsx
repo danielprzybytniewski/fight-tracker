@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 import FavoritesCounter from "@/components/favorites/favorites-counter";
 import ModeToggler from "@/components/navbar/mode-toggler";
@@ -9,21 +10,48 @@ type MobileNavbarItemsProps = {
 export default function MobileNavbarItems({
   onItemClick,
 }: MobileNavbarItemsProps) {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <>
-      <Link
-        href="/rankings"
-        className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-        onClick={onItemClick}
-      >
-        UFC Rankings
-      </Link>
-      <div onClick={onItemClick}>
+    <motion.div
+      className="flex flex-col items-center space-y-4"
+      initial="hidden"
+      animate="visible"
+      variants={{
+        visible: {
+          transition: {
+            staggerChildren: 0.2,
+          },
+        },
+      }}
+    >
+      <motion.div variants={itemVariants}>
+        <Link
+          href="/fighters"
+          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+          onClick={onItemClick}
+        >
+          UFC Fighters
+        </Link>
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <Link
+          href="/rankings"
+          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+          onClick={onItemClick}
+        >
+          UFC Rankings
+        </Link>
+      </motion.div>
+      <motion.div variants={itemVariants} onClick={onItemClick}>
         <FavoritesCounter />
-      </div>
-      <div onClick={onItemClick}>
+      </motion.div>
+      <motion.div variants={itemVariants} onClick={onItemClick}>
         <ModeToggler />
-      </div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 }

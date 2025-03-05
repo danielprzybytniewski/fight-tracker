@@ -1,4 +1,4 @@
-import { slugify } from "@/lib/slugify";
+import slugify from "@/lib/slugify";
 
 describe("slugify", () => {
   test("converts a string to lowercase and replaces spaces with hyphens", () => {

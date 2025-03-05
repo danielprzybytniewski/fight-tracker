@@ -11,7 +11,7 @@ type RankingsCardProps = {
 export default function RankingsCard({ division }: RankingsCardProps) {
   return (
     <Link href={`/rankings/${division.id}`} className="block">
-      <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-md group">
+      <Card className="overflow-hidden h-full bg-gray-50 dark:bg-gray-800 shadow-md group">
         <CardHeader className="p-0">
           {division.champion.imgUrl && (
             <div className="relative w-full h-64 sm:h-72 bg-gray-300 dark:bg-gray-700 overflow-hidden">
@@ -20,7 +20,7 @@ export default function RankingsCard({ division }: RankingsCardProps) {
                 alt={division.champion.championName}
                 fill
                 priority
-                className="object-cover object-top py-1 group-hover:scale-105 transition-transform duration-300"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />

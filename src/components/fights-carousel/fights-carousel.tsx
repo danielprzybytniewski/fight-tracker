@@ -1,6 +1,6 @@
 "use client";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import LoadingFightsCards from "@/components/shared/loading-fights-cards";
+import LoadingContainer from "@/components/shared/loading-container";
 import ErrorFightsCards from "@/components/shared/error-fights-cards";
 import {
   Carousel,
@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
-import { slugify } from "@/lib/slugify";
+
 import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+import slugify from "@/lib/slugify";
 
 export default function FightsCarousel() {
   const {
@@ -23,7 +24,7 @@ export default function FightsCarousel() {
   } = useFetchFightCards();
 
   if (isLoading) {
-    return <LoadingFightsCards />;
+    return <LoadingContainer />;
   }
 
   if (error) {

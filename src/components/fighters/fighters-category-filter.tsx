@@ -19,7 +19,7 @@ export default function FightersCategoryFilter({
   selectedCategory,
   onCategoryChange,
 }: FightersCategoryFilterProps) {
-  const displayCategory = selectedCategory
+  const categoryLabel = selectedCategory
     ? categories.find((category) => slugify(category) === selectedCategory) ||
       selectedCategory
     : "Select Category";
@@ -37,7 +37,7 @@ export default function FightersCategoryFilter({
                 : `bg-gray-50 dark:bg-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500`
             )}
           >
-            {displayCategory}
+            {categoryLabel}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="dark:bg-gray-600">

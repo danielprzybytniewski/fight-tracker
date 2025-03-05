@@ -72,7 +72,7 @@ export function useFightersFiltersAndPagination({
 
   useEffect(() => {
     setIsLoading(false);
-  }, [searchParams]);
+  }, [searchParams, setIsLoading]);
 
   const paginatedFighters = filteredFighters.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
@@ -101,7 +101,7 @@ export function useFightersFiltersAndPagination({
 
       router.push(`${pathname}?${params.toString()}`, { scroll: true });
     },
-    [router, pathname, searchParams]
+    [router, pathname, searchParams, setIsLoading]
   );
 
   function handleSearchChange(query: string) {

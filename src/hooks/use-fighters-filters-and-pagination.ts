@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import type { Fighter } from "@/types/rankings-schema.types";
 import normalizeName from "@/lib/normalize-name";
@@ -15,6 +15,7 @@ type UseFightersFiltersAndPaginationProps = {
   initialFighters: Fighter[];
   initialSearchQuery: string;
   initialCategory: string | null;
+  initialCategories: string[];
   initialPage: number;
   setIsLoading: (isLoading: boolean) => void;
 };
@@ -25,12 +26,15 @@ export function useFightersFiltersAndPagination({
   initialFighters,
   initialSearchQuery,
   initialCategory,
+  initialCategories,
   initialPage,
   setIsLoading,
 }: UseFightersFiltersAndPaginationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const isSearchingRef = useRef(false);
 
   const [filters, setFilters] = useState<Filters>({
     searchQuery: initialSearchQuery,
@@ -50,28 +54,75 @@ export function useFightersFiltersAndPagination({
         slugify(fighter.category) === selectedCategory)
   );
 
-  const totalPages = Math.ceil(filteredFighters.length / ITEMS_PER_PAGE);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredFighters.length / ITEMS_PER_PAGE)
+  );
 
   useEffect(() => {
+    if (isSearchingRef.current) {
+      return;
+    }
+
     const params = new URLSearchParams(searchParams);
-    const newPage = Math.min(
-      Math.max(Number(params.get("page")) || 1, 1),
-      totalPages
-    );
+    const pageParams = params.get("page");
+    const pageNumber = Number(pageParams);
+    const searchParam = params.get("search");
+    const categoryParams = params.get("category");
+
+    const isInvalidPage =
+      pageParams !== null &&
+      (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages);
+
+    const validPage = isInvalidPage ? 1 : pageNumber || 1;
+
+    const validCategory = categoryParams
+      ? initialCategories.find(
+          (category) => slugify(category) === slugify(categoryParams)
+        )
+      : null;
+
+    const isInvalidCategory = categoryParams && !validCategory;
 
     setFilters({
-      searchQuery: params.get("search")
-        ? decodeURIComponent(params.get("search")!)
-        : "",
-      selectedCategory: params.get("category")
-        ? slugify(params.get("category") as string)
-        : null,
-      currentPage: newPage,
+      searchQuery: searchParam ? decodeURIComponent(searchParam) : "",
+      selectedCategory: validCategory ? slugify(validCategory) : null,
+      currentPage: validPage,
     });
-  }, [searchParams, totalPages]);
+
+    if (isInvalidPage || isInvalidCategory) {
+      setIsLoading(true);
+      const newParams = new URLSearchParams(searchParams.toString());
+
+      if (isInvalidPage) {
+        newParams.set("page", validPage.toString());
+      }
+
+      if (isInvalidCategory) {
+        newParams.delete("category");
+      }
+
+      router.push(`${pathname}?${newParams.toString()}`, { scroll: true });
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 0);
+    }
+  }, [
+    searchParams,
+    totalPages,
+    router,
+    pathname,
+    initialCategories,
+    setIsLoading,
+  ]);
 
   useEffect(() => {
-    setIsLoading(false);
+    if (!searchParams.get("page") || !isNaN(Number(searchParams.get("page")))) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 0);
+    }
   }, [searchParams, setIsLoading]);
 
   const paginatedFighters = filteredFighters.slice(
@@ -82,41 +133,43 @@ export function useFightersFiltersAndPagination({
   const updateUrl = useCallback(
     (newFilters: Filters) => {
       setIsLoading(true);
-      const params = new URLSearchParams(searchParams.toString());
 
-      if (newFilters.searchQuery) {
-        params.set("search", newFilters.searchQuery);
-        params.delete("category");
-      } else {
-        params.delete("search");
+      const params = new URLSearchParams();
+
+      if (newFilters.searchQuery.trim()) {
+        params.set("search", encodeURIComponent(newFilters.searchQuery.trim()));
       }
 
       if (newFilters.selectedCategory) {
         params.set("category", newFilters.selectedCategory);
-      } else {
-        params.delete("category");
       }
 
       params.set("page", newFilters.currentPage.toString());
 
+      isSearchingRef.current = true;
+
       router.push(`${pathname}?${params.toString()}`, { scroll: true });
+
+      setTimeout(() => {
+        isSearchingRef.current = false;
+        setIsLoading(false);
+      }, 100);
     },
-    [router, pathname, searchParams, setIsLoading]
+    [router, pathname, setIsLoading]
   );
 
   function handleSearchChange(query: string) {
+    isSearchingRef.current = true;
+
     const newFilters = {
       searchQuery: query,
-      selectedCategory: query ? null : null,
+      selectedCategory: query ? null : filters.selectedCategory,
       currentPage: 1,
-    };
-    const encodedFilters = {
-      ...newFilters,
-      searchQuery: encodeURIComponent(newFilters.searchQuery || ""),
     };
 
     setFilters(newFilters);
-    updateUrl(encodedFilters);
+
+    updateUrl(newFilters);
   }
 
   function handleCategoryChange(category: string | null) {
@@ -131,6 +184,30 @@ export function useFightersFiltersAndPagination({
   }
 
   function handlePageChange(page: number) {
+    if (page === currentPage) {
+      setIsLoading(true);
+
+      const params = new URLSearchParams();
+
+      if (searchQuery) {
+        params.set("search", encodeURIComponent(searchQuery));
+      }
+
+      if (selectedCategory) {
+        params.set("category", selectedCategory);
+      }
+
+      params.set("page", page.toString());
+
+      router.push(`${pathname}?${params.toString()}`, { scroll: true });
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 0);
+
+      return;
+    }
+
     const newFilters = {
       searchQuery,
       selectedCategory,

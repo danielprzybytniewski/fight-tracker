@@ -9,17 +9,17 @@ import { useFightersFiltersAndPagination } from "@/hooks/use-fighters-filters-an
 
 type FightersContainerProps = {
   initialFighters: Fighter[];
-  initialCategories: string[];
   initialSearchQuery: string;
   initialCategory: string | null;
+  initialCategories: string[];
   initialPage: number;
 };
 
 export default function FightersContainer({
   initialFighters,
-  initialCategories,
   initialSearchQuery,
   initialCategory,
+  initialCategories,
   initialPage,
 }: FightersContainerProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +35,7 @@ export default function FightersContainer({
     initialFighters,
     initialSearchQuery,
     initialCategory,
+    initialCategories,
     initialPage,
     setIsLoading,
   });
@@ -43,7 +44,7 @@ export default function FightersContainer({
 
   return (
     <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen rounded-lg">
-      <GradientHeading>UFC Fighters</GradientHeading>
+      <GradientHeading size="large">UFC Fighters</GradientHeading>
       {isLoading ? (
         <LoadingContainer />
       ) : (

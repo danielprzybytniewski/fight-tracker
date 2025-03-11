@@ -1,4 +1,3 @@
-"use client";
 import FightersSearchBar from "@/components/fighters/fighters-search-bar";
 import FightersCategoryFilter from "@/components/fighters/fighters-category-filter";
 
@@ -21,7 +20,7 @@ export default function FightersFiltersPanel({
     <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
       <div className="w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md flex justify-center md:justify-start">
         <FightersSearchBar
-          initialValue={searchQuery}
+          searchValue={searchQuery}
           onSearch={onSearchChange}
         />
       </div>

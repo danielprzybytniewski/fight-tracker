@@ -84,7 +84,7 @@ export const mockEventFighter: Fighter = {
 };
 
 export const mockAthlete: Athlete = {
-  name: "Jonh Doe",
+  name: "John Doe",
   wins: 20,
   losses: 5,
   draws: 1,
@@ -220,4 +220,15 @@ export const mockTransformedDetails = {
   timeDisplay: "2:30",
   locationDisplay: "USA",
   weightClassDisplay: "Lightweight",
+};
+
+export const fighterCardMock: Athlete = {
+  id: "john-doe",
+  name: "John Doe",
+  nickname: "The Destroyer",
+  category: "Heavyweight",
+  wins: 20,
+  losses: 3,
+  draws: 1,
+  imgUrl: "https://example.com/johndoe.jpg",
 };

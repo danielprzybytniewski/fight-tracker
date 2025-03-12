@@ -17,6 +17,10 @@ describe("FightersContainer", () => {
 
   const mockInitialCategories = ["Lightweight", "Heavyweight", "Welterweight"];
 
+  let handleSearchChangeMock: jest.Mock;
+  let handleCategoryChangeMock: jest.Mock;
+  let handlePageChangeMock: jest.Mock;
+
   const renderFightersContainer = () => {
     render(
       <FightersContainer
@@ -31,6 +35,10 @@ describe("FightersContainer", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    handleSearchChangeMock = jest.fn();
+    handleCategoryChangeMock = jest.fn();
+    handlePageChangeMock = jest.fn();
 
     mockUseFightersFiltersAndPagination.mockReturnValue({
       filters: {
@@ -77,7 +85,6 @@ describe("FightersContainer", () => {
 
   test("calls handleSearchChange when the search input changes", async () => {
     const user = userEvent.setup();
-    const handleSearchChangeMock = jest.fn();
 
     mockUseFightersFiltersAndPagination.mockReturnValueOnce({
       ...mockUseFightersFiltersAndPagination(),
@@ -96,7 +103,6 @@ describe("FightersContainer", () => {
 
   test("calls handleCategoryChange when a category is selected", async () => {
     const user = userEvent.setup();
-    const handleCategoryChangeMock = jest.fn();
 
     mockUseFightersFiltersAndPagination.mockReturnValueOnce({
       ...mockUseFightersFiltersAndPagination(),
@@ -124,7 +130,6 @@ describe("FightersContainer", () => {
 
   test("calls handlePageChange when a pagination button is clicked", async () => {
     const user = userEvent.setup();
-    const handlePageChangeMock = jest.fn();
 
     mockUseFightersFiltersAndPagination.mockReturnValueOnce({
       ...mockUseFightersFiltersAndPagination(),

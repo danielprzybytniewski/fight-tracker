@@ -18,19 +18,23 @@ describe("FightersPage", () => {
     "3": { name: "Fighter Three", category: "Lightweight" },
   };
 
+  const renderFightersPage = async (searchParams = {}) => {
+    await render(
+      await FightersPage({ searchParams: Promise.resolve(searchParams) })
+    );
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
     (getAllFighters as jest.Mock).mockResolvedValue(mockFighters);
   });
 
   test("renders FightersContainer with correct props", async () => {
-    const searchParams = {
+    await renderFightersPage({
       page: "2",
       search: "test",
       category: "middleweight",
-    };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -51,9 +55,7 @@ describe("FightersPage", () => {
   });
 
   test("displays unique categories correctly", async () => {
-    const searchParams = { page: "1", search: "", category: "" };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage({ page: "1", search: "", category: "" });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -66,9 +68,7 @@ describe("FightersPage", () => {
   });
 
   test("correctly slugifies category parameter", async () => {
-    const searchParams = { category: "Light Heavyweight" };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage({ category: "Light Heavyweight" });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -82,9 +82,7 @@ describe("FightersPage", () => {
 
   test("renders no categories if fighters data is empty", async () => {
     (getAllFighters as jest.Mock).mockResolvedValue({});
-    const searchParams = { page: "1" };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage({ page: "1" });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -104,9 +102,7 @@ describe("FightersPage", () => {
     };
 
     (getAllFighters as jest.Mock).mockResolvedValue(fightersWithNullCategories);
-    const searchParams = {};
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage();
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -125,9 +121,8 @@ describe("FightersPage", () => {
     };
 
     (getAllFighters as jest.Mock).mockResolvedValue(fightersWithDivisions);
-    const searchParams = {};
 
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage();
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -146,9 +141,7 @@ describe("FightersPage", () => {
   });
 
   test("defaults to page 1 when page parameter is missing", async () => {
-    const searchParams = {};
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage();
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -161,9 +154,7 @@ describe("FightersPage", () => {
   });
 
   test("defaults to page 1 when page parameter is invalid", async () => {
-    const searchParams = { page: "abc" };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage({ page: "abc" });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(
@@ -176,9 +167,7 @@ describe("FightersPage", () => {
   });
 
   test("handles missing search and category parameters correctly", async () => {
-    const searchParams = { page: "3" };
-
-    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
+    await renderFightersPage({ page: "3" });
 
     await waitFor(() => {
       expect(FightersContainer).toHaveBeenCalledWith(

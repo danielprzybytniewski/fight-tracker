@@ -3,15 +3,17 @@ import { renderHook, waitFor } from "@testing-library/react";
 
 describe("useMediaQuery", () => {
   const originalMatchMedia = window.matchMedia;
-  let matches = false;
+  let matchMediaMock: jest.Mock;
+  let matchMediaQuery: {
+    matches: boolean;
+    media: string;
+    addEventListener: jest.Mock;
+    removeEventListener: jest.Mock;
+  };
 
   beforeAll(() => {
-    window.matchMedia = jest.fn().mockImplementation((query: string) => ({
-      matches,
-      media: query,
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-    }));
+    matchMediaMock = jest.fn();
+    window.matchMedia = matchMediaMock;
   });
 
   afterAll(() => {
@@ -20,37 +22,36 @@ describe("useMediaQuery", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  test("returns false when window.matchMedia does not match", async () => {
-    matches = false;
-    const { result } = renderHook(() => useMediaQuery("(min-width: 640px)"));
-
-    await waitFor(() => {
-      expect(result.current).toBe(false);
-    });
-  });
-
-  test("returns true when window.matchMedia matches", async () => {
-    matches = true;
-    const { result } = renderHook(() => useMediaQuery("(min-width: 640px)"));
-
-    await waitFor(() => {
-      expect(result.current).toBe(true);
-    });
-  });
-
-  test("updates matches when media query changes", async () => {
-    const matchMediaQuery = {
+    matchMediaQuery = {
       matches: false,
       media: "(min-width: 640px)",
       addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
     };
+    matchMediaMock.mockReturnValue(matchMediaQuery);
+  });
 
-    window.matchMedia = jest.fn().mockReturnValue(matchMediaQuery);
+  const renderMediaQueryHook = (query: string = "(min-width: 640px)") =>
+    renderHook(() => useMediaQuery(query));
 
-    const { result } = renderHook(() => useMediaQuery("(min-width: 640px)"));
+  const expectMediaQueryResult = async (expected: boolean) => {
+    const { result } = renderMediaQueryHook();
+    await waitFor(() => {
+      expect(result.current).toBe(expected);
+    });
+  };
+
+  test("returns false when window.matchMedia does not match", async () => {
+    await expectMediaQueryResult(false);
+  });
+
+  test("returns true when window.matchMedia matches", async () => {
+    matchMediaQuery.matches = true;
+    await expectMediaQueryResult(true);
+  });
+
+  test("updates matches when media query changes", async () => {
+    const { result } = renderMediaQueryHook();
 
     await waitFor(() => {
       expect(result.current).toBe(false);

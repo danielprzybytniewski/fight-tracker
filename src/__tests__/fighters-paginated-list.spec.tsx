@@ -47,10 +47,6 @@ const mockFighters: Fighter[] = [
 ];
 
 describe("FightersPaginatedList", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   const mockProps = {
     paginatedFighters: mockFighters,
     currentPage: 1,
@@ -58,13 +54,20 @@ describe("FightersPaginatedList", () => {
     onPageChange: jest.fn(),
   };
 
+  const renderComponent = (props = {}) =>
+    render(<FightersPaginatedList {...mockProps} {...props} />);
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("renders correct text when paginatedFighters is empty", () => {
-    render(<FightersPaginatedList {...mockProps} paginatedFighters={[]} />);
+    renderComponent({ paginatedFighters: [] });
     expect(screen.getByText("No fighters found")).toBeInTheDocument();
   });
 
   test("renders FighterCard components for each fighter", () => {
-    render(<FightersPaginatedList {...mockProps} />);
+    renderComponent();
     expect(screen.getAllByTestId("fighter-card")).toHaveLength(
       mockFighters.length
     );
@@ -75,7 +78,7 @@ describe("FightersPaginatedList", () => {
   });
 
   test("renders FightersPagination component with correct props", () => {
-    render(<FightersPaginatedList {...mockProps} />);
+    renderComponent();
 
     expect(screen.getByTestId("fighters-pagination")).toBeInTheDocument();
 
@@ -93,14 +96,14 @@ describe("FightersPaginatedList", () => {
 
   test("calls onPageChange with the correct page number when 'Next' button is clicked", async () => {
     const user = userEvent.setup();
-    render(<FightersPaginatedList {...mockProps} />);
+    renderComponent();
     await user.click(screen.getByText("Next"));
     expect(mockProps.onPageChange).toHaveBeenCalledWith(2);
   });
 
   test("calls onPageChange with the correct page number when 'Previous' button is clicked", async () => {
     const user = userEvent.setup();
-    render(<FightersPaginatedList {...mockProps} currentPage={2} />);
+    renderComponent({ currentPage: 2 });
     await user.click(screen.getByText("Previous"));
     expect(mockProps.onPageChange).toHaveBeenCalledWith(1);
   });

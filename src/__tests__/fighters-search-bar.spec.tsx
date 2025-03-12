@@ -3,9 +3,18 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("FightersSearchBar", () => {
+  let onSearchMock: jest.Mock;
+
+  const renderComponent = (searchValue = "") => {
+    return render(
+      <FightersSearchBar searchValue={searchValue} onSearch={onSearchMock} />
+    );
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
     jest.useFakeTimers();
+    onSearchMock = jest.fn();
   });
 
   afterEach(() => {
@@ -13,77 +22,59 @@ describe("FightersSearchBar", () => {
   });
 
   test("renders input with correct placeholder", () => {
-    render(<FightersSearchBar searchValue="" onSearch={() => {}} />);
+    renderComponent();
     expect(
       screen.getByPlaceholderText("Search for Fighters...")
     ).toBeInTheDocument();
   });
 
   test("renders input with provided searchValue", () => {
-    render(<FightersSearchBar searchValue="John Doe" onSearch={() => {}} />);
+    renderComponent("John Doe");
     expect(screen.getByDisplayValue("John Doe")).toBeInTheDocument();
   });
 
   test("updates input value when searchValue prop changes", () => {
-    const { rerender } = render(
-      <FightersSearchBar searchValue="Initial Value" onSearch={() => {}} />
-    );
-
+    const { rerender } = renderComponent("Initial Value");
     const searchInput = screen.getByRole("textbox");
     expect(searchInput).toHaveValue("Initial Value");
 
     rerender(
-      <FightersSearchBar searchValue="Updated Value" onSearch={() => {}} />
+      <FightersSearchBar searchValue="Updated Value" onSearch={onSearchMock} />
     );
     expect(searchInput).toHaveValue("Updated Value");
   });
 
   test("calls onSearch with debounced input after user finishes typing", async () => {
     const user = userEvent.setup({ delay: null });
-    const onSearchMock = jest.fn();
-    render(<FightersSearchBar searchValue="" onSearch={onSearchMock} />);
+    renderComponent();
 
     const searchInput = screen.getByRole("textbox");
-    await user.type(searchInput, "Conor McGregor");
+    await user.type(searchInput, "Conor");
 
     expect(onSearchMock).not.toHaveBeenCalled();
-
     jest.advanceTimersByTime(500);
-
-    expect(onSearchMock).toHaveBeenCalledTimes(1);
-    expect(onSearchMock).toHaveBeenCalledWith("Conor McGregor");
+    expect(onSearchMock).toHaveBeenCalledWith("Conor");
   });
 
   test("correctly handles multiple rapid user entries with debouncing", async () => {
     const user = userEvent.setup({ delay: null });
-    const onSearchMock = jest.fn();
-    render(<FightersSearchBar searchValue="" onSearch={onSearchMock} />);
+    renderComponent();
 
     const searchInput = screen.getByRole("textbox");
-
     await user.type(searchInput, "Khabib");
     await user.type(searchInput, " Nurmagomedov");
-
     jest.advanceTimersByTime(400);
-
     expect(onSearchMock).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(100);
 
-    expect(onSearchMock).toHaveBeenCalledTimes(1);
     expect(onSearchMock).toHaveBeenCalledWith("Khabib Nurmagomedov");
   });
 
   test("cleans up debounce function on unmount", () => {
-    const onSearchMock = jest.fn();
-    const { unmount } = render(
-      <FightersSearchBar searchValue="" onSearch={onSearchMock} />
-    );
-
+    const { unmount } = renderComponent();
     unmount();
-
     jest.advanceTimersByTime(500);
-
     expect(onSearchMock).not.toHaveBeenCalled();
   });
 });

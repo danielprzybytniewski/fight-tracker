@@ -11,7 +11,7 @@ type Filters = {
   currentPage: number;
 };
 
-type UseFightersFiltersAndPaginationProps = {
+export type UseFightersFiltersAndPaginationProps = {
   initialFighters: Fighter[];
   initialSearchQuery: string;
   initialCategory: string | null;
@@ -20,7 +20,7 @@ type UseFightersFiltersAndPaginationProps = {
   setIsLoading: (isLoading: boolean) => void;
 };
 
-const ITEMS_PER_PAGE = 12;
+const FIGHTERS_PER_PAGE = 12;
 
 export function useFightersFiltersAndPagination({
   initialFighters,
@@ -56,7 +56,7 @@ export function useFightersFiltersAndPagination({
 
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredFighters.length / ITEMS_PER_PAGE)
+    Math.ceil(filteredFighters.length / FIGHTERS_PER_PAGE)
   );
 
   useEffect(() => {
@@ -70,35 +70,35 @@ export function useFightersFiltersAndPagination({
     const searchParam = params.get("search");
     const categoryParams = params.get("category");
 
-    const isInvalidPage =
+    const isPageNumberInvalid =
       pageParams !== null &&
       (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages);
 
-    const validPage = isInvalidPage ? 1 : pageNumber || 1;
+    const validPage = isPageNumberInvalid ? 1 : pageNumber || 1;
 
-    const validCategory = categoryParams
+    const matchingCategory = categoryParams
       ? initialCategories.find(
           (category) => slugify(category) === slugify(categoryParams)
         )
       : null;
 
-    const isInvalidCategory = categoryParams && !validCategory;
+    const isCategoryNotFound = categoryParams && !matchingCategory;
 
     setFilters({
       searchQuery: searchParam ? decodeURIComponent(searchParam) : "",
-      selectedCategory: validCategory ? slugify(validCategory) : null,
+      selectedCategory: matchingCategory ? slugify(matchingCategory) : null,
       currentPage: validPage,
     });
 
-    if (isInvalidPage || isInvalidCategory) {
+    if (isPageNumberInvalid || isCategoryNotFound) {
       setIsLoading(true);
       const newParams = new URLSearchParams(searchParams.toString());
 
-      if (isInvalidPage) {
+      if (isPageNumberInvalid) {
         newParams.set("page", validPage.toString());
       }
 
-      if (isInvalidCategory) {
+      if (isCategoryNotFound) {
         newParams.delete("category");
       }
 
@@ -126,8 +126,8 @@ export function useFightersFiltersAndPagination({
   }, [searchParams, setIsLoading]);
 
   const paginatedFighters = filteredFighters.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    (currentPage - 1) * FIGHTERS_PER_PAGE,
+    currentPage * FIGHTERS_PER_PAGE
   );
 
   const updateUrl = useCallback(

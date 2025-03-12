@@ -10,33 +10,37 @@ describe("FightersPagination", () => {
     typeof useMediaQuery
   >;
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   const defaultProps = {
     currentPage: 1,
     totalPages: 5,
     onPageChange: jest.fn(),
   };
 
+  const renderComponent = (props = defaultProps) => {
+    return render(<FightersPagination {...props} />);
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("renders pagination component with correct number of page links", () => {
     mockUseMediaQuery.mockReturnValue(false);
-    render(<FightersPagination {...defaultProps} />);
+    renderComponent();
     const pageLinks = screen.getAllByRole("link");
     expect(pageLinks.length).toBe(defaultProps.totalPages);
   });
 
   test('disables the "Previous" button on the first page', () => {
     mockUseMediaQuery.mockReturnValue(false);
-    render(<FightersPagination {...defaultProps} />);
+    renderComponent();
     const prevButton = screen.getByLabelText("Go to previous page");
     expect(prevButton).toHaveClass("pointer-events-none");
   });
 
   test('disables the "Next" button on the last page', () => {
     mockUseMediaQuery.mockReturnValue(false);
-    render(<FightersPagination {...defaultProps} currentPage={5} />);
+    renderComponent({ ...defaultProps, currentPage: 5 });
     const nextButton = screen.getByLabelText("Go to next page");
     expect(nextButton).toHaveClass("pointer-events-none");
   });
@@ -44,7 +48,7 @@ describe("FightersPagination", () => {
   test("calls onPageChange with the correct page when a page link is clicked", async () => {
     mockUseMediaQuery.mockReturnValue(false);
     const user = userEvent.setup();
-    render(<FightersPagination {...defaultProps} />);
+    renderComponent();
     const secondPageLink = screen.getByText("2");
     await user.click(secondPageLink);
     expect(defaultProps.onPageChange).toHaveBeenCalledWith(2);
@@ -53,7 +57,7 @@ describe("FightersPagination", () => {
   test('calls onPageChange with the previous page when "Previous" is clicked', async () => {
     mockUseMediaQuery.mockReturnValue(false);
     const user = userEvent.setup();
-    render(<FightersPagination {...defaultProps} currentPage={2} />);
+    renderComponent({ ...defaultProps, currentPage: 2 });
     const prevButton = screen.getByLabelText("Go to previous page");
     await user.click(prevButton);
     expect(defaultProps.onPageChange).toHaveBeenCalledWith(1);
@@ -62,7 +66,7 @@ describe("FightersPagination", () => {
   test('calls onPageChange with the next page when "Next" is clicked', async () => {
     mockUseMediaQuery.mockReturnValue(false);
     const user = userEvent.setup();
-    render(<FightersPagination {...defaultProps} currentPage={2} />);
+    renderComponent({ ...defaultProps, currentPage: 2 });
     const nextButton = screen.getByLabelText("Go to next page");
     await user.click(nextButton);
     expect(defaultProps.onPageChange).toHaveBeenCalledWith(3);
@@ -70,27 +74,22 @@ describe("FightersPagination", () => {
 
   test("renders ellipsis for skipped pages in desktop view", () => {
     mockUseMediaQuery.mockReturnValue(false);
-    render(
-      <FightersPagination
-        currentPage={1}
-        totalPages={10}
-        onPageChange={jest.fn()}
-      />
-    );
+    renderComponent({
+      currentPage: 1,
+      totalPages: 10,
+      onPageChange: jest.fn(),
+    });
     const ellipsis = screen.getByText("More pages");
     expect(ellipsis).toBeInTheDocument();
   });
 
   test("does not render ellipsis in mobile view", () => {
     mockUseMediaQuery.mockReturnValue(true);
-    render(
-      <FightersPagination
-        currentPage={1}
-        totalPages={10}
-        onPageChange={jest.fn()}
-      />
-    );
-
+    renderComponent({
+      currentPage: 1,
+      totalPages: 10,
+      onPageChange: jest.fn(),
+    });
     const ellipsis = screen.queryByText("More pages");
     expect(ellipsis).not.toBeInTheDocument();
   });
@@ -98,7 +97,7 @@ describe("FightersPagination", () => {
   test("prevents navigation if clicking disabled buttons", async () => {
     mockUseMediaQuery.mockReturnValue(false);
     const user = userEvent.setup();
-    render(<FightersPagination {...defaultProps} />);
+    renderComponent();
     const prevButton = screen.getByLabelText("Go to previous page");
     await user.click(prevButton);
     expect(defaultProps.onPageChange).not.toHaveBeenCalled();

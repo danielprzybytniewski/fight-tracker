@@ -3,23 +3,30 @@ import FighterCard from "@/components/fighters/fighter-card";
 import { fighterCardMock } from "@/__mocks__/mock-data";
 
 describe("FighterCard", () => {
+  const renderComponent = (fighter = fighterCardMock) =>
+    render(<FighterCard fighter={fighter} />);
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test("renders fighter name", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     expect(screen.getByText("John Doe")).toBeInTheDocument();
   });
 
   test("renders fighter nickname", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     expect(screen.getByText('"The Destroyer"')).toBeInTheDocument();
   });
 
   test("renders fighter category", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     expect(screen.getByText("Heavyweight")).toBeInTheDocument();
   });
 
   test("renders wins, losses, and draws", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     expect(screen.getByText("Wins")).toBeInTheDocument();
     expect(screen.getByText("20")).toBeInTheDocument();
     expect(screen.getByText("Losses")).toBeInTheDocument();
@@ -29,7 +36,7 @@ describe("FighterCard", () => {
   });
 
   test("renders image with correct src and alt text", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     const image = screen.getByRole("img");
     expect(image).toBeInTheDocument();
     if (fighterCardMock.imgUrl) {
@@ -42,38 +49,33 @@ describe("FighterCard", () => {
   });
 
   test("links to the correct URL", () => {
-    render(<FighterCard fighter={fighterCardMock} />);
+    renderComponent();
     const link = screen.getByRole("link");
     expect(link).toHaveAttribute("href", "/athlete/john-doe");
   });
 
   test("does not render nickname if not provided", () => {
-    const fighterWithoutNickname = { ...fighterCardMock, nickname: "" };
-    render(<FighterCard fighter={fighterWithoutNickname} />);
+    renderComponent({ ...fighterCardMock, nickname: "" });
     expect(screen.queryByText('"The Destroyer"')).not.toBeInTheDocument();
   });
 
   test("does not render category if not provided", () => {
-    const fighterWithoutCategory = { ...fighterCardMock, category: "" };
-    render(<FighterCard fighter={fighterWithoutCategory} />);
+    renderComponent({ ...fighterCardMock, category: "" });
     expect(screen.queryByText("Heavyweight")).not.toBeInTheDocument();
   });
 
   test("renders wins as 0 if not provided", () => {
-    const fighterWithoutWins = { ...fighterCardMock, wins: undefined };
-    render(<FighterCard fighter={fighterWithoutWins} />);
+    renderComponent({ ...fighterCardMock, wins: undefined });
     expect(screen.getByText("0")).toBeInTheDocument();
   });
 
   test("renders losses as 0 if not provided", () => {
-    const fighterWithoutLosses = { ...fighterCardMock, losses: undefined };
-    render(<FighterCard fighter={fighterWithoutLosses} />);
+    renderComponent({ ...fighterCardMock, losses: undefined });
     expect(screen.getByText("0")).toBeInTheDocument();
   });
 
   test("renders draws as 0 if not provided", () => {
-    const fighterWithoutDraws = { ...fighterCardMock, draws: undefined };
-    render(<FighterCard fighter={fighterWithoutDraws} />);
+    renderComponent({ ...fighterCardMock, draws: undefined });
     expect(screen.getByText("0")).toBeInTheDocument();
   });
 });

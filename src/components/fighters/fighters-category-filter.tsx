@@ -19,10 +19,14 @@ export default function FightersCategoryFilter({
   selectedCategory,
   onCategoryChange,
 }: FightersCategoryFilterProps) {
-  const categoryLabel = selectedCategory
-    ? categories.find((category) => slugify(category) === selectedCategory) ||
-      selectedCategory
-    : "Select Category";
+  const isValidCategory = selectedCategory
+    ? categories.some((category) => slugify(category) === selectedCategory)
+    : true;
+
+  const categoryLabel =
+    selectedCategory && isValidCategory
+      ? categories.find((category) => slugify(category) === selectedCategory)
+      : "Select Category";
 
   return (
     <div className="flex justify-center">
@@ -32,9 +36,10 @@ export default function FightersCategoryFilter({
             variant="outline"
             className={cn(
               "text-sm transition-colors duration-200",
-              selectedCategory
-                ? "bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-500"
-                : `bg-gray-50 dark:bg-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500`
+              selectedCategory && isValidCategory
+                ? "bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+                : `bg-gray-50 dark:bg-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50
+                 dark:hover:bg-gray-600`
             )}
           >
             {categoryLabel}

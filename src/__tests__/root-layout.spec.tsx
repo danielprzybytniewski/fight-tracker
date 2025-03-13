@@ -56,7 +56,7 @@ describe("RootLayout", () => {
       "Info about UFC rankings and upcoming MMA events"
     );
     expect(metadata.keywords).toEqual(
-      "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, rankings, athletes, fighters, best fighters, top fighters, favorites, favorite fighters, your favorite fighters, UFC fighters, divisions, champions, weight classes, weight divisions, UFC fight history, fighter records, past UFC events, fight results, UFC career, fighter performance, UFC matchups, fight statistics, UFC fight cards, historical fights, fighter journey, UFC timeline, fight analysis, UFC archives, fighter evolution, fighter progression"
+      "MMA, UFC, Mixed Martial Arts, fight events, upcoming fights, upcoming fight events, sports events, fight tracker, UFC rankings, Current UFC rankings, rankings, athletes, UFC athletes, fighters, UFC fighters, best fighters, best UFC fighters, top fighters, top UFC fighters, favorites, favorite fighters, your favorite fighters, divisions, champions, weight classes, UFC weight classes, weight divisions, UFC weight divisions, UFC fight history, fighter records, past UFC events, fight results, UFC career, fighter performance, UFC matchups, fight statistics, UFC fight cards, historical fights, fighter journey, UFC timeline, fight analysis, UFC archives, fighter evolution, fighter progression"
     );
   });
 

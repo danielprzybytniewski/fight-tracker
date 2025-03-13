@@ -1,17 +1,22 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import { useState, useEffect, useMemo } from "react";
 import debounce from "lodash/debounce";
 
 type FightersSearchBarProps = {
-  initialValue: string;
+  searchValue: string;
   onSearch: (query: string) => void;
 };
 
 export default function FightersSearchBar({
-  initialValue,
+  searchValue,
   onSearch,
 }: FightersSearchBarProps) {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(searchValue);
+
+  useEffect(() => {
+    setValue(searchValue);
+  }, [searchValue]);
 
   const debouncedSearch = useMemo(
     () =>

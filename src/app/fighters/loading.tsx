@@ -1,6 +1,9 @@
 export default function FightersLoading() {
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div
+      className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen"
+      aria-label="loading-container"
+    >
       <div className="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100 text-center">
         UFC Fighters
       </div>

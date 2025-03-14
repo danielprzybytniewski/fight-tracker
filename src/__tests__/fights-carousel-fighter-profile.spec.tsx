@@ -1,7 +1,6 @@
 import { mockFighter } from "@/__mocks__/mock-data";
 import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 describe("FightsCarouselFighterProfile", () => {
   beforeEach(() => {
@@ -18,16 +17,10 @@ describe("FightsCarouselFighterProfile", () => {
     );
     expect(image).toHaveAttribute("alt", mockFighter.name);
   });
-
-  test("renders fighter name as a clickable link", async () => {
-    const user = userEvent.setup();
-
-    const link = screen.getByRole("link");
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveTextContent(mockFighter.name);
-    expect(link).toHaveAttribute("href", mockFighter.link);
-    expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    await user.click(link);
-    expect(link).toHaveAttribute("target", "_blank");
+  test("renders fighter name", () => {
+    const firstName = screen.getByText(/John/i);
+    const lastName = screen.getByText(/Doe/i);
+    expect(firstName).toBeInTheDocument();
+    expect(lastName).toBeInTheDocument();
   });
 });

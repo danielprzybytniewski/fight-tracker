@@ -5,7 +5,6 @@ const FighterSchema = z.object({
   record: z.string(),
   country: z.string().url(),
   picture: z.union([z.string().url(), z.string()]),
-  link: z.string().url(),
 });
 
 const FightSchema = z.object({

@@ -16,6 +16,7 @@ import EventFightSeparator from "@/components/events/event-fight-separator";
 import EventTypeBadge from "@/components/events/event-type-badge";
 import EventWeightBadge from "@/components/events/event-weight-badge";
 import slugify from "@/lib/slugify";
+import BackButton from "@/components/shared/back-button";
 
 export default function EventFightCard({ title }: { title: string }) {
   const {
@@ -43,24 +44,25 @@ export default function EventFightCard({ title }: { title: string }) {
 
   return (
     <Card
-      className="max-w-5xl mx-auto bg-gray-50 dark:bg-gradient-to-br dark:from-gray-700 dark:to-gray-600 rounded-lg
-    shadow-md"
+      className="max-w-5xl mx-auto bg-gray-50/90 dark:bg-gray-900/90 rounded-xl border border-gray-200 
+    dark:border-gray-800 overflow-hidden"
     >
-      <CardHeader className="text-center py-6 border-b border-gray-300 dark:border-gray-600">
-        <CardTitle className="text-xl sm:text-3xl uppercase font-semibold text-gray-900 dark:text-gray-100">
+      <CardHeader className="text-center py-8 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+        <BackButton />
+        <CardTitle className="text-xl md:text-3xl uppercase font-black tracking-tight text-gray-900 dark:text-gray-100">
           <h1>{fightEvent.title}</h1>
         </CardTitle>
-        <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2">
+        <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-3 font-medium">
           {convertedDate}
         </CardDescription>
       </CardHeader>
-      <CardContent className="p-2 lg:p-6">
+      <CardContent className="p-4 lg:p-8 space-y-6">
         {fightEvent.fights.map((fighter) => (
           <div
             key={`${fighter.fighterA.name}-${fighter.fighterB.name}`}
-            className="flex flex-col sm:flex-row items-center justify-center bg-gray-200 dark:bg-gray-900 gap-y-4 sm:gap-y-0 p-4 sm:p-6 mb-6 rounded-lg shadow-inner w-full"
+            className="relative flex flex-col sm:flex-row items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 gap-y-6 sm:gap-y-0 p-6 sm:p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800"
           >
-            <div className="group fighter-a flex flex-col md:flex-row justify-center sm:justify-normal items-center flex-1 gap-x-4 text-center md:text-left w-full">
+            <div className="group fighter-a flex flex-col md:flex-row justify-center sm:justify-normal items-center flex-1 gap-x-6 text-center md:text-left w-full">
               <span className="inline-block sm:hidden mb-2">
                 <EventTypeBadge isMainCard={fighter.main} />
               </span>
@@ -69,11 +71,13 @@ export default function EventFightCard({ title }: { title: string }) {
               </span>
               <EventFighter fighter={fighter.fighterA} />
             </div>
+
             <EventFightSeparator
               isMainCard={fighter.main}
               weight={fighter.weight}
             />
-            <div className="group fighter-b flex flex-col md:flex-row-reverse justify-center sm:justify-normal items-center flex-1 gap-x-4 text-center md:text-right w-full">
+
+            <div className="group fighter-b flex flex-col md:flex-row-reverse justify-center sm:justify-normal items-center flex-1 gap-x-6 text-center md:text-right w-full">
               <EventFighter fighter={fighter.fighterB} />
             </div>
           </div>

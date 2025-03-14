@@ -8,11 +8,11 @@ jest.mock("@/components/events/event-fight-card", () =>
 );
 
 describe("EventsPage", () => {
+  const mockParams = { title: "mock-event" };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
-
-  const mockParams = { title: "mock-event" };
 
   test("renders EventFightCard with the correct title", async () => {
     render(await EventsPage({ params: Promise.resolve(mockParams) }));
@@ -26,6 +26,7 @@ describe("EventsPage", () => {
     const metadata = await generateMetadata({
       params: Promise.resolve(mockParams),
     });
+
     expect(metadata.title).toBe("Mock Event | Fight Tracker");
     expect(metadata.description).toBe(
       "Check out the upcoming MMA event: Mock Event"

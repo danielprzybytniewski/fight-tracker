@@ -16,29 +16,33 @@ jest.mock("@/components/events/event-weight-badge", () =>
 );
 
 describe("EventFightSeparator", () => {
+  const renderComponent = (props = { isMainCard: true, weight: 93 }) => {
+    render(<EventFightSeparator {...props} />);
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   test('renders "VS" text', () => {
-    render(<EventFightSeparator isMainCard={true} weight={93} />);
+    renderComponent();
     expect(screen.getByText("VS")).toBeInTheDocument();
   });
 
   test("renders correct badge type when props isMainCard is true", () => {
-    render(<EventFightSeparator isMainCard={true} weight={93} />);
+    renderComponent();
     const typeBadge = screen.getByTestId("event-type-badge");
     expect(typeBadge).toHaveTextContent("MAIN CARD");
   });
 
   test("renders correct badge type when props isMainCard is false", () => {
-    render(<EventFightSeparator isMainCard={false} weight={93} />);
+    renderComponent({ isMainCard: false, weight: 93 });
     const typeBadge = screen.getByTestId("event-type-badge");
     expect(typeBadge).toHaveTextContent("PRELIMS");
   });
 
   test("renders EventWeightBadge with correct weight prop", () => {
-    render(<EventFightSeparator isMainCard={true} weight={93} />);
+    renderComponent();
     const weightBadge = screen.getByTestId("event-weight-badge");
     expect(weightBadge).toHaveTextContent("93 kg");
   });

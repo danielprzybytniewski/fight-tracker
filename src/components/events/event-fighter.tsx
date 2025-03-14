@@ -2,7 +2,6 @@
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
-import Link from "next/link";
 import fallbackImage from "../../../public/images/og-image.png";
 import { useFavorites } from "@/hooks/use-favorites";
 import { CircleCheck, CircleX, StarIcon } from "lucide-react";
@@ -52,9 +51,10 @@ export default function EventFighter({ fighter }: EventFighterProps) {
         <Image
           src={imageUrl}
           alt={fighter.name}
-          width={112}
-          height={112}
-          className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-full border-2 border-gray-300 dark:border-gray-600 shadow-md"
+          width={130}
+          height={130}
+          className="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-full outline outline-gray-300 dark:outline-gray-600 
+          shadow-md"
           priority
         />
         <button
@@ -75,17 +75,14 @@ export default function EventFighter({ fighter }: EventFighterProps) {
         </button>
       </div>
       <div>
-        <Link
-          href={fighter.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block mt-2 md:mt-0 text-sm sm:text-lg uppercase font-bold text-gray-900 hover:text-gray-500
-          dark:text-gray-100 dark:hover:text-gray-400 transition-colors duration-200"
+        <p
+          className="block mt-2 md:mt-0 text-sm sm:text-lg uppercase font-bold text-gray-900
+          dark:text-gray-100"
         >
           <span className="inline sm:block">{firstName}</span>
           <span className="inline sm:hidden">&nbsp;</span>
           <span className="inline sm:block">{lastName}</span>
-        </Link>
+        </p>
         <div
           className="flex flex-row sm:flex-col items-center justify-center md:items-center md:group-[.fighter-a]:items-start
          md:group-[.fighter-b]:items-end mt-1"
@@ -95,9 +92,9 @@ export default function EventFighter({ fighter }: EventFighterProps) {
             alt={`${fighter.name} country`}
             width={24}
             height={16}
-            className="w-auto h-auto inline-block ml-2 sm:ml-0 order-2 sm:order-1"
+            className="w-5 h-3 sm:w-6 sm:h-4 inline-block ml-2 sm:ml-0 order-2 sm:order-1 text-gray-600 dark:text-gray-400"
           />
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-0 sm:mt-1 order-1 sm:order-2">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0 sm:mt-1 order-1 sm:order-2">
             {fighter.record}
           </p>
         </div>

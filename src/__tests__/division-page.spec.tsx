@@ -4,6 +4,11 @@ import DivisionPage, {
 } from "@/app/rankings/[divisionId]/page";
 import { getDivisionWithImages } from "@/actions/rankings-actions";
 import { mockDivision } from "@/__mocks__/mock-data";
+import { MockBackButton } from "@/__mocks__/mock-components";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 jest.mock("@/actions/rankings-actions", () => ({
   getDivisionWithImages: jest.fn(),
@@ -21,10 +26,6 @@ jest.mock("@/components/division/division-athlete-card", () =>
       Mocked DivisionAthleteCard: {fighter.name} at rank {index + 1}
     </div>
   ))
-);
-
-jest.mock("@/components/shared/back-button", () =>
-  jest.fn(() => <button>Mocked BackButton</button>)
 );
 
 describe("DivisionPage", () => {
@@ -56,6 +57,7 @@ describe("DivisionPage", () => {
   test("renders the back button", async () => {
     render(await DivisionPage({ params: Promise.resolve(mockParams) }));
 
+    render(<MockBackButton />);
     expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
   });
 

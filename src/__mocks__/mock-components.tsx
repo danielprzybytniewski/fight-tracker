@@ -30,3 +30,5 @@ export const MockLayout = ({ children }: { children: React.ReactNode }) => (
     </ThemeProvider>
   </ReactQueryProvider>
 );
+
+export const MockBackButton = () => <button>Mocked BackButton</button>;

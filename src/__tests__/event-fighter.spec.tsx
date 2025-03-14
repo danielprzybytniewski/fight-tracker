@@ -14,6 +14,10 @@ describe("EventFighter", () => {
   const mockIsFavorite = jest.fn();
   const mockToast = jest.fn();
 
+  const renderComponent = (fighter = mockEventFighter) => {
+    return render(<MockEventFighter fighter={fighter} />);
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -30,8 +34,7 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter image from url", () => {
-    render(<MockEventFighter fighter={mockEventFighter} />);
-
+    renderComponent();
     const fighterImage = screen.getByAltText("Jan Kowalski");
 
     expect(fighterImage).toBeInTheDocument();
@@ -43,40 +46,28 @@ describe("EventFighter", () => {
   });
 
   test("renders fallback image when fighter image is not a valid URL", () => {
-    const modifiedFighter = {
-      ...mockEventFighter,
-      picture: "/images/logo.png",
-    };
-
-    render(<MockEventFighter fighter={modifiedFighter} />);
-
-    const fighterImage = screen.getByAltText(modifiedFighter.name);
+    renderComponent({ ...mockEventFighter, picture: "/images/logo.png" });
+    const fighterImage = screen.getByAltText(mockEventFighter.name);
 
     expect(fighterImage).toBeInTheDocument();
     expect(fighterImage).toHaveAttribute(
       "src",
       expect.stringContaining(encodeURIComponent(fallbackImage.src))
     );
-    expect(fighterImage).toHaveAttribute("alt", modifiedFighter.name);
+    expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
   });
 
-  test("renders fighter name as a clickable link", async () => {
-    const user = userEvent.setup();
-    render(<MockEventFighter fighter={mockEventFighter} />);
+  test("renders fighter name", () => {
+    renderComponent();
+    const firstName = screen.getByText(/Jan/i);
+    const lastName = screen.getByText(/Kowalski/i);
 
-    const link = screen.getByRole("link");
-
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveTextContent(mockEventFighter.name);
-    expect(link).toHaveAttribute("href", mockEventFighter.link);
-    expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    await user.click(link);
-    expect(link).toHaveAttribute("target", "_blank");
+    expect(firstName).toBeInTheDocument();
+    expect(lastName).toBeInTheDocument();
   });
 
   test("renders fighter country flag", () => {
-    render(<MockEventFighter fighter={mockEventFighter} />);
-
+    renderComponent();
     const countryImage = screen.getByAltText(/jan kowalski country/i);
 
     expect(countryImage).toBeInTheDocument();
@@ -87,8 +78,7 @@ describe("EventFighter", () => {
   });
 
   test("renders fighter record", () => {
-    render(<MockEventFighter fighter={mockEventFighter} />);
-
+    renderComponent();
     const fighterRecord = screen.getByText(mockEventFighter.record);
 
     expect(fighterRecord).toBeInTheDocument();
@@ -99,8 +89,7 @@ describe("EventFighter", () => {
 
     mockIsFavorite.mockReturnValueOnce(false).mockReturnValueOnce(true);
 
-    render(<MockEventFighter fighter={mockEventFighter} />);
-
+    renderComponent();
     const favoriteButton = screen.getByRole("button", { name: /favorite/i });
     const favoriteIcon = screen.getByTestId("favorite-icon");
 
@@ -136,9 +125,9 @@ describe("EventFighter", () => {
       toggleFavorite: jest.fn(),
     });
 
-    render(<MockEventFighter fighter={mockEventFighter} />);
-
+    renderComponent();
     const favoriteIcon = screen.getByTestId("favorite-icon");
+
     expect(favoriteIcon).toHaveClass("fill-yellow-500");
     expect(favoriteIcon).toHaveClass("text-yellow-500");
   });

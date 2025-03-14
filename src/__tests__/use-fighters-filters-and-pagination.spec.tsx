@@ -178,8 +178,6 @@ describe("useFightersFiltersAndPagination", () => {
 
       expect(result.current.filters.selectedCategory).toBe("heavyweight");
 
-      mockRouterPush.mockClear();
-
       await waitFor(() => {
         result.current.handleCategoryChange(null);
       });

@@ -19,9 +19,7 @@ describe("FightersPage", () => {
   };
 
   const renderFightersPage = async (searchParams = {}) => {
-    await render(
-      await FightersPage({ searchParams: Promise.resolve(searchParams) })
-    );
+    render(await FightersPage({ searchParams: Promise.resolve(searchParams) }));
   };
 
   beforeEach(() => {

@@ -26,14 +26,12 @@ export const mockFightsCards: Event[] = [
           record: "5-0",
           country: "China",
           picture: "https://example.com/fighter.png",
-          link: "https://example.com/fighterA",
         },
         fighterB: {
           name: "Adam Kowalski",
           record: "12-0",
           country: "Poland",
           picture: "https://example.com/fighter.png",
-          link: "https://example.com/fighterB",
         },
       },
     ],
@@ -49,14 +47,12 @@ export const mockEventFightCard: Event[] = [
         main: true,
         weight: 185,
         fighterA: {
-          link: "https://example.com/fighterA",
           name: "Jan Kowalski",
           record: "15-0",
           country: "https://example.com/poland.png",
           picture: "https://example.com/fighter.png",
         },
         fighterB: {
-          link: "https://example.com/fighterB",
           name: "Yang Wang",
           record: "2-0",
           country: "https://example.com/china.png",
@@ -72,11 +68,9 @@ export const mockFighter: Fighter = {
   record: "15-0",
   country: "England",
   picture: "https://example.com/fighter.png",
-  link: "https://example.com/fighter-profile",
 };
 
 export const mockEventFighter: Fighter = {
-  link: "https://example.com/fighter-profile",
   name: "Jan Kowalski",
   record: "22-0",
   country: "https://example.com/poland.png",

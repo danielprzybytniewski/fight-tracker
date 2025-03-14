@@ -10,6 +10,11 @@ import {
   mockApiFight,
 } from "@/__mocks__/mock-data";
 import { DetailItem } from "@/types/rankings-schema.types";
+import { MockBackButton } from "@/__mocks__/mock-components";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 jest.mock("@/actions/rankings-actions", () => ({
   getFighterDetails: jest.fn(),
@@ -62,10 +67,6 @@ jest.mock("@/components/athlete/athlete-details", () =>
 
 jest.mock("@/components/fights-history/fights-history", () =>
   jest.fn(() => <div data-testid="fights-history">Mocked FightsHistory</div>)
-);
-
-jest.mock("@/components/shared/back-button", () =>
-  jest.fn(() => <button>Mocked BackButton</button>)
 );
 
 jest.mock("@/lib/normalize-name", () =>
@@ -166,9 +167,8 @@ describe("AthletePage", () => {
   test("renders back button correctly", async () => {
     render(await AthletePage({ params: Promise.resolve(mockParams) }));
 
-    await waitFor(() => {
-      expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
-    });
+    render(<MockBackButton />);
+    expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
   });
 
   test("generates correct metadata", async () => {

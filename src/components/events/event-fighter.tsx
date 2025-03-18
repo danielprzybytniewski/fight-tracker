@@ -2,7 +2,7 @@
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { Fighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
-import fallbackImage from "../../../public/images/og-image.png";
+import fallbackImage from "@/public/images/og-image.png";
 import { useFavorites } from "@/hooks/use-favorites";
 import { CircleCheck, CircleX, StarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -92,9 +92,9 @@ export default function EventFighter({ fighter }: EventFighterProps) {
             alt={`${fighter.name} country`}
             width={24}
             height={16}
-            className="w-5 h-3 sm:w-6 sm:h-4 inline-block ml-2 sm:ml-0 order-2 sm:order-1 text-gray-600 dark:text-gray-400"
+            className="inline-block w-5 h-3 sm:w-6 sm:h-4 ml-2 sm:ml-0 order-2 sm:order-1 text-gray-600 dark:text-gray-400"
           />
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-0 sm:mt-1 order-1 sm:order-2">
+          <p className="mt-0 sm:mt-1 order-1 sm:order-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             {fighter.record}
           </p>
         </div>

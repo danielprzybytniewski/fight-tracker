@@ -5,6 +5,7 @@ import {
 } from "@/lib/fights-history-transformer";
 import FightsHistory from "@/components/fights-history/fights-history";
 import { mockAppFight, mockTransformedDetails } from "@/__mocks__/mock-data";
+import { Fight } from "@/types/fights-history.schema.types";
 
 jest.mock("@/lib/fights-history-transformer", () => ({
   sortFightsByDate: jest.fn(),
@@ -23,20 +24,29 @@ const mockSortFightsByDate = sortFightsByDate as jest.Mock;
 const mockTransformFightDetails = transformFightDetails as jest.Mock;
 
 describe("FightsHistory", () => {
+  const renderComponent = (fightsHistory: Fight[], mainFighterName: string) => {
+    render(
+      <FightsHistory
+        fightsHistory={fightsHistory}
+        mainFighterName={mainFighterName}
+      />
+    );
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   test("renders GradientHeading correctly", () => {
     mockSortFightsByDate.mockReturnValue([]);
-    render(<FightsHistory fightsHistory={[]} mainFighterName="Fighter A" />);
+    renderComponent([], "Fighter A");
     expect(screen.getByTestId("gradient-heading")).toBeInTheDocument();
     expect(screen.getByText("UFC Fights History")).toBeInTheDocument();
   });
 
   test("renders correct message when no fights are present", () => {
     mockSortFightsByDate.mockReturnValue([]);
-    render(<FightsHistory fightsHistory={[]} mainFighterName="Fighter A" />);
+    renderComponent([], "Fighter A");
     expect(
       screen.getByText("UFC Fights History not found")
     ).toBeInTheDocument();
@@ -45,12 +55,7 @@ describe("FightsHistory", () => {
   test("renders fight card correctly when fights are present", () => {
     mockSortFightsByDate.mockReturnValue([mockAppFight]);
     mockTransformFightDetails.mockReturnValue(mockTransformedDetails);
-    render(
-      <FightsHistory
-        fightsHistory={[mockAppFight]}
-        mainFighterName="Fighter A"
-      />
-    );
+    renderComponent([mockAppFight], "Fighter A");
 
     expect(screen.getAllByTestId("fights-history-card-content")).toHaveLength(
       1
@@ -65,12 +70,7 @@ describe("FightsHistory", () => {
     ];
     mockSortFightsByDate.mockReturnValue(multipleFights);
     mockTransformFightDetails.mockReturnValue(mockTransformedDetails);
-    render(
-      <FightsHistory
-        fightsHistory={multipleFights}
-        mainFighterName="Fighter A"
-      />
-    );
+    renderComponent(multipleFights, "Fighter A");
 
     expect(screen.getAllByTestId("fights-history-card-content")).toHaveLength(
       2

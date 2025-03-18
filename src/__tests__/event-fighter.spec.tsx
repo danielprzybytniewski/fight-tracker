@@ -1,10 +1,10 @@
 import { mockEventFighter } from "@/__mocks__/mock-data";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import fallbackImage from "../../public/images/og-image.png";
-import { MockEventFighter } from "@/__mocks__/mock-components";
+import fallbackImage from "@/public/images/og-image.png";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
+import EventFighter from "@/components/events/event-fighter";
 
 jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-toast");
@@ -15,7 +15,7 @@ describe("EventFighter", () => {
   const mockToast = jest.fn();
 
   const renderComponent = (fighter = mockEventFighter) => {
-    return render(<MockEventFighter fighter={fighter} />);
+    return render(<EventFighter fighter={fighter} />);
   };
 
   beforeEach(() => {

@@ -1,66 +1,48 @@
 import generatePageNumbers from "@/lib/generate-page-numbers";
 
 describe("generatePageNumbers", () => {
-  test("returns correct pages for mobile view when currentPage is in the middle", () => {
-    const result = generatePageNumbers({
-      currentPage: 3,
-      totalPages: 5,
-      isMobile: true,
-    });
-    expect(result).toEqual([2, 3, 4]);
-  });
+  const testCases = [
+    {
+      name: "mobile view, currentPage in the middle",
+      options: { currentPage: 3, totalPages: 5, isMobile: true },
+      expected: [2, 3, 4],
+    },
+    {
+      name: "mobile view, currentPage is the first page",
+      options: { currentPage: 1, totalPages: 5, isMobile: true },
+      expected: [1, 2],
+    },
+    {
+      name: "mobile view, currentPage is the last page",
+      options: { currentPage: 5, totalPages: 5, isMobile: true },
+      expected: [4, 5],
+    },
+    {
+      name: "desktop view, currentPage in the middle",
+      options: { currentPage: 3, totalPages: 5, isMobile: false },
+      expected: [1, 2, 3, 4, 5],
+    },
+    {
+      name: "desktop view, currentPage is the first page",
+      options: { currentPage: 1, totalPages: 5, isMobile: false },
+      expected: [1, 2, 5],
+    },
+    {
+      name: "desktop view, currentPage is the last page",
+      options: { currentPage: 5, totalPages: 5, isMobile: false },
+      expected: [1, 4, 5],
+    },
+    {
+      name: "single page total",
+      options: { currentPage: 1, totalPages: 1, isMobile: false },
+      expected: [1],
+    },
+  ];
 
-  test("returns correct pages for mobile view when currentPage is the first page", () => {
-    const result = generatePageNumbers({
-      currentPage: 1,
-      totalPages: 5,
-      isMobile: true,
+  testCases.forEach((testCase) => {
+    test(testCase.name, () => {
+      const result = generatePageNumbers(testCase.options);
+      expect(result).toEqual(testCase.expected);
     });
-    expect(result).toEqual([1, 2]);
-  });
-
-  test("returns correct pages for mobile view when currentPage is the last page", () => {
-    const result = generatePageNumbers({
-      currentPage: 5,
-      totalPages: 5,
-      isMobile: true,
-    });
-    expect(result).toEqual([4, 5]);
-  });
-
-  test("returns correct pages for desktop view when currentPage is in the middle", () => {
-    const result = generatePageNumbers({
-      currentPage: 3,
-      totalPages: 5,
-      isMobile: false,
-    });
-    expect(result).toEqual([1, 2, 3, 4, 5]);
-  });
-
-  test("returns correct pages for desktop view when currentPage is the first page", () => {
-    const result = generatePageNumbers({
-      currentPage: 1,
-      totalPages: 5,
-      isMobile: false,
-    });
-    expect(result).toEqual([1, 2, 5]);
-  });
-
-  test("returns correct pages for desktop view when currentPage is the last page", () => {
-    const result = generatePageNumbers({
-      currentPage: 5,
-      totalPages: 5,
-      isMobile: false,
-    });
-    expect(result).toEqual([1, 4, 5]);
-  });
-
-  test("returns correct pages for single page total", () => {
-    const result = generatePageNumbers({
-      currentPage: 1,
-      totalPages: 1,
-      isMobile: false,
-    });
-    expect(result).toEqual([1]);
   });
 });

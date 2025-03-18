@@ -1,5 +1,5 @@
 import Image from "next/image";
-import errorImg from "../../../public/images/error.png";
+import errorImg from "@/public/images/error.png";
 
 type ErrorProps = {
   message: string;
@@ -19,7 +19,7 @@ export default function ErrorFightsCards({ message, onRetry }: ErrorProps) {
         priority
         className="w-auto h-auto"
       />
-      <p className="text-2xl font-bold text-red-500 uppercase mb-5">
+      <p className="mb-5 text-2xl font-bold uppercase text-red-500">
         {isNetworkError
           ? "Network error occurred. Please check your connection and try again."
           : `An error occurred: ${message}`}
@@ -27,7 +27,7 @@ export default function ErrorFightsCards({ message, onRetry }: ErrorProps) {
       {onRetry && (
         <button
           onClick={onRetry}
-          className="mt-4 px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded"
+          className="mt-4 px-4 py-2 font-bold rounded text-white bg-red-500 hover:bg-red-600"
         >
           Retry
         </button>

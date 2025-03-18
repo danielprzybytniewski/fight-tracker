@@ -4,7 +4,6 @@ import DivisionPage, {
 } from "@/app/rankings/[divisionId]/page";
 import { getDivisionWithImages } from "@/actions/rankings-actions";
 import { mockDivision } from "@/__mocks__/mock-data";
-import { MockBackButton } from "@/__mocks__/mock-components";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -28,8 +27,16 @@ jest.mock("@/components/division/division-athlete-card", () =>
   ))
 );
 
+jest.mock("@/components/shared/back-button", () =>
+  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
+);
+
 describe("DivisionPage", () => {
   const mockParams = { divisionId: "lightweight" };
+
+  const renderComponent = async () => {
+    render(await DivisionPage({ params: Promise.resolve(mockParams) }));
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -37,7 +44,7 @@ describe("DivisionPage", () => {
   });
 
   test("renders the division champion and athlete cards", async () => {
-    render(await DivisionPage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(
@@ -55,14 +62,14 @@ describe("DivisionPage", () => {
   });
 
   test("renders the back button", async () => {
-    render(await DivisionPage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
-    render(<MockBackButton />);
-    expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
+    const backButton = screen.getByTestId("back-button");
+    expect(backButton).toBeInTheDocument();
   });
 
   test("renders the division title", async () => {
-    render(await DivisionPage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     expect(
       screen.getByRole("heading", { name: "Lightweight UFC Divison" })

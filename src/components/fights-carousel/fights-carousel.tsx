@@ -32,7 +32,7 @@ export default function FightsCarousel() {
   }
 
   return (
-    <div className="flex items-center justify-center py-10 px-4 md:px-6 ">
+    <div className="flex items-center justify-center py-10 px-4 md:px-6">
       <Carousel className="w-full max-w-5xl relative bg-gray-100 dark:bg-gray-900 rounded-3xl shadow-xl overflow-hidden">
         <CarouselContent>
           {fightCards.map((event) => {
@@ -48,12 +48,12 @@ export default function FightsCarousel() {
                 >
                   {event.title}
                 </Link>
-                <p className="mt-3 text-gray-600 dark:text-gray-400 text-sm md:text-base font-medium">
+                <p className="mt-3 text-sm md:text-base font-medium text-gray-600 dark:text-gray-400">
                   {convertApiDateToLocalTime(event.date)}
                 </p>
                 <div className="flex flex-col md:flex-row justify-between w-full mt-8 p-6 md:p-10 border-t border-gray-300 dark:border-gray-700">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
-                  <div className="flex flex-col items-center h-full md:w-full mx-4 my-3 md:my-0">
+                  <div className="flex flex-col items-center h-full md:w-full mx-4 mt-4 md:mt-0 mb-6 md:mb-0">
                     <p className="md:mt-auto text-base md:text-3xl font-extrabold text-gray-800 dark:text-gray-200">
                       VS
                     </p>

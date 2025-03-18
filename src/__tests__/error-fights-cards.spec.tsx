@@ -3,8 +3,15 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("ErrorFightsCards", () => {
+  const renderComponent = (props: {
+    message: string;
+    onRetry?: () => void;
+  }) => {
+    render(<ErrorFightsCards {...props} />);
+  };
+
   test("renders the error image and message for a general error", () => {
-    render(<ErrorFightsCards message="Something went wrong" />);
+    renderComponent({ message: "Something went wrong" });
 
     const errorImage = screen.getByAltText("error");
     const errorMessage = screen.getByText(/something went wrong/i);
@@ -14,7 +21,7 @@ describe("ErrorFightsCards", () => {
   });
 
   test("renders  message for a network error", () => {
-    render(<ErrorFightsCards message="Network error occurred" />);
+    renderComponent({ message: "Network error occurred" });
 
     const errorMessage = screen.getByText(/network error occurred/i);
 
@@ -25,9 +32,7 @@ describe("ErrorFightsCards", () => {
     const user = userEvent.setup();
     const onRetryMock = jest.fn();
 
-    render(
-      <ErrorFightsCards message="Something went wrong" onRetry={onRetryMock} />
-    );
+    renderComponent({ message: "Something went wrong", onRetry: onRetryMock });
 
     const retryButton = screen.getByRole("button", { name: "Retry" });
     await user.click(retryButton);

@@ -1,6 +1,6 @@
 import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import { render, screen } from "@testing-library/react";
-import notFound from "../../public/images/not-found.png";
+import notFoundImg from "@/public/images/not-found.png";
 
 describe("NotFoundFightCard", () => {
   test("renders correctly", () => {
@@ -10,7 +10,7 @@ describe("NotFoundFightCard", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(notFound.src))
+      expect.stringContaining(encodeURIComponent(notFoundImg.src))
     );
 
     const mainText = screen.getByText(/event not found/i);

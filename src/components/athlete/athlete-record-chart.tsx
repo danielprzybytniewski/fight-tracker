@@ -17,26 +17,26 @@ export default function AthleteRecordChart({
       <div className="h-8 flex rounded-lg overflow-hidden">
         <div
           style={{ width: `${winsPercent}%` }}
-          className="bg-green-500 flex items-center justify-center text-white text-sm font-medium"
+          className="flex items-center justify-center text-sm font-medium text-white bg-green-500"
         >
           {`${wins}W`}
         </div>
         <div
           style={{ width: `${lossesPercent}%` }}
-          className="bg-red-500 flex items-center justify-center text-white text-sm font-medium"
+          className="flex items-center justify-center text-sm font-medium text-white bg-red-500"
         >
           {`${losses}L`}
         </div>
         {draws !== 0 && (
           <div
             style={{ width: `${drawsPercent}%` }}
-            className="bg-yellow-500 flex items-center justify-center text-white text-sm font-medium"
+            className="flex items-center justify-center text-sm font-medium text-white bg-yellow-500"
           >
             {`${draws}D`}
           </div>
         )}
       </div>
-      <div className="flex justify-between text-sm mt-1 text-gray-600 dark:text-gray-400">
+      <div className="flex justify-between mt-1 text-sm text-gray-600 dark:text-gray-400">
         <span>{Math.round(winsPercent)}% Wins</span>
         <span>{Math.round(lossesPercent)}% Losses</span>
         {draws !== 0 && <span>{Math.round(drawsPercent)}% Draws</span>}

@@ -24,11 +24,11 @@ export default function FightsHistory({
         UFC Fights History
       </GradientHeading>
       {sortedFights.length === 0 && (
-        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 text-center">
+        <p className="text-sm sm:text-base text-center text-gray-600 dark:text-gray-400">
           UFC Fights History not found
         </p>
       )}
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {sortedFights.map((fight: Fight) => {
           const {
             opponentName,
@@ -43,10 +43,10 @@ export default function FightsHistory({
           return (
             <Card
               key={fight.id}
-              className="bg-gray-50 dark:bg-gray-800/80 shadow-md rounded-2xl h-full flex flex-col justify-between"
+              className="flex flex-col justify-between h-full bg-gray-50 dark:bg-gray-800/80 shadow-md rounded-2xl"
             >
               <CardHeader>
-                <CardTitle className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 flex-col justify-center gap-2 text-center sm:min-h-10">
+                <CardTitle className="flex-col justify-center sm:min-h-10 gap-2 text-base sm:text-lg font-semibold text-center text-gray-800 dark:text-gray-100">
                   <span>{fight.event}</span>
                 </CardTitle>
               </CardHeader>

@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} antialiased bg-slate-200 dark:bg-gray-800`}
+        className={`${roboto.className} antialiased bg-gray-200 dark:bg-gray-800`}
       >
         <ReactQueryProvider>
           <ThemeProvider

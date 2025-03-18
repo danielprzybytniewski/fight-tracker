@@ -9,6 +9,10 @@ import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 jest.mock("@/hooks/use-fetch-fight-cards");
 
 describe("FightsCarousel", () => {
+  const renderComponent = () => {
+    render(<FightsCarousel />);
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -21,7 +25,7 @@ describe("FightsCarousel", () => {
       refetch: jest.fn(),
     });
 
-    render(<FightsCarousel />);
+    renderComponent();
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
@@ -36,7 +40,7 @@ describe("FightsCarousel", () => {
       refetch: refetchMock,
     });
 
-    render(<FightsCarousel />);
+    renderComponent();
 
     const errorMessage = screen.getByText(
       "Network error occurred. Please check your connection and try again."
@@ -58,7 +62,7 @@ describe("FightsCarousel", () => {
       refetch: jest.fn(),
     });
 
-    render(<FightsCarousel />);
+    renderComponent();
     expect(screen.getByText("Fight Night")).toBeInTheDocument();
     const [{ fighterA, fighterB }] = mockFightsCards[0].fights;
 

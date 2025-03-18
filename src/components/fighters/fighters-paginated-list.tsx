@@ -18,7 +18,7 @@ export default function FightersPaginatedList({
 }: FightersPaginatedListProps) {
   if (paginatedFighters.length === 0) {
     return (
-      <p className="text-center py-12 text-gray-600 dark:text-gray-400 text-lg">
+      <p className="py-12 text-center text-lg text-gray-600 dark:text-gray-400">
         No fighters found
       </p>
     );

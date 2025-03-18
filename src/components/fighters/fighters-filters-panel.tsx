@@ -18,13 +18,13 @@ export default function FightersFiltersPanel({
 }: FightersFiltersPanelProps) {
   return (
     <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
-      <div className="w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md flex justify-center md:justify-start">
+      <div className="flex justify-center md:justify-start w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md">
         <FightersSearchBar
           searchValue={searchQuery}
           onSearch={onSearchChange}
         />
       </div>
-      <div className="w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md flex justify-center md:justify-end">
+      <div className="flex justify-center md:justify-end w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md">
         <FightersCategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}

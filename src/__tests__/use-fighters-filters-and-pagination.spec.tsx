@@ -323,29 +323,45 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handleSearchChange("Fighter 1");
       });
 
-      expect(mockRouterPush).toHaveBeenLastCalledWith(
-        "/fighters?search=Fighter%25201&page=1",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenLastCalledWith(
+          "/fighters?search=Fighter%25201&page=1",
+          { scroll: true }
+        );
+      });
 
       await waitFor(() => {
         result.current.handleCategoryChange("Heavyweight");
       });
 
-      expect(mockRouterPush).toHaveBeenLastCalledWith(
-        "/fighters?search=Fighter%25201&category=heavyweight&page=1",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenLastCalledWith(
+          "/fighters?search=Fighter%25201&category=heavyweight&page=1",
+          { scroll: true }
+        );
+      });
 
       await waitFor(() => {
         result.current.handleSearchChange("Fighter 1");
+      });
+
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          expect.stringContaining("search=Fighter%25201"),
+          expect.anything()
+        );
+      });
+
+      await waitFor(() => {
         result.current.handleCategoryChange("Lightweight");
       });
 
-      expect(mockRouterPush).toHaveBeenLastCalledWith(
-        "/fighters?search=Fighter%25201&category=lightweight&page=1",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenLastCalledWith(
+          "/fighters?search=Fighter%25201&category=lightweight&page=1",
+          { scroll: true }
+        );
+      });
     });
 
     test("properly includes searchQuery in URL when changing pages", async () => {

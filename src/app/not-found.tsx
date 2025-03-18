@@ -1,12 +1,12 @@
 import Link from "next/link";
-import notFoundImg from "../../public/images/not-found.png";
+import notFoundImg from "@/public/images/not-found.png";
 import Image from "next/image";
 
 export default function NotFound() {
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-red-500 
-      text-center p-2"
+      className="flex flex-col items-center justify-center min-h-screen p-2 text-center bg-gray-100 dark:bg-gray-900 
+      text-red-500"
     >
       <Image
         src={notFoundImg}

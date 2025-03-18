@@ -55,7 +55,7 @@ export default function MobileMenu() {
             </button>
           </SheetClose>
         </SheetTitle>
-        <SheetDescription className="text-center text-xl font-medium my-4 border-b border-gray-400 dark:border-gray-600 pb-3 text-gray-700 dark:text-gray-400">
+        <SheetDescription className="my-4 pb-3 text-xl font-medium text-center border-b border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-400">
           Menu
         </SheetDescription>
         <MobileNavbarItems onItemClick={handleClose} />

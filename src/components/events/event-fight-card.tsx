@@ -52,7 +52,7 @@ export default function EventFightCard({ title }: { title: string }) {
         <CardTitle className="text-xl md:text-3xl uppercase font-black tracking-tight text-gray-900 dark:text-gray-100">
           <h1>{fightEvent.title}</h1>
         </CardTitle>
-        <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-3 font-medium">
+        <CardDescription className="mt-3 text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400">
           {convertedDate}
         </CardDescription>
       </CardHeader>
@@ -60,9 +60,9 @@ export default function EventFightCard({ title }: { title: string }) {
         {fightEvent.fights.map((fighter) => (
           <div
             key={`${fighter.fighterA.name}-${fighter.fighterB.name}`}
-            className="relative flex flex-col sm:flex-row items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 gap-y-6 sm:gap-y-0 p-6 sm:p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800"
+            className="relative flex flex-col sm:flex-row items-center justify-center gap-y-6 sm:gap-y-0 p-6 sm:p-8 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800"
           >
-            <div className="group fighter-a flex flex-col md:flex-row justify-center sm:justify-normal items-center flex-1 gap-x-6 text-center md:text-left w-full">
+            <div className="group fighter-a flex flex-col md:flex-row justify-center sm:justify-normal items-center flex-1 gap-x-6 w-full text-center md:text-left">
               <span className="inline-block sm:hidden mb-2">
                 <EventTypeBadge isMainCard={fighter.main} />
               </span>
@@ -77,7 +77,7 @@ export default function EventFightCard({ title }: { title: string }) {
               weight={fighter.weight}
             />
 
-            <div className="group fighter-b flex flex-col md:flex-row-reverse justify-center sm:justify-normal items-center flex-1 gap-x-6 text-center md:text-right w-full">
+            <div className="group fighter-b flex flex-col md:flex-row-reverse justify-center sm:justify-normal items-center flex-1 gap-x-6 w-full text-center md:text-right">
               <EventFighter fighter={fighter.fighterB} />
             </div>
           </div>

@@ -21,7 +21,7 @@ export default function FightsCarouselFighterProfile({
           priority
         />
       </div>
-      <p className="text-lg md:text-xl font-bold uppercase mt-2 text-gray-800 dark:text-gray-100">
+      <p className="text-lg md:text-xl font-bold uppercase text-gray-800 dark:text-gray-100">
         <span className="inline md:block">{firstName}</span>
         <span className="inline md:hidden">&nbsp;</span>
         <span className="inline md:block md:font-black md:text-2xl">

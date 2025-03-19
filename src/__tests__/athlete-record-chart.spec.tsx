@@ -2,8 +2,12 @@ import { render, screen } from "@testing-library/react";
 import AthleteRecordChart from "@/components/athlete/athlete-record-chart";
 
 describe("AthleteRecordChart", () => {
+  const renderComponent = (wins: number, losses: number, draws: number) => {
+    render(<AthleteRecordChart wins={wins} losses={losses} draws={draws} />);
+  };
+
   test("renders the wins, losses, and draws correctly", () => {
-    render(<AthleteRecordChart wins={10} losses={5} draws={2} />);
+    renderComponent(10, 5, 2);
 
     expect(screen.getByText("10W")).toBeInTheDocument();
     expect(screen.getByText("5L")).toBeInTheDocument();
@@ -11,7 +15,7 @@ describe("AthleteRecordChart", () => {
   });
 
   test("calculates and renders percentages correctly", () => {
-    render(<AthleteRecordChart wins={10} losses={5} draws={5} />);
+    renderComponent(10, 5, 5);
 
     expect(screen.getByText("50% Wins")).toBeInTheDocument();
     expect(screen.getByText("25% Losses")).toBeInTheDocument();
@@ -19,7 +23,7 @@ describe("AthleteRecordChart", () => {
   });
 
   test("renders only wins and losses when draws are zero", () => {
-    render(<AthleteRecordChart wins={15} losses={10} draws={0} />);
+    renderComponent(15, 10, 0);
 
     expect(screen.getByText("15W")).toBeInTheDocument();
     expect(screen.getByText("10L")).toBeInTheDocument();

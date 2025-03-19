@@ -36,7 +36,7 @@ export default function FightersPagination({
   };
 
   return (
-    <Pagination className="mt-4 sm:mt-6 flex justify-center">
+    <Pagination className="flex justify-center mt-4 sm:mt-6">
       <PaginationContent className="flex gap-1 sm:gap-2">
         <PaginationItem>
           <PaginationPrevious
@@ -46,7 +46,7 @@ export default function FightersPagination({
               if (currentPage > 1) onPageChange(currentPage - 1);
             }}
             className={cn(
-              "text-xs sm:text-sm py-1 px-2 sm:py-2 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
+              "py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
               currentPage === 1 && "pointer-events-none opacity-50"
             )}
             aria-label="Go to previous page"
@@ -72,7 +72,8 @@ export default function FightersPagination({
                   className={cn(
                     "py-1 px-2 sm:py-2 text-xs sm:text-sm hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
                     page === currentPage &&
-                      `bg-gray-300 text-gray-800 hover:bg-gray-200 dark:text-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 border-gray-400 dark:border-gray-500`
+                      `bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 border-gray-500 
+                      dark:border-gray-400`
                   )}
                 >
                   {page}

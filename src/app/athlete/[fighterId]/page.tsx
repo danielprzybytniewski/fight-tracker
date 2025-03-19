@@ -90,11 +90,11 @@ export default async function AthletePage({
         </div>
       </div>
       <div className="mt-8 text-center">
-        <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-gray-900 dark:text-gray-200">
+        <h1 className="mb-4 text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-gray-200">
           {fighter.name}
         </h1>
         {fighter.nickname && (
-          <p className="text-xl italic mb-6 opacity-80 text-gray-700 dark:text-gray-300">
+          <p className="mb-6 text-xl italic opacity-80 text-gray-700 dark:text-gray-300">
             &quot;{fighter.nickname}&quot;
           </p>
         )}

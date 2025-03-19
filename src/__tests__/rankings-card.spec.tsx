@@ -2,10 +2,6 @@ import { render, screen } from "@testing-library/react";
 import RankingsCard from "@/components/rankings/rankings-card";
 import { mockDivision } from "@/__mocks__/mock-data";
 
-jest.mock("@/components/shared/champion-badge", () =>
-  jest.fn(() => <div data-testid="champion-badge">🏆 Champion</div>)
-);
-
 describe("RankingsCard", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -37,9 +33,5 @@ describe("RankingsCard", () => {
   test("has the correct link", () => {
     const linkElement = screen.getByRole("link");
     expect(linkElement).toHaveAttribute("href", `/rankings/${mockDivision.id}`);
-  });
-
-  test("renders the ChampionBadge component", () => {
-    expect(screen.getByTestId("champion-badge")).toBeInTheDocument();
   });
 });

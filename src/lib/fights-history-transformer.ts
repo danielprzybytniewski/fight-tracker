@@ -13,7 +13,9 @@ function formatLocation(location: string | undefined): string {
 }
 
 function formatWeightClass(weightClass: string | undefined): string {
-  if (!weightClass || weightClass === "0") return NOT_AVAILABLE;
+  if (!weightClass || !isNaN(Number(weightClass))) {
+    return NOT_AVAILABLE;
+  }
   return weightClass;
 }
 

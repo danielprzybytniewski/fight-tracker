@@ -37,7 +37,8 @@ export default function FightersCategoryFilter({
             className={cn(
               "text-sm transition-colors duration-200",
               selectedCategory && isValidCategory
-                ? "bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+                ? `bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 border-gray-500 
+                dark:border-gray-400`
                 : `bg-gray-50 dark:bg-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50
                  dark:hover:bg-gray-600`
             )}

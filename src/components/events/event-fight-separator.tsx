@@ -16,9 +16,8 @@ export default function EventFightSeparator({
         <EventTypeBadge isMainCard={isMainCard} />
       </span>
       <p
-        className="text-gray-900 dark:text-gray-100 bg-gradient-to-b from-gray-100 to-gray-200 
-      dark:from-gray-800 dark:to-gray-900 text-xs sm:text-sm py-1 px-2 font-bold tracking-wider rounded-full text-center 
-      border border-gray-300 dark:border-gray-700 shadow-sm"
+        className="py-1 px-2 text-xs sm:text-sm font-bold tracking-wider text-center text-gray-900 dark:text-gray-100 bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-full border border-gray-300
+         dark:border-gray-700 shadow-sm"
       >
         VS
       </p>

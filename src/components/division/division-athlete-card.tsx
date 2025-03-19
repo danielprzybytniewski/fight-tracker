@@ -40,7 +40,7 @@ export default function DivisionAthleteCard({
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                 {fighter.name}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
                 Record: {fighter.wins}-{fighter.losses}
                 {fighter.draws !== 0 && `-${fighter.draws}`}
               </p>

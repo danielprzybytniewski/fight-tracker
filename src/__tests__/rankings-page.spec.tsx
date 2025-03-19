@@ -19,20 +19,23 @@ jest.mock("@/components/shared/gradient-heading", () =>
 );
 
 describe("RankingsPage", () => {
+  const renderComponent = async () => {
+    render(await RankingsPage());
+  };
   beforeEach(() => {
     jest.clearAllMocks();
     (getRankingsWithImages as jest.Mock).mockResolvedValue(mockRankings);
   });
 
   test("renders GradientHeading component correctly", async () => {
-    render(await RankingsPage());
+    await renderComponent();
 
     expect(screen.getByTestId("gradient-heading")).toBeInTheDocument();
     expect(screen.getByText("UFC Rankings")).toBeInTheDocument();
   });
 
   test("renders RankingsCard components for each division", async () => {
-    render(await RankingsPage());
+    await renderComponent();
     const rankingsCards = screen.getAllByTestId("rankings-card");
     expect(rankingsCards).toHaveLength(mockRankings.length);
     expect(screen.getByText("Lightweight")).toBeInTheDocument();

@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { useTheme } from "next-themes";
 import ChangeLogo from "@/components/navbar/change-logo";
-import lightLogo from "../../public/light-logo.png";
-import darkLogo from "../../public/dark-logo.png";
+import lightLogo from "@/public/light-logo.png";
+import darkLogo from "@/public/dark-logo.png";
 
 jest.mock("next-themes", () => ({
   useTheme: jest.fn(),

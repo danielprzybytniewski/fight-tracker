@@ -43,7 +43,7 @@ export default function FightersContainer({
   const { searchQuery, selectedCategory, currentPage } = filters;
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 min-h-screen rounded-lg">
+    <div className="container min-h-screen mx-auto px-4 py-8 bg-gray-50 dark:bg-gray-900 rounded-lg">
       <GradientHeading size="large">UFC Fighters</GradientHeading>
       {isLoading ? (
         <LoadingContainer />

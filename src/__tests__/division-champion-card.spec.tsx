@@ -3,7 +3,7 @@ import DivisionChampionCard from "@/components/division/division-champion-card";
 import { mockDivisionWithChampion } from "@/__mocks__/mock-data";
 
 jest.mock("@/components/shared/champion-badge", () =>
-  jest.fn(() => <div data-testid="champion-badge">🏆 Champion</div>)
+  jest.fn(() => <div data-testid="champion-badge">MockedChampionBadge</div>)
 );
 
 describe("DivisionChampionCard", () => {

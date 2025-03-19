@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import ChampionBadge from "@/components/shared/champion-badge";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { Division } from "@/types/rankings-schema.types";
 
@@ -27,16 +26,13 @@ export default function RankingsCard({ division }: RankingsCardProps) {
             </div>
           )}
         </CardHeader>
-        <CardContent className="p-4 md:p-6">
-          <CardTitle className="text-xl md:text-2xl font-bold mb-2 text-center text-gray-800 dark:text-gray-100">
-            {division.categoryName}
-          </CardTitle>
-          <div className="flex justify-center items-center mt-3 md:mt-4">
-            <ChampionBadge />
-          </div>
-          <p className="text-base md:text-lg font-semibold text-center mt-2 text-gray-700 dark:text-gray-300">
+        <CardContent className="flex flex-col items-center p-4 md:p-6">
+          <div className="text-base md:text-lg font-medium text-gray-700 dark:text-gray-400">
             {division.champion.championName}
-          </p>
+          </div>
+          <h3 className="mt-1 text-lg sm:text-xl lg:text-2xl font-extrabold text-center tracking-tight text-gray-900 dark:text-gray-100">
+            {division.categoryName}
+          </h3>
         </CardContent>
       </Card>
     </Link>

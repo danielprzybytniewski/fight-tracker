@@ -2,20 +2,22 @@ import { render, screen } from "@testing-library/react";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import { mockEventFightCard } from "@/__mocks__/mock-data";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
-import {
-  MockBackButton,
-  MockEventFightCard,
-} from "@/__mocks__/mock-components";
+import EventFightCard from "@/components/events/event-fight-card";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
+jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-fetch-fight-cards");
+
+jest.mock("@/components/shared/back-button", () =>
+  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
+);
 
 describe("EventFightCard", () => {
   const renderComponent = (title: string) => {
-    render(<MockEventFightCard title={title} />);
+    render(<EventFightCard title={title} />);
   };
 
   beforeEach(() => {
@@ -87,7 +89,9 @@ describe("EventFightCard", () => {
   });
 
   test("renders back button correctly", async () => {
-    render(<MockBackButton />);
-    expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
+    renderComponent("Some Event");
+
+    const backButton = screen.getByTestId("back-button");
+    expect(backButton).toBeInTheDocument();
   });
 });

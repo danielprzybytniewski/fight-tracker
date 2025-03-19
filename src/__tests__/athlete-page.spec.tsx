@@ -10,7 +10,6 @@ import {
   mockApiFight,
 } from "@/__mocks__/mock-data";
 import { DetailItem } from "@/types/rankings-schema.types";
-import { MockBackButton } from "@/__mocks__/mock-components";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -73,8 +72,16 @@ jest.mock("@/lib/normalize-name", () =>
   jest.fn((name: string) => `Normalized ${name}`)
 );
 
+jest.mock("@/components/shared/back-button", () =>
+  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
+);
+
 describe("AthletePage", () => {
   const mockParams = { fighterId: "john-doe" };
+
+  const renderComponent = async () => {
+    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -83,7 +90,7 @@ describe("AthletePage", () => {
   });
 
   test("renders the athlete's record correctly", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(
@@ -99,7 +106,7 @@ describe("AthletePage", () => {
       mockUndefinedAthleteRecord
     );
 
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(
@@ -109,7 +116,7 @@ describe("AthletePage", () => {
   });
 
   test("renders athlete details and general information", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(screen.getByText("Mocked AthleteDetails")).toBeInTheDocument();
@@ -129,7 +136,7 @@ describe("AthletePage", () => {
   });
 
   test("renders athlete's image", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       if (mockAthlete.imgUrl) {
@@ -141,7 +148,7 @@ describe("AthletePage", () => {
   });
 
   test("renders athlete's name and nickname", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(
@@ -157,7 +164,7 @@ describe("AthletePage", () => {
   });
 
   test("renders fights history", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
     await waitFor(() => {
       expect(screen.getByTestId("fights-history")).toBeInTheDocument();
@@ -165,10 +172,10 @@ describe("AthletePage", () => {
   });
 
   test("renders back button correctly", async () => {
-    render(await AthletePage({ params: Promise.resolve(mockParams) }));
+    await renderComponent();
 
-    render(<MockBackButton />);
-    expect(screen.getByText("Mocked BackButton")).toBeInTheDocument();
+    const backButton = screen.getByTestId("back-button");
+    expect(backButton).toBeInTheDocument();
   });
 
   test("generates correct metadata", async () => {

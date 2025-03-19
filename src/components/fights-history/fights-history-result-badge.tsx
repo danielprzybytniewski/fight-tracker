@@ -4,7 +4,7 @@ import { FightResult } from "@/types/fights-history.schema.types";
 import { VariantProps, cva } from "class-variance-authority";
 
 const fightResultBadgeVariants = cva(
-  "text-xs text-gray-100 sm:py-1 rounded pointer-events-none",
+  "py-0 sm:py-1 text-xs text-gray-100 rounded pointer-events-none",
   {
     variants: {
       result: {

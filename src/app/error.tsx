@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import errorImg from "../../public/images/error.png";
+import errorImg from "@/public/images/error.png";
 
 export default function Error({
   error,
@@ -19,8 +19,8 @@ export default function Error({
 
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-red-500 text-center
-    px-2"
+      className="flex flex-col items-center justify-center min-h-screen px-2 text-center bg-gray-100 dark:bg-gray-900 
+      text-red-500"
     >
       <Image
         src={errorImg}

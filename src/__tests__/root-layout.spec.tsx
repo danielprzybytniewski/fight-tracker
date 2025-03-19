@@ -1,6 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import RootLayout, { metadata } from "@/app/layout";
-import { MockLayout } from "@/__mocks__/mock-components";
+
+import ReactQueryProvider from "@/providers/react-query-provider";
+import { ThemeProvider } from "next-themes";
+import { FavoritesProvider } from "@/providers/favorites-provider";
 
 jest.mock("next/font/google", () => ({
   Roboto: jest.fn(() => ({
@@ -8,17 +11,31 @@ jest.mock("next/font/google", () => ({
   })),
 }));
 
-describe("RootLayout", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+const MockLayout = ({ children }: { children: React.ReactNode }) => (
+  <ReactQueryProvider>
+    <ThemeProvider>
+      <FavoritesProvider>
+        <div>
+          <nav role="navigation">Navbar</nav>
+          <main>{children}</main>
+          <footer role="contentinfo">Footer</footer>
+        </div>
+      </FavoritesProvider>
+    </ThemeProvider>
+  </ReactQueryProvider>
+);
 
+describe("RootLayout", () => {
   const setup = () =>
     render(
       <MockLayout>
         <div>Test Child</div>
       </MockLayout>
     );
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   test("renders children passed to it", () => {
     setup();

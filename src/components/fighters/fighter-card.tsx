@@ -17,7 +17,7 @@ type FighterCardProps = {
 export default function FighterCard({ fighter }: FighterCardProps) {
   return (
     <Link href={`/athlete/${fighter.id}`}>
-      <Card className="h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-md transition-all duration-300 ease-in-out group">
+      <Card className="flex flex-col h-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-md transition-all duration-300 ease-in-out group">
         <CardHeader className="p-0">
           <div className="relative h-60 sm:h-64 md:h-72 lg:h-80 bg-gray-100 dark:bg-gray-800 overflow-hidden rounded-t-xl">
             {fighter.imgUrl && (
@@ -36,13 +36,13 @@ export default function FighterCard({ fighter }: FighterCardProps) {
           <CardDescription className="text-sm text-gray-500 dark:text-gray-400 sm:mb-1 sm:min-h-5">
             <span>{fighter.nickname && `"${fighter.nickname}"`}</span>
           </CardDescription>
-          <CardTitle className="text-xl font-extrabold text-gray-900 dark:text-gray-100 mb-2">
+          <CardTitle className="mb-2 text-xl font-extrabold text-gray-900 dark:text-gray-100">
             <span>{fighter.name}</span>
           </CardTitle>
           {fighter.category && (
             <span
-              className="inline-block bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold
-             px-3 py-1 rounded-full mb-2"
+              className="inline-block px-3 py-1 mb-2 text-xs font-semibold bg-gray-200 dark:bg-gray-700 text-gray-700 
+              dark:text-gray-300 rounded-full"
             >
               {fighter.category}
             </span>
@@ -54,7 +54,7 @@ export default function FighterCard({ fighter }: FighterCardProps) {
               <span className="font-semibold text-gray-900 dark:text-gray-100">
                 Wins
               </span>
-              <span className="text-green-500 font-medium">
+              <span className="font-medium text-green-500">
                 {fighter.wins ?? 0}
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function FighterCard({ fighter }: FighterCardProps) {
               <span className="font-semibold text-gray-900 dark:text-gray-100">
                 Losses
               </span>
-              <span className="text-red-500 font-medium">
+              <span className="font-medium text-red-500">
                 {fighter.losses ?? 0}
               </span>
             </div>
@@ -70,7 +70,7 @@ export default function FighterCard({ fighter }: FighterCardProps) {
               <span className="font-semibold text-gray-900 dark:text-gray-100">
                 Draws
               </span>
-              <span className="text-gray-500 font-medium">
+              <span className="font-medium text-gray-500">
                 {fighter.draws ?? 0}
               </span>
             </div>

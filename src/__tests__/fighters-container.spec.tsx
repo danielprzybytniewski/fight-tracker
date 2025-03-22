@@ -6,6 +6,23 @@ import FightersContainer from "@/components/fighters/fighters-container";
 jest.mock("@/hooks/use-fighters-filters-and-pagination");
 jest.mock("@/hooks/use-media-query");
 
+jest.mock("@/components/shared/gradient-heading", () =>
+  jest.fn(() => <h1 data-testid="gradient-heading">UFC Fighters</h1>)
+);
+
+jest.mock("@/hooks/use-toast", () => ({
+  useToast: jest.fn(() => ({
+    toast: jest.fn(),
+  })),
+}));
+
+jest.mock("@/hooks/use-favorites", () => ({
+  useFavorites: jest.fn(() => ({
+    isFavorite: jest.fn(() => false),
+    toggleFavoriteWithToast: jest.fn(),
+  })),
+}));
+
 const mockUseFightersFiltersAndPagination =
   useFightersFiltersAndPagination as jest.Mock;
 
@@ -54,16 +71,17 @@ describe("FightersContainer", () => {
     });
   });
 
-  test("renders the heading and initial UI correctly", () => {
+  test("renders GradientHeading and initial UI correctly", () => {
     renderFightersContainer();
 
-    expect(
-      screen.getByRole("heading", { name: /UFC Fighters/i })
-    ).toBeInTheDocument();
+    expect(screen.getByTestId("gradient-heading")).toBeInTheDocument();
+    expect(screen.getByText("UFC Fighters")).toBeInTheDocument();
     expect(screen.getByText(/fighter 1/i)).toBeInTheDocument();
     expect(screen.getByText(/fighter 2/i)).toBeInTheDocument();
     expect(screen.getByRole("textbox")).toBeInTheDocument();
-    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /select category/i })
+    ).toBeInTheDocument();
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });
 

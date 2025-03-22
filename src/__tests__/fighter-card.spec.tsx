@@ -1,13 +1,34 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import FighterCard from "@/components/fighters/fighter-card";
 import { fighterCardMock } from "@/__mocks__/mock-data";
+import { useFavorites } from "@/hooks/use-favorites";
+import { useToast } from "@/hooks/use-toast";
+
+jest.mock("@/hooks/use-favorites");
+jest.mock("@/hooks/use-toast");
 
 describe("FighterCard", () => {
+  const mockToggleFavoriteWithToast = jest.fn();
+  const mockIsFavorite = jest.fn();
+  const mockToast = jest.fn();
+
   const renderComponent = (fighter = fighterCardMock) =>
     render(<FighterCard fighter={fighter} />);
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    (useFavorites as jest.Mock).mockReturnValue({
+      toggleFavoriteWithToast: mockToggleFavoriteWithToast,
+      isFavorite: mockIsFavorite,
+    });
+
+    (useToast as jest.Mock).mockReturnValue({
+      toast: mockToast,
+    });
+
+    mockIsFavorite.mockReturnValue(false);
   });
 
   test("renders fighter name", () => {
@@ -77,5 +98,52 @@ describe("FighterCard", () => {
   test("renders draws as 0 if not provided", () => {
     renderComponent({ ...fighterCardMock, draws: undefined });
     expect(screen.getByText("0")).toBeInTheDocument();
+  });
+
+  test("calls toggleFavoriteWithToast when favorite button is clicked", async () => {
+    const user = userEvent.setup();
+    renderComponent();
+
+    const favoriteButton = screen.getByRole("button", { name: /favorite/i });
+    await user.click(favoriteButton);
+
+    expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
+      fighterCardMock,
+      mockToast
+    );
+  });
+
+  test("toggles favorite state and shows toast message", async () => {
+    const user = userEvent.setup();
+    renderComponent();
+
+    const favoriteButton = screen.getByRole("button", { name: /favorite/i });
+
+    await user.click(favoriteButton);
+
+    await waitFor(() => {
+      expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
+        fighterCardMock,
+        mockToast
+      );
+    });
+  });
+
+  test("applies correct button styles when fighter is not favorited", () => {
+    mockIsFavorite.mockReturnValue(false);
+    renderComponent();
+
+    const favoriteIcon = screen.getByTestId("favorite-icon");
+    expect(favoriteIcon).not.toHaveClass("fill-red-500");
+    expect(favoriteIcon).toHaveClass("text-red-500");
+  });
+
+  test("applies correct button styles when fighter is favorited", () => {
+    mockIsFavorite.mockReturnValue(true);
+    renderComponent();
+
+    const favoriteIcon = screen.getByTestId("favorite-icon");
+    expect(favoriteIcon).toHaveClass("fill-red-500");
+    expect(favoriteIcon).toHaveClass("text-red-500");
   });
 });

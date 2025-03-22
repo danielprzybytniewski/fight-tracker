@@ -1,4 +1,4 @@
-import FavoritesFighters from "@/components/favorites/favorites-fighters";
+import FavoriteFighters from "@/components/favorites/favorite-fighters";
 import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 
@@ -9,5 +9,5 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function FavoritesPage() {
-  return <FavoritesFighters />;
+  return <FavoriteFighters />;
 }

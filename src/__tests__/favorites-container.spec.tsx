@@ -25,11 +25,11 @@ jest.mock("@/components/favorites/favorites-empty-state", () => {
 });
 
 jest.mock("@/components/favorites/favorites-fighter-grid", () => {
-  return jest.fn(({ favorites, toggleFavoriteWithToast, toast }) => {
+  return jest.fn(({ favorites, toggleFavoriteWithToast }) => {
     return (
       <div>
         Mocked FavoritesFighterGrid
-        <button onClick={() => toggleFavoriteWithToast(favorites[0], toast)}>
+        <button onClick={() => toggleFavoriteWithToast(favorites[0])}>
           Remove {favorites[0].name} from favorites
         </button>
       </div>

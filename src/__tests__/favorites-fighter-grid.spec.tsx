@@ -6,22 +6,18 @@ import { mockFavoriteFighters } from "@/__mocks__/mock-data";
 
 describe("FavoritesFighterGrid", () => {
   const mockToggleFavoriteWithToast = jest.fn();
-  const mockToast = jest.fn();
 
   const renderComponent = ({
     favorites = [] as Fighter[],
     toggleFavoriteWithToast = mockToggleFavoriteWithToast,
-    toast = mockToast,
   }: {
     favorites?: Fighter[];
     toggleFavoriteWithToast?: jest.Mock;
-    toast?: jest.Mock;
   } = {}) => {
     return render(
       <FavoritesFighterGrid
         favorites={favorites}
         toggleFavoriteWithToast={toggleFavoriteWithToast}
-        toast={toast}
       />
     );
   };
@@ -123,8 +119,7 @@ describe("FavoritesFighterGrid", () => {
     );
 
     expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
-      mockFavoriteFighters[0],
-      mockToast
+      mockFavoriteFighters[0]
     );
   });
 });

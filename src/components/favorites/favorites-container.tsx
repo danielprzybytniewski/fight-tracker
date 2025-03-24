@@ -21,8 +21,9 @@ export default function FavoritesContainer() {
       ) : (
         <FavoritesFighterGrid
           favorites={favorites}
-          toggleFavoriteWithToast={toggleFavoriteWithToast}
-          toast={toast}
+          toggleFavoriteWithToast={(fighter) =>
+            toggleFavoriteWithToast(fighter, toast)
+          }
         />
       )}
     </div>

@@ -4,15 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Fighter } from "@/types/rankings-schema.types";
-import { CustomToastProps } from "@/providers/favorites-provider";
 
 type FavoritesFighterCardsProps = {
   favorites: Fighter[];
-  toggleFavoriteWithToast: (
-    fighter: Fighter,
-    toast: (props: CustomToastProps) => void
-  ) => void;
-  toast: (props: CustomToastProps) => void;
+  toggleFavoriteWithToast: (fighter: Fighter) => void;
 };
 
 const containerVariants = {
@@ -36,7 +31,6 @@ const itemVariants = {
 export default function FavoritesFighterGrid({
   favorites,
   toggleFavoriteWithToast,
-  toast,
 }: FavoritesFighterCardsProps) {
   return (
     <motion.div
@@ -80,7 +74,7 @@ export default function FavoritesFighterGrid({
             </div>
           </Link>
           <button
-            onClick={() => toggleFavoriteWithToast(fighter, toast)}
+            onClick={() => toggleFavoriteWithToast(fighter)}
             className="absolute top-1 right-1 p-1 rounded-full bg-gray-400 hover:bg-gray-500 dark:bg-gray-800 
                 dark:hover:bg-gray-700 text-white transition-all duration-500 xl:opacity-0 xl:group-hover:opacity-100"
             aria-label={`Remove ${fighter.name} from favorites`}

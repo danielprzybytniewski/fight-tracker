@@ -4,9 +4,9 @@ export default function FightersLoading() {
       className="container mx-auto min-h-screen px-4 py-8 bg-gray-50 dark:bg-gray-900"
       aria-label="loading-container"
     >
-      <div className="mb-8 text-3xl font-bold text-center text-gray-800 dark:text-gray-100">
+      <h1 className="mb-8 text-3xl sm:text-4xl font-bold text-center bg-gradient-to-r bg-clip-text text-transparent from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400">
         UFC Fighters
-      </div>
+      </h1>
       <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
         <div className="flex justify-center md:justify-start w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md">
           <div className="w-full sm:w-64 md:w-80 h-10 mb-2  bg-gray-300 dark:bg-gray-700 rounded animate-pulse"></div>

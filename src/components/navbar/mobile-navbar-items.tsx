@@ -7,14 +7,14 @@ type MobileNavbarItemsProps = {
   onItemClick: () => void;
 };
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function MobileNavbarItems({
   onItemClick,
 }: MobileNavbarItemsProps) {
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
     <motion.div
       className="flex flex-col items-center space-y-4"

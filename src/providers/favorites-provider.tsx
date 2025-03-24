@@ -1,6 +1,9 @@
 "use client";
+import {
+  ToastResetContent,
+  ToastToggleContent,
+} from "@/components/favorites/favorites-toast-content";
 import { Fighter } from "@/types/rankings-schema.types";
-import { CircleCheck, CircleX } from "lucide-react";
 import { createContext, useEffect, useState } from "react";
 
 export type CustomToastProps = {
@@ -62,21 +65,14 @@ export const FavoritesProvider = ({
     toast: (props: CustomToastProps) => void
   ) => {
     toggleFavorite(fighter);
-
     const isFav = isFavorite(fighter);
 
     toast({
       description: (
-        <div className="flex items-center">
-          {isFav ? (
-            <CircleX className="mr-2" />
-          ) : (
-            <CircleCheck className="mr-2" />
-          )}
-          <span>{`${fighter.name} ${
-            isFav ? "removed from" : "added to"
-          } favorites!`}</span>
-        </div>
+        <ToastToggleContent
+          fighter={fighter}
+          actionType={isFav ? "remove" : "add"}
+        />
       ),
       variant: "default",
     });
@@ -93,12 +89,7 @@ export const FavoritesProvider = ({
     resetFavorites();
 
     toast({
-      description: (
-        <div className="flex items-center">
-          <CircleX className="mr-2" />
-          <span>{"All fighters removed from favorites!"}</span>
-        </div>
-      ),
+      description: <ToastResetContent />,
       variant: "default",
     });
   };

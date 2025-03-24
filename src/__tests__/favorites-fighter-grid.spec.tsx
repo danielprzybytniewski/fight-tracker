@@ -1,88 +1,37 @@
 import { render, screen } from "@testing-library/react";
-import { useFavorites } from "@/hooks/use-favorites";
-import { useToast } from "@/hooks/use-toast";
-import FavoriteFighters from "@/components/favorites/favorite-fighters";
-import { Fighter } from "@/types/rankings-schema.types";
 import userEvent from "@testing-library/user-event";
+import { Fighter } from "@/types/rankings-schema.types";
+import FavoritesFighterGrid from "@/components/favorites/favorites-fighter-grid";
 import { mockFavoriteFighters } from "@/__mocks__/mock-data";
 
-jest.mock("@/hooks/use-favorites");
-jest.mock("@/hooks/use-toast");
-
-describe("FavoriteFighters", () => {
-  const mockToggleFavorite = jest.fn();
-  const mockResetFavorites = jest.fn();
+describe("FavoritesFighterGrid", () => {
+  const mockToggleFavoriteWithToast = jest.fn();
   const mockToast = jest.fn();
 
-  const renderFavoriteFighters = ({
+  const renderComponent = ({
     favorites = [] as Fighter[],
-    toggleFavoriteWithToast = mockToggleFavorite,
-    resetFavoritesWithToast = mockResetFavorites,
+    toggleFavoriteWithToast = mockToggleFavoriteWithToast,
     toast = mockToast,
   }: {
     favorites?: Fighter[];
     toggleFavoriteWithToast?: jest.Mock;
-    resetFavoritesWithToast?: jest.Mock;
     toast?: jest.Mock;
   } = {}) => {
-    (useFavorites as jest.Mock).mockReturnValue({
-      favorites,
-      toggleFavoriteWithToast,
-      resetFavoritesWithToast,
-    });
-    (useToast as jest.Mock).mockReturnValue({ toast });
-
-    return render(<FavoriteFighters />);
+    return render(
+      <FavoritesFighterGrid
+        favorites={favorites}
+        toggleFavoriteWithToast={toggleFavoriteWithToast}
+        toast={toast}
+      />
+    );
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test("renders favorite fighters list", () => {
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
-
-    expect(screen.getByText("(3)")).toBeInTheDocument();
-    expect(screen.getAllByRole("img")).toHaveLength(3);
-  });
-
-  test("renders empty state when no favorites", () => {
-    renderFavoriteFighters({ favorites: [] });
-
-    expect(screen.getByText("No favorite fighters yet")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /fighter/i })).toHaveAttribute(
-      "href",
-      "/fighters"
-    );
-  });
-
-  test("calls toggleFavorite when remove button is clicked", async () => {
-    const user = userEvent.setup();
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
-
-    await user.click(
-      screen.getByRole("button", {
-        name: `Remove ${mockFavoriteFighters[0].name} from favorites`,
-      })
-    );
-
-    expect(mockToggleFavorite).toHaveBeenCalledWith(
-      mockFavoriteFighters[0],
-      mockToast
-    );
-  });
-
-  test("resets favorites when reset button is clicked", async () => {
-    const user = userEvent.setup();
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
-
-    await user.click(screen.getByRole("button", { name: /reset favorites/i }));
-
-    expect(mockResetFavorites).toHaveBeenCalledWith(mockToast);
-  });
-
-  test("renders figter name, nickname, and category correctly", () => {
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
+  test("renders fighter name, nickname, and category correctly", () => {
+    renderComponent({ favorites: mockFavoriteFighters });
 
     const firstFighterName = screen.getByText(mockFavoriteFighters[0].name);
     expect(firstFighterName).toBeInTheDocument();
@@ -96,12 +45,12 @@ describe("FavoriteFighters", () => {
     const firstFighterCategory = screen.getByText(
       mockFavoriteFighters[0].category
     );
-
     expect(firstFighterCategory).toBeInTheDocument();
   });
 
   test("renders fighter image correctly", () => {
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
+    renderComponent({ favorites: mockFavoriteFighters });
+
     const firstFighterImage = screen.getAllByRole("img")[0];
     expect(firstFighterImage).toBeInTheDocument();
 
@@ -121,7 +70,8 @@ describe("FavoriteFighters", () => {
   });
 
   test("renders fighter record correctly", () => {
-    renderFavoriteFighters({ favorites: mockFavoriteFighters });
+    renderComponent({ favorites: mockFavoriteFighters });
+
     const firstFighterWins = screen.getByText(
       `${mockFavoriteFighters[0].wins}W`
     );
@@ -138,9 +88,7 @@ describe("FavoriteFighters", () => {
   });
 
   test("renders 0 for wins, losses, and draws if not provided", () => {
-    renderFavoriteFighters({
-      favorites: mockFavoriteFighters,
-    });
+    renderComponent({ favorites: mockFavoriteFighters });
 
     const incompleteFighterName = screen.getByText("Alexandre Pantoja");
     expect(incompleteFighterName).toBeInTheDocument();
@@ -155,13 +103,28 @@ describe("FavoriteFighters", () => {
   });
 
   test("does not render nickname if not provided", () => {
-    renderFavoriteFighters({
-      favorites: mockFavoriteFighters,
-    });
+    renderComponent({ favorites: mockFavoriteFighters });
 
     const incompleteFighterName = screen.getByText("Alexandre Pantoja");
     expect(incompleteFighterName).toBeInTheDocument();
 
     expect(screen.queryByText("The Destroyer")).not.toBeInTheDocument();
+  });
+
+  test("calls toggleFavoriteWithToast when remove button is clicked", async () => {
+    const user = userEvent.setup();
+
+    renderComponent({ favorites: mockFavoriteFighters });
+
+    await user.click(
+      screen.getByRole("button", {
+        name: `Remove ${mockFavoriteFighters[0].name} from favorites`,
+      })
+    );
+
+    expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
+      mockFavoriteFighters[0],
+      mockToast
+    );
   });
 });

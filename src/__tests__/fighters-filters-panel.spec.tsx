@@ -31,11 +31,6 @@ jest.mock("@/components/fighters/fighters-category-filter", () => {
 });
 
 describe("FightersFiltersPanel", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    render(<FightersFiltersPanel {...mockProps} />);
-  });
-
   const mockProps = {
     searchQuery: "initial search",
     selectedCategory: "heavyweight",
@@ -43,6 +38,11 @@ describe("FightersFiltersPanel", () => {
     onSearchChange: jest.fn(),
     onCategoryChange: jest.fn(),
   };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    render(<FightersFiltersPanel {...mockProps} />);
+  });
 
   test("renders both the search bar and category filter components correctly", () => {
     expect(screen.getByTestId("search-bar")).toBeInTheDocument();

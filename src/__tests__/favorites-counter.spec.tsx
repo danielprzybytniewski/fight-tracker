@@ -5,38 +5,30 @@ import FavoritesCounter from "@/components/favorites/favorites-counter";
 jest.mock("@/hooks/use-favorites");
 
 describe("FavoritesCounter", () => {
+  const renderComponent = (favorites: Array<{ name: string }> = []) => {
+    (useFavorites as jest.Mock).mockReturnValue({ favorites });
+
+    return render(<FavoritesCounter />);
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   test("renders correctly with no favorites", () => {
-    (useFavorites as jest.Mock).mockReturnValue({
-      favorites: [],
-    });
-
-    render(<FavoritesCounter />);
+    renderComponent([]);
 
     expect(screen.getByText("(0)")).toBeInTheDocument();
   });
 
   test("renders correctly with some favorites", () => {
-    const mockFavorites = [{ name: "Fighter 1" }, { name: "Fighter 2" }];
-
-    (useFavorites as jest.Mock).mockReturnValue({
-      favorites: mockFavorites,
-    });
-
-    render(<FavoritesCounter />);
+    renderComponent([{ name: "Fighter 1" }, { name: "Fighter 2" }]);
 
     expect(screen.getByText("(2)")).toBeInTheDocument();
   });
 
   test("renders a link to the favorites page", () => {
-    (useFavorites as jest.Mock).mockReturnValue({
-      favorites: [],
-    });
-
-    render(<FavoritesCounter />);
+    renderComponent([]);
 
     const linkElement = screen.getByRole("link", { name: /(0)/i });
     expect(linkElement).toHaveAttribute("href", "/favorites");

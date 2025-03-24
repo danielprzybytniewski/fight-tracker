@@ -1,8 +1,8 @@
 import FavoritesPage, { metadata } from "@/app/favorites/page";
 import { render, screen } from "@testing-library/react";
 
-jest.mock("@/components/favorites/favorites-fighters", () =>
-  jest.fn(() => <div>Mocked Favorites Fighters</div>)
+jest.mock("@/components/favorites/favorites-container", () =>
+  jest.fn(() => <div>Mocked FavoritesContainer</div>)
 );
 
 describe("FavoritesPage", () => {
@@ -10,10 +10,10 @@ describe("FavoritesPage", () => {
     jest.clearAllMocks();
   });
 
-  test("renders FavoritesFighters component", () => {
-    render(<FavoritesPage />);
+  test("renders FavoritesContainer component correctly", async () => {
+    render(await FavoritesPage());
 
-    expect(screen.getByText("Mocked Favorites Fighters")).toBeInTheDocument();
+    expect(screen.getByText("Mocked FavoritesContainer")).toBeInTheDocument();
   });
 
   test("sets the correct metadata", () => {

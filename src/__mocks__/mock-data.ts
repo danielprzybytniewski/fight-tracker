@@ -226,3 +226,36 @@ export const fighterCardMock: Athlete = {
   draws: 1,
   imgUrl: "https://example.com/johndoe.jpg",
 };
+
+export const mockFavoriteFighters: Athlete[] = [
+  {
+    id: "Jon Jones",
+    name: "Jon Jones",
+    nickname: "Bones",
+    category: "Heavyweight",
+    wins: 27,
+    losses: 1,
+    draws: 3,
+    imgUrl: "/images/jon-jones.jpg",
+  },
+  {
+    id: "Israel Adesanya",
+    name: "Israel Adesanya",
+    category: "Middleweight",
+    wins: 24,
+    losses: 2,
+    draws: 1,
+    imgUrl: "/images/israel-adesanya.jpg",
+  },
+
+  {
+    id: "Alexandre Pantoja",
+    name: "Alexandre Pantoja",
+    nickname: "",
+    category: "Flyweight",
+    wins: undefined,
+    losses: undefined,
+    draws: undefined,
+    imgUrl: "/images/alexandre-pantoja.jpg",
+  },
+];

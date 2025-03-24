@@ -1,4 +1,4 @@
-import FavoritesFighters from "@/components/favorites/favorites-fighters";
+import FavoritesContainer from "@/components/favorites/favorites-container";
 import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 
@@ -8,6 +8,6 @@ export const metadata: Metadata = createMetadata({
   path: "/favorites",
 });
 
-export default function FavoritesPage() {
-  return <FavoritesFighters />;
+export default async function FavoritesPage() {
+  return <FavoritesContainer />;
 }

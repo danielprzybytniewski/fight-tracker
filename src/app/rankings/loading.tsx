@@ -4,7 +4,7 @@ export default function RankingsLoading() {
       className="container mx-auto p-4 py-8 dark:bg-gray-900 rounded-lg"
       aria-label="loading-container"
     >
-      <h1 className="mb-2 pb-3 text-3xl md:text-4xl font-extrabold text-center text-gray-800 dark:text-gray-200 animate-pulse">
+      <h1 className="mb-8 text-3xl sm:text-4xl font-bold text-center bg-gradient-to-r bg-clip-text text-transparent from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400">
         UFC Rankings
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">

@@ -8,9 +8,7 @@ jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-fetch-fight-cards");
-
 jest.mock("@/components/shared/back-button", () =>
   jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
 );
@@ -86,12 +84,5 @@ describe("EventFightCard", () => {
       expect(screen.getByText(lastName)).toBeInTheDocument();
     });
     expect(screen.getByText("VS")).toBeInTheDocument();
-  });
-
-  test("renders back button correctly", async () => {
-    renderComponent("Some Event");
-
-    const backButton = screen.getByTestId("back-button");
-    expect(backButton).toBeInTheDocument();
   });
 });

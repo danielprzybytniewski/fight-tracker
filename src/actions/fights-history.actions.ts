@@ -1,6 +1,7 @@
 "use server";
+
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import {
   ApiFightsHistoryResponseSchema,
   AppFightSchema,

@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { fetchFightsCards } from "@/actions/fights-cards-actions";
+import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import { mockFightsCards } from "@/__mocks__/mock-data";
 
-jest.mock("@/actions/fights-cards-actions");
+jest.mock("@/actions/fight-cards.actions");
 
 const createQueryClient = () =>
   new QueryClient({

@@ -1,4 +1,4 @@
-import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+import { convertApiDateToLocalTime } from "@/lib";
 import moment from "moment-timezone";
 
 describe("convertApiDateToLocalTime", () => {

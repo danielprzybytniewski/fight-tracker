@@ -1,4 +1,4 @@
-import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
+import { formatSlugToReadableText } from "@/lib";
 
 describe("formatSlugToReadableText", () => {
   test("handles url slugs", () => {

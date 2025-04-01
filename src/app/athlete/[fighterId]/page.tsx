@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { getFighterDetails } from "@/actions/rankings-actions";
+import { getFighterDetails } from "@/actions/rankings.actions";
 import {
   getAdditionalDetails,
   getGeneralDetails,
@@ -9,10 +9,10 @@ import { Metadata } from "next";
 import BackButton from "@/components/shared/back-button";
 import { createMetadata } from "@/lib/create-metadata";
 import AthleteDetails from "@/components/athlete/athlete-details";
-import { getFightsHistory } from "@/actions/fights-history-actions";
+import { getFightsHistory } from "@/actions/fights-history.actions";
 import FightsHistory from "@/components/fights-history/fights-history";
 import normalizeName from "@/lib/normalize-name";
-import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
+import { formatSlugToReadableText } from "@/lib";
 
 type Params = {
   fighterId: string;

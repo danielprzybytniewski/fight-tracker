@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
-import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+import { convertApiDateToLocalTime } from "@/lib";
 import slugify from "@/lib/slugify";
 import { Button } from "@/components/ui/button";
 

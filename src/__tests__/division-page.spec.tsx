@@ -2,14 +2,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import DivisionPage, {
   generateMetadata,
 } from "@/app/rankings/[divisionId]/page";
-import { getDivisionWithImages } from "@/actions/rankings-actions";
+import { getDivisionWithImages } from "@/actions/rankings.actions";
 import { mockDivision } from "@/__mocks__/mock-data";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("@/actions/rankings-actions", () => ({
+jest.mock("@/actions/rankings.actions", () => ({
   getDivisionWithImages: jest.fn(),
 }));
 

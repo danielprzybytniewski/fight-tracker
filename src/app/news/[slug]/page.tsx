@@ -1,4 +1,4 @@
-import { getNewsBySlug } from "@/actions/news-actions";
+import { getNewsBySlug } from "@/actions/news.actions";
 import NewsDetail from "@/components/news/news-detail";
 
 type Params = {

@@ -1,4 +1,4 @@
-import { getNews } from "@/actions/news-actions";
+import { getNews } from "@/actions/news.actions";
 import NewsList from "@/components/news/news-list";
 
 export default async function NewsPage() {

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { NewsContentData } from "@/types/news-schema.types";
 import fallbackImage from "@/public/images/og-image.png";
+import { StaticImageData } from "next/image";
 
 export const boldPhrases = [
   "Records:",
@@ -14,7 +15,10 @@ export const boldPhrases = [
   "Past five:",
 ];
 
-export const formatTextWithBoldPhrases = (text: string) => {
+//Created for improved readability in the UI
+export const formatTextWithBoldPhrases = (
+  text: string
+): React.JSX.Element[] => {
   const words = text.split(" ");
   const elements = [];
 
@@ -48,7 +52,10 @@ export const formatTextWithBoldPhrases = (text: string) => {
   return elements;
 };
 
-export const contentWithoutLastParagraphs = (content: NewsContentData[]) => {
+//Created to eliminate redundant content
+export const contentWithoutLastParagraphs = (
+  content: NewsContentData[]
+): NewsContentData[] => {
   const paragraphs = content.filter((item) => item.type === "paragraph");
   const paragraphsCount = paragraphs.length;
   const paragraphsToCut = Math.min(Math.floor(paragraphsCount * 0.5), 5);
@@ -67,13 +74,15 @@ export const contentWithoutLastParagraphs = (content: NewsContentData[]) => {
   });
 };
 
-export const generateAltText = (src: string) => {
+export const generateAltText = (src: string): string => {
   return src
     .substring(src.lastIndexOf("/") + 1, src.lastIndexOf("."))
     .replace(/-/g, " ");
 };
 
-export const getFirstImageUrl = (content: NewsContentData[]) => {
+export const getFirstImageUrl = (
+  content: NewsContentData[]
+): string | StaticImageData => {
   const firstImage = content.find((item) => item.type === "image");
   return firstImage && firstImage.src && firstImage.src.startsWith("https")
     ? firstImage.src

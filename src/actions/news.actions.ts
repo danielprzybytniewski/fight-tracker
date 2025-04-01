@@ -1,6 +1,7 @@
 "use server";
+
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import slugify from "@/lib/slugify";
 import {
   NewsApiResponseSchema,
@@ -24,5 +25,6 @@ export async function getNewsBySlug(
   slug: string
 ): Promise<NewsDetailData | null> {
   const allNews = await getNews();
+
   return allNews.find((item) => slugify(item.title) === slug) || null;
 }

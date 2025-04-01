@@ -1,6 +1,6 @@
-import { getFightsHistory } from "@/actions/fights-history-actions";
+import { getFightsHistory } from "@/actions/fights-history.actions";
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import { mockApiFight } from "@/__mocks__/mock-data";
 import {
   ApiFightsHistoryResponseSchema,

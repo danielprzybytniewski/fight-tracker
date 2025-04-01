@@ -32,10 +32,7 @@ export default function NewsDetail({ newsItem }: NewsDetailProps) {
         </p>
         <div>
           {filteredContent.map((content, index) => {
-            if (content.type === "paragraph" || content.type === "image") {
-              return <NewsContent key={index} content={content} />;
-            }
-            return null;
+            return <NewsContent key={index} content={content} />;
           })}
         </div>
       </article>

@@ -1,4 +1,4 @@
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import { z } from "zod";
 
 global.fetch = jest.fn();

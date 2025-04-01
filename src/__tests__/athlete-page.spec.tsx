@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import AthletePage, { generateMetadata } from "@/app/athlete/[fighterId]/page";
-import { getFighterDetails } from "@/actions/rankings-actions";
-import { getFightsHistory } from "@/actions/fights-history-actions";
+import { getFighterDetails } from "@/actions/rankings.actions";
+import { getFightsHistory } from "@/actions/fights-history.actions";
 import {
   mockAthlete,
   mockGeneralDetails,
@@ -15,11 +15,11 @@ jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
-jest.mock("@/actions/rankings-actions", () => ({
+jest.mock("@/actions/rankings.actions", () => ({
   getFighterDetails: jest.fn(),
 }));
 
-jest.mock("@/actions/fights-history-actions", () => ({
+jest.mock("@/actions/fights-history.actions", () => ({
   getFightsHistory: jest.fn(),
 }));
 

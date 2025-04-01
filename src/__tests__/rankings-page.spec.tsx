@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import RankingsPage, { metadata } from "@/app/rankings/page";
-import { getRankingsWithImages } from "@/actions/rankings-actions";
+import { getRankingsWithImages } from "@/actions/rankings.actions";
 import { Division } from "@/types/rankings-schema.types";
 import { mockRankings } from "@/__mocks__/mock-data";
 
-jest.mock("@/actions/rankings-actions", () => ({
+jest.mock("@/actions/rankings.actions", () => ({
   getRankingsWithImages: jest.fn(),
 }));
 

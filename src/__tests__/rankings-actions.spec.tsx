@@ -4,8 +4,8 @@ import {
   getDivisionWithImages,
   getFighterDetails,
   getRankingsWithImages,
-} from "@/actions/rankings-actions";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+} from "@/actions/rankings.actions";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import {
   mockAthleteCard,
   mockDivision,

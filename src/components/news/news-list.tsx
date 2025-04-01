@@ -23,8 +23,7 @@ export default function NewsList({ newsItems }: NewsListProps) {
       {visibleNewsItems.map((newsItem) => (
         <NewsPreviewItem key={newsItem.title} newsItem={newsItem} />
       ))}
-
-      {visibleCount < newsItems.length && (
+      {newsItems.length > visibleCount && (
         <button
           onClick={() => setVisibleCount((prev) => prev + 10)}
           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"

@@ -6,7 +6,7 @@ import {
 import {
   Fight,
   TransformedFightDetails,
-} from "@/types/fights-history.schema.types";
+} from "@/types/fights-history-schema.types";
 import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 describe("fightsHistoryTransformer", () => {

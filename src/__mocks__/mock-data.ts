@@ -4,7 +4,7 @@ import {
   ApiFight,
   Fight,
   FightResult,
-} from "@/types/fights-history.schema.types";
+} from "@/types/fights-history-schema.types";
 import {
   Fighter as Athlete,
   DetailItem,

@@ -47,10 +47,6 @@ export const ApiFightsHistoryResponseSchema = z.object({
 
 export type ApiFight = z.infer<typeof ApiFightSchema>;
 export type Fight = z.infer<typeof AppFightSchema>;
-export type ApiFightsHistoryResponse = z.infer<
-  typeof ApiFightsHistoryResponseSchema
->;
-
 export type FightResult = "win" | "loss" | "draw";
 
 export type TransformedFightDetails = {

@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { Fight } from "@/types/fights-history.schema.types";
+import { Fight } from "@/types/fights-history-schema.types";
 import {
   sortFightsByDate,
   transformFightDetails,

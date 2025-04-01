@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { FightResult } from "@/types/fights-history.schema.types";
+import { FightResult } from "@/types/fights-history-schema.types";
 import { VariantProps, cva } from "class-variance-authority";
 
 const fightResultBadgeVariants = cva(

@@ -2,7 +2,7 @@ import {
   Fight,
   FightResult,
   TransformedFightDetails,
-} from "@/types/fights-history.schema.types";
+} from "@/types/fights-history-schema.types";
 import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 function formatLocation(location: string | undefined): string {

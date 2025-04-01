@@ -31,7 +31,7 @@ export default function MobileNavbarItems({
       <motion.div variants={itemVariants}>
         <Link
           href="/fighters"
-          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+          className="text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
           onClick={onItemClick}
         >
           UFC Fighters
@@ -40,10 +40,19 @@ export default function MobileNavbarItems({
       <motion.div variants={itemVariants}>
         <Link
           href="/rankings"
-          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+          className="text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
           onClick={onItemClick}
         >
           UFC Rankings
+        </Link>
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <Link
+          href="/news"
+          className="text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+          onClick={onItemClick}
+        >
+          News
         </Link>
       </motion.div>
       <motion.div variants={itemVariants} onClick={onItemClick}>

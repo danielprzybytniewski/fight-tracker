@@ -4,7 +4,7 @@ import {
   mockFightsHistoryCardContentProps,
 } from "@/__mocks__/mock-data";
 import FightsHistoryCardContent from "@/components/fights-history/fights-history-card-content";
-import { FightResult } from "@/types/fights-history.schema.types";
+import { FightResult } from "@/types/fights-history-schema.types";
 
 jest.mock("@/components/fights-history/fights-history-details", () =>
   jest.fn(({ label, value }: { label: string; value: string }) => (

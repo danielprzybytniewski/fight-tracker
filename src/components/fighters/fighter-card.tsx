@@ -41,7 +41,7 @@ export default function FighterCard({ fighter }: FighterCardProps) {
         />
       </button>
       <Link href={`/athlete/${fighter.id}`} className="block group">
-        <Card className="relative flex flex-col h-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-md">
+        <Card className="relative flex flex-col h-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-md">
           <CardHeader className="p-0">
             <div className="relative h-60 sm:h-64 md:h-72 lg:h-80 bg-gray-100 dark:bg-gray-800 overflow-hidden rounded-t-xl">
               {fighter.imgUrl && (

@@ -1,6 +1,6 @@
 import EventFightCard from "@/components/events/event-fight-card";
+import { formatSlugToReadableText } from "@/lib";
 import { createMetadata } from "@/lib/create-metadata";
-import formatSlugToReadableText from "@/lib/format-slug-to-readable-text";
 import { Metadata } from "next";
 
 type Params = {

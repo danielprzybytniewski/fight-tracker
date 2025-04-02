@@ -12,6 +12,12 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+const links = [
+  { href: "/fighters", label: "UFC Fighters" },
+  { href: "/rankings", label: "UFC Rankings" },
+  { href: "/news", label: "News" },
+];
+
 export default function MobileNavbarItems({
   onItemClick,
 }: MobileNavbarItemsProps) {
@@ -28,24 +34,17 @@ export default function MobileNavbarItems({
         },
       }}
     >
-      <motion.div variants={itemVariants}>
-        <Link
-          href="/fighters"
-          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-          onClick={onItemClick}
-        >
-          UFC Fighters
-        </Link>
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <Link
-          href="/rankings"
-          className="text-lg sm:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-          onClick={onItemClick}
-        >
-          UFC Rankings
-        </Link>
-      </motion.div>
+      {links.map(({ href, label }) => (
+        <motion.div variants={itemVariants} key={href}>
+          <Link
+            href={href}
+            className="text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+            onClick={onItemClick}
+          >
+            {label}
+          </Link>
+        </motion.div>
+      ))}
       <motion.div variants={itemVariants} onClick={onItemClick}>
         <FavoritesCounter />
       </motion.div>

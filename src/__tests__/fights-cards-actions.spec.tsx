@@ -1,6 +1,6 @@
 import appConfig from "@/config/app-config";
 import { mockFightsCards } from "@/__mocks__/mock-data";
-import { fetchFightsCards } from "@/actions/fights-cards-actions";
+import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import {
   FightCardsResponse,
   FightCardsResponseSchema,

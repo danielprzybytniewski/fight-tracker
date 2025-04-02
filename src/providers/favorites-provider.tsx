@@ -6,7 +6,7 @@ import {
 import { Fighter } from "@/types/rankings-schema.types";
 import { createContext, useEffect, useState } from "react";
 
-export type CustomToastProps = {
+type CustomToastProps = {
   title?: string;
   description?: React.ReactNode;
   variant?: "default" | "destructive";

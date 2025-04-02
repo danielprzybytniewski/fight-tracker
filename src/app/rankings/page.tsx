@@ -1,5 +1,5 @@
 import { Division } from "@/types/rankings-schema.types";
-import { getRankingsWithImages } from "@/actions/rankings-actions";
+import { getRankingsWithImages } from "@/actions/rankings.actions";
 import RankingsCard from "@/components/rankings/rankings-card";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/create-metadata";

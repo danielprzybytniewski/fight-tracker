@@ -1,4 +1,4 @@
-import { fetchFightsCards } from "@/actions/fights-cards-actions";
+import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import { useQuery } from "@tanstack/react-query";
 
 export const useFetchFightCards = () => {

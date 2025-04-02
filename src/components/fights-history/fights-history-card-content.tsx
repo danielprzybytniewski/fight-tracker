@@ -12,7 +12,7 @@ import {
 import {
   Fight,
   TransformedFightDetails,
-} from "@/types/fights-history.schema.types";
+} from "@/types/fights-history-schema.types";
 import FightsHistoryResultBadge from "@/components/fights-history/fights-history-result-badge";
 import FightsHistoryDetails from "@/components/fights-history/fights-history-details";
 

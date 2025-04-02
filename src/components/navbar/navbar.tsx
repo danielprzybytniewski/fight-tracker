@@ -10,17 +10,17 @@ export default function Navbar() {
     shadow-md"
     >
       <div className="flex justify-between items-center">
-        <ul className="flex items-center space-x-2 sm:space-x-3">
+        <ul className="flex items-center space-x-2 md:space-x-3">
           <li>
             <ChangeLogo />
           </li>
           <li>
-            <Link href="/" className="text-3xl sm:text-4xl font-bold">
+            <Link href="/" className="text-3xl md:text-4xl font-bold">
               Fight Tracker
             </Link>
           </li>
         </ul>
-        <div className="hidden sm:flex items-center space-x-2 sm:space-x-4">
+        <div className="hidden md:flex items-center space-x-2 md:space-x-4">
           <NavbarItems />
         </div>
         <MobileMenu />

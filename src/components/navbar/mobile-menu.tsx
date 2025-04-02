@@ -24,7 +24,7 @@ export default function MobileMenu() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="sm:hidden flex items-center"
+          className="md:hidden flex items-center"
           aria-label="Toggle mobile menu"
         >
           <Menu className="w-8 h-8 text-gray-800 dark:text-gray-200" />
@@ -35,12 +35,12 @@ export default function MobileMenu() {
         className="[&>button:first-child]:hidden p-6 bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 
         dark:from-gray-800 dark:via-gray-900 dark:to-black shadow-2xl"
       >
-        <SheetTitle className="flex flex-row items-center space-x-3 mb-4">
+        <SheetTitle className="flex flex-row items-center justify-center space-x-3 mb-4">
           <ChangeLogo />
           <SheetClose asChild>
             <Link
               href="/"
-              className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100"
+              className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100"
               onClick={handleClose}
             >
               Fight Tracker
@@ -48,7 +48,7 @@ export default function MobileMenu() {
           </SheetClose>
           <SheetClose asChild>
             <button
-              className="absolute top-1 right-1 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+              className="absolute top-0 right-0 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
               aria-label="Close mobile menu"
             >
               <X className="w-7 h-7 text-gray-600 dark:text-gray-300" />

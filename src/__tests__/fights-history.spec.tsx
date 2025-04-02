@@ -5,7 +5,7 @@ import {
 } from "@/lib/fights-history-transformer";
 import FightsHistory from "@/components/fights-history/fights-history";
 import { mockAppFight, mockTransformedDetails } from "@/__mocks__/mock-data";
-import { Fight } from "@/types/fights-history.schema.types";
+import { Fight } from "@/types/fights-history-schema.types";
 
 jest.mock("@/lib/fights-history-transformer", () => ({
   sortFightsByDate: jest.fn(),

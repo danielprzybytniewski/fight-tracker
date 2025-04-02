@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import EventFighter from "@/components/events/event-fighter";
-import { convertApiDateToLocalTime } from "@/lib/convert-api-date-to-local-time";
+import { convertApiDateToLocalTime } from "@/lib";
 import EventFightSeparator from "@/components/events/event-fight-separator";
 import EventTypeBadge from "@/components/events/event-type-badge";
 import EventWeightBadge from "@/components/events/event-weight-badge";

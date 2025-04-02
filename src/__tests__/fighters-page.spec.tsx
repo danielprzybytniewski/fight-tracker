@@ -1,9 +1,9 @@
 import { render, waitFor } from "@testing-library/react";
 import FightersPage, { metadata } from "@/app/fighters/page";
 import FightersContainer from "@/components/fighters/fighters-container";
-import { getAllFighters } from "@/actions/rankings-actions";
+import { getAllFighters } from "@/actions/rankings.actions";
 
-jest.mock("@/actions/rankings-actions", () => ({
+jest.mock("@/actions/rankings.actions", () => ({
   getAllFighters: jest.fn(),
 }));
 

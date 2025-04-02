@@ -1,4 +1,4 @@
-import { getAllFighters } from "@/actions/rankings-actions";
+import { getAllFighters } from "@/actions/rankings.actions";
 import FightersContainer from "@/components/fighters/fighters-container";
 import { createMetadata } from "@/lib/create-metadata";
 import removeDivisionSuffix from "@/lib/remove-division-suffix";

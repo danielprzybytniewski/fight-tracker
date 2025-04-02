@@ -1,11 +1,11 @@
-import { getFightsHistory } from "@/actions/fights-history-actions";
+import { getFightsHistory } from "@/actions/fights-history.actions";
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib/fetch-from-api-with-revalidating-and-validation";
+import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
 import { mockApiFight } from "@/__mocks__/mock-data";
 import {
   ApiFightsHistoryResponseSchema,
   AppFightSchema,
-} from "@/types/fights-history.schema.types";
+} from "@/types/fights-history-schema.types";
 
 jest.mock("@/lib/fetch-from-api-with-revalidating-and-validation");
 
@@ -14,7 +14,7 @@ const mockFetch =
     typeof fetchFromApiWithRevalidatingAndValidation
   >;
 
-const BASE_URL = appConfig.ufcLegacyApiHost;
+const FIGHTS_HISTORY_BASE_URL = appConfig.ufcLegacyApiHost;
 
 describe("getFightsHistory", () => {
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe("getFightsHistory", () => {
     const result = await getFightsHistory("Glover Teixeira");
 
     expect(mockFetch).toHaveBeenCalledWith(
-      BASE_URL,
+      FIGHTS_HISTORY_BASE_URL,
       `/fights?name=Glover%20Teixeira`,
       ApiFightsHistoryResponseSchema,
       "Invalid fights history data"

@@ -1,14 +1,15 @@
 "use server";
+
 import appConfig from "@/config/app-config";
 import {
   FightCardsResponse,
   FightCardsResponseSchema,
 } from "@/types/fight-cards-schema.types";
 
-export async function fetchFightsCards(): Promise<FightCardsResponse> {
-  const fightCardsApiUrl = appConfig.fightCardsApiHost;
+const FIGHT_CARDS_BASE_URL = appConfig.fightCardsApiHost;
 
-  const response = await fetch(fightCardsApiUrl);
+export async function fetchFightsCards(): Promise<FightCardsResponse> {
+  const response = await fetch(FIGHT_CARDS_BASE_URL);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");

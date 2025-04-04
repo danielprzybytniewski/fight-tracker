@@ -1,13 +1,22 @@
 import { z } from "zod";
 
-export async function fetchFromApiWithRevalidatingAndValidation<T>(
+type CacheOptions = {
+  cache?: "force-cache" | "no-store";
+  next?: {
+    revalidate?: number;
+    tags?: string[];
+  };
+};
+
+export async function fetchWithCacheAndValidation<T>(
   baseUrl: string,
   endpoint: string,
   schema: z.ZodSchema<T>,
-  errorMessage: string = "Invalid data received from API"
+  errorMessage: string = "Invalid data received from API",
+  cacheOptions: CacheOptions = { next: { revalidate: 3600 } }
 ): Promise<T> {
   const response = await fetch(`${baseUrl}${endpoint}`, {
-    next: { revalidate: 3600 },
+    ...cacheOptions,
   });
 
   if (!response.ok) {

@@ -1,7 +1,7 @@
 "use server";
 
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
+import { fetchWithCacheAndValidation } from "@/lib";
 import slugify from "@/lib/slugify";
 import {
   NewsApiResponseSchema,
@@ -11,11 +11,12 @@ import {
 const MMA_NEWS_BASE_URL = appConfig.mmaNewsApiHost;
 
 export async function getNews(): Promise<NewsDetailData[]> {
-  const data = await fetchFromApiWithRevalidatingAndValidation(
+  const data = await fetchWithCacheAndValidation(
     MMA_NEWS_BASE_URL,
     "",
     NewsApiResponseSchema,
-    "Invalid news data received from API"
+    "Invalid news data received from API",
+    { cache: "no-store" }
   );
 
   return data.articles;

@@ -16,9 +16,9 @@ export default function FightsCarouselFighterProfile({
           src={fighter.picture}
           alt={fighter.name}
           fill
+          priority
           sizes="(max-width: 640px) 7rem, 10rem"
           className="object-cover rounded-full outline outline-gray-400 dark:outline-gray-600 shadow-xl"
-          priority
         />
       </div>
       <p className="text-lg md:text-xl font-bold uppercase text-gray-800 dark:text-gray-100">

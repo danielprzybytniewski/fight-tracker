@@ -22,9 +22,9 @@ export default function EventFighter({ fighter }: EventFighterProps) {
           alt={fighter.name}
           width={130}
           height={130}
+          priority
           className="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-full outline outline-gray-300 dark:outline-gray-600 
           shadow-md"
-          priority
         />
       </div>
       <div>

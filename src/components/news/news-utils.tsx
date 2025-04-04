@@ -3,7 +3,7 @@ import { NewsContentData } from "@/types/news-schema.types";
 import fallbackImage from "@/public/images/og-image.png";
 import { StaticImageData } from "next/image";
 
-export const boldPhrases = [
+const boldPhrases = [
   "Records:",
   "Record:",
   "Division:",
@@ -13,6 +13,7 @@ export const boldPhrases = [
   "Key wins:",
   "Misc.:",
   "Past five:",
+  "Staple info:",
 ];
 
 //Created for improved readability in the UI

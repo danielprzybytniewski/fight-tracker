@@ -14,7 +14,7 @@ export default function DivisionAthleteCard({
   index,
 }: DivisionFighterCardProps) {
   return (
-    <Link href={`/athlete/${fighter.id}`} className="block ">
+    <Link href={`/athlete/${fighter.id}`}>
       <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-lg group">
         <CardContent className="p-6 text-center sm:text-left">
           <div className="flex flex-col items-center md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
@@ -31,8 +31,8 @@ export default function DivisionAthleteCard({
                   alt={fighter.name}
                   fill
                   priority
-                  className="object-cover object-top py-2 group-hover:scale-110 transition-transform duration-300"
                   sizes="(max-width: 640px) 9rem, 9rem"
+                  className="object-cover object-top py-2 group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             )}

@@ -1,6 +1,6 @@
 import { getFightsHistory } from "@/actions/fights-history.actions";
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
+import { fetchWithCacheAndValidation } from "@/lib";
 import { mockApiFight } from "@/__mocks__/mock-data";
 import {
   ApiFightsHistoryResponseSchema,
@@ -9,10 +9,9 @@ import {
 
 jest.mock("@/lib/fetch-from-api-with-revalidating-and-validation");
 
-const mockFetch =
-  fetchFromApiWithRevalidatingAndValidation as jest.MockedFunction<
-    typeof fetchFromApiWithRevalidatingAndValidation
-  >;
+const mockFetch = fetchWithCacheAndValidation as jest.MockedFunction<
+  typeof fetchWithCacheAndValidation
+>;
 
 const FIGHTS_HISTORY_BASE_URL = appConfig.ufcLegacyApiHost;
 

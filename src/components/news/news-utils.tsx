@@ -9,11 +9,25 @@ const boldPhrases = [
   "Division:",
   "Rankings:",
   "Odds",
+  "Odds:",
   "Opponent:",
   "Key wins:",
   "Misc.:",
   "Past five:",
   "Staple info:",
+  "Round 1",
+  "Round 2",
+  "Round 3",
+  "Round 4",
+  "Round 5",
+  "MAIN CARD",
+  "PRELIMINARY CARD",
+  "Result:",
+  "Recap:",
+  "Referee:",
+  "Judging:",
+  "Event:",
+  "Location:",
 ];
 
 //Created for improved readability in the UI
@@ -59,7 +73,7 @@ export const contentWithoutLastParagraphs = (
 ): NewsContentData[] => {
   const paragraphs = content.filter((item) => item.type === "paragraph");
   const paragraphsCount = paragraphs.length;
-  const paragraphsToCut = Math.min(Math.floor(paragraphsCount * 0.5), 5);
+  const paragraphsToCut = Math.min(Math.floor(paragraphsCount * 0.65), 8);
 
   return content.filter((contentItem) => {
     const currentIndex = paragraphs.indexOf(contentItem);

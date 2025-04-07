@@ -23,16 +23,6 @@ export default function NewsDetail({ newsItem }: NewsDetailProps) {
           <h1 className="font-extrabold text-xl md:text-3xl text-center text-gray-900 dark:text-gray-50">
             {newsItem.title}
           </h1>
-          <div className="flex flex-wrap justify-center gap-2 mt-4">
-            {categories.map((category, index) => (
-              <Badge
-                key={index}
-                className="pointer-events-none font-medium text-xs md:text-sm bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-200"
-              >
-                {category}
-              </Badge>
-            ))}
-          </div>
           <div className="flex justify-center items-center flex-wrap mt-3 gap-x-6 gap-y-1 text-xs md:text-sm text-gray-700 dark:text-gray-300">
             <div className="flex items-center">
               <UserIcon className="h-4 md:h-5 w-4 mr-1" />
@@ -45,6 +35,16 @@ export default function NewsDetail({ newsItem }: NewsDetailProps) {
           </div>
           <div className="mt-6 md:mt-8">
             <NewsContent images={images} paragraphs={paragraphs} />
+          </div>
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            {categories.map((category, index) => (
+              <Badge
+                key={index}
+                className="pointer-events-none font-medium text-xs md:text-sm bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-gray-200"
+              >
+                {category}
+              </Badge>
+            ))}
           </div>
         </div>
       </article>

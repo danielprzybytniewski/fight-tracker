@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
 import { generateAltText } from "@/components/news/news-utils";
 import { X } from "lucide-react";
 
@@ -10,6 +11,7 @@ type NewsImageProps = {
 
 export default function NewsImage({ src }: NewsImageProps) {
   const [isZoomed, setIsZoomed] = useState(false);
+  const { unoptimized, handleImageLoadError } = useUnoptimizedImage();
 
   if (!src || !src.startsWith("https")) {
     return null;
@@ -36,8 +38,10 @@ export default function NewsImage({ src }: NewsImageProps) {
             alt={altText || "news image"}
             fill
             priority
-            className="object-cover hover:scale-[1.02] hover:cursor-zoom-in transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+            unoptimized={unoptimized}
+            onError={handleImageLoadError}
+            className="object-cover hover:scale-[1.02] hover:cursor-zoom-in transition-transform duration-300"
           />
         </div>
       </div>
@@ -53,6 +57,8 @@ export default function NewsImage({ src }: NewsImageProps) {
               fill
               priority
               sizes="100vw"
+              unoptimized={unoptimized}
+              onError={handleImageLoadError}
               className="object-contain"
             />
             <button

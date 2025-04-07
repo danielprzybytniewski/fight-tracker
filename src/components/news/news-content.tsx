@@ -7,23 +7,28 @@ type NewsContentProps = {
 };
 
 export default function NewsContent({ images, paragraphs }: NewsContentProps) {
-  const shouldRenderParagraphs = images.length <= 6;
+  const validImages = images.filter((image) => image.src);
+
+  if (validImages.length === 0) {
+    return null;
+  }
 
   return (
-    <div>
-      {images.length === 1 ? (
-        <NewsImage src={images[0].src} />
-      ) : (
+    <>
+      {validImages.length > 6 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {images.map((image, index) => (
+          {validImages.map((image, index) => (
             <NewsImage key={index} src={image.src} />
           ))}
         </div>
+      ) : (
+        <>
+          <NewsImage src={validImages[0].src} />
+          {paragraphs.map((paragraph, index) => (
+            <NewsParagraph key={index} data={paragraph.data} />
+          ))}
+        </>
       )}
-      {shouldRenderParagraphs &&
-        paragraphs.map((paragraph, index) => (
-          <NewsParagraph key={index} data={paragraph.data} />
-        ))}
-    </div>
+    </>
   );
 }

@@ -12,7 +12,7 @@ export default function DivisionChampionCard({
   division,
 }: DivisionChampionCardProps) {
   return (
-    <Link href={`/athlete/${division.champion.id}`} className="block">
+    <Link href={`/athlete/${division.champion.id}`}>
       <Card
         className="mb-12 overflow-hidden bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 
         dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 shadow-lg group"

@@ -45,7 +45,7 @@ export default function FavoritesFighterGrid({
           variants={itemVariants}
           className="relative group"
         >
-          <Link href={`/athlete/${fighter.id}`} className="block">
+          <Link href={`/athlete/${fighter.id}`}>
             <div
               className="relative h-80 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 
                 dark:from-gray-900 dark:to-gray-800 shadow-lg"
@@ -55,9 +55,9 @@ export default function FavoritesFighterGrid({
                   src={fighter.imgUrl}
                   alt={fighter.name}
                   fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover object-top"
                 />
               )}
               <div className="absolute bottom-0 inset-x-0 p-4 pt-8 bg-gradient-to-t from-black/70 to-transparent">
@@ -76,7 +76,7 @@ export default function FavoritesFighterGrid({
           <button
             onClick={() => toggleFavoriteWithToast(fighter)}
             className="absolute top-1 right-1 p-1 rounded-full bg-gray-400 hover:bg-gray-500 dark:bg-gray-800 
-                dark:hover:bg-gray-700 text-white transition-all duration-500 xl:opacity-0 xl:group-hover:opacity-100"
+                dark:hover:bg-gray-700 text-gray-50 transition-all duration-500 xl:opacity-0 xl:group-hover:opacity-100"
             aria-label={`Remove ${fighter.name} from favorites`}
           >
             <X className="h-4 w-4" />

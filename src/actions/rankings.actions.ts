@@ -1,7 +1,7 @@
 "use server";
 
 import appConfig from "@/config/app-config";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
+import { fetchWithCacheAndValidation } from "@/lib";
 import {
   Fighter,
   FighterSchema,
@@ -16,7 +16,7 @@ import {
 const UFC_RANKINGS_BASE_URL = appConfig.ufcRankingsApiHost;
 
 export async function getFighterDetails(fighterId: string): Promise<Fighter> {
-  return fetchFromApiWithRevalidatingAndValidation(
+  return fetchWithCacheAndValidation(
     UFC_RANKINGS_BASE_URL,
     `/fighter/${fighterId}`,
     FighterSchema,
@@ -25,7 +25,7 @@ export async function getFighterDetails(fighterId: string): Promise<Fighter> {
 }
 
 export async function getAllFighters(): Promise<FightersResponse> {
-  return fetchFromApiWithRevalidatingAndValidation(
+  return fetchWithCacheAndValidation(
     UFC_RANKINGS_BASE_URL,
     "/fighters",
     FightersResponseSchema,
@@ -37,7 +37,7 @@ export async function getRankingsWithImages(): Promise<
   Array<DivisionWithChampion>
 > {
   const [rankings, allFighters] = await Promise.all([
-    fetchFromApiWithRevalidatingAndValidation(
+    fetchWithCacheAndValidation(
       UFC_RANKINGS_BASE_URL,
       "/rankings",
       RankingsResponseSchema,
@@ -59,7 +59,7 @@ export async function getDivisionWithImages(
   divisionId: string
 ): Promise<DivisionWithChampionAndFighters> {
   const [division, allFighters] = await Promise.all([
-    fetchFromApiWithRevalidatingAndValidation(
+    fetchWithCacheAndValidation(
       UFC_RANKINGS_BASE_URL,
       `/division/${divisionId}`,
       DivisionSchema,

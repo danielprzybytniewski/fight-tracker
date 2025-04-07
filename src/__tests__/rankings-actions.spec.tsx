@@ -5,7 +5,7 @@ import {
   getFighterDetails,
   getRankingsWithImages,
 } from "@/actions/rankings.actions";
-import { fetchFromApiWithRevalidatingAndValidation } from "@/lib";
+import { fetchWithCacheAndValidation } from "@/lib";
 import {
   mockAthleteCard,
   mockDivision,
@@ -14,10 +14,9 @@ import {
 
 jest.mock("@/lib/fetch-from-api-with-revalidating-and-validation");
 
-const mockFetch =
-  fetchFromApiWithRevalidatingAndValidation as jest.MockedFunction<
-    typeof fetchFromApiWithRevalidatingAndValidation
-  >;
+const mockFetch = fetchWithCacheAndValidation as jest.MockedFunction<
+  typeof fetchWithCacheAndValidation
+>;
 
 const baseURL = appConfig.ufcRankingsApiHost;
 

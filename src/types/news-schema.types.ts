@@ -14,7 +14,9 @@ const NewsContentSchema = z.object({
 
 const NewsDetailSchema = z.object({
   author: z.string(),
-  title: z.string(),
+  title: z
+    .string()
+    .transform((title) => title.replace(/(video|watch):?\s*/gi, "").trim()),
   modified: z.string(),
   categories: z.string(),
   content: z.array(NewsContentSchema),

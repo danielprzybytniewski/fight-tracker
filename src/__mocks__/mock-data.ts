@@ -5,6 +5,7 @@ import {
   Fight,
   FightResult,
 } from "@/types/fights-history-schema.types";
+import { NewsContentData, NewsDetailData } from "@/types/news-schema.types";
 import {
   Fighter as Athlete,
   DetailItem,
@@ -259,3 +260,33 @@ export const mockFavoriteFighters: Athlete[] = [
     imgUrl: "/images/alexandre-pantoja.jpg",
   },
 ];
+
+export const mockNewsParagraphs: NewsContentData[] = [
+  { type: "paragraph", data: { text: "First paragraph" } },
+  { type: "paragraph", data: { text: "Second paragraph" } },
+  { type: "paragraph", data: { text: "Third paragraph" } },
+  { type: "paragraph", data: { text: "Fourth paragraph" } },
+  { type: "paragraph", data: { text: "Fifth paragraph" } },
+  { type: "paragraph", data: { text: "Sixth paragraph" } },
+  { type: "paragraph", data: { text: "Seventh paragraph" } },
+  { type: "paragraph", data: { text: "Eighth paragraph" } },
+  { type: "paragraph", data: { text: "Ninth paragraph" } },
+  { type: "paragraph", data: { text: "Tenth paragraph" } },
+];
+
+export const generateMockNewsImages = (count: number) =>
+  Array.from({ length: count }, (_, index) => ({
+    type: "image",
+    src: `https://example.com/image-${index + 1}.jpg`,
+  }));
+
+export const mockNewsItem: NewsDetailData = {
+  title: "Exciting MMA News",
+  author: "John Doe",
+  modified: "2025-04-09T10:00:00.000Z",
+  categories: "Combat Sports, MMA",
+  content: [
+    { type: "paragraph", data: [{ text: "Some content" }] },
+    { type: "image", src: "https://example.com/image.jpg" },
+  ],
+};

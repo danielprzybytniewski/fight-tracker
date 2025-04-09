@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { NewsDetailData } from "@/types/news-schema.types";
 import { contentWithoutLastParagraphs } from "@/components/news/news-utils";
 import { CalendarIcon, UserIcon } from "lucide-react";
+import BackButton from "@/components/shared/back-button";
 
 type NewsDetailProps = {
   newsItem: NewsDetailData;
@@ -18,6 +19,9 @@ export default function NewsDetail({ newsItem }: NewsDetailProps) {
 
   return (
     <div className="container max-w-5xl mx-auto py-6 px-4 md:py-8 md:px-6">
+      <div className="mb-5">
+        <BackButton />
+      </div>
       <article className="overflow-hidden rounded-xl shadow-lg bg-gray-50 dark:bg-gray-900">
         <div className="p-4 md:p-6">
           <h1 className="font-extrabold text-xl md:text-3xl text-center text-gray-900 dark:text-gray-50">

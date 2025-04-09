@@ -38,6 +38,7 @@ export default function NewsList({ newsItems }: NewsListProps) {
             variant="outline"
             className="px-4 py-2 text-sm bg-gray-50 dark:bg-gray-900 hover:text-gray-800 hover:bg-gray-300 
             dark:hover:text-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+            aria-label="Load more news"
           >
             Load more
           </Button>

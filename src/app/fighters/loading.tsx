@@ -18,20 +18,20 @@ export default function FightersLoading() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {[...Array(12)].map((_, index) => (
           <div key={index} className="animate-pulse">
-            <div className="h-60 sm:h-64 md:h-72 lg:h-80 mb-4 bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
-            <div className="h-6 w-3/4 mb-2 mx-auto bg-gray-300 dark:bg-gray-700 rounded"></div>
-            <div className="h-4 w-1/2 mb-4 mx-auto bg-gray-300 dark:bg-gray-700 rounded"></div>
-            <div className="h-10 bg-gray-300 dark:bg-gray-700 rounded"></div>
+            <div className="h-60 sm:h-64 md:h-72 lg:h-80 mb-4 rounded-xl bg-gray-300 dark:bg-gray-700"></div>
+            <div className="h-6 w-3/4 mb-2 mx-auto rounded bg-gray-300 dark:bg-gray-700"></div>
+            <div className="h-4 w-1/2 mb-4 mx-auto rounded bg-gray-300 dark:bg-gray-700"></div>
+            <div className="h-10 rounded bg-gray-300 dark:bg-gray-700"></div>
           </div>
         ))}
       </div>
       <div className="flex justify-center mt-4 sm:mt-6">
         <div className="flex gap-1 sm:gap-2">
-          <div className="w-8 h-8 mr-2 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse"></div>
-          <div className="w-8 h-8 mr-2 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse"></div>
-          <div className="w-8 h-8 mr-2 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse"></div>
-          <div className="w-8 h-8 mr-2 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse"></div>
-          <div className="w-8 h-8 mr-2 bg-gray-300 dark:bg-gray-700 rounded-full animate-pulse"></div>
+          <div className="w-8 h-8 mr-2 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
+          <div className="w-8 h-8 mr-2 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
+          <div className="w-8 h-8 mr-2 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
+          <div className="w-8 h-8 mr-2 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
+          <div className="w-8 h-8 mr-2 rounded-full bg-gray-300 dark:bg-gray-700 animate-pulse"></div>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ import {
   mockRankings,
 } from "@/__mocks__/mock-data";
 
-jest.mock("@/lib/fetch-from-api-with-revalidating-and-validation");
+jest.mock("@/lib/fetch-with-cache-and-validation");
 
 const mockFetch = fetchWithCacheAndValidation as jest.MockedFunction<
   typeof fetchWithCacheAndValidation

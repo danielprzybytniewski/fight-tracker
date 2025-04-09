@@ -13,9 +13,12 @@ export default function NewsParagraph({ data }: NewsParagraphProps) {
 
   if (filteredData.length === 0) return null;
 
-  const formattedData = filteredData?.map((item, index) => (
-    <span key={index}>{formatTextWithBoldPhrases(item.text)}</span>
-  ));
+  const formattedData = filteredData
+    ?.map((item, index) => {
+      const formattedText = formatTextWithBoldPhrases(item.text);
+      return formattedText ? <span key={index}>{formattedText}</span> : null;
+    })
+    .filter(Boolean);
 
   if (formattedData.length === 0) return null;
 

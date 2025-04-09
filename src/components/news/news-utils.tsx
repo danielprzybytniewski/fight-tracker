@@ -28,6 +28,8 @@ const boldPhrases = [
   "Judging:",
   "Event:",
   "Location:",
+  "Updated records:",
+  "Key stats:",
 ];
 
 //Created for improved readability in the UI

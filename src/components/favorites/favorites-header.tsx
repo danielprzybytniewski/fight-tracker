@@ -20,8 +20,8 @@ export default function FavoritesHeader({
       </div>
       {favoritesCount > 0 && (
         <button
-          className="mx-auto mt-2"
           onClick={onResetFavorites}
+          className="mx-auto mt-2"
           aria-label="Reset favorites"
         >
           <Trash2

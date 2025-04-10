@@ -21,6 +21,24 @@ describe("fetchFightsCards", () => {
     jest.clearAllMocks();
   });
 
+  test("returns valid fight cards data when the API response is correct", async () => {
+    const mockApiResponse = { data: mockFightsCards };
+
+    mockFetch({
+      ok: true,
+      json: jest.fn().mockResolvedValue(mockApiResponse),
+    });
+
+    jest.spyOn(FightCardsResponseSchema, "safeParse").mockReturnValue({
+      success: true,
+      data: mockApiResponse,
+    } as z.SafeParseSuccess<FightCardsResponse>);
+
+    const result = await fetchFightsCards();
+    expect(result).toEqual(mockApiResponse);
+    expect(fetch).toHaveBeenCalledWith(mockApiUrl);
+  });
+
   test("throws an error if the network response is not ok", async () => {
     mockFetch({ ok: false, json: jest.fn() });
 
@@ -51,24 +69,6 @@ describe("fetchFightsCards", () => {
     expect(console.error).toHaveBeenCalledWith("Validation errors:", [
       { message: "Invalid data format" },
     ]);
-    expect(fetch).toHaveBeenCalledWith(mockApiUrl);
-  });
-
-  test("returns valid fight cards data when the API response is correct", async () => {
-    const mockApiResponse = { data: mockFightsCards };
-
-    mockFetch({
-      ok: true,
-      json: jest.fn().mockResolvedValue(mockApiResponse),
-    });
-
-    jest.spyOn(FightCardsResponseSchema, "safeParse").mockReturnValue({
-      success: true,
-      data: mockApiResponse,
-    } as z.SafeParseSuccess<FightCardsResponse>);
-
-    const result = await fetchFightsCards();
-    expect(result).toEqual(mockApiResponse);
     expect(fetch).toHaveBeenCalledWith(mockApiUrl);
   });
 });

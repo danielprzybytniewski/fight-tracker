@@ -25,9 +25,9 @@ export default function FighterCard({ fighter }: FighterCardProps) {
   return (
     <div className="relative">
       <button
-        aria-label="favorite"
-        className="absolute top-1 right-1 p-1 z-10"
         onClick={() => toggleFavoriteWithToast(fighter, toast)}
+        className="absolute top-1 right-1 p-1 z-10"
+        aria-label="favorite"
       >
         <Heart
           data-testid="favorite-icon"

@@ -39,10 +39,10 @@ describe("useFightersFiltersAndPagination", () => {
     );
 
   beforeEach(() => {
+    jest.clearAllMocks();
     (useRouter as jest.Mock).mockReturnValue({ push: mockRouterPush });
     (usePathname as jest.Mock).mockReturnValue("/fighters");
     (useSearchParams as jest.Mock).mockReturnValue(new URLSearchParams());
-    jest.clearAllMocks();
   });
 
   test("initializes with default filters correctly", async () => {
@@ -54,6 +54,7 @@ describe("useFightersFiltersAndPagination", () => {
         selectedCategory: null,
         currentPage: 1,
       });
+
       expect(result.current.filteredFighters.length).toBe(30);
       expect(result.current.paginatedFighters.length).toBe(12);
       expect(result.current.totalPages).toBe(3);
@@ -82,6 +83,7 @@ describe("useFightersFiltersAndPagination", () => {
       (useSearchParams as jest.Mock).mockReturnValue(
         new URLSearchParams("?category=heavyweight")
       );
+
       const { result } = renderWithProps({ initialCategory: "heavyweight" });
 
       expect(result.current.filters.selectedCategory).toBe("heavyweight");
@@ -92,12 +94,14 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handleSearchChange("fighter");
       });
 
-      expect(result.current.filters.searchQuery).toBe("fighter");
-      expect(result.current.filters.selectedCategory).toBe(null);
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?search=fighter&page=1",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(result.current.filters.searchQuery).toBe("fighter");
+        expect(result.current.filters.selectedCategory).toBe(null);
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?search=fighter&page=1",
+          { scroll: true }
+        );
+      });
     });
 
     test("does not reset selectedCategory when search query is cleared", async () => {
@@ -115,11 +119,13 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handleSearchChange("");
       });
 
-      expect(result.current.filters.selectedCategory).toBe("heavyweight");
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?category=heavyweight&page=1",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(result.current.filters.selectedCategory).toBe("heavyweight");
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?category=heavyweight&page=1",
+          { scroll: true }
+        );
+      });
     });
 
     test("handles URL encoding of search query when changing pages", async () => {
@@ -140,10 +146,12 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(2);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?search=Fighter%2520%2526%2520Champion&page=2",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?search=Fighter%2520%2526%2520Champion&page=2",
+          { scroll: true }
+        );
+      });
     });
   });
 
@@ -180,11 +188,10 @@ describe("useFightersFiltersAndPagination", () => {
 
       await waitFor(() => {
         result.current.handleCategoryChange(null);
-      });
-
-      expect(result.current.filters.selectedCategory).toBe(null);
-      expect(mockRouterPush).toHaveBeenCalledWith("/fighters?page=1", {
-        scroll: true,
+        expect(result.current.filters.selectedCategory).toBe(null);
+        expect(mockRouterPush).toHaveBeenCalledWith("/fighters?page=1", {
+          scroll: true,
+        });
       });
     });
 
@@ -377,10 +384,12 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(2);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?search=fighter&page=2",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?search=fighter&page=2",
+          { scroll: true }
+        );
+      });
     });
 
     test("properly includes selectedCategory in URL when changing pages", async () => {
@@ -396,10 +405,12 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(3);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?category=heavyweight&page=3",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?category=heavyweight&page=3",
+          { scroll: true }
+        );
+      });
     });
 
     test("handles both searchQuery and selectedCategory in URL when changing pages", async () => {
@@ -418,10 +429,12 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(2);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?search=fighter&category=lightweight&page=2",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?search=fighter&category=lightweight&page=2",
+          { scroll: true }
+        );
+      });
     });
 
     test("maintains URL parameters when staying on the same page", async () => {
@@ -443,10 +456,12 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(2);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith(
-        "/fighters?search=fighter&category=lightweight&page=2",
-        { scroll: true }
-      );
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith(
+          "/fighters?search=fighter&category=lightweight&page=2",
+          { scroll: true }
+        );
+      });
 
       expect(mockSetIsLoading).toHaveBeenCalledWith(true);
       jest.runAllTimers();
@@ -468,8 +483,10 @@ describe("useFightersFiltersAndPagination", () => {
         result.current.handlePageChange(1);
       });
 
-      expect(mockRouterPush).toHaveBeenCalledWith("/fighters?page=1", {
-        scroll: true,
+      await waitFor(() => {
+        expect(mockRouterPush).toHaveBeenCalledWith("/fighters?page=1", {
+          scroll: true,
+        });
       });
 
       mockRouterPush.mockClear();

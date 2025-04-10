@@ -31,7 +31,11 @@ export default function NewsImage({ src }: NewsImageProps) {
 
   return (
     <>
-      <div className="overflow-hidden rounded-lg" onClick={toggleZoom}>
+      <div
+        className="overflow-hidden rounded-lg"
+        onClick={toggleZoom}
+        data-testid="image-container"
+      >
         <div className="relative w-full aspect-video">
           <Image
             src={src}
@@ -49,6 +53,7 @@ export default function NewsImage({ src }: NewsImageProps) {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-gray-950/70 backdrop-blur-md"
           onClick={toggleZoom}
+          data-testid="zoomed-image-container"
         >
           <div className="relative max-h-[90vh] w-full h-full">
             <Image
@@ -60,6 +65,7 @@ export default function NewsImage({ src }: NewsImageProps) {
               unoptimized={unoptimized}
               onError={handleImageLoadError}
               className="object-contain"
+              data-testid="zoomed-image"
             />
             <button
               className="absolute top-[-2.3rem] right-[-1.2rem] p-1 mt-3 md:mt-0 rounded-full bg-gray-500 hover:bg-gray-400 

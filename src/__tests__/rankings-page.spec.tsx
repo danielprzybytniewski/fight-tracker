@@ -22,6 +22,7 @@ describe("RankingsPage", () => {
   const renderComponent = async () => {
     render(await RankingsPage());
   };
+
   beforeEach(() => {
     jest.clearAllMocks();
     (getRankingsWithImages as jest.Mock).mockResolvedValue(mockRankings);

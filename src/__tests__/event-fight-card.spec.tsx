@@ -1,25 +1,54 @@
 import { render, screen } from "@testing-library/react";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import { mockEventFightCard } from "@/__mocks__/mock-data";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import EventFightCard from "@/components/events/event-fight-card";
+import slugify from "@/lib/slugify";
+import { mockFightCards } from "@/__mocks__/mock-data";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
 jest.mock("@/hooks/use-fetch-fight-cards");
+
 jest.mock("@/components/shared/back-button", () =>
   jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
 );
 
 describe("EventFightCard", () => {
-  const renderComponent = (title: string) => {
-    render(<EventFightCard title={title} />);
+  const renderComponent = (slug: string) => {
+    render(<EventFightCard slug={slug} />);
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  test("renders fight card when data is loaded", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: mockFightCards,
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+    });
+
+    renderComponent(slugify(mockFightCards[0].title));
+
+    expect(screen.getByText(mockFightCards[0].title)).toBeInTheDocument();
+
+    const [{ fighterA, fighterB }] = mockFightCards[0].fights;
+
+    ["A", "B"].forEach((fighter) => {
+      const { firstName, lastName } = splitFighterFullName(
+        fighter === "A" ? fighterA.name : fighterB.name
+      );
+      expect(screen.getByText(firstName)).toBeInTheDocument();
+      expect(screen.getByText(lastName)).toBeInTheDocument();
+    });
+    expect(screen.getByText("VS")).toBeInTheDocument();
+
+    const backButton = screen.getByTestId("back-button");
+    expect(backButton).toBeInTheDocument();
   });
 
   test("renders loading state", () => {
@@ -60,29 +89,5 @@ describe("EventFightCard", () => {
     renderComponent("Nonexistent Event");
 
     expect(screen.getByText("Event Not Found!")).toBeInTheDocument();
-  });
-
-  test("renders fight card when data is loaded", () => {
-    (useFetchFightCards as jest.Mock).mockReturnValue({
-      data: mockEventFightCard,
-      isLoading: false,
-      error: null,
-      refetch: jest.fn(),
-    });
-
-    renderComponent(mockEventFightCard[0].title);
-
-    expect(screen.getByText(mockEventFightCard[0].title)).toBeInTheDocument();
-
-    const [{ fighterA, fighterB }] = mockEventFightCard[0].fights;
-
-    ["A", "B"].forEach((fighter) => {
-      const { firstName, lastName } = splitFighterFullName(
-        fighter === "A" ? fighterA.name : fighterB.name
-      );
-      expect(screen.getByText(firstName)).toBeInTheDocument();
-      expect(screen.getByText(lastName)).toBeInTheDocument();
-    });
-    expect(screen.getByText("VS")).toBeInTheDocument();
   });
 });

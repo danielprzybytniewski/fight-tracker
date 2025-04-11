@@ -1,11 +1,14 @@
 import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import { render, screen } from "@testing-library/react";
 import notFoundImg from "@/public/images/not-found.png";
+import userEvent from "@testing-library/user-event";
 
 describe("NotFoundFightCard", () => {
-  test("renders correctly", () => {
+  beforeEach(() => {
     render(<NotFoundFightCard />);
+  });
 
+  test("renders correctly", () => {
     const image = screen.getByAltText(/not found/i);
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
@@ -20,5 +23,15 @@ describe("NotFoundFightCard", () => {
       /the event you are looking for does not exist/i
     );
     expect(subText).toBeInTheDocument();
+  });
+
+  test("renders the 'Go to Homepage' link with correct href", async () => {
+    const user = userEvent.setup();
+
+    const homeLink = screen.getByRole("link", { name: "Go to Homepage" });
+    expect(homeLink).toBeInTheDocument();
+
+    await user.click(homeLink);
+    expect(homeLink).toHaveAttribute("href", "/");
   });
 });

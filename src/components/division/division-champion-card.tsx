@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import ChampionBadge from "@/components/shared/champion-badge";
+import ChampionBadge from "@/components/division/division-champion-badge";
 import { DivisionWithChampion } from "@/types/rankings-schema.types";
 
 type DivisionChampionCardProps = {

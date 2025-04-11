@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import EventsPage, { generateMetadata } from "@/app/events/[title]/page";
+import EventsPage, { generateMetadata } from "@/app/events/[slug]/page";
 
 jest.mock("@/components/events/event-fight-card", () =>
-  jest.fn(({ title }: { title: string }) => (
-    <div>Mocked EventFightCard: {title}</div>
+  jest.fn(({ slug }: { slug: string }) => (
+    <div>Mocked EventFightCard: {slug.toUpperCase()}</div>
   ))
 );
 
 describe("EventsPage", () => {
-  const mockParams = { title: "mock-event" };
+  const mockParams = { slug: "rizin-40" };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -18,7 +18,7 @@ describe("EventsPage", () => {
     render(await EventsPage({ params: Promise.resolve(mockParams) }));
 
     expect(
-      screen.getByText("Mocked EventFightCard: mock-event")
+      screen.getByText("Mocked EventFightCard: RIZIN-40")
     ).toBeInTheDocument();
   });
 
@@ -27,24 +27,22 @@ describe("EventsPage", () => {
       params: Promise.resolve(mockParams),
     });
 
-    expect(metadata.title).toBe("Mock Event | Fight Tracker");
-    expect(metadata.description).toBe(
-      "Check out the upcoming MMA event: Mock Event"
-    );
+    expect(metadata.title).toBe("Rizin 40 | Fight Tracker");
+    expect(metadata.description).toBe("Check out MMA event: Rizin 40");
     expect(metadata.keywords).toContain(
-      "Mock Event event, Mock Event fighters"
+      "Rizin 40 event, Rizin 40 fights, Rizin 40 fighters"
     );
 
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("Mock Event | Fight Tracker");
+      expect(metadata.openGraph.title).toBe("Rizin 40 | Fight Tracker");
       expect(metadata.openGraph.description).toBe(
-        "Check out the upcoming MMA event: Mock Event"
+        "Check out MMA event: Rizin 40"
       );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/events/mock-event"
+        "https://fight-tracker.vercel.app/events/rizin-40"
       );
     }
   });

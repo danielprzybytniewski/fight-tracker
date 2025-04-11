@@ -1,5 +1,5 @@
 import appConfig from "@/config/app-config";
-import { mockFightsCards } from "@/__mocks__/mock-data";
+import { mockFightCards } from "@/__mocks__/mock-data";
 import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import {
   FightCardsResponse,
@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const mockApiUrl = appConfig.fightCardsApiHost;
 
-describe("fetchFightsCards", () => {
+describe("fetchFightCards", () => {
   const mockFetch = (options: {
     ok: boolean;
     json: () => Promise<FightCardsResponse>;
@@ -22,7 +22,7 @@ describe("fetchFightsCards", () => {
   });
 
   test("returns valid fight cards data when the API response is correct", async () => {
-    const mockApiResponse = { data: mockFightsCards };
+    const mockApiResponse = { data: mockFightCards };
 
     mockFetch({
       ok: true,

@@ -1,8 +1,15 @@
-import { mockFighter } from "@/__mocks__/mock-data";
 import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
+import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 import { render, screen } from "@testing-library/react";
 
 describe("FightsCarouselFighterProfile", () => {
+  const mockFighter: FightCardsFighter = {
+    name: "John Doe",
+    record: "15-0",
+    country: "England",
+    picture: "https://example.com/fighter.png",
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
     render(<FightsCarouselFighterProfile fighter={mockFighter} />);

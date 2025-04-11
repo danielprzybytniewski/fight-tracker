@@ -1,11 +1,11 @@
 "use client";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
-import { Fighter } from "@/types/fight-cards-schema.types";
+import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 import fallbackImage from "@/public/images/og-image.png";
 
 type EventFighterProps = {
-  fighter: Fighter;
+  fighter: FightCardsFighter;
 };
 
 export default function EventFighter({ fighter }: EventFighterProps) {
@@ -23,22 +23,19 @@ export default function EventFighter({ fighter }: EventFighterProps) {
           width={130}
           height={130}
           priority
-          className="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-full outline outline-gray-300 dark:outline-gray-600 
+          className="w-28 h-28 sm:w-32 sm:h-32 object-cover object-top rounded-full outline outline-gray-300 dark:outline-gray-600 
           shadow-md"
         />
       </div>
       <div>
-        <p
-          className="block mt-2 md:mt-0 text-sm sm:text-lg uppercase font-bold text-gray-900
-          dark:text-gray-100"
-        >
+        <p className="block mt-2 lg:mt-0 text-sm sm:text-lg uppercase font-bold text-gray-900 dark:text-gray-100">
           <span className="inline sm:block">{firstName}</span>
           <span className="inline sm:hidden">&nbsp;</span>
           <span className="inline sm:block">{lastName}</span>
         </p>
         <div
-          className="flex flex-row sm:flex-col items-center justify-center md:items-center md:group-[.fighter-a]:items-start
-         md:group-[.fighter-b]:items-end mt-1"
+          className="flex flex-row sm:flex-col items-center justify-center lg:items-center lg:group-[.fighter-a]:items-start
+         lg:group-[.fighter-b]:items-end mt-1"
         >
           <Image
             src={fighter.country}

@@ -1,11 +1,11 @@
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
-import { Fighter } from "@/types/fight-cards-schema.types";
+import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 
 export default function FightsCarouselFighterProfile({
   fighter,
 }: {
-  fighter: Fighter;
+  fighter: FightCardsFighter;
 }) {
   const { firstName, lastName } = splitFighterFullName(fighter.name);
 
@@ -18,7 +18,7 @@ export default function FightsCarouselFighterProfile({
           fill
           priority
           sizes="(max-width: 640px) 7rem, 10rem"
-          className="object-cover rounded-full outline outline-gray-400 dark:outline-gray-600 shadow-xl"
+          className="object-cover object-top rounded-full outline outline-gray-400 dark:outline-gray-600 shadow-xl"
         />
       </div>
       <p className="text-lg md:text-xl font-bold uppercase text-gray-800 dark:text-gray-100">

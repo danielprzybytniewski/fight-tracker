@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import FightsCarousel from "@/components/fights-carousel/fights-carousel";
 import LoadingContainer from "@/components/shared/loading-container";
-import { mockFightsCards } from "@/__mocks__/mock-data";
+import { mockFightCards } from "@/__mocks__/mock-data";
 import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
@@ -15,6 +15,29 @@ describe("FightsCarousel", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  test("renders fight cards when data is loaded", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: mockFightCards,
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
+    });
+
+    renderComponent();
+    expect(screen.getByText("Fight Night")).toBeInTheDocument();
+    const [{ fighterA, fighterB }] = mockFightCards[0].fights;
+
+    ["A", "B"].forEach((fighter) => {
+      const { firstName, lastName } = splitFighterFullName(
+        fighter === "A" ? fighterA.name : fighterB.name
+      );
+      expect(screen.getByText(firstName)).toBeInTheDocument();
+      expect(screen.getByText(lastName)).toBeInTheDocument();
+    });
+
+    expect(screen.getByText("VS")).toBeInTheDocument();
   });
 
   test("renders loading state", () => {
@@ -52,28 +75,5 @@ describe("FightsCarousel", () => {
 
     await user.click(retryButton);
     expect(refetchMock).toHaveBeenCalledTimes(1);
-  });
-
-  test("renders fight cards when data is loaded", () => {
-    (useFetchFightCards as jest.Mock).mockReturnValue({
-      data: mockFightsCards,
-      isLoading: false,
-      error: null,
-      refetch: jest.fn(),
-    });
-
-    renderComponent();
-    expect(screen.getByText("Fight Night")).toBeInTheDocument();
-    const [{ fighterA, fighterB }] = mockFightsCards[0].fights;
-
-    ["A", "B"].forEach((fighter) => {
-      const { firstName, lastName } = splitFighterFullName(
-        fighter === "A" ? fighterA.name : fighterB.name
-      );
-      expect(screen.getByText(firstName)).toBeInTheDocument();
-      expect(screen.getByText(lastName)).toBeInTheDocument();
-    });
-
-    expect(screen.getByText("VS")).toBeInTheDocument();
   });
 });

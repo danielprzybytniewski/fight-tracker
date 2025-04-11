@@ -19,7 +19,7 @@ describe("NotFound", () => {
     expect(screen.getByRole("img", { name: "not found" })).toBeInTheDocument();
   });
 
-  test("renders the 'Go to Homepage' link with correct href and simulates user interaction", async () => {
+  test("renders the 'Go to Homepage' link with correct href", async () => {
     const user = userEvent.setup();
 
     const homeLink = screen.getByRole("link", { name: "Go to Homepage" });

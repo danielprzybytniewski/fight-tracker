@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <>
       <GradientHeading size="large" spacing="large">
-        Upcoming MMA Events
+        MMA Events
       </GradientHeading>
       <FightsCarousel />
     </>

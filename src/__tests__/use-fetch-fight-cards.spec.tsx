@@ -2,7 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import { mockFightsCards } from "@/__mocks__/mock-data";
+import { mockFightCards } from "@/__mocks__/mock-data";
 
 jest.mock("@/actions/fight-cards.actions");
 
@@ -31,14 +31,14 @@ describe("useFetchFightCards", () => {
   });
 
   test("fetches fight cards successfully", async () => {
-    const mockFightCards = { data: mockFightsCards };
-    (fetchFightsCards as jest.Mock).mockResolvedValue(mockFightCards);
+    const mockData = { data: mockFightCards };
+    (fetchFightsCards as jest.Mock).mockResolvedValue(mockData);
 
     const { result } = mockUseFetchFightCardsHook();
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
-    expect(result.current.data).toEqual(mockFightCards.data);
+    expect(result.current.data).toEqual(mockData.data);
   });
 
   test("handles error while fetching fight cards", async () => {

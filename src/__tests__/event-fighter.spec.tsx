@@ -1,9 +1,16 @@
-import { mockEventFighter } from "@/__mocks__/mock-data";
 import { render, screen } from "@testing-library/react";
 import fallbackImage from "@/public/images/og-image.png";
 import EventFighter from "@/components/events/event-fighter";
+import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 
 describe("EventFighter", () => {
+  const mockEventFighter: FightCardsFighter = {
+    name: "Jan Kowalski",
+    record: "22-0",
+    country: "https://example.com/poland.png",
+    picture: "https://example.com/fighter.png",
+  };
+
   const renderComponent = (fighter = mockEventFighter) => {
     return render(<EventFighter fighter={fighter} />);
   };

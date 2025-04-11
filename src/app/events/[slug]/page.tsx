@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/create-metadata";
 import { Metadata } from "next";
 
 type Params = {
-  title: string;
+  slug: string;
 };
 
 export async function generateMetadata({
@@ -12,14 +12,16 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { title } = await params;
-  const formattedTitle = formatSlugToReadableText(title);
+  const { slug } = await params;
+  const formattedTitle = formatSlugToReadableText(slug);
 
   return createMetadata({
     title: `${formattedTitle}`,
-    description: `Check out the upcoming MMA event: ${formattedTitle}`,
-    keywords: [`${formattedTitle} event, ${formattedTitle} fighters,`],
-    path: `/events/${title}`,
+    description: `Check out MMA event: ${formattedTitle}`,
+    keywords: [
+      `${formattedTitle} event, ${formattedTitle} fights, ${formattedTitle} fighters`,
+    ],
+    path: `/events/${slug}`,
   });
 }
 
@@ -28,7 +30,7 @@ export default async function EventsPage({
 }: {
   params: Promise<Params>;
 }) {
-  const { title } = await params;
+  const { slug } = await params;
 
-  return <EventFightCard title={title} />;
+  return <EventFightCard slug={slug} />;
 }

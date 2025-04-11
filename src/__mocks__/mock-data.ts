@@ -1,5 +1,5 @@
 import { FightsHistoryCardContentProps } from "@/components/fights-history/fights-history-card-content";
-import { Event, Fighter } from "@/types/fight-cards-schema.types";
+import { FightCardsEvent } from "@/types/fight-cards-schema.types";
 import {
   ApiFight,
   Fight,
@@ -14,10 +14,9 @@ import {
   NOT_AVAILABLE,
 } from "@/types/rankings-schema.types";
 
-export const mockFightsCards: Event[] = [
+export const mockFightCards: FightCardsEvent[] = [
   {
     title: "Fight Night",
-    date: "Sunday, 16 February 2025, 00:00",
     fights: [
       {
         main: true,
@@ -25,58 +24,19 @@ export const mockFightsCards: Event[] = [
         fighterA: {
           name: "Jing Li",
           record: "5-0",
-          country: "China",
+          country: "https://example.com/china.png",
           picture: "https://example.com/fighter.png",
         },
         fighterB: {
           name: "Adam Kowalski",
           record: "12-0",
-          country: "Poland",
-          picture: "https://example.com/fighter.png",
-        },
-      },
-    ],
-  },
-];
-
-export const mockEventFightCard: Event[] = [
-  {
-    title: "Fight Night",
-    date: "Monday, 10 February 2025, 00:00",
-    fights: [
-      {
-        main: true,
-        weight: 185,
-        fighterA: {
-          name: "Jan Kowalski",
-          record: "15-0",
           country: "https://example.com/poland.png",
           picture: "https://example.com/fighter.png",
         },
-        fighterB: {
-          name: "Yang Wang",
-          record: "2-0",
-          country: "https://example.com/china.png",
-          picture: "https://example.com/fighter.png",
-        },
       },
     ],
   },
 ];
-
-export const mockFighter: Fighter = {
-  name: "John Doe",
-  record: "15-0",
-  country: "England",
-  picture: "https://example.com/fighter.png",
-};
-
-export const mockEventFighter: Fighter = {
-  name: "Jan Kowalski",
-  record: "22-0",
-  country: "https://example.com/poland.png",
-  picture: "https://example.com/fighter.png",
-};
 
 export const mockAthlete: Athlete = {
   name: "John Doe",

@@ -41,9 +41,10 @@ describe("DivisionChampionCard", () => {
     expect(screen.getByText(`Record: ${expectedRecord}`)).toBeInTheDocument();
   });
 
-  test("has the correct link", () => {
-    const linkElement = screen.getByRole("link");
-    expect(linkElement).toHaveAttribute(
+  test("renders button with correct link", () => {
+    const button = screen.getByRole("link", { name: /view athlete/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute(
       "href",
       `/athlete/${mockDivisionWithChampion.champion.id}`
     );

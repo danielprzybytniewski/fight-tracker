@@ -11,8 +11,10 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
-import slugify from "@/lib/slugify";
 import { Button } from "@/components/ui/button";
+import EventFighterSeparator from "@/components/events/event-fighter-separator";
+import { routesConfig } from "@/config/routes-config";
+import slugify from "@/lib/slugify";
 
 export default function FightsCarousel() {
   const {
@@ -36,30 +38,33 @@ export default function FightsCarousel() {
         <CarouselContent>
           {fightCards.map((event) => {
             const firstFight = event.fights[0];
+            const slug = slugify(event.title);
+
             return (
               <CarouselItem
                 key={event.title}
                 className="flex flex-col items-center justify-items-start md:justify-center h-auto p-5 md:p-8 text-center"
               >
                 <Link
-                  href={`/events/${slugify(event.title)}`}
+                  href={routesConfig.event(slug)}
                   className="text-lg md:text-2xl uppercase font-extrabold text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
                 >
                   {event.title}
                 </Link>
                 <div className="flex flex-col md:flex-row justify-between w-full mt-6 p-6 md:p-10 border-t border-gray-300 dark:border-gray-700">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
-                  <div className="flex flex-col items-center h-full md:w-full mx-4 mt-4 md:mt-0 mb-6 md:mb-0">
-                    <p className="md:mt-auto text-base md:text-3xl font-extrabold text-gray-800 dark:text-gray-200">
-                      VS
-                    </p>
+                  <div className="flex flex-col items-center justify-center h-full md:w-full mx-4 mt-4 mb-6">
+                    <EventFighterSeparator
+                      isMainCard={true}
+                      weight={firstFight.weight}
+                    />
                     <Button
                       asChild
                       variant="outline"
-                      className="my-1 h-7 md:h-9 px-2 md:px-4 py-1 md:py-2 md:mt-auto text-xs md:text-base border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors 
-                      duration-200"
+                      className="sm:mt-4 h-7 md:h-8 px-2 md:px-3 py-1 md:py-2 text-xs md:text-base border-gray-300 dark:border-gray-700 hover:border-gray-600 dark:hover:border-gray-300 text-gray-800 dark:text-gray-100 dark:bg-gray-800 
+                      hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
                     >
-                      <Link href={`/events/${slugify(event.title)}`}>
+                      <Link href={routesConfig.event(slug)}>
                         View Fight Card
                       </Link>
                     </Button>

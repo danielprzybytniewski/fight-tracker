@@ -1,7 +1,7 @@
 import { DetailItem } from "@/types/rankings-schema.types";
 import AthleteDetailCard from "@/components/athlete/athlete-detail-card";
 
-type FighterDetailsProps = {
+type AthleteDetailsProps = {
   generalDetails: DetailItem[];
   additionalDetails: DetailItem[];
 };
@@ -9,7 +9,7 @@ type FighterDetailsProps = {
 export default function AthleteDetails({
   generalDetails,
   additionalDetails,
-}: FighterDetailsProps) {
+}: AthleteDetailsProps) {
   return (
     <div className="text-gray-900 dark:text-gray-200">
       <div className="grid grid-cols-2 gap-5">

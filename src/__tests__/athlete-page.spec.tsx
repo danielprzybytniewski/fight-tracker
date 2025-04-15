@@ -6,10 +6,9 @@ import {
   mockAthlete,
   mockGeneralDetails,
   mockAdditionalDetails,
-  mockUndefinedAthleteRecord,
   mockApiFight,
 } from "@/__mocks__/mock-data";
-import { DetailItem } from "@/types/rankings-schema.types";
+import { DetailItem, Fighter } from "@/types/rankings-schema.types";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -78,6 +77,12 @@ jest.mock("@/components/shared/back-button", () =>
 
 describe("AthletePage", () => {
   const mockParams = { fighterId: "john-doe" };
+
+  const mockUndefinedAthleteRecord: Partial<Fighter> = {
+    wins: undefined,
+    losses: undefined,
+    draws: undefined,
+  };
 
   const renderComponent = async () => {
     render(await AthletePage({ params: Promise.resolve(mockParams) }));

@@ -4,48 +4,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { Fighter } from "@/types/rankings-schema.types";
+import {
+  favoritesContainerVariants,
+  favoritesItemVariants,
+} from "@/lib/framer-motion-variants";
+import { routesConfig } from "@/config/routes-config";
 
-type FavoritesFighterCardsProps = {
+type FavoritesFighterGridProps = {
   favorites: Fighter[];
   toggleFavoriteWithToast: (fighter: Fighter) => void;
-};
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.3 },
-  },
 };
 
 export default function FavoritesFighterGrid({
   favorites,
   toggleFavoriteWithToast,
-}: FavoritesFighterCardsProps) {
+}: FavoritesFighterGridProps) {
   return (
     <motion.div
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
-      variants={containerVariants}
+      variants={favoritesContainerVariants}
       initial="hidden"
       animate="visible"
     >
       {favorites.map((fighter: Fighter) => (
         <motion.div
           key={fighter.name}
-          variants={itemVariants}
+          variants={favoritesItemVariants}
           className="relative group"
         >
-          <Link href={`/athlete/${fighter.id}`}>
+          <Link href={routesConfig.athlete(fighter.id)}>
             <div
               className="relative h-80 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 
                 dark:from-gray-900 dark:to-gray-800 shadow-lg"

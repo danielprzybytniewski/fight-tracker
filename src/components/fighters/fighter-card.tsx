@@ -13,6 +13,7 @@ import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { routesConfig } from "@/config/routes-config";
 
 type FighterCardProps = {
   fighter: Fighter;
@@ -40,8 +41,8 @@ export default function FighterCard({ fighter }: FighterCardProps) {
           )}
         />
       </button>
-      <Link href={`/athlete/${fighter.id}`}>
-        <Card className="relative flex flex-col h-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 shadow-md group">
+      <Link href={routesConfig.athlete(fighter.id)}>
+        <Card className="relative flex flex-col h-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 hover:border-gray-600 dark:hover:border-gray-300 transition-colors duration-300 shadow-md group">
           <CardHeader className="p-0">
             <div className="relative h-60 sm:h-64 md:h-72 lg:h-80 bg-gray-100 dark:bg-gray-800 overflow-hidden rounded-t-xl">
               {fighter.imgUrl && (

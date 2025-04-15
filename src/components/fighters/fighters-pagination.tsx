@@ -46,7 +46,8 @@ export default function FightersPagination({
               if (currentPage > 1) onPageChange(currentPage - 1);
             }}
             className={cn(
-              "py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
+              `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border 
+              border-gray-200 dark:border-gray-800 transition-colors duration-200`,
               currentPage === 1 && "pointer-events-none opacity-50"
             )}
             aria-label="Go to previous page"
@@ -70,7 +71,8 @@ export default function FightersPagination({
                     handlePageClick(e, page)
                   }
                   className={cn(
-                    "py-1 px-2 sm:py-2 text-xs sm:text-sm hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
+                    `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 
+                    dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200`,
                     page === currentPage &&
                       `bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 border-gray-500 
                       dark:border-gray-400`
@@ -90,7 +92,8 @@ export default function FightersPagination({
               if (currentPage < totalPages) onPageChange(currentPage + 1);
             }}
             className={cn(
-              "py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200",
+              `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border 
+              border-gray-200 dark:border-gray-800 transition-colors duration-200`,
               currentPage === totalPages && "pointer-events-none opacity-50"
             )}
             aria-label="Go to next page"

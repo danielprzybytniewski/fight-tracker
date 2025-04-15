@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import EventFightSeparator from "@/components/events/event-fight-separator";
+import EventFighterSeparator from "@/components/events/event-fighter-separator";
 
 jest.mock("@/components/events/event-type-badge", () =>
   jest.fn(({ isMainCard }) => (
@@ -15,24 +15,24 @@ jest.mock("@/components/events/event-weight-badge", () =>
   ))
 );
 
-describe("EventFightSeparator", () => {
+describe("EventFighterSeparator", () => {
   const renderComponent = (props = { isMainCard: true, weight: 93 }) => {
-    render(<EventFightSeparator {...props} />);
+    render(<EventFighterSeparator {...props} />);
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test('renders "VS" text', () => {
-    renderComponent();
-    expect(screen.getByText("VS")).toBeInTheDocument();
-  });
-
   test("renders correct badge type when props isMainCard is true", () => {
     renderComponent();
     const typeBadge = screen.getByTestId("event-type-badge");
     expect(typeBadge).toHaveTextContent("MAIN CARD");
+  });
+
+  test('renders "VS" text', () => {
+    renderComponent();
+    expect(screen.getByText("VS")).toBeInTheDocument();
   });
 
   test("renders correct badge type when props isMainCard is false", () => {

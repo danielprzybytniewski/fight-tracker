@@ -12,6 +12,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { CalendarIcon, UserIcon } from "lucide-react";
+import { routesConfig } from "@/config/routes-config";
 
 type NewsPreviewItemProps = {
   newsItem: NewsDetailData;
@@ -23,7 +24,7 @@ export default function NewsPreviewItem({ newsItem }: NewsPreviewItemProps) {
   const imageUrl = getFirstImageUrl(newsItem.content);
 
   return (
-    <Link href={`/news/${slug}`}>
+    <Link href={routesConfig.newsDetails(slug)}>
       <Card
         className="overflow-hidden h-full border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900  
       group"

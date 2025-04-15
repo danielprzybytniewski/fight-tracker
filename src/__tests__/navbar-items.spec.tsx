@@ -1,6 +1,6 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import NavbarItems from "@/components/navbar/navbar-items";
+import { mockLinks } from "@/__mocks__/mock-data";
 
 jest.mock("@/components/favorites/favorites-counter", () =>
   jest.fn(() => <div data-testid="favorites-counter">Favorites</div>)
@@ -16,10 +16,14 @@ describe("NavbarItems", () => {
     render(<NavbarItems />);
   });
 
-  test("renders the UFC Rankings link with correct href and text", () => {
-    const linkElement = screen.getByRole("link", { name: /ufc rankings/i });
-    expect(linkElement).toBeInTheDocument();
-    expect(linkElement).toHaveAttribute("href", "/rankings");
+  test("renders all links with correct href and text", () => {
+    mockLinks.forEach(({ href, label }) => {
+      const link = screen.getByRole("link", {
+        name: new RegExp(`${label}`, "i"),
+      });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute("href", href);
+    });
   });
 
   test("renders FavoritesCounter and ModeToggler components", () => {

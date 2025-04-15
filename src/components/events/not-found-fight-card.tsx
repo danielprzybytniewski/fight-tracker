@@ -1,6 +1,7 @@
 import Image from "next/image";
 import notFoundImg from "@/public/images/not-found.png";
 import Link from "next/link";
+import { routesConfig } from "@/config/routes-config";
 
 export default function NotFoundFightCard() {
   return (
@@ -17,10 +18,10 @@ export default function NotFoundFightCard() {
         The event you are looking for does not exist
       </p>
       <Link
-        href="/"
+        href={routesConfig.root}
         className="mt-4 px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white"
       >
-        Go to Homepage
+        Go to Landing Page
       </Link>
     </div>
   );

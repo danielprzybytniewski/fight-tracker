@@ -5,7 +5,7 @@ import ErrorFightCards from "@/components/shared/error-fight-cards";
 import NotFoundFightCard from "@/components/events/not-found-fight-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import EventFighter from "@/components/events/event-fighter";
-import EventFightSeparator from "@/components/events/event-fight-separator";
+import EventFighterSeparator from "@/components/events/event-fighter-separator";
 import EventTypeBadge from "@/components/events/event-type-badge";
 import EventWeightBadge from "@/components/events/event-weight-badge";
 import slugify from "@/lib/slugify";
@@ -58,7 +58,7 @@ export default function EventFightCard({ slug }: { slug: string }) {
               </span>
               <EventFighter fighter={fighter.fighterA} />
             </div>
-            <EventFightSeparator
+            <EventFighterSeparator
               isMainCard={fighter.main}
               weight={fighter.weight}
             />

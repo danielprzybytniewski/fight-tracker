@@ -25,7 +25,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function EventsPage({
+export default async function EventPage({
   params,
 }: {
   params: Promise<Params>;

@@ -1,3 +1,4 @@
+import { mockLinks } from "@/__mocks__/mock-data";
 import MobileNavbarItems from "@/components/navbar/mobile-navbar-items";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -11,18 +12,21 @@ jest.mock("@/components/navbar/mode-toggler", () =>
 );
 
 describe("MobileNavbarItems", () => {
-  let onItemClick: jest.Mock;
+  const onItemClick = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
-    onItemClick = jest.fn();
     render(<MobileNavbarItems onItemClick={onItemClick} />);
   });
 
-  test('renders the "UFC Rankings" link with correct href and text', () => {
-    const linkElement = screen.getByRole("link", { name: /ufc rankings/i });
-    expect(linkElement).toBeInTheDocument();
-    expect(linkElement).toHaveAttribute("href", "/rankings");
+  test("renders all links with correct href and text", () => {
+    mockLinks.forEach(({ href, label }) => {
+      const link = screen.getByRole("link", {
+        name: new RegExp(`${label}`, "i"),
+      });
+      expect(link).toBeInTheDocument();
+      expect(link).toHaveAttribute("href", href);
+    });
   });
 
   test("calls onItemClick props when clicking on the navbar item", async () => {
@@ -30,5 +34,10 @@ describe("MobileNavbarItems", () => {
 
     await user.click(screen.getByTestId("favorites-counter"));
     expect(onItemClick).toHaveBeenCalledTimes(1);
+  });
+
+  test("renders FavoritesCounter and ModeToggler components", () => {
+    expect(screen.getByTestId("favorites-counter")).toBeInTheDocument();
+    expect(screen.getByTestId("mode-toggler")).toBeInTheDocument();
   });
 });

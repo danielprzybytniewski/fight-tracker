@@ -4,7 +4,7 @@ import {
   transformFightDetails,
 } from "@/lib/fights-history-transformer";
 import FightsHistory from "@/components/fights-history/fights-history";
-import { mockAppFight, mockTransformedDetails } from "@/__mocks__/mock-data";
+import { mockAppFight } from "@/__mocks__/mock-data";
 import { Fight } from "@/types/fights-history-schema.types";
 
 jest.mock("@/lib/fights-history-transformer", () => ({
@@ -24,6 +24,16 @@ const mockSortFightsByDate = sortFightsByDate as jest.Mock;
 const mockTransformFightDetails = transformFightDetails as jest.Mock;
 
 describe("FightsHistory", () => {
+  const mockTransformedDetails = {
+    opponentName: "Fighter B",
+    result: "win",
+    methodDisplay: "KO (punch)",
+    roundDisplay: "2",
+    timeDisplay: "2:30",
+    locationDisplay: "USA",
+    weightClassDisplay: "Lightweight",
+  };
+
   const renderComponent = (fightsHistory: Fight[], mainFighterName: string) => {
     render(
       <FightsHistory

@@ -15,8 +15,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = createMetadata({
-  title: "MMA Events",
-  description: "Info about MMA events",
+  title: "Landing Page",
+  description: "Info about Fight Tracker app",
 });
 
 export default function RootLayout({

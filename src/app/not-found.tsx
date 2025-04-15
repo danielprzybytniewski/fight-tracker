@@ -1,6 +1,7 @@
 import Link from "next/link";
 import notFoundImg from "@/public/images/not-found.png";
 import Image from "next/image";
+import { routesConfig } from "@/config/routes-config";
 
 export default function NotFound() {
   return (
@@ -20,10 +21,10 @@ export default function NotFound() {
         Sorry, we could not find the page you are looking for.
       </p>
       <Link
-        href="/"
+        href={routesConfig.root}
         className="px-4 py-2 bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white rounded-md"
       >
-        Go to Homepage
+        Go to Landing Page
       </Link>
     </div>
   );

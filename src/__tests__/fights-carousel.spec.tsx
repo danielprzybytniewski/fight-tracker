@@ -4,10 +4,26 @@ import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import FightsCarousel from "@/components/fights-carousel/fights-carousel";
 import LoadingContainer from "@/components/shared/loading-container";
 import { mockFightCards } from "@/__mocks__/mock-data";
-import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
 
+jest.mock("@/components/events/event-fighter-separator", () =>
+  jest.fn(({ isMainCard, weight }) => (
+    <div data-testid="event-fighter-separator">
+      <p>{isMainCard ? "MAIN" : "PRELIMS"}</p>
+      <p>VS</p>
+      <p>Weight: {weight}</p>
+    </div>
+  ))
+);
+
+jest.mock("@/components/fights-carousel/fights-carousel-fighter-profile", () =>
+  jest.fn(({ fighter }) => (
+    <div data-testid="fights-carousel-fighter-profile">
+      <p>Fighter: {fighter.name}</p>
+    </div>
+  ))
+);
 describe("FightsCarousel", () => {
   const renderComponent = () => {
     render(<FightsCarousel />);
@@ -17,27 +33,46 @@ describe("FightsCarousel", () => {
     jest.clearAllMocks();
   });
 
-  test("renders fight cards when data is loaded", () => {
+  test("renders fights carousel when data is loaded", () => {
     (useFetchFightCards as jest.Mock).mockReturnValue({
       data: mockFightCards,
       isLoading: false,
       error: null,
       refetch: jest.fn(),
     });
-
     renderComponent();
-    expect(screen.getByText("Fight Night")).toBeInTheDocument();
-    const [{ fighterA, fighterB }] = mockFightCards[0].fights;
 
-    ["A", "B"].forEach((fighter) => {
-      const { firstName, lastName } = splitFighterFullName(
-        fighter === "A" ? fighterA.name : fighterB.name
-      );
-      expect(screen.getByText(firstName)).toBeInTheDocument();
-      expect(screen.getByText(lastName)).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: /fight night/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "/events/fight-night");
+
+    const button = screen.getByRole("link", { name: /view fight card/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute("href", "/events/fight-night");
+  });
+
+  test("renders child components correctly when data is loaded", () => {
+    (useFetchFightCards as jest.Mock).mockReturnValue({
+      data: mockFightCards,
+      isLoading: false,
+      error: null,
+      refetch: jest.fn(),
     });
+    renderComponent();
 
-    expect(screen.getByText("VS")).toBeInTheDocument();
+    const separator = screen.getByTestId("event-fighter-separator");
+    expect(separator).toBeInTheDocument();
+    expect(separator).toHaveTextContent("MAIN");
+    expect(separator).toHaveTextContent("VS");
+    expect(separator).toHaveTextContent("Weight: 185");
+
+    const fighters = screen.getAllByTestId("fights-carousel-fighter-profile");
+    fighters.forEach((fighter) => {
+      expect(fighter).toBeInTheDocument();
+    });
+    expect(fighters).toHaveLength(2);
+    expect(fighters[0]).toHaveTextContent("Fighter: Jing Li");
+    expect(fighters[1]).toHaveTextContent("Fighter: Adam Kowalski");
   });
 
   test("renders loading state", () => {

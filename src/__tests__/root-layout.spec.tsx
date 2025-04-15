@@ -67,8 +67,8 @@ describe("RootLayout", () => {
   });
 
   test("sets the correct metadata", () => {
-    expect(metadata.title).toBe("MMA Events | Fight Tracker");
-    expect(metadata.description).toBe("Info about MMA events");
+    expect(metadata.title).toBe("Landing Page | Fight Tracker");
+    expect(metadata.description).toBe("Info about Fight Tracker app");
     expect(metadata.keywords).toEqual(
       "MMA, Mixed Martial Arts, UFC, Ultimate Fighting Championship, PFL, Professional Fighters League, LFA, Legacy Fighting Alliance, ONE, ONE Championship, One Fighting Championship, BKFC, Bare Knuckle Fighting Championship, RIZIN, ESPN, ESPN MMA, fights, fight events, sport events, fight tracker, past fights, past MMA fights, past UFC fights, past PFL fights, past RIZIN fights, past ONE fights, previous fights, previous MMA fights, previous UFC fights, previous PFL fights, previous RIZIN fights, previous ONE fights, UFC rankings, current UFC rankings, rankings, athletes, UFC athletes, fighters, UFC fighters, best fighters, best UFC fighters, top fighters, top UFC fighters, favorites, favorite fighters, your favorite fighters, divisions, champions, weight classes, UFC weight classes, weight divisions, UFC weight divisions, UFC fight history, fighter records, past UFC events, fight results, UFC career, fighter performance, UFC matchups, fight statistics, UFC fight cards, historical fights, fighter journey, UFC timeline, fight analysis, UFC archives, fighter evolution, fighter progression, MMA news, UFC news, PFL news, combat sports news, latest MMA news, breaking MMA news, fight news, live fight coverage, MMA rumors, UFC rumors, PFL rumors, MMA opinions, UFC opinions, PFL opinions, MMA discussions, UFC discussions, PFL discussions, fight announcements, MMA updates, UFC updates, PFL updates, fight reports, MMA headlines, sports news MMA, fight world news, MMA event coverage, fighter interviews, MMA press releases, MMA press conference, fighter reactions, live MMA events, UFC fight results, expert fight analysis, UFC fight statistics, MMA controversies, UFC predictions, PFL predictions, MMA rankings updates, biggest UFC fights, MMA breaking stories, sports journalism MMA, UFC betting odds, fight industry news, MMA media reports, UFC weigh-in results, PFL weigh-in results"
     );
@@ -76,8 +76,10 @@ describe("RootLayout", () => {
 
   test("sets the correct OpenGraph metadata", () => {
     if (metadata.openGraph) {
-      expect(metadata.openGraph.title).toBe("MMA Events | Fight Tracker");
-      expect(metadata.openGraph.description).toBe("Info about MMA events");
+      expect(metadata.openGraph.title).toBe("Landing Page | Fight Tracker");
+      expect(metadata.openGraph.description).toBe(
+        "Info about Fight Tracker app"
+      );
       expect(metadata.openGraph.images).toContain(
         "https://fight-tracker.vercel.app/images/og-image.png"
       );

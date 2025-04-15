@@ -7,7 +7,7 @@ import {
 } from "@/types/fights-history-schema.types";
 import { NewsContentData, NewsDetailData } from "@/types/news-schema.types";
 import {
-  Fighter as Athlete,
+  Fighter,
   DetailItem,
   Division,
   DivisionWithChampion,
@@ -38,7 +38,7 @@ export const mockFightCards: FightCardsEvent[] = [
   },
 ];
 
-export const mockAthlete: Athlete = {
+export const mockAthlete: Fighter = {
   name: "John Doe",
   wins: 20,
   losses: 5,
@@ -56,22 +56,10 @@ export const mockAthlete: Athlete = {
   octagonDebut: "2015-01-01",
 };
 
-export const mockAthleteCard: Athlete = {
+export const mockAthleteCard: Fighter = {
   ...mockAthlete,
   id: "Jonh Doe",
   imgUrl: "https://example.com/athlete.jpg",
-};
-
-export const mockIncompleteAthleteData: Athlete = {
-  wins: 10,
-  losses: 2,
-  draws: 0,
-} as Athlete;
-
-export const mockUndefinedAthleteRecord: Partial<Athlete> = {
-  wins: undefined,
-  losses: undefined,
-  draws: undefined,
 };
 
 export const mockDivision: Division = {
@@ -167,28 +155,7 @@ export const mockFightsHistoryCardContentProps: FightsHistoryCardContentProps =
     timeDisplay: mockAppFight.time || NOT_AVAILABLE,
   };
 
-export const mockTransformedDetails = {
-  opponentName: "Fighter B",
-  result: "win",
-  methodDisplay: "KO (punch)",
-  roundDisplay: "2",
-  timeDisplay: "2:30",
-  locationDisplay: "USA",
-  weightClassDisplay: "Lightweight",
-};
-
-export const fighterCardMock: Athlete = {
-  id: "john-doe",
-  name: "John Doe",
-  nickname: "The Destroyer",
-  category: "Heavyweight",
-  wins: 20,
-  losses: 3,
-  draws: 1,
-  imgUrl: "https://example.com/johndoe.jpg",
-};
-
-export const mockFavoriteFighters: Athlete[] = [
+export const mockFavoriteFighters: Fighter[] = [
   {
     id: "Jon Jones",
     name: "Jon Jones",
@@ -250,3 +217,10 @@ export const mockNewsItem: NewsDetailData = {
     { type: "image", src: "https://example.com/image.jpg" },
   ],
 };
+
+export const mockLinks = [
+  { href: "/fighters", label: "UFC Fighters" },
+  { href: "/rankings", label: "UFC Rankings" },
+  { href: "/events", label: "MMA Events" },
+  { href: "/news", label: "News" },
+];

@@ -1,22 +1,13 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 import FavoritesCounter from "@/components/favorites/favorites-counter";
 import ModeToggler from "@/components/navbar/mode-toggler";
+import MobileNavbarLinks from "@/components/navbar/mobile-navbar-links";
+import { navbarItemVariants } from "@/lib/framer-motion-variants";
+import { linksConfig } from "@/config/routes-config";
 
 type MobileNavbarItemsProps = {
   onItemClick: () => void;
 };
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const links = [
-  { href: "/fighters", label: "UFC Fighters" },
-  { href: "/rankings", label: "UFC Rankings" },
-  { href: "/news", label: "News" },
-];
 
 export default function MobileNavbarItems({
   onItemClick,
@@ -34,21 +25,18 @@ export default function MobileNavbarItems({
         },
       }}
     >
-      {links.map(({ href, label }) => (
-        <motion.div variants={itemVariants} key={href}>
-          <Link
-            href={href}
-            className="text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
-            onClick={onItemClick}
-          >
-            {label}
-          </Link>
-        </motion.div>
+      {linksConfig.map(({ href, label }) => (
+        <MobileNavbarLinks
+          key={href}
+          href={href}
+          label={label}
+          onItemClick={onItemClick}
+        />
       ))}
-      <motion.div variants={itemVariants} onClick={onItemClick}>
+      <motion.div variants={navbarItemVariants} onClick={onItemClick}>
         <FavoritesCounter />
       </motion.div>
-      <motion.div variants={itemVariants} onClick={onItemClick}>
+      <motion.div variants={navbarItemVariants} onClick={onItemClick}>
         <ModeToggler />
       </motion.div>
     </motion.div>

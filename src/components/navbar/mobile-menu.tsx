@@ -12,6 +12,7 @@ import { Menu, X } from "lucide-react";
 import ChangeLogo from "@/components/navbar/change-logo";
 import Link from "next/link";
 import MobileNavbarItems from "@/components/navbar/mobile-navbar-items";
+import { routesConfig } from "@/config/routes-config";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function MobileMenu() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="md:hidden flex items-center"
+          className="lg:hidden flex items-center"
           aria-label="Toggle mobile menu"
         >
           <Menu className="w-8 h-8 text-gray-800 dark:text-gray-200" />
@@ -39,7 +40,7 @@ export default function MobileMenu() {
           <ChangeLogo />
           <SheetClose asChild>
             <Link
-              href="/"
+              href={routesConfig.root}
               className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100"
               onClick={handleClose}
             >

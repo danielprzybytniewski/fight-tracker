@@ -1,3 +1,4 @@
+import { routesConfig } from "@/config/routes-config";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ export default function FavoritesEmptyState() {
           Add fighter to your favorites by clicking the heart icon on a
         </span>
         <Link
-          href={"/fighters"}
+          href={routesConfig.fighters}
           className="mr-1 font-bold underline text-gray-800 dark:text-gray-200 hover:text-gray-400 
         dark:hover:text-gray-500 transition-colors duration-200"
         >

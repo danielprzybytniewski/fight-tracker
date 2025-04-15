@@ -6,7 +6,7 @@ describe("FightsCarouselFighterProfile", () => {
   const mockFighter: FightCardsFighter = {
     name: "John Doe",
     record: "15-0",
-    country: "England",
+    country: "https://example.com/england.png",
     picture: "https://example.com/fighter.png",
   };
 
@@ -16,7 +16,8 @@ describe("FightsCarouselFighterProfile", () => {
   });
 
   test("renders fighter image", () => {
-    const image = screen.getByRole("img");
+    const image = screen.getByRole("img", { name: mockFighter.name });
+
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
@@ -24,10 +25,28 @@ describe("FightsCarouselFighterProfile", () => {
     );
     expect(image).toHaveAttribute("alt", mockFighter.name);
   });
+
   test("renders fighter name", () => {
     const firstName = screen.getByText(/John/i);
     const lastName = screen.getByText(/Doe/i);
+
     expect(firstName).toBeInTheDocument();
     expect(lastName).toBeInTheDocument();
+  });
+
+  test("renders fighter country flag", () => {
+    const countryImage = screen.getByAltText(/john doe country/i);
+
+    expect(countryImage).toBeInTheDocument();
+    expect(countryImage).toHaveAttribute(
+      "src",
+      expect.stringContaining(encodeURIComponent(mockFighter.country))
+    );
+  });
+
+  test("renders fighter record", () => {
+    const fighterRecord = screen.getByText(mockFighter.record);
+
+    expect(fighterRecord).toBeInTheDocument();
   });
 });

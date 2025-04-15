@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FighterCard from "@/components/fighters/fighter-card";
-import { fighterCardMock } from "@/__mocks__/mock-data";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
+import { Fighter } from "@/types/rankings-schema.types";
 
 jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-toast");
@@ -12,6 +12,17 @@ describe("FighterCard", () => {
   const mockToggleFavoriteWithToast = jest.fn();
   const mockIsFavorite = jest.fn();
   const mockToast = jest.fn();
+
+  const fighterCardMock: Fighter = {
+    id: "john-doe",
+    name: "John Doe",
+    nickname: "The Destroyer",
+    category: "Heavyweight",
+    wins: 20,
+    losses: 3,
+    draws: 1,
+    imgUrl: "https://example.com/johndoe.jpg",
+  };
 
   const renderComponent = (fighter = fighterCardMock) =>
     render(<FighterCard fighter={fighter} />);

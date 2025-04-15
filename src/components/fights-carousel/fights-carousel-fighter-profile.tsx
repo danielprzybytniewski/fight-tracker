@@ -2,11 +2,13 @@ import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 import Image from "next/image";
 
+type FightsCarouselFighterProfileProps = {
+  fighter: FightCardsFighter;
+};
+
 export default function FightsCarouselFighterProfile({
   fighter,
-}: {
-  fighter: FightCardsFighter;
-}) {
+}: FightsCarouselFighterProfileProps) {
   const { firstName, lastName } = splitFighterFullName(fighter.name);
 
   return (
@@ -28,6 +30,18 @@ export default function FightsCarouselFighterProfile({
           {lastName}
         </span>
       </p>
+      <div className="flex flex-row items-center justify-center mt-1">
+        <Image
+          src={fighter.country}
+          alt={`${fighter.name} country`}
+          width={24}
+          height={16}
+          className="inline-block w-5 h-3 md:w-6 md:h-4 mr-2 text-gray-600 dark:text-gray-400"
+        />
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+          {fighter.record}
+        </p>
+      </div>
     </div>
   );
 }

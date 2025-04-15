@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { Division } from "@/types/rankings-schema.types";
+import { routesConfig } from "@/config/routes-config";
 
 type RankingsCardProps = {
   division: Division;
@@ -9,8 +10,8 @@ type RankingsCardProps = {
 
 export default function RankingsCard({ division }: RankingsCardProps) {
   return (
-    <Link href={`/rankings/${division.id}`}>
-      <Card className="overflow-hidden h-full bg-gray-50 dark:bg-gray-800 shadow-md group">
+    <Link href={routesConfig.rankingDetails(division.id)}>
+      <Card className="overflow-hidden h-full bg-gray-50 dark:bg-gray-800 hover:border-gray-600 dark:hover:border-gray-300 shadow-md  transition-colors duration-300 group">
         <CardHeader className="p-0">
           {division.champion.imgUrl && (
             <div className="overflow-hidden relative w-full h-64 sm:h-72 bg-gray-300 dark:bg-gray-700">

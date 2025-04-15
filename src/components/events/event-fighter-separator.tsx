@@ -1,15 +1,15 @@
 import EventTypeBadge from "@/components/events/event-type-badge";
 import EventWeightBadge from "@/components/events/event-weight-badge";
 
-type EventFightSeparatorProps = {
+type EventFighterSeparatorProps = {
   isMainCard: boolean;
   weight: number;
 };
 
-export default function EventFightSeparator({
+export default function EventFighterSeparator({
   isMainCard,
   weight,
-}: EventFightSeparatorProps) {
+}: EventFighterSeparatorProps) {
   return (
     <div className="flex flex-col items-center justify-center mx-4 my-3 sm:my-0 w-auto min-w-[6rem]">
       <span className="hidden sm:inline-block mb-3">

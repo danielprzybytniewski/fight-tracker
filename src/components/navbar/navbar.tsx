@@ -2,6 +2,7 @@ import ChangeLogo from "@/components/navbar/change-logo";
 import Link from "next/link";
 import NavbarItems from "@/components/navbar/navbar-items";
 import MobileMenu from "@/components/navbar/mobile-menu";
+import { routesConfig } from "@/config/routes-config";
 
 export default function Navbar() {
   return (
@@ -10,17 +11,20 @@ export default function Navbar() {
     shadow-md"
     >
       <div className="flex justify-between items-center">
-        <ul className="flex items-center space-x-2 md:space-x-3">
+        <ul className="flex items-center space-x-2 lg:space-x-3">
           <li>
             <ChangeLogo />
           </li>
           <li>
-            <Link href="/" className="text-3xl md:text-4xl font-bold">
+            <Link
+              href={routesConfig.root}
+              className="text-3xl lg:text-4xl font-bold"
+            >
               Fight Tracker
             </Link>
           </li>
         </ul>
-        <div className="hidden md:flex items-center space-x-2 md:space-x-4">
+        <div className="hidden lg:flex items-center space-x-2 lg:space-x-4">
           <NavbarItems />
         </div>
         <MobileMenu />

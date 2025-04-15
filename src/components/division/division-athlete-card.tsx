@@ -3,8 +3,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Fighter } from "@/types/rankings-schema.types";
+import { routesConfig } from "@/config/routes-config";
 
-type DivisionFighterCardProps = {
+type DivisionAthleteCardProps = {
   fighter: Fighter;
   index: number;
 };
@@ -12,12 +13,12 @@ type DivisionFighterCardProps = {
 export default function DivisionAthleteCard({
   fighter,
   index,
-}: DivisionFighterCardProps) {
+}: DivisionAthleteCardProps) {
   return (
-    <Link href={`/athlete/${fighter.id}`}>
-      <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-lg group">
-        <CardContent className="p-6 text-center sm:text-left">
-          <div className="flex flex-col items-center md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
+    <Link href={routesConfig.athlete(fighter.id)}>
+      <Card className="overflow-hidden h-full bg-white dark:bg-gray-800 shadow-lg hover:border-gray-600 dark:hover:border-gray-300 transition-colors duration-300 group">
+        <CardContent className="p-6 text-center">
+          <div className="flex flex-col items-center lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4">
             <Badge
               variant="secondary"
               className="text-base sm:text-lg px-3 py-1 bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-200 pointer-events-none"
@@ -36,8 +37,8 @@ export default function DivisionAthleteCard({
                 />
               </div>
             )}
-            <div className="text-center sm:text-left">
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
+            <div className="text-center lg:text-left">
+              <h3 className="xl:max-w-16 xl:min-h-24 text-xl font-semibold text-gray-800 dark:text-gray-200">
                 {fighter.name}
               </h3>
               <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">

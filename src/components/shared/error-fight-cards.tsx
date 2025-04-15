@@ -1,13 +1,17 @@
 import Image from "next/image";
 import errorImg from "@/public/images/error.png";
 import Link from "next/link";
+import { routesConfig } from "@/config/routes-config";
 
-type ErrorProps = {
+type ErrorFightCardsProps = {
   message: string;
   onRetry?: () => void;
 };
 
-export default function ErrorFightCards({ message, onRetry }: ErrorProps) {
+export default function ErrorFightCards({
+  message,
+  onRetry,
+}: ErrorFightCardsProps) {
   const isNetworkError = message.toLowerCase().includes("network");
 
   return (
@@ -34,10 +38,10 @@ export default function ErrorFightCards({ message, onRetry }: ErrorProps) {
         </button>
       )}
       <Link
-        href="/"
+        href={routesConfig.root}
         className="mt-4 px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white"
       >
-        Go to Homepage
+        Go to Landing Page
       </Link>
     </div>
   );

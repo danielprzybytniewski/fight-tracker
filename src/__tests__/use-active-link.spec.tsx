@@ -18,19 +18,19 @@ describe("useActiveLink", () => {
     jest.clearAllMocks();
   });
 
-  test("returns true when pathname matches href exactly", () => {
+  test("marks link as active when pathname matches href exactly", () => {
     const { result } = setup("/rankings", "/rankings");
 
     expect(result.current).toBe(true);
   });
 
-  test("returns true when pathname starts with href followed by a slash", () => {
-    const { result } = setup("/rankings/flyweight", "/rankings/flyweight");
+  test("marks link as active for nested route", () => {
+    const { result } = setup("/rankings/flyweight", "/rankings");
 
     expect(result.current).toBe(true);
   });
 
-  test("returns false when pathname does not match href", () => {
+  test("marks link as inactive when pathname does not match href", () => {
     const { result } = setup("/rankings", "/fighters");
 
     expect(result.current).toBe(false);

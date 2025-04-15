@@ -26,7 +26,7 @@ describe("MobileNavbarLinks", () => {
     expect(link).toHaveAttribute("href", href);
   });
 
-  test("applies active class when useActiveLink returns true", () => {
+  test("applies active state classes when link is active", () => {
     mockUseActiveLink.mockReturnValue(true);
     render(
       <MobileNavbarLinks href={href} label={label} onItemClick={onItemClick} />
@@ -36,7 +36,7 @@ describe("MobileNavbarLinks", () => {
     expect(links[1]).toHaveClass("font-bold");
   });
 
-  test("does not apply active class when useActiveLink returns false", () => {
+  test("does not apply active state classes when link is inactive", () => {
     const link = screen.getByRole("link", { name: label });
     expect(link).not.toHaveClass("font-bold");
   });

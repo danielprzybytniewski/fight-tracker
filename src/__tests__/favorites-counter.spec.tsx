@@ -23,12 +23,6 @@ describe("FavoritesCounter", () => {
     mockUseActiveLink.mockReturnValue(false);
   });
 
-  test("renders correctly with no favorites", () => {
-    renderComponent([]);
-
-    expect(screen.getByText("(0)")).toBeInTheDocument();
-  });
-
   test("renders correctly with some favorites", () => {
     renderComponent([{ name: "Fighter 1" }, { name: "Fighter 2" }]);
 
@@ -42,7 +36,13 @@ describe("FavoritesCounter", () => {
     expect(linkElement).toHaveAttribute("href", "/favorites");
   });
 
-  test("applies correct classes to active link when useActiveLink returns true", () => {
+  test("renders correctly with no favorites", () => {
+    renderComponent([]);
+
+    expect(screen.getByText("(0)")).toBeInTheDocument();
+  });
+
+  test("applies correct classes when link is active", () => {
     mockUseActiveLink.mockImplementation((href) => href === "/favorites");
     renderComponent([]);
 
@@ -52,6 +52,13 @@ describe("FavoritesCounter", () => {
     );
 
     expect(activeLinks[0]).toHaveAttribute("href", "/favorites");
+  });
+
+  test("applies correct classes when link is inactive", () => {
+    mockUseActiveLink.mockImplementation((href) => href === "/favorites");
+    renderComponent([]);
+
+    const links = screen.getAllByRole("link", { name: /(0)/i });
 
     const inactiveLinks = links.filter(
       (link) => !link.classList.contains("border-red-600")

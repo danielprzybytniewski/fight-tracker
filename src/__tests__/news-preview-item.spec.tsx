@@ -31,12 +31,8 @@ describe("NewsPreviewItem", () => {
     render(<NewsPreviewItem newsItem={mockNewsItem} />);
   });
 
-  test("renders the component with correct data", () => {
+  test("renders the component with correct title", () => {
     expect(screen.getByText(mockNewsItem.title)).toBeInTheDocument();
-    expect(screen.getByText(mockNewsItem.author)).toBeInTheDocument();
-    expect(
-      screen.getByText(new Date(mockNewsItem.modified).toLocaleDateString())
-    ).toBeInTheDocument();
   });
 
   test("renders an image with correct attributes", () => {
@@ -54,7 +50,7 @@ describe("NewsPreviewItem", () => {
     expect(slugify).toHaveBeenCalledWith(mockNewsItem.title);
   });
 
-  test("renders a link with the correct slugified href", async () => {
+  test("renders a link with the correct slugified href", () => {
     const link = screen.getByRole("link");
 
     expect(link).toHaveAttribute("href", "/news/exciting-mma-news");

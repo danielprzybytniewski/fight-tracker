@@ -68,7 +68,7 @@ export default function NewsImage({ src }: NewsImageProps) {
               data-testid="zoomed-image"
             />
             <button
-              className="absolute top-[-2.3rem] right-[-1.2rem] p-1 mt-3 md:mt-0 rounded-full bg-gray-500 hover:bg-gray-400 
+              className="absolute top-[-2.3rem] right-[-1.2rem] p-1 mt-3 md:mt-0 rounded-full bg-gray-500 hover:bg-gray-400
               dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-50 transition-colors duration-200"
               onClick={toggleZoom}
             >

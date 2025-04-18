@@ -41,12 +41,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "t.co",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
         hostname: "www.gannett-cdn.com",
         port: "",
         pathname: "/**",

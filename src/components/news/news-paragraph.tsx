@@ -7,9 +7,7 @@ type NewsParagraphProps = {
 export default function NewsParagraph({ data }: NewsParagraphProps) {
   if (!Array.isArray(data)) return null;
 
-  const filteredData = data?.filter(
-    (item) => item.text && item.text.trim() !== "Share this"
-  );
+  const filteredData = data?.filter((item) => item.text);
 
   if (filteredData.length === 0) return null;
 

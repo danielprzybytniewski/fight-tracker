@@ -1,5 +1,6 @@
 import NewsImage from "@/components/news/news-image";
 import NewsParagraph from "@/components/news/news-paragraph";
+import { getFirstImageUrl } from "@/components/news/news-utils";
 
 type NewsContentProps = {
   images: { type: string; src?: string | undefined }[];
@@ -8,6 +9,7 @@ type NewsContentProps = {
 
 export default function NewsContent({ images, paragraphs }: NewsContentProps) {
   const validImages = images.filter((image) => image.src);
+  const firstImageUrl = getFirstImageUrl(validImages);
 
   if (validImages.length === 0) {
     return null;
@@ -15,7 +17,7 @@ export default function NewsContent({ images, paragraphs }: NewsContentProps) {
 
   return (
     <>
-      {validImages.length > 6 ? (
+      {validImages.length > 4 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {validImages.map((image, index) => (
             <NewsImage key={index} src={image.src} />
@@ -23,7 +25,7 @@ export default function NewsContent({ images, paragraphs }: NewsContentProps) {
         </div>
       ) : (
         <>
-          <NewsImage src={validImages[0].src} />
+          <NewsImage src={firstImageUrl} />
           {paragraphs.map((paragraph, index) => (
             <NewsParagraph key={index} data={paragraph.data} />
           ))}

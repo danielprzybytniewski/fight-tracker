@@ -9,7 +9,7 @@ export default function NewsDetailLoading() {
       </div>
       <article className="overflow-hidden rounded-xl shadow-lg bg-gray-50 dark:bg-gray-900 animate-pulse">
         <div className="p-4 md:p-6">
-          <div className="h-8 md:h-12 w-3/4 mx-auto rounded bg-gray-300 dark:bg-gray-700"></div>
+          <div className="h-8 md:h-10 w-3/4 mx-auto rounded bg-gray-300 dark:bg-gray-700"></div>
           <div
             className="flex justify-center items-center flex-wrap mt-3 gap-x-6 gap-y-1 text-xs md:text-sm text-gray-700 
           dark:text-gray-300"
@@ -17,10 +17,6 @@ export default function NewsDetailLoading() {
             <div className="flex items-center">
               <div className="h-5 w-5 mr-1 rounded-full bg-gray-300 dark:bg-gray-700"></div>
               <div className="h-4 w-20 rounded bg-gray-300 dark:bg-gray-700"></div>
-            </div>
-            <div className="flex items-center">
-              <div className="h-5 w-5 mr-1 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-              <div className="h-4 w-16 rounded bg-gray-300 dark:bg-gray-700"></div>
             </div>
           </div>
           <div className="mt-6 md:mt-8">

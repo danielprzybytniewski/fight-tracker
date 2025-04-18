@@ -1,8 +1,7 @@
 import NewsContent from "@/components/news/news-content";
 import { Badge } from "@/components/ui/badge";
 import { NewsDetailData } from "@/types/news-schema.types";
-import { contentWithoutLastParagraphs } from "@/components/news/news-utils";
-import { CalendarIcon, UserIcon } from "lucide-react";
+import { UserIcon } from "lucide-react";
 import BackButton from "@/components/shared/back-button";
 
 type NewsDetailProps = {
@@ -10,10 +9,9 @@ type NewsDetailProps = {
 };
 
 export default function NewsDetail({ newsItem }: NewsDetailProps) {
-  const categories = newsItem.categories.split(",");
-  const filteredContent = contentWithoutLastParagraphs(newsItem.content);
-  const images = filteredContent.filter((item) => item.type === "image");
-  const paragraphs = filteredContent.filter(
+  const categories = newsItem.categories.split(";");
+  const images = newsItem.content.filter((item) => item.type === "image");
+  const paragraphs = newsItem.content.filter(
     (item) => item.type === "paragraph"
   );
 
@@ -31,10 +29,6 @@ export default function NewsDetail({ newsItem }: NewsDetailProps) {
             <div className="flex items-center">
               <UserIcon className="h-4 md:h-5 w-4 mr-1" />
               <span className="font-medium">{newsItem.author}</span>
-            </div>
-            <div className="flex items-center">
-              <CalendarIcon className="h-4 md:h-5 w-4 mr-1" />
-              <span>{new Date(newsItem.modified).toLocaleDateString()}</span>
             </div>
           </div>
           <div className="mt-6 md:mt-8">

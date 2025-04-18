@@ -16,7 +16,7 @@ export async function getNews(): Promise<NewsDetailData[]> {
     "",
     NewsApiResponseSchema,
     "Invalid news data received from API",
-    { cache: "no-store" }
+    { cache: "force-cache" }
   );
 
   return data.articles;

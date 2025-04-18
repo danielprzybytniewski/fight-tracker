@@ -25,12 +25,11 @@ export default function NewsList({ newsItems }: NewsListProps) {
       <GradientHeading size="large" className="mt-3">
         News
       </GradientHeading>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-3 px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 mt-3 p-4 rounded-lg dark:bg-gray-600">
         {visibleNewsItems.map((newsItem) => (
           <NewsPreviewItem key={newsItem.title} newsItem={newsItem} />
         ))}
       </div>
-
       {newsItems.length > visibleCount && (
         <div className="flex justify-center mt-6">
           <Button

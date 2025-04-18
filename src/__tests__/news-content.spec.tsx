@@ -14,7 +14,7 @@ jest.mock("@/components/news/news-paragraph", () =>
 );
 
 describe("NewsContent", () => {
-  test("renders a single image when valid images count is less than or equal to 6", () => {
+  test("renders a single image when valid images count is less than or equal to 4", () => {
     render(
       <NewsContent
         images={generateMockNewsImages(3)}
@@ -25,14 +25,14 @@ describe("NewsContent", () => {
     expect(screen.getAllByTestId("mock-news-image")).toHaveLength(1);
   });
 
-  test("renders multiple images when valid images count is more than 6", () => {
+  test("renders multiple images when valid images count is more than 4", () => {
     render(
       <NewsContent
-        images={generateMockNewsImages(7)}
+        images={generateMockNewsImages(5)}
         paragraphs={mockNewsParagraphs}
       />
     );
-    expect(screen.getAllByTestId("mock-news-image")).toHaveLength(7);
+    expect(screen.getAllByTestId("mock-news-image")).toHaveLength(5);
   });
 
   test("renders nothing when there are no valid images", () => {
@@ -41,7 +41,7 @@ describe("NewsContent", () => {
     expect(screen.queryByTestId("mock-news-paragraph")).toBeNull();
   });
 
-  test("renders paragraphs when images count is less than or equal to 6", () => {
+  test("renders paragraphs when images count is less than or equal to 4", () => {
     render(
       <NewsContent
         images={generateMockNewsImages(2)}
@@ -51,7 +51,7 @@ describe("NewsContent", () => {
     expect(screen.getAllByTestId("mock-news-paragraph")).toHaveLength(10);
   });
 
-  test("does not render paragraphs when images count is more than 6", () => {
+  test("does not render paragraphs when images count is more than 4", () => {
     render(
       <NewsContent
         images={generateMockNewsImages(8)}

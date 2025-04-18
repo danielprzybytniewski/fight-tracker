@@ -43,7 +43,7 @@ describe("News API Actions", () => {
         "",
         expect.any(Object),
         "Invalid news data received from API",
-        { cache: "no-store" }
+        { cache: "force-cache" }
       );
 
       expect(result).toEqual(mockNews);

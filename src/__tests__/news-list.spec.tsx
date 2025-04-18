@@ -14,11 +14,10 @@ jest.mock("@/components/shared/gradient-heading", () =>
 
 describe("NewsList", () => {
   const mockNewsItems = Array.from({ length: 18 }, (_, index) => ({
-    title: `News Item ${index + 1}`,
-    content: [],
-    modified: "2025-04-08T00:00:00Z",
     author: "Author",
     categories: "Combat Sports",
+    content: [],
+    title: `News Item ${index + 1}`,
   }));
 
   const renderComponent = (newsItems = mockNewsItems) => {

@@ -19,7 +19,7 @@ export default function FightsCarouselFighterProfile({
           alt={fighter.name}
           fill
           priority
-          sizes="(max-width: 640px) 7rem, 10rem"
+          sizes="(max-width: 768px) 7rem, 10rem"
           className="object-cover object-top rounded-full outline outline-gray-400 dark:outline-gray-600 shadow-xl"
         />
       </div>

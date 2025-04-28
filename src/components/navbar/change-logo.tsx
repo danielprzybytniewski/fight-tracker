@@ -19,7 +19,7 @@ export default function ChangeLogo() {
 
   return (
     <Image
-      data-testid="imgTestId"
+      data-testid="logoImage"
       src={logo}
       alt="Fight Tracker Logo"
       width={40}

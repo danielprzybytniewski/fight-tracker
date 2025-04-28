@@ -21,7 +21,7 @@ export default function NotFoundFightCard() {
         href={routesConfig.root}
         className="mt-4 px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white"
       >
-        Go to Landing Page
+        Go to Home Page
       </Link>
     </div>
   );

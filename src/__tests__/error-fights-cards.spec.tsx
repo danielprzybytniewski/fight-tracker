@@ -39,11 +39,11 @@ describe("ErrorFightsCards", () => {
     expect(onRetryMock).toHaveBeenCalledTimes(1);
   });
 
-  test("renders the 'Go to Landing Page' link with correct href", async () => {
+  test("renders the 'Go to Home Page' link with correct href", async () => {
     const user = userEvent.setup();
     renderComponent({ message: "Network error occurred" });
 
-    const homeLink = screen.getByRole("link", { name: "Go to Landing Page" });
+    const homeLink = screen.getByRole("link", { name: "Go to Home Page" });
     expect(homeLink).toBeInTheDocument();
 
     await user.click(homeLink);

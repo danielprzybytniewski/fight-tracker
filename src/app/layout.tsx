@@ -15,8 +15,9 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = createMetadata({
-  title: "Landing Page",
-  description: "Info about Fight Tracker app",
+  title: "Dive Into the World of MMA",
+  description:
+    "The ultimate MMA and UFC resource: Discover comprehensive profiles of top UFC fighters, current UFC rankings, event cards from organizations like UFC, PFL, RIZIN and ONE, breaking news from MMA world, interviews, betting odds, predictions and more, all in one place.",
 });
 
 export default function RootLayout({

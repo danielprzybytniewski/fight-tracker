@@ -15,7 +15,7 @@ describe("ChangeLogo", () => {
     render(<ChangeLogo />);
 
     await waitFor(() => {
-      const darkImg = screen.getAllByTestId("imgTestId")[0];
+      const darkImg = screen.getAllByTestId("logoImage")[0];
       expect(darkImg).toHaveAttribute(
         "src",
         expect.stringContaining(encodeURIComponent(darkLogo.src))
@@ -27,7 +27,7 @@ describe("ChangeLogo", () => {
     render(<ChangeLogo />);
 
     await waitFor(() => {
-      const lightImg = screen.getAllByTestId("imgTestId")[0];
+      const lightImg = screen.getAllByTestId("logoImage")[0];
       expect(lightImg).toHaveAttribute(
         "src",
         expect.stringContaining(encodeURIComponent(lightLogo.src))

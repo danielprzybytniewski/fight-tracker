@@ -24,7 +24,7 @@ export default function NotFound() {
         href={routesConfig.root}
         className="px-4 py-2 bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white rounded-md"
       >
-        Go to Landing Page
+        Go to Home Page
       </Link>
     </div>
   );

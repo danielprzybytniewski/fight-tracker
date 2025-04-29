@@ -15,8 +15,6 @@ const sharedMetadata = {
     "Ultimate Fighting Championship",
     "PFL",
     "Professional Fighters League",
-    "LFA",
-    "Legacy Fighting Alliance",
     "ONE",
     "ONE Championship",
     "One Fighting Championship",

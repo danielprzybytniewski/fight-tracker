@@ -19,10 +19,10 @@ describe("NotFound", () => {
     expect(screen.getByRole("img", { name: "not found" })).toBeInTheDocument();
   });
 
-  test("renders the 'Go to Landing Page' link with correct href", async () => {
+  test("renders the 'Go to Home Page' link with correct href", async () => {
     const user = userEvent.setup();
 
-    const homeLink = screen.getByRole("link", { name: "Go to Landing Page" });
+    const homeLink = screen.getByRole("link", { name: "Go to Home Page" });
     expect(homeLink).toBeInTheDocument();
     await user.click(homeLink);
     expect(homeLink).toHaveAttribute("href", "/");

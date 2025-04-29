@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "archive.mmajunkie.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "feeds.usatodaysports.com",
         port: "",
         pathname: "/**",

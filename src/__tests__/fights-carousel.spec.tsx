@@ -42,6 +42,8 @@ describe("FightsCarousel", () => {
     });
     renderComponent();
 
+    const carousel = screen.getByTestId("fights-carousel");
+    expect(carousel).toBeInTheDocument();
     const link = screen.getByRole("link", { name: /fight night/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "/events/fight-night");

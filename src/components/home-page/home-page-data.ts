@@ -108,11 +108,11 @@ export const overviewSections: Overview[] = [
     imageAlt: "MMA events",
   },
   {
-    title: "MMA News",
+    title: "Discover MMA News",
     description:
-      "Stay up-to-date with 110 news articles from the MMA world. Get the updates, interviews, photos, predictions and betting odds from major events like UFC, PFL and BKFC.",
+      "Stay up-to-date with over 105 news from the MMA world. Get the updates, interviews, photos, predictions and betting odds from major events like UFC, PFL and BKFC.",
     items: [
-      { icon: Newspaper, text: "110 news articles from the MMA world" },
+      { icon: Newspaper, text: "Over 105 news from the MMA world" },
       { icon: Medal, text: "Updates from UFC, PFL, BKFC and more" },
       {
         icon: BarChart2,
@@ -161,7 +161,7 @@ export const stats: Stats[] = [
   { value: "13", label: "UFC Divisions" },
   { value: "9", label: "MMA Events" },
   { value: "115+", label: "MMA Fights" },
-  { value: "110", label: "MMA News" },
+  { value: "105+", label: "MMA News" },
 ];
 
 export const logoImageKeys: string[] = ["ufc", "pfl", "rizin", "one", "bkfc"];

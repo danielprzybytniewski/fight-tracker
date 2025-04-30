@@ -34,7 +34,10 @@ export default function FightsCarousel() {
 
   return (
     <div className="flex items-center justify-center py-10 px-4 md:px-6">
-      <Carousel className="overflow-hidden w-full max-w-5xl relative rounded-3xl bg-gray-100 dark:bg-gray-900 shadow-xl">
+      <Carousel
+        className="overflow-hidden w-full max-w-5xl relative rounded-3xl bg-gray-100 dark:bg-gray-900 shadow-xl"
+        data-testid="fights-carousel"
+      >
         <CarouselContent>
           {fightCards.map((event) => {
             const firstFight = event.fights[0];

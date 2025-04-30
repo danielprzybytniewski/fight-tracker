@@ -13,6 +13,7 @@ export default function HomePageMmaOrganizationsSection() {
     <section className="flex justify-center bg-gray-300 dark:bg-gray-600">
       <Carousel
         className="w-full"
+        data-testid="mma-organizations-carousel"
         plugins={[
           Autoplay({
             delay: 2500,

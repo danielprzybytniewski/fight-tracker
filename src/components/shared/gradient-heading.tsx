@@ -1,5 +1,5 @@
+import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { VariantProps, cva } from "class-variance-authority";
 
 const gradientHeadingVariants = cva(
   "font-bold text-center bg-gradient-to-r bg-clip-text text-transparent from-gray-700 to-gray-900 dark:from-gray-200 dark:to-gray-400",
@@ -18,7 +18,7 @@ const gradientHeadingVariants = cva(
       size: "default",
       spacing: "default",
     },
-  }
+  },
 );
 
 const GradientHeading = ({

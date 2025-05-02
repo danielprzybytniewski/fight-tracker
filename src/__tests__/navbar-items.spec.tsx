@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import NavbarItems from "@/components/navbar/navbar-items";
 import { mockLinks } from "@/__mocks__/mock-data";
+import NavbarItems from "@/components/navbar/navbar-items";
 
 jest.mock("@/components/favorites/favorites-counter", () =>
-  jest.fn(() => <div data-testid="favorites-counter">Favorites</div>)
+  jest.fn(() => <div data-testid="favorites-counter">Favorites</div>),
 );
 
 jest.mock("@/components/navbar/mode-toggler", () =>
-  jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>)
+  jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>),
 );
 
 describe("NavbarItems", () => {

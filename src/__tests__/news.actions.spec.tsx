@@ -1,8 +1,8 @@
 import { waitFor } from "@testing-library/react";
-import { fetchWithCacheAndValidation } from "@/lib";
-import slugify from "@/lib/slugify";
 import { getNews, getNewsBySlug } from "@/actions/news.actions";
 import appConfig from "@/config/app-config";
+import { fetchWithCacheAndValidation } from "@/lib";
+import slugify from "@/lib/slugify";
 
 jest.mock("@/lib", () => ({
   fetchWithCacheAndValidation: jest.fn(),
@@ -43,7 +43,7 @@ describe("News API Actions", () => {
         "",
         expect.any(Object),
         "Invalid news data received from API",
-        { cache: "force-cache" }
+        { cache: "force-cache" },
       );
 
       expect(result).toEqual(mockNews);
@@ -53,7 +53,7 @@ describe("News API Actions", () => {
   describe("getNewsBySlug", () => {
     beforeEach(() => {
       mockedSlugify.mockImplementation((title: string) =>
-        title.toLowerCase().replace(/\s+/g, "-")
+        title.toLowerCase().replace(/\s+/g, "-"),
       );
     });
 

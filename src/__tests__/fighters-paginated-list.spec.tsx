@@ -47,7 +47,7 @@ const mockFighters: Fighter[] = [
 ];
 
 describe("FightersPaginatedList", () => {
-  const mockProps = {
+  const defaultProps = {
     paginatedFighters: mockFighters,
     currentPage: 1,
     totalPages: 2,
@@ -55,7 +55,7 @@ describe("FightersPaginatedList", () => {
   };
 
   const renderComponent = (props = {}) =>
-    render(<FightersPaginatedList {...mockProps} {...props} />);
+    render(<FightersPaginatedList {...defaultProps} {...props} />);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -69,7 +69,7 @@ describe("FightersPaginatedList", () => {
   test("renders FighterCard components for each fighter", () => {
     renderComponent();
     expect(screen.getAllByTestId("fighter-card")).toHaveLength(
-      mockFighters.length
+      mockFighters.length,
     );
     mockFighters.forEach((fighter) => {
       expect(screen.getByText(fighter.name)).toBeInTheDocument();
@@ -83,11 +83,11 @@ describe("FightersPaginatedList", () => {
     expect(screen.getByTestId("fighters-pagination")).toBeInTheDocument();
 
     expect(screen.getByTestId("current-page")).toHaveTextContent(
-      mockProps.currentPage.toString()
+      defaultProps.currentPage.toString(),
     );
 
     expect(screen.getByTestId("total-pages")).toHaveTextContent(
-      mockProps.totalPages.toString()
+      defaultProps.totalPages.toString(),
     );
 
     expect(screen.getByTestId("prev-button")).toBeInTheDocument();
@@ -98,13 +98,13 @@ describe("FightersPaginatedList", () => {
     const user = userEvent.setup();
     renderComponent();
     await user.click(screen.getByText("Next"));
-    expect(mockProps.onPageChange).toHaveBeenCalledWith(2);
+    expect(defaultProps.onPageChange).toHaveBeenCalledWith(2);
   });
 
   test("calls onPageChange with the correct page number when 'Previous' button is clicked", async () => {
     const user = userEvent.setup();
     renderComponent({ currentPage: 2 });
     await user.click(screen.getByText("Previous"));
-    expect(mockProps.onPageChange).toHaveBeenCalledWith(1);
+    expect(defaultProps.onPageChange).toHaveBeenCalledWith(1);
   });
 });

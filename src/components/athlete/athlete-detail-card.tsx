@@ -1,8 +1,9 @@
-import { DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
+import type { DetailItem } from "@/types/rankings-schema.types";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 export default function AthleteDetailCard({ label, value }: DetailItem) {
   return (
-    <div className="p-4 text-sm sm:text-base bg-gray-100 dark:bg-gray-800/80 rounded-lg shadow-md ">
+    <div className="rounded-lg bg-gray-100 p-4 text-sm shadow-md dark:bg-gray-800/80 sm:text-base">
       <h2 className="font-semibold text-gray-900 dark:text-gray-200">
         {label}
       </h2>

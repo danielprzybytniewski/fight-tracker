@@ -1,6 +1,6 @@
+import { render, screen } from "@testing-library/react";
 import AthleteDetailCard from "@/components/athlete/athlete-detail-card";
 import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
-import { render, screen } from "@testing-library/react";
 
 describe("AthleteDetailCard", () => {
   test("renders the label and value correctly", () => {

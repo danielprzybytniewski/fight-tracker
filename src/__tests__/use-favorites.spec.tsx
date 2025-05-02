@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
+import { mockAthlete } from "@/__mocks__/mock-data";
 import { useFavorites } from "@/hooks/use-favorites";
 import { FavoritesProvider } from "@/providers/favorites-provider";
-import { mockAthlete } from "@/__mocks__/mock-data";
 
 describe("useFavorites", () => {
   const mockToast = jest.fn();
@@ -36,7 +36,7 @@ describe("useFavorites", () => {
       expect(result.current.isFavorite(mockAthlete)).toBe(true);
       expect(result.current.favorites).toEqual([mockAthlete]);
       expect(localStorage.getItem("favoriteFighters")).toEqual(
-        JSON.stringify([mockAthlete])
+        JSON.stringify([mockAthlete]),
       );
     });
   });
@@ -89,7 +89,7 @@ describe("useFavorites", () => {
       });
 
       expect(localStorage.getItem("favoriteFighters")).toEqual(
-        JSON.stringify([mockAthlete])
+        JSON.stringify([mockAthlete]),
       );
     });
   });

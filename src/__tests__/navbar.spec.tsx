@@ -2,15 +2,15 @@ import { render, screen } from "@testing-library/react";
 import Navbar from "@/components/navbar/navbar";
 
 jest.mock("@/components/navbar/change-logo", () =>
-  jest.fn(() => <div data-testid="change-logo">Logo</div>)
+  jest.fn(() => <div data-testid="change-logo">Logo</div>),
 );
 
 jest.mock("@/components/navbar/navbar-items", () =>
-  jest.fn(() => <div data-testid="navbar-items">NavbarItems</div>)
+  jest.fn(() => <div data-testid="navbar-items">NavbarItems</div>),
 );
 
 jest.mock("@/components/navbar/mobile-menu", () =>
-  jest.fn(() => <div data-testid="mobile-menu">MobileMenu</div>)
+  jest.fn(() => <div data-testid="mobile-menu">MobileMenu</div>),
 );
 
 beforeEach(() => {

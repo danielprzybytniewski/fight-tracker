@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import NewsPage, { metadata } from "@/app/news/page";
-import { getNews } from "@/actions/news.actions";
 import { mockNewsItem } from "@/__mocks__/mock-data";
+import { getNews } from "@/actions/news.actions";
+import NewsPage, { metadata } from "@/app/news/page";
 
 jest.mock("@/actions/news.actions", () => ({
   getNews: jest.fn(),
 }));
 
 jest.mock("@/components/news/news-list", () =>
-  jest.fn(() => <div data-testid="news-list"></div>)
+  jest.fn(() => <div data-testid="news-list"></div>),
 );
 
 describe("NewsPage", () => {
@@ -46,10 +46,10 @@ describe("NewsPage", () => {
       expect(metadata.openGraph.title).toBe("News | Fight Tracker");
       expect(metadata.openGraph.description).toBe("Check out newest MMA news");
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/news"
+        "https://fight-tracker.vercel.app/news",
       );
     }
   });

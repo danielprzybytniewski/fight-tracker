@@ -1,7 +1,7 @@
-import FightersPagination from "@/components/fighters/fighters-pagination";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import FightersPagination from "@/components/fighters/fighters-pagination";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 jest.mock("@/hooks/use-media-query");
 

@@ -1,9 +1,9 @@
 "use client";
-import { useCallback, useState, useEffect, useRef } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import type { Fighter } from "@/types/rankings-schema.types";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import normalizeName from "@/lib/normalize-name";
 import slugify from "@/lib/slugify";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 type Filters = {
   searchQuery: string;
@@ -33,7 +33,6 @@ export function useFightersFiltersAndPagination({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const isSearchingRef = useRef(false);
 
   const [filters, setFilters] = useState<Filters>({
@@ -51,12 +50,12 @@ export function useFightersFiltersAndPagination({
           .toLowerCase()
           .includes(searchQuery.toLowerCase())) &&
       (selectedCategory === null ||
-        slugify(fighter.category) === selectedCategory)
+        slugify(fighter.category) === selectedCategory),
   );
 
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredFighters.length / FIGHTERS_PER_PAGE)
+    Math.ceil(filteredFighters.length / FIGHTERS_PER_PAGE),
   );
 
   useEffect(() => {
@@ -78,7 +77,7 @@ export function useFightersFiltersAndPagination({
 
     const matchingCategory = categoryParams
       ? initialCategories.find(
-          (category) => slugify(category) === slugify(categoryParams)
+          (category) => slugify(category) === slugify(categoryParams),
         )
       : null;
 
@@ -127,7 +126,7 @@ export function useFightersFiltersAndPagination({
 
   const paginatedFighters = filteredFighters.slice(
     (currentPage - 1) * FIGHTERS_PER_PAGE,
-    currentPage * FIGHTERS_PER_PAGE
+    currentPage * FIGHTERS_PER_PAGE,
   );
 
   const updateUrl = useCallback(
@@ -155,7 +154,7 @@ export function useFightersFiltersAndPagination({
         setIsLoading(false);
       }, 100);
     },
-    [router, pathname, setIsLoading]
+    [router, pathname, setIsLoading],
   );
 
   function handleSearchChange(query: string) {

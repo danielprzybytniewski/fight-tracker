@@ -1,8 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import NewsImage from "@/components/news/news-image";
 import { generateAltText } from "@/components/news/news-utils";
 import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
-import userEvent from "@testing-library/user-event";
 
 jest.mock("@/components/news/news-utils", () => ({
   generateAltText: jest.fn(),
@@ -37,7 +37,7 @@ describe("NewsImage", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockSrc))
+      expect.stringContaining(encodeURIComponent(mockSrc)),
     );
     expect(image).toHaveAttribute("alt", mockAltText);
     expect(generateAltText).toHaveBeenCalledWith(mockSrc);
@@ -51,7 +51,7 @@ describe("NewsImage", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockSrc))
+      expect.stringContaining(encodeURIComponent(mockSrc)),
     );
     expect(image).toHaveAttribute("alt", "news image");
   });
@@ -103,7 +103,7 @@ describe("NewsImage", () => {
     expect(zoomedImage).toBeInTheDocument();
     expect(zoomedImage).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockSrc))
+      expect.stringContaining(encodeURIComponent(mockSrc)),
     );
     expect(zoomedImage).toHaveAttribute("alt", mockAltText);
   });

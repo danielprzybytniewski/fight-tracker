@@ -1,18 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { getFightsHistory } from "@/actions/fights-history.actions";
 import { getFighterDetails } from "@/actions/rankings.actions";
+import AthleteDetails from "@/components/athlete/athlete-details";
+import AthleteRecordChart from "@/components/athlete/athlete-record-chart";
+import FightsHistory from "@/components/fights-history/fights-history";
+import BackButton from "@/components/shared/back-button";
+import { formatSlugToReadableText } from "@/lib";
 import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-import AthleteRecordChart from "@/components/athlete/athlete-record-chart";
-import { Metadata } from "next";
-import BackButton from "@/components/shared/back-button";
 import { createMetadata } from "@/lib/create-metadata";
-import AthleteDetails from "@/components/athlete/athlete-details";
-import { getFightsHistory } from "@/actions/fights-history.actions";
-import FightsHistory from "@/components/fights-history/fights-history";
 import normalizeName from "@/lib/normalize-name";
-import { formatSlugToReadableText } from "@/lib";
 
 type Params = {
   fighterId: string;
@@ -40,7 +40,7 @@ export async function generateMetadata({
   ];
 
   const keywords = fighterProfileKeywords.map(
-    (keyword) => `${formattedFighterId} ${keyword}`
+    (keyword) => `${formattedFighterId} ${keyword}`,
   );
 
   return createMetadata({
@@ -70,10 +70,10 @@ export default async function AthletePage({
   const draws = fighter.draws || 0;
 
   return (
-    <div className="container mx-auto p-4 max-w-6xl bg-white dark:bg-gray-900 rounded-lg">
+    <div className="container mx-auto max-w-6xl rounded-lg bg-white p-4 dark:bg-gray-900">
       <BackButton />
-      <div className="grid grid-cols-1 gap-8 items-center p-6">
-        <div className="relative h-72 sm:h-96 overflow-hidden">
+      <div className="grid grid-cols-1 items-center gap-8 p-6">
+        <div className="relative h-72 overflow-hidden sm:h-96">
           {fighter.imgUrl && (
             <Image
               src={fighter.imgUrl}
@@ -90,11 +90,11 @@ export default async function AthletePage({
         </div>
       </div>
       <div className="mt-8 text-center">
-        <h1 className="mb-4 text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-gray-200">
+        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-gray-200 sm:text-4xl">
           {fighter.name}
         </h1>
         {fighter.nickname && (
-          <p className="mb-6 text-xl italic opacity-80 text-gray-700 dark:text-gray-300">
+          <p className="mb-6 text-xl italic text-gray-700 opacity-80 dark:text-gray-300">
             &quot;{fighter.nickname}&quot;
           </p>
         )}

@@ -1,5 +1,5 @@
-import FavoritesLoading from "@/app/favorites/loading";
 import { render, screen } from "@testing-library/react";
+import FavoritesLoading from "@/app/favorites/loading";
 
 describe("FavoritesLoading", () => {
   beforeEach(() => {
@@ -8,7 +8,7 @@ describe("FavoritesLoading", () => {
 
   test("renders LoadingContainer with default message and spinner", () => {
     expect(
-      screen.getByRole("status", { name: "Loading..." })
+      screen.getByRole("status", { name: "Loading..." }),
     ).toBeInTheDocument();
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();

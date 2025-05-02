@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { useFavorites } from "@/hooks/use-favorites";
 import FavoritesCounter from "@/components/favorites/favorites-counter";
 import { useActiveLink } from "@/hooks/use-active-link";
+import { useFavorites } from "@/hooks/use-favorites";
 
 jest.mock("@/hooks/use-favorites");
 
@@ -48,7 +48,7 @@ describe("FavoritesCounter", () => {
 
     const links = screen.getAllByRole("link", { name: /(0)/i });
     const activeLinks = links.filter((link) =>
-      link.classList.contains("border-red-600")
+      link.classList.contains("border-red-600"),
     );
 
     expect(activeLinks[0]).toHaveAttribute("href", "/favorites");
@@ -61,7 +61,7 @@ describe("FavoritesCounter", () => {
     const links = screen.getAllByRole("link", { name: /(0)/i });
 
     const inactiveLinks = links.filter(
-      (link) => !link.classList.contains("border-red-600")
+      (link) => !link.classList.contains("border-red-600"),
     );
 
     inactiveLinks.forEach((link) => {

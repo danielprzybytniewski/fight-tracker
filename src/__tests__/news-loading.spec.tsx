@@ -1,5 +1,5 @@
-import NewsLoading from "@/app/news/loading";
 import { render, screen } from "@testing-library/react";
+import NewsLoading from "@/app/news/loading";
 
 describe("NewsLoading", () => {
   beforeEach(() => {

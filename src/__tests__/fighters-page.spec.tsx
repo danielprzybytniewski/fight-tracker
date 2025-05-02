@@ -1,14 +1,14 @@
 import { render, waitFor } from "@testing-library/react";
+import { getAllFighters } from "@/actions/rankings.actions";
 import FightersPage, { metadata } from "@/app/fighters/page";
 import FightersContainer from "@/components/fighters/fighters-container";
-import { getAllFighters } from "@/actions/rankings.actions";
 
 jest.mock("@/actions/rankings.actions", () => ({
   getAllFighters: jest.fn(),
 }));
 
 jest.mock("@/components/fighters/fighters-container", () =>
-  jest.fn(() => <div data-testid="fighters-container" />)
+  jest.fn(() => <div data-testid="fighters-container" />),
 );
 
 describe("FightersPage", () => {
@@ -47,7 +47,7 @@ describe("FightersPage", () => {
           initialCategory: "middleweight",
           initialPage: 2,
         }),
-        {}
+        {},
       );
     });
   });
@@ -60,7 +60,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialCategories: ["Lightweight", "Middleweight"],
         }),
-        {}
+        {},
       );
     });
   });
@@ -73,7 +73,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialCategory: "light-heavyweight",
         }),
-        {}
+        {},
       );
     });
   });
@@ -87,7 +87,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialCategories: [],
         }),
-        {}
+        {},
       );
     });
   });
@@ -107,7 +107,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialCategories: ["Lightweight"],
         }),
-        {}
+        {},
       );
     });
   });
@@ -133,7 +133,7 @@ describe("FightersPage", () => {
             }),
           ]),
         }),
-        {}
+        {},
       );
     });
   });
@@ -146,7 +146,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialPage: 1,
         }),
-        {}
+        {},
       );
     });
   });
@@ -159,7 +159,7 @@ describe("FightersPage", () => {
         expect.objectContaining({
           initialPage: 1,
         }),
-        {}
+        {},
       );
     });
   });
@@ -173,7 +173,7 @@ describe("FightersPage", () => {
           initialSearchQuery: "",
           initialCategory: null,
         }),
-        {}
+        {},
       );
     });
   });
@@ -187,13 +187,13 @@ describe("FightersPage", () => {
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe("UFC Fighters | Fight Tracker");
       expect(metadata.openGraph.description).toBe(
-        "Check out best UFC fighters"
+        "Check out best UFC fighters",
       );
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/fighters"
+        "https://fight-tracker.vercel.app/fighters",
       );
     }
   });

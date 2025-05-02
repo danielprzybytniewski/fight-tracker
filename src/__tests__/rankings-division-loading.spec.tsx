@@ -1,5 +1,5 @@
-import RankingsDivisionLoading from "@/app/rankings/[divisionId]/loading";
 import { render, screen } from "@testing-library/react";
+import RankingsDivisionLoading from "@/app/rankings/[divisionId]/loading";
 
 describe("RankingsDivisionLoading", () => {
   test("renders correctly", () => {

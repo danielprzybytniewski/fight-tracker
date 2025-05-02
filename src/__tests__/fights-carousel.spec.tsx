@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
+import { mockFightCards } from "@/__mocks__/mock-data";
 import FightsCarousel from "@/components/fights-carousel/fights-carousel";
 import LoadingContainer from "@/components/shared/loading-container";
-import { mockFightCards } from "@/__mocks__/mock-data";
+import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 
 jest.mock("@/hooks/use-fetch-fight-cards");
 
@@ -14,7 +14,7 @@ jest.mock("@/components/events/event-fighter-separator", () =>
       <p>VS</p>
       <p>Weight: {weight}</p>
     </div>
-  ))
+  )),
 );
 
 jest.mock("@/components/fights-carousel/fights-carousel-fighter-profile", () =>
@@ -22,7 +22,7 @@ jest.mock("@/components/fights-carousel/fights-carousel-fighter-profile", () =>
     <div data-testid="fights-carousel-fighter-profile">
       <p>Fighter: {fighter.name}</p>
     </div>
-  ))
+  )),
 );
 describe("FightsCarousel", () => {
   const renderComponent = () => {
@@ -103,7 +103,7 @@ describe("FightsCarousel", () => {
     renderComponent();
 
     const errorMessage = screen.getByText(
-      "Network error occurred. Please check your connection and try again."
+      "Network error occurred. Please check your connection and try again.",
     );
     expect(errorMessage).toBeInTheDocument();
 

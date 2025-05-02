@@ -38,7 +38,7 @@ const boldPhrases = [
 
 //Created for improved readability in the UI
 export const formatTextWithBoldPhrases = (
-  text: string
+  text: string,
 ): React.JSX.Element[] => {
   const lines = text.split("\n");
   const elements: React.JSX.Element[] = [];
@@ -60,7 +60,7 @@ export const formatTextWithBoldPhrases = (
             className="mr-1 inline-block font-bold"
           >
             {twoWordPhrase}
-          </span>
+          </span>,
         );
         i++;
       } else {
@@ -70,7 +70,7 @@ export const formatTextWithBoldPhrases = (
             className={cn("mr-1 inline-block", isSingleBold && "font-bold")}
           >
             {currentWord}
-          </span>
+          </span>,
         );
       }
     }
@@ -90,10 +90,10 @@ export const generateAltText = (src: string): string => {
 };
 
 export const getFirstImageUrl = (
-  images: { type: string; src?: string }[]
+  images: { type: string; src?: string }[],
 ): string => {
   const firstImage = images.find(
-    (img) => img.src && img.src.startsWith("https")
+    (img) => img.src && img.src.startsWith("https"),
   );
   return firstImage?.src || fallbackImage.src;
 };

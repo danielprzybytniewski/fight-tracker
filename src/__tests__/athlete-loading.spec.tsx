@@ -1,5 +1,5 @@
-import AthleteLoading from "@/app/athlete/[fighterId]/loading";
 import { render, screen } from "@testing-library/react";
+import AthleteLoading from "@/app/athlete/[fighterId]/loading";
 
 describe("AthleteLoading", () => {
   test("renders correctly", () => {

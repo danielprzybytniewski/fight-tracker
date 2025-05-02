@@ -1,9 +1,9 @@
 "use client";
+import FavoritesEmptyState from "@/components/favorites/favorites-empty-state";
+import FavoritesFighterGrid from "@/components/favorites/favorites-fighter-grid";
+import FavoritesHeader from "@/components/favorites/favorites-header";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
-import FavoritesEmptyState from "@/components/favorites/favorites-empty-state";
-import FavoritesHeader from "@/components/favorites/favorites-header";
-import FavoritesFighterGrid from "@/components/favorites/favorites-fighter-grid";
 
 export default function FavoritesContainer() {
   const { favorites, resetFavoritesWithToast, toggleFavoriteWithToast } =
@@ -11,7 +11,7 @@ export default function FavoritesContainer() {
   const { toast } = useToast();
 
   return (
-    <div className="w-full max-w-7xl mx-auto">
+    <div className="mx-auto w-full max-w-7xl">
       <FavoritesHeader
         favoritesCount={favorites.length}
         onResetFavorites={() => resetFavoritesWithToast(toast)}

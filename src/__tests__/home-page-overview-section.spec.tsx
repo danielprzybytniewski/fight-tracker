@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import HomePageOverviewSection from "@/components/home-page/home-page-overview-section";
 import { overviewSections } from "@/components/home-page/home-page-data";
+import HomePageOverviewSection from "@/components/home-page/home-page-overview-section";
 
 jest.mock("@/components/home-page/home-page-overview-item", () =>
-  jest.fn(() => <div data-testid="overview-item">Mock Overview Item</div>)
+  jest.fn(() => <div data-testid="overview-item">Mock Overview Item</div>),
 );
 
 describe("HomePageOverviewSection", () => {
@@ -42,9 +42,9 @@ describe("HomePageOverviewSection", () => {
       "src",
       expect.stringContaining(
         encodeURIComponent(
-          `/images/home-page/showcase-${mockSection.imageKey}.webp`
-        )
-      )
+          `/images/home-page/showcase-${mockSection.imageKey}.webp`,
+        ),
+      ),
     );
   });
 

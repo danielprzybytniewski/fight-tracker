@@ -36,7 +36,7 @@ export const DivisionSchema = z.object({
       id: z.string(),
       name: z.string(),
       imgUrl: z.string().optional(),
-    })
+    }),
   ),
 });
 

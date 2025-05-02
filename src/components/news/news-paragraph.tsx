@@ -21,7 +21,7 @@ export default function NewsParagraph({ data }: NewsParagraphProps) {
   if (formattedData.length === 0) return null;
 
   return (
-    <p className="my-6 text-base md:text-lg leading-relaxed tracking-wide text-gray-800 dark:text-gray-200">
+    <p className="my-6 text-base leading-relaxed tracking-wide text-gray-800 dark:text-gray-200 md:text-lg">
       {formattedData}
     </p>
   );

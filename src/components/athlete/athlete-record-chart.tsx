@@ -13,30 +13,30 @@ export default function AthleteRecordChart({
   const drawsPercent = (draws / total) * 100;
 
   return (
-    <div className="w-full max-w-md mx-auto mt-4">
-      <div className="h-8 flex rounded-lg overflow-hidden">
+    <div className="mx-auto mt-4 w-full max-w-md">
+      <div className="flex h-8 overflow-hidden rounded-lg">
         <div
           style={{ width: `${winsPercent}%` }}
-          className="flex items-center justify-center text-sm font-medium text-white bg-green-500"
+          className="flex items-center justify-center bg-green-500 text-sm font-medium text-white"
         >
           {`${wins}W`}
         </div>
         <div
           style={{ width: `${lossesPercent}%` }}
-          className="flex items-center justify-center text-sm font-medium text-white bg-red-500"
+          className="flex items-center justify-center bg-red-500 text-sm font-medium text-white"
         >
           {`${losses}L`}
         </div>
         {draws !== 0 && (
           <div
             style={{ width: `${drawsPercent}%` }}
-            className="flex items-center justify-center text-sm font-medium text-white bg-yellow-500"
+            className="flex items-center justify-center bg-yellow-500 text-sm font-medium text-white"
           >
             {`${draws}D`}
           </div>
         )}
       </div>
-      <div className="flex justify-between mt-1 text-sm text-gray-600 dark:text-gray-400">
+      <div className="mt-1 flex justify-between text-sm text-gray-600 dark:text-gray-400">
         <span>{Math.round(winsPercent)}% Wins</span>
         <span>{Math.round(lossesPercent)}% Losses</span>
         {draws !== 0 && <span>{Math.round(drawsPercent)}% Draws</span>}

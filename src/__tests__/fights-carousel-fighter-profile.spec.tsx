@@ -1,6 +1,6 @@
-import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
-import { FightCardsFighter } from "@/types/fight-cards-schema.types";
 import { render, screen } from "@testing-library/react";
+import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
+import type { FightCardsFighter } from "@/types/fight-cards-schema.types";
 
 describe("FightsCarouselFighterProfile", () => {
   const mockFighter: FightCardsFighter = {
@@ -21,7 +21,7 @@ describe("FightsCarouselFighterProfile", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockFighter.picture))
+      expect.stringContaining(encodeURIComponent(mockFighter.picture)),
     );
     expect(image).toHaveAttribute("alt", mockFighter.name);
   });
@@ -40,7 +40,7 @@ describe("FightsCarouselFighterProfile", () => {
     expect(countryImage).toBeInTheDocument();
     expect(countryImage).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockFighter.country))
+      expect.stringContaining(encodeURIComponent(mockFighter.country)),
     );
   });
 

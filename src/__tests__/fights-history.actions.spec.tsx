@@ -1,7 +1,7 @@
+import { mockApiFight } from "@/__mocks__/mock-data";
 import { getFightsHistory } from "@/actions/fights-history.actions";
 import appConfig from "@/config/app-config";
 import { fetchWithCacheAndValidation } from "@/lib";
-import { mockApiFight } from "@/__mocks__/mock-data";
 import {
   ApiFightsHistoryResponseSchema,
   AppFightSchema,
@@ -33,10 +33,10 @@ describe("getFightsHistory", () => {
       FIGHTS_HISTORY_BASE_URL,
       `/fights?name=Glover%20Teixeira`,
       ApiFightsHistoryResponseSchema,
-      "Invalid fights history data"
+      "Invalid fights history data",
     );
     expect(result).toEqual(
-      mockApiResponse.fights.map((fight) => AppFightSchema.parse(fight))
+      mockApiResponse.fights.map((fight) => AppFightSchema.parse(fight)),
     );
   });
 
@@ -57,7 +57,7 @@ describe("getFightsHistory", () => {
     mockFetch.mockRejectedValueOnce(error);
 
     await expect(getFightsHistory("Glover Teixeira")).rejects.toThrow(
-      "API Error"
+      "API Error",
     );
   });
 });

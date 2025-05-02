@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full p-4 text-gray-800 dark:text-gray-200 bg-gray-300 dark:bg-gray-700">
+    <footer className="w-full bg-gray-300 p-4 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
       <div className="container mx-auto text-center">
         <p>
           <span className="mr-1">Created with 💖 by</span>
           <Link
             href={"https://github.com/danielprzybytniewski/fight-tracker"}
-            className="underline font-bold hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+            className="font-bold underline transition-colors duration-200 hover:text-gray-500 dark:hover:text-gray-400"
             target="_blank"
             rel="noopener noreferrer"
           >

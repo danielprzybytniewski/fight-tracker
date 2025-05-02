@@ -3,7 +3,7 @@ import removeDivisionSuffix from "@/lib/remove-division-suffix";
 describe("removeDivisionSuffix", () => {
   test('removes the "Division" suffix at the end of the string', () => {
     expect(removeDivisionSuffix("Light Heavyweight Division")).toBe(
-      "Light Heavyweight"
+      "Light Heavyweight",
     );
   });
 

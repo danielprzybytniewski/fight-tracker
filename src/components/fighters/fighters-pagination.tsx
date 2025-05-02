@@ -36,7 +36,7 @@ export default function FightersPagination({
   };
 
   return (
-    <Pagination className="flex justify-center mt-4 sm:mt-6">
+    <Pagination className="mt-4 flex justify-center sm:mt-6">
       <PaginationContent className="flex gap-1 sm:gap-2">
         <PaginationItem>
           <PaginationPrevious
@@ -46,9 +46,8 @@ export default function FightersPagination({
               if (currentPage > 1) onPageChange(currentPage - 1);
             }}
             className={cn(
-              `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border 
-              border-gray-200 dark:border-gray-800 transition-colors duration-200`,
-              currentPage === 1 && "pointer-events-none opacity-50"
+              `border border-gray-200 px-2 py-1 text-xs transition-colors duration-200 hover:bg-gray-200 dark:border-gray-800 dark:hover:bg-gray-500 dark:hover:text-gray-50 sm:py-2 sm:text-sm`,
+              currentPage === 1 && "pointer-events-none opacity-50",
             )}
             aria-label="Go to previous page"
           />
@@ -60,7 +59,7 @@ export default function FightersPagination({
           return (
             <div key={`page-${page}`} className="flex">
               {needsEllipsisBefore && (
-                <PaginationItem className="hidden sm:flex mr-2">
+                <PaginationItem className="mr-2 hidden sm:flex">
                   <PaginationEllipsis />
                 </PaginationItem>
               )}
@@ -71,11 +70,9 @@ export default function FightersPagination({
                     handlePageClick(e, page)
                   }
                   className={cn(
-                    `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 
-                    dark:hover:bg-gray-500 border border-gray-200 dark:border-gray-800 transition-colors duration-200`,
+                    `border border-gray-200 px-2 py-1 text-xs transition-colors duration-200 hover:bg-gray-200 hover:text-gray-800 dark:border-gray-800 dark:hover:bg-gray-500 dark:hover:text-gray-50 sm:py-2 sm:text-sm`,
                     page === currentPage &&
-                      `bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 border-gray-500 
-                      dark:border-gray-400`
+                      `border-gray-500 bg-gray-200 hover:bg-gray-300 dark:border-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600`,
                   )}
                 >
                   {page}
@@ -92,9 +89,8 @@ export default function FightersPagination({
               if (currentPage < totalPages) onPageChange(currentPage + 1);
             }}
             className={cn(
-              `py-1 px-2 sm:py-2 text-xs sm:text-sm hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-500 border 
-              border-gray-200 dark:border-gray-800 transition-colors duration-200`,
-              currentPage === totalPages && "pointer-events-none opacity-50"
+              `border border-gray-200 px-2 py-1 text-xs transition-colors duration-200 hover:bg-gray-200 dark:border-gray-800 dark:hover:bg-gray-500 dark:hover:text-gray-50 sm:py-2 sm:text-sm`,
+              currentPage === totalPages && "pointer-events-none opacity-50",
             )}
             aria-label="Go to next page"
           />

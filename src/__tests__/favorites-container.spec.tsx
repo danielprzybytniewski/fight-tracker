@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { mockFavoriteFighters } from "@/__mocks__/mock-data";
 import FavoritesContainer from "@/components/favorites/favorites-container";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
-import { mockFavoriteFighters } from "@/__mocks__/mock-data";
-import userEvent from "@testing-library/user-event";
-import { Fighter } from "@/types/rankings-schema.types";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-toast");
@@ -97,12 +97,12 @@ describe("FavoritesContainer", () => {
     await user.click(
       screen.getByRole("button", {
         name: `Remove ${mockFavoriteFighters[0].name} from favorites`,
-      })
+      }),
     );
 
     expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
       mockFavoriteFighters[0],
-      mockToast
+      mockToast,
     );
     expect(mockToggleFavoriteWithToast).toHaveBeenCalledTimes(1);
   });

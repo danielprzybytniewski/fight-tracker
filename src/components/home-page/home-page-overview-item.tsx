@@ -5,8 +5,8 @@ export default function HomePageOverviewItem({ icon, text }: OverviewItem) {
 
   return (
     <li className="flex items-center">
-      <Icon className="h-5 w-5 mr-3 text-gray-500 dark:text-gray-400" />
-      <span className="text-sm md:text-base text-gray-700 dark:text-gray-300">
+      <Icon className="mr-3 h-5 w-5 text-gray-500 dark:text-gray-400" />
+      <span className="text-sm text-gray-700 dark:text-gray-300 md:text-base">
         {text}
       </span>
     </li>

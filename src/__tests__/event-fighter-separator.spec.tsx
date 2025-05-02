@@ -6,13 +6,13 @@ jest.mock("@/components/events/event-type-badge", () =>
     <div data-testid="event-type-badge">
       {isMainCard ? "MAIN CARD" : "PRELIMS"}
     </div>
-  ))
+  )),
 );
 
 jest.mock("@/components/events/event-weight-badge", () =>
   jest.fn(({ weight }) => (
     <div data-testid="event-weight-badge">{weight} kg</div>
-  ))
+  )),
 );
 
 describe("EventFighterSeparator", () => {

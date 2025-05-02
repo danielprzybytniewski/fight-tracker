@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { useActiveLink } from "@/hooks/use-active-link";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 type NavbarLinksProps = {
   href: string;
@@ -14,9 +14,8 @@ export default function NavbarLinks({ href, label }: NavbarLinksProps) {
     <Link
       href={href}
       className={cn(
-        `text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors 
-        duration-200`,
-        isActive && "font-bold"
+        `text-lg text-gray-900 transition-colors duration-200 hover:text-gray-500 dark:text-gray-100 dark:hover:text-gray-400 md:text-xl`,
+        isActive && "font-bold",
       )}
     >
       {label}

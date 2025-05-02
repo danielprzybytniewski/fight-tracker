@@ -1,7 +1,7 @@
 "use client";
-import { Input } from "@/components/ui/input";
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import debounce from "lodash/debounce";
+import { Input } from "@/components/ui/input";
 
 type FightersSearchBarProps = {
   searchValue: string;
@@ -23,7 +23,7 @@ export default function FightersSearchBar({
       debounce((query: string) => {
         onSearch(query);
       }, 500),
-    [onSearch]
+    [onSearch],
   );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +44,7 @@ export default function FightersSearchBar({
         placeholder="Search for Fighters..."
         value={value}
         onChange={handleChange}
-        className="text-sm bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700"
+        className="border-gray-300 bg-gray-50 text-sm dark:border-gray-700 dark:bg-gray-800"
       />
     </div>
   );

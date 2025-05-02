@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import { getAllFighters } from "@/actions/rankings.actions";
 import FightersContainer from "@/components/fighters/fighters-container";
 import { createMetadata } from "@/lib/create-metadata";
 import removeDivisionSuffix from "@/lib/remove-division-suffix";
 import slugify from "@/lib/slugify";
 import type { Fighter } from "@/types/rankings-schema.types";
-import { Metadata } from "next";
 
 type SearchParams = {
   page?: string;
@@ -37,7 +37,7 @@ export default async function FightersPage({
 
   const categories = [
     ...new Set(
-      fightersArray.map((fighter: Fighter) => fighter.category).filter(Boolean)
+      fightersArray.map((fighter: Fighter) => fighter.category).filter(Boolean),
     ),
   ];
 

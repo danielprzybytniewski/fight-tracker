@@ -10,10 +10,10 @@ export default function EventTypeBadge({ isMainCard }: EventTypeBadgeProps) {
     <Badge
       variant="outline"
       className={cn(
-        "px-2 py-1 text-xs font-medium border border-gray-400 rounded-full",
+        "rounded-full border border-gray-400 px-2 py-1 text-xs font-medium",
         isMainCard
           ? "bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300"
-          : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+          : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200",
       )}
     >
       {isMainCard ? "MAIN CARD" : "PRELIMS"}

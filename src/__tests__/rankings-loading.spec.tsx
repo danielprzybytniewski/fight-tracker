@@ -1,5 +1,5 @@
-import RankingsLoading from "@/app/rankings/loading";
 import { render, screen } from "@testing-library/react";
+import RankingsLoading from "@/app/rankings/loading";
 
 describe("RankingsLoading", () => {
   beforeEach(() => {

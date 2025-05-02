@@ -12,9 +12,9 @@ export default function FightsHistoryDetails({
   value,
 }: FightsHistoryDetailsProps) {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center justify-between">
       <span className="flex items-center text-gray-600 dark:text-gray-400">
-        <Icon className="h-4 w-4 sm:h-5 sm:w-5 mr-1" />
+        <Icon className="mr-1 h-4 w-4 sm:h-5 sm:w-5" />
         {label}:
       </span>
       <span className="font-medium text-gray-800 dark:text-gray-200">

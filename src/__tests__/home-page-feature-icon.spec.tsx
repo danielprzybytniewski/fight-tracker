@@ -1,5 +1,5 @@
-import HomePageFeatureIcon from "@/components/home-page/home-page-feature-icon";
 import { render, screen } from "@testing-library/react";
+import HomePageFeatureIcon from "@/components/home-page/home-page-feature-icon";
 
 jest.mock("lucide-react", () => ({
   User: jest.fn(() => <svg data-testid="user-icon" />),

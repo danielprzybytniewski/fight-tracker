@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import RankingsPage, { metadata } from "@/app/rankings/page";
-import { getRankingsWithImages } from "@/actions/rankings.actions";
-import { Division } from "@/types/rankings-schema.types";
 import { mockRankings } from "@/__mocks__/mock-data";
+import { getRankingsWithImages } from "@/actions/rankings.actions";
+import RankingsPage, { metadata } from "@/app/rankings/page";
+import type { Division } from "@/types/rankings-schema.types";
 
 jest.mock("@/actions/rankings.actions", () => ({
   getRankingsWithImages: jest.fn(),
@@ -11,11 +11,11 @@ jest.mock("@/actions/rankings.actions", () => ({
 jest.mock("@/components/rankings/rankings-card", () =>
   jest.fn(({ division }: { division: Division }) => (
     <div data-testid="rankings-card">{division.categoryName}</div>
-  ))
+  )),
 );
 
 jest.mock("@/components/shared/gradient-heading", () =>
-  jest.fn(() => <h1 data-testid="gradient-heading">UFC Rankings</h1>)
+  jest.fn(() => <h1 data-testid="gradient-heading">UFC Rankings</h1>),
 );
 
 describe("RankingsPage", () => {
@@ -52,13 +52,13 @@ describe("RankingsPage", () => {
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe("UFC Rankings | Fight Tracker");
       expect(metadata.openGraph.description).toBe(
-        "Check out current UFC rankings"
+        "Check out current UFC rankings",
       );
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/rankings"
+        "https://fight-tracker.vercel.app/rankings",
       );
     }
   });

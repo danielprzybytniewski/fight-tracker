@@ -1,10 +1,10 @@
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { renderHook, waitFor } from "@testing-library/react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import type { Fighter } from "@/types/rankings-schema.types";
 import {
   useFightersFiltersAndPagination,
   UseFightersFiltersAndPaginationProps,
 } from "@/hooks/use-fighters-filters-and-pagination";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -24,7 +24,7 @@ describe("useFightersFiltersAndPagination", () => {
   const initialCategories = ["Heavyweight", "Lightweight"];
 
   const renderWithProps = (
-    props: Partial<UseFightersFiltersAndPaginationProps>
+    props: Partial<UseFightersFiltersAndPaginationProps>,
   ) =>
     renderHook(() =>
       useFightersFiltersAndPagination({
@@ -35,7 +35,7 @@ describe("useFightersFiltersAndPagination", () => {
         initialPage: 1,
         setIsLoading: mockSetIsLoading,
         ...props,
-      })
+      }),
     );
 
   beforeEach(() => {
@@ -74,14 +74,14 @@ describe("useFightersFiltersAndPagination", () => {
         expect(result.current.filteredFighters.length).toBeGreaterThan(0);
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=fighter&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("resets category when search query is provided", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?category=heavyweight")
+        new URLSearchParams("?category=heavyweight"),
       );
 
       const { result } = renderWithProps({ initialCategory: "heavyweight" });
@@ -99,14 +99,14 @@ describe("useFightersFiltersAndPagination", () => {
         expect(result.current.filters.selectedCategory).toBe(null);
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=fighter&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("does not reset selectedCategory when search query is cleared", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?category=heavyweight")
+        new URLSearchParams("?category=heavyweight"),
       );
 
       const { result } = renderWithProps({ initialCategory: "heavyweight" });
@@ -123,7 +123,7 @@ describe("useFightersFiltersAndPagination", () => {
         expect(result.current.filters.selectedCategory).toBe("heavyweight");
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?category=heavyweight&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
@@ -132,8 +132,8 @@ describe("useFightersFiltersAndPagination", () => {
       const complexSearchQuery = "Fighter & Champion";
       (useSearchParams as jest.Mock).mockReturnValue(
         new URLSearchParams(
-          `?search=${encodeURIComponent(complexSearchQuery)}&page=1`
-        )
+          `?search=${encodeURIComponent(complexSearchQuery)}&page=1`,
+        ),
       );
 
       const { result } = renderWithProps({
@@ -149,7 +149,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=Fighter%2520%2526%2520Champion&page=2",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
@@ -167,19 +167,19 @@ describe("useFightersFiltersAndPagination", () => {
         expect(result.current.filters.selectedCategory).toBe("heavyweight");
         expect(
           result.current.filteredFighters.every(
-            (f) => f.category === "Heavyweight"
-          )
+            (f) => f.category === "Heavyweight",
+          ),
         ).toBeTruthy();
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?category=heavyweight&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("handles null category in handleCategoryChange", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?category=heavyweight")
+        new URLSearchParams("?category=heavyweight"),
       );
 
       const { result } = renderWithProps({ initialCategory: "heavyweight" });
@@ -197,7 +197,7 @@ describe("useFightersFiltersAndPagination", () => {
 
     test("removes invalid category from URL parameters", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?category=invalidCategory")
+        new URLSearchParams("?category=invalidCategory"),
       );
 
       const { result } = renderWithProps({
@@ -252,7 +252,7 @@ describe("useFightersFiltersAndPagination", () => {
 
     test("handles invalid page number from URL params correctly", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?page=999")
+        new URLSearchParams("?page=999"),
       );
 
       const { result } = renderWithProps({ initialPage: 999 });
@@ -333,7 +333,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenLastCalledWith(
           "/fighters?search=Fighter%25201&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
 
@@ -344,7 +344,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenLastCalledWith(
           "/fighters?search=Fighter%25201&category=heavyweight&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
 
@@ -355,7 +355,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           expect.stringContaining("search=Fighter%25201"),
-          expect.anything()
+          expect.anything(),
         );
       });
 
@@ -366,14 +366,14 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenLastCalledWith(
           "/fighters?search=Fighter%25201&category=lightweight&page=1",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("properly includes searchQuery in URL when changing pages", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?search=fighter&page=1")
+        new URLSearchParams("?search=fighter&page=1"),
       );
 
       const { result } = renderWithProps({ initialSearchQuery: "fighter" });
@@ -387,14 +387,14 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=fighter&page=2",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("properly includes selectedCategory in URL when changing pages", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?category=heavyweight&page=1")
+        new URLSearchParams("?category=heavyweight&page=1"),
       );
 
       const { result } = renderWithProps({ initialCategory: "heavyweight" });
@@ -408,14 +408,14 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?category=heavyweight&page=3",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
 
     test("handles both searchQuery and selectedCategory in URL when changing pages", async () => {
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?search=fighter&category=lightweight&page=1")
+        new URLSearchParams("?search=fighter&category=lightweight&page=1"),
       );
 
       const { result } = renderWithProps({
@@ -432,7 +432,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=fighter&category=lightweight&page=2",
-          { scroll: true }
+          { scroll: true },
         );
       });
     });
@@ -441,7 +441,7 @@ describe("useFightersFiltersAndPagination", () => {
       jest.useFakeTimers();
 
       (useSearchParams as jest.Mock).mockReturnValue(
-        new URLSearchParams("?search=fighter&category=lightweight&page=2")
+        new URLSearchParams("?search=fighter&category=lightweight&page=2"),
       );
 
       const { result } = renderWithProps({
@@ -459,7 +459,7 @@ describe("useFightersFiltersAndPagination", () => {
       await waitFor(() => {
         expect(mockRouterPush).toHaveBeenCalledWith(
           "/fighters?search=fighter&category=lightweight&page=2",
-          { scroll: true }
+          { scroll: true },
         );
       });
 
@@ -508,7 +508,7 @@ describe("useFightersFiltersAndPagination", () => {
           initialCategories,
           initialPage: 1,
           setIsLoading: mockSetIsLoading,
-        })
+        }),
       );
 
       rerender();

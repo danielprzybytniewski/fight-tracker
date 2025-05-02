@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import NewsDetailPage, { generateMetadata } from "@/app/news/[slug]/page";
-import { getNewsBySlug } from "@/actions/news.actions";
 import { mockNewsItem } from "@/__mocks__/mock-data";
+import { getNewsBySlug } from "@/actions/news.actions";
+import NewsDetailPage, { generateMetadata } from "@/app/news/[slug]/page";
 
 jest.mock("@/actions/news.actions", () => ({
   getNewsBySlug: jest.fn(),
@@ -10,7 +10,7 @@ jest.mock("@/actions/news.actions", () => ({
 jest.mock("@/components/news/news-detail", () =>
   jest.fn(({ newsItem }) => (
     <div data-testid="news-detail">{newsItem.title}</div>
-  ))
+  )),
 );
 
 describe("NewsDetailPage", () => {
@@ -30,7 +30,7 @@ describe("NewsDetailPage", () => {
 
     expect(screen.getByTestId("news-detail")).toBeInTheDocument();
     expect(screen.getByTestId("news-detail")).toHaveTextContent(
-      "Exciting MMA News"
+      "Exciting MMA News",
     );
     expect(screen.queryByText("News not found")).not.toBeInTheDocument();
   });
@@ -50,24 +50,24 @@ describe("NewsDetailPage", () => {
 
     expect(metadata.title).toBe("Exciting Mma News | Fight Tracker");
     expect(metadata.description).toBe(
-      "Checkout more info about Exciting Mma News"
+      "Checkout more info about Exciting Mma News",
     );
     expect(metadata.keywords).toContain(
-      "Exciting Mma News info, Exciting Mma News content"
+      "Exciting Mma News info, Exciting Mma News content",
     );
 
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe(
-        "Exciting Mma News | Fight Tracker"
+        "Exciting Mma News | Fight Tracker",
       );
       expect(metadata.openGraph.description).toBe(
-        "Checkout more info about Exciting Mma News"
+        "Checkout more info about Exciting Mma News",
       );
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/news/exciting-mma-news"
+        "https://fight-tracker.vercel.app/news/exciting-mma-news",
       );
     }
   });

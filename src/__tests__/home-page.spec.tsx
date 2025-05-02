@@ -1,13 +1,15 @@
 import { render, screen } from "@testing-library/react";
-import { overviewSections } from "@/components/home-page/home-page-data";
 import HomePage from "@/app/page";
+import { overviewSections } from "@/components/home-page/home-page-data";
 
 jest.mock("@/components/home-page/home-page-hero-section", () =>
-  jest.fn(() => <div data-testid="hero-section">Mock Hero Section</div>)
+  jest.fn(() => <div data-testid="hero-section">Mock Hero Section</div>),
 );
 
 jest.mock("@/components/home-page/home-page-features-section", () =>
-  jest.fn(() => <div data-testid="features-section">Mock Features Section</div>)
+  jest.fn(() => (
+    <div data-testid="features-section">Mock Features Section</div>
+  )),
 );
 
 jest.mock("@/components/home-page/home-page-overview-section", () =>
@@ -15,11 +17,11 @@ jest.mock("@/components/home-page/home-page-overview-section", () =>
     <div data-testid="overview-section">
       <h2>{title}</h2>
     </div>
-  ))
+  )),
 );
 
 jest.mock("@/components/home-page/home-page-stats-section", () =>
-  jest.fn(() => <div data-testid="stats-section">Mock Stats Section</div>)
+  jest.fn(() => <div data-testid="stats-section">Mock Stats Section</div>),
 );
 
 jest.mock("@/components/home-page/home-page-mma-organizations-section", () =>
@@ -27,7 +29,7 @@ jest.mock("@/components/home-page/home-page-mma-organizations-section", () =>
     <div data-testid="mma-organizations-section">
       Mock MMA Organizations Section
     </div>
-  ))
+  )),
 );
 
 describe("HomePage", () => {
@@ -63,7 +65,7 @@ describe("HomePage", () => {
 
   test("renders MMA organizations section correctly", () => {
     const mmaOrganizationsSection = screen.getByTestId(
-      "mma-organizations-section"
+      "mma-organizations-section",
     );
     expect(mmaOrganizationsSection).toBeInTheDocument();
   });

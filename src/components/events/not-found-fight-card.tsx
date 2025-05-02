@@ -1,11 +1,11 @@
 import Image from "next/image";
-import notFoundImg from "@/public/images/not-found.png";
 import Link from "next/link";
 import { routesConfig } from "@/config/routes-config";
+import notFoundImg from "@/public/images/not-found.png";
 
 export default function NotFoundFightCard() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-2 text-center text-red-500">
+    <div className="flex min-h-screen flex-col items-center justify-center p-2 text-center text-red-500">
       <Image
         src={notFoundImg}
         alt="not found"
@@ -19,7 +19,7 @@ export default function NotFoundFightCard() {
       </p>
       <Link
         href={routesConfig.root}
-        className="mt-4 px-4 py-2 rounded-md bg-gray-400 hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700 text-white"
+        className="mt-4 rounded-md bg-gray-400 px-4 py-2 text-white hover:bg-gray-500 dark:bg-gray-600 dark:hover:bg-gray-700"
       >
         Go to Home Page
       </Link>

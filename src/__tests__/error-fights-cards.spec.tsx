@@ -1,6 +1,6 @@
-import ErrorFightCards from "@/components/shared/error-fight-cards";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import ErrorFightCards from "@/components/shared/error-fight-cards";
 
 describe("ErrorFightsCards", () => {
   const renderComponent = (props: {

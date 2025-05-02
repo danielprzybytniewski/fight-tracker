@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
-import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
-import { generateAltText } from "@/components/news/news-utils";
+import Image from "next/image";
 import { X } from "lucide-react";
+import { generateAltText } from "@/components/news/news-utils";
+import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
 
 type NewsImageProps = {
   src?: string;
@@ -36,7 +36,7 @@ export default function NewsImage({ src }: NewsImageProps) {
         onClick={toggleZoom}
         data-testid="image-container"
       >
-        <div className="relative w-full aspect-video">
+        <div className="relative aspect-video w-full">
           <Image
             src={src}
             alt={altText || "news image"}
@@ -45,17 +45,17 @@ export default function NewsImage({ src }: NewsImageProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
             unoptimized={unoptimized}
             onError={handleImageLoadError}
-            className="object-cover hover:scale-[1.02] hover:cursor-zoom-in transition-transform duration-300"
+            className="object-cover transition-transform duration-300 hover:scale-[1.02] hover:cursor-zoom-in"
           />
         </div>
       </div>
       {isZoomed && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-gray-950/70 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/70 p-6 backdrop-blur-md"
           onClick={toggleZoom}
           data-testid="zoomed-image-container"
         >
-          <div className="relative max-h-[90vh] w-full h-full">
+          <div className="relative h-full max-h-[90vh] w-full">
             <Image
               src={src}
               alt={altText || "zoomed news image"}
@@ -68,8 +68,7 @@ export default function NewsImage({ src }: NewsImageProps) {
               data-testid="zoomed-image"
             />
             <button
-              className="absolute top-[-2.3rem] right-[-1.2rem] p-1 mt-3 md:mt-0 rounded-full bg-gray-500 hover:bg-gray-400
-              dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-50 transition-colors duration-200"
+              className="absolute right-[-1.2rem] top-[-2.3rem] mt-3 rounded-full bg-gray-500 p-1 text-gray-50 transition-colors duration-200 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 md:mt-0"
               onClick={toggleZoom}
             >
               <X />

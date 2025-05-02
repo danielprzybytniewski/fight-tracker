@@ -3,7 +3,8 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-import { Fighter, NOT_AVAILABLE } from "@/types/rankings-schema.types";
+import type { Fighter } from "@/types/rankings-schema.types";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 jest.mock("@/lib/unit-conversion", () => ({
   inchesToCm: jest.fn((inches) => `${inches * 2.54} cm`),
@@ -32,7 +33,7 @@ describe("athlete-get-details", () => {
           { label: "Division", value: "Lightweight" },
           { label: "Height", value: "70 in (177.8 cm)" },
           { label: "Weight", value: "155 lbs (70.30676 kg)" },
-        ])
+        ]),
       );
     });
 

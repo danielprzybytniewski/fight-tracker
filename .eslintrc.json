@@ -1,3 +1,23 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^react", // React imports first (react, react-dom, etc.)
+            "^next", // Next.js related imports (next/router, next/link, etc.)
+            "^\\u0000", // Side effect imports (e.g., import './styles.css')
+            "^node:", // Node.js built-in modules (node:fs, node:path, etc.)
+            "^@?\\w", // External packages from npm (including scoped packages @/something)
+            "^[^.]", // Absolute imports and other imports not starting with . (typically aliased paths)
+            "^\\." // Relative imports (./ and ../ paths to local files)
+          ]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error"
+  }
 }

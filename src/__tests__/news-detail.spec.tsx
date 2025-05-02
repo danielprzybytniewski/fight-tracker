@@ -1,18 +1,18 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NewsDetail from "@/components/news/news-detail";
 import { mockNewsItem } from "@/__mocks__/mock-data";
+import NewsDetail from "@/components/news/news-detail";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
 jest.mock("@/components/shared/back-button", () =>
-  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
+  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>),
 );
 
 jest.mock("@/components/news/news-content", () =>
-  jest.fn(() => <div data-testid="news-content">Mocked NewsContent</div>)
+  jest.fn(() => <div data-testid="news-content">Mocked NewsContent</div>),
 );
 
 describe("NewsDetail", () => {
@@ -23,7 +23,7 @@ describe("NewsDetail", () => {
 
   test("renders news with correct title", () => {
     expect(
-      screen.getByRole("heading", { name: mockNewsItem.title })
+      screen.getByRole("heading", { name: mockNewsItem.title }),
     ).toBeInTheDocument();
   });
 

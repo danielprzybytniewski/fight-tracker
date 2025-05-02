@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import { splitFighterFullName } from "@/lib/split-fighter-full-name";
-import EventFightCard from "@/components/events/event-fight-card";
-import slugify from "@/lib/slugify";
 import { mockFightCards } from "@/__mocks__/mock-data";
+import EventFightCard from "@/components/events/event-fight-card";
+import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
+import slugify from "@/lib/slugify";
+import { splitFighterFullName } from "@/lib/split-fighter-full-name";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -12,7 +12,7 @@ jest.mock("next/navigation", () => ({
 jest.mock("@/hooks/use-fetch-fight-cards");
 
 jest.mock("@/components/shared/back-button", () =>
-  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>)
+  jest.fn(() => <div data-testid="back-button">Mocked BackButton</div>),
 );
 
 describe("EventFightCard", () => {
@@ -40,7 +40,7 @@ describe("EventFightCard", () => {
 
     ["A", "B"].forEach((fighter) => {
       const { firstName, lastName } = splitFighterFullName(
-        fighter === "A" ? fighterA.name : fighterB.name
+        fighter === "A" ? fighterA.name : fighterB.name,
       );
       expect(screen.getByText(firstName)).toBeInTheDocument();
       expect(screen.getByText(lastName)).toBeInTheDocument();

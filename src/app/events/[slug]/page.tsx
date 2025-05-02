@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import EventFightCard from "@/components/events/event-fight-card";
 import { formatSlugToReadableText } from "@/lib";
 import { createMetadata } from "@/lib/create-metadata";
-import { Metadata } from "next";
 
 type Params = {
   slug: string;

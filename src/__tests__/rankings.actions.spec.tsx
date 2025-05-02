@@ -1,16 +1,16 @@
-import appConfig from "@/config/app-config";
+import {
+  mockAthleteCard,
+  mockDivision,
+  mockRankings,
+} from "@/__mocks__/mock-data";
 import {
   getAllFighters,
   getDivisionWithImages,
   getFighterDetails,
   getRankingsWithImages,
 } from "@/actions/rankings.actions";
+import appConfig from "@/config/app-config";
 import { fetchWithCacheAndValidation } from "@/lib";
-import {
-  mockAthleteCard,
-  mockDivision,
-  mockRankings,
-} from "@/__mocks__/mock-data";
 
 jest.mock("@/lib/fetch-with-cache-and-validation");
 
@@ -34,7 +34,7 @@ describe("UFC Rankings API Actions", () => {
       baseURL,
       "/fighter/Jonh",
       expect.any(Object),
-      "Invalid fighter data received from API"
+      "Invalid fighter data received from API",
     );
     expect(result).toEqual(mockAthleteCard);
   });
@@ -53,7 +53,7 @@ describe("UFC Rankings API Actions", () => {
       baseURL,
       "/fighters",
       expect.any(Object),
-      "Invalid fighters data received from API"
+      "Invalid fighters data received from API",
     );
     expect(result).toEqual(mockFighters);
   });
@@ -70,14 +70,14 @@ describe("UFC Rankings API Actions", () => {
       baseURL,
       "/rankings",
       expect.any(Object),
-      "Invalid rankings data received from API"
+      "Invalid rankings data received from API",
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
       baseURL,
       "/fighters",
       expect.any(Object),
-      "Invalid fighters data received from API"
+      "Invalid fighters data received from API",
     );
     expect(result[0].champion).toEqual({
       ...mockAthleteCard,
@@ -100,14 +100,14 @@ describe("UFC Rankings API Actions", () => {
       baseURL,
       "/division/lightweight",
       expect.any(Object),
-      "Invalid division data received from API"
+      "Invalid division data received from API",
     );
     expect(mockFetch).toHaveBeenNthCalledWith(
       2,
       baseURL,
       "/fighters",
       expect.any(Object),
-      "Invalid fighters data received from API"
+      "Invalid fighters data received from API",
     );
     expect(result.champion).toEqual({
       ...mockDivision.champion,

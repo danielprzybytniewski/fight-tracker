@@ -1,13 +1,13 @@
-import FightersSearchBar from "@/components/fighters/fighters-search-bar";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import FightersSearchBar from "@/components/fighters/fighters-search-bar";
 
 describe("FightersSearchBar", () => {
   let onSearchMock: jest.Mock;
 
   const renderComponent = (searchValue = "") => {
     return render(
-      <FightersSearchBar searchValue={searchValue} onSearch={onSearchMock} />
+      <FightersSearchBar searchValue={searchValue} onSearch={onSearchMock} />,
     );
   };
 
@@ -24,7 +24,7 @@ describe("FightersSearchBar", () => {
   test("renders input with correct placeholder", () => {
     renderComponent();
     expect(
-      screen.getByPlaceholderText("Search for Fighters...")
+      screen.getByPlaceholderText("Search for Fighters..."),
     ).toBeInTheDocument();
   });
 
@@ -39,7 +39,7 @@ describe("FightersSearchBar", () => {
     expect(searchInput).toHaveValue("Initial Value");
 
     rerender(
-      <FightersSearchBar searchValue="Updated Value" onSearch={onSearchMock} />
+      <FightersSearchBar searchValue="Updated Value" onSearch={onSearchMock} />,
     );
     expect(searchInput).toHaveValue("Updated Value");
   });

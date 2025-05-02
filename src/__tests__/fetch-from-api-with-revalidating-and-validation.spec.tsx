@@ -1,5 +1,5 @@
-import { fetchWithCacheAndValidation } from "@/lib";
 import { z } from "zod";
+import { fetchWithCacheAndValidation } from "@/lib";
 
 global.fetch = jest.fn();
 
@@ -57,13 +57,13 @@ describe("fetchWithCacheAndValidation", () => {
         baseUrl,
         endpoint,
         schema,
-        "Custom error message"
-      )
+        "Custom error message",
+      ),
     ).rejects.toThrow("Custom error message");
 
     expect(consoleSpy).toHaveBeenCalledWith(
       "Validation errors:",
-      expect.any(Array)
+      expect.any(Array),
     );
 
     consoleSpy.mockRestore();
@@ -75,7 +75,7 @@ describe("fetchWithCacheAndValidation", () => {
     });
 
     await expect(
-      fetchWithCacheAndValidation(baseUrl, endpoint, schema)
+      fetchWithCacheAndValidation(baseUrl, endpoint, schema),
     ).rejects.toThrow(`Failed to fetch data from ${endpoint}`);
   });
 });

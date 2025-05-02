@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import DivisionAthleteCard from "@/components/division/division-athlete-card";
 import { mockAthleteCard } from "@/__mocks__/mock-data";
+import DivisionAthleteCard from "@/components/division/division-athlete-card";
 
 describe("DivisionAthleteCard", () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe("DivisionAthleteCard", () => {
     if (mockAthleteCard.imgUrl) {
       expect(image).toHaveAttribute(
         "src",
-        expect.stringContaining(encodeURIComponent(mockAthleteCard.imgUrl))
+        expect.stringContaining(encodeURIComponent(mockAthleteCard.imgUrl)),
       );
       expect(image).toHaveAttribute("alt", mockAthleteCard.name);
     }
@@ -39,7 +39,7 @@ describe("DivisionAthleteCard", () => {
     const linkElement = screen.getByRole("link");
     expect(linkElement).toHaveAttribute(
       "href",
-      `/athlete/${mockAthleteCard.id}`
+      `/athlete/${mockAthleteCard.id}`,
     );
   });
 });

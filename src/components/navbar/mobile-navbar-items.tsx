@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import FavoritesCounter from "@/components/favorites/favorites-counter";
-import ModeToggler from "@/components/navbar/mode-toggler";
 import MobileNavbarLinks from "@/components/navbar/mobile-navbar-links";
-import { navbarItemVariants } from "@/lib/framer-motion-variants";
+import ModeToggler from "@/components/navbar/mode-toggler";
 import { linksConfig } from "@/config/routes-config";
+import { navbarItemVariants } from "@/lib/framer-motion-variants";
 
 type MobileNavbarItemsProps = {
   onItemClick: () => void;

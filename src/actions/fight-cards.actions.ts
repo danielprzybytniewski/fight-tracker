@@ -1,10 +1,8 @@
 "use server";
 
 import appConfig from "@/config/app-config";
-import {
-  FightCardsResponse,
-  FightCardsResponseSchema,
-} from "@/types/fight-cards-schema.types";
+import type { FightCardsResponse } from "@/types/fight-cards-schema.types";
+import { FightCardsResponseSchema } from "@/types/fight-cards-schema.types";
 
 const FIGHT_CARDS_BASE_URL = appConfig.fightCardsApiHost;
 

@@ -1,11 +1,11 @@
+import { generateMockNewsImages } from "@/__mocks__/mock-data";
 import {
   formatTextWithBoldPhrases,
   generateAltText,
   getFirstImageUrl,
 } from "@/components/news/news-utils";
-import { NewsContentData } from "@/types/news-schema.types";
 import fallbackImage from "@/public/images/og-image.png";
-import { generateMockNewsImages } from "@/__mocks__/mock-data";
+import type { NewsContentData } from "@/types/news-schema.types";
 
 describe("news-utils", () => {
   describe("formatTextWithBoldPhrases", () => {

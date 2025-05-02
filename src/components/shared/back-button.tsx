@@ -8,10 +8,10 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="flex items-center w-fit text-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
+      className="flex w-fit items-center text-gray-800 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-400"
       aria-label="Back button"
     >
-      <ArrowLeft className="w-7 h-7" aria-label="Arrow left icon" />
+      <ArrowLeft className="h-7 w-7" aria-label="Arrow left icon" />
     </button>
   );
 }

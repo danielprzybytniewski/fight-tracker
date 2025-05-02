@@ -1,5 +1,5 @@
-import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
 import { renderHook, waitFor } from "@testing-library/react";
+import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
 
 describe("useUnoptimizedImage", () => {
   test("initializes with unoptimized set to false", () => {

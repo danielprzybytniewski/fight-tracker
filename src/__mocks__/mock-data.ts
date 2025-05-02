@@ -1,18 +1,21 @@
 import { FightsHistoryCardContentProps } from "@/components/fights-history/fights-history-card-content";
-import { FightCardsEvent } from "@/types/fight-cards-schema.types";
-import {
+import type { FightCardsEvent } from "@/types/fight-cards-schema.types";
+import type {
   ApiFight,
   Fight,
   FightResult,
 } from "@/types/fights-history-schema.types";
-import { NewsContentData, NewsDetailData } from "@/types/news-schema.types";
-import {
-  Fighter,
+import type {
+  NewsContentData,
+  NewsDetailData,
+} from "@/types/news-schema.types";
+import type {
   DetailItem,
   Division,
   DivisionWithChampion,
-  NOT_AVAILABLE,
+  Fighter,
 } from "@/types/rankings-schema.types";
+import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 export const mockFightCards: FightCardsEvent[] = [
   {

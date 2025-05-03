@@ -1,5 +1,5 @@
-import FightersSearchBar from "@/components/fighters/fighters-search-bar";
 import FightersCategoryFilter from "@/components/fighters/fighters-category-filter";
+import FightersSearchBar from "@/components/fighters/fighters-search-bar";
 
 type FightersFiltersPanelProps = {
   searchQuery: string;
@@ -17,14 +17,14 @@ export default function FightersFiltersPanel({
   onCategoryChange,
 }: FightersFiltersPanelProps) {
   return (
-    <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
-      <div className="flex justify-center md:justify-start w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md">
+    <div className="mb-8 space-y-4 md:flex md:items-center md:justify-between md:space-y-0">
+      <div className="flex w-full justify-center sm:mx-auto sm:max-w-sm md:mx-0 md:max-w-md md:justify-start">
         <FightersSearchBar
           searchValue={searchQuery}
           onSearch={onSearchChange}
         />
       </div>
-      <div className="flex justify-center md:justify-end w-full sm:mx-auto md:mx-0 sm:max-w-sm md:max-w-md">
+      <div className="flex w-full justify-center sm:mx-auto sm:max-w-sm md:mx-0 md:max-w-md md:justify-end">
         <FightersCategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}

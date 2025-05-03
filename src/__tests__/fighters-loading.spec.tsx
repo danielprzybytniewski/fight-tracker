@@ -1,5 +1,5 @@
-import FightersLoading from "@/app/fighters/loading";
 import { render, screen } from "@testing-library/react";
+import FightersLoading from "@/app/fighters/loading";
 
 describe("FightersLoading", () => {
   beforeEach(() => {

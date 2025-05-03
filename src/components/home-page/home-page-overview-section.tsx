@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import HomePageOverviewItem from "@/components/home-page/home-page-overview-item";
-import type { Overview } from "@/types/home-page.types";
 import Link from "next/link";
+import HomePageOverviewItem from "@/components/home-page/home-page-overview-item";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { Overview } from "@/types/home-page.types";
 
 export default function HomePageOverviewSection({
   title,
@@ -27,17 +27,17 @@ export default function HomePageOverviewSection({
         <div
           className={cn(
             "flex flex-col items-center gap-12",
-            isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+            isReversed ? "lg:flex-row-reverse" : "lg:flex-row",
           )}
         >
           <div className="w-full lg:w-1/2">
-            <h2 className="mb-6 text-center lg:text-left text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100">
+            <h2 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-gray-100 md:text-3xl lg:text-left">
               {title}
             </h2>
-            <p className="mb-8 text-sm md:text-base text-gray-600 dark:text-gray-400">
+            <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 md:text-base">
               {description}
             </p>
-            <ul className="space-y-4 mb-8">
+            <ul className="mb-8 space-y-4">
               {items.map((item) => (
                 <HomePageOverviewItem
                   key={item.text}
@@ -48,19 +48,18 @@ export default function HomePageOverviewSection({
             </ul>
             <Button
               asChild
-              className="h-7 md:h-9 px-2 py-1 md:px-3 text-xs md:text-base border border-gray-800 dark:border-gray-500 text-gray-800 dark:text-gray-50 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors 
-              duration-200"
+              className="h-7 border border-gray-800 bg-gray-100 px-2 py-1 text-xs text-gray-800 transition-colors duration-200 hover:bg-gray-200 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-50 dark:hover:bg-gray-700 md:h-9 md:px-3 md:text-base"
             >
               <Link href={linkHref}>{linkText}</Link>
             </Button>
           </div>
-          <div className="w-full lg:w-1/2 overflow-hidden rounded-xl">
+          <div className="w-full overflow-hidden rounded-xl lg:w-1/2">
             <Image
               src={`/images/home-page/showcase-${imageKey}.webp`}
               alt={imageAlt}
               width={800}
               height={600}
-              className="w-full h-auto"
+              className="h-auto w-full"
             />
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import appConfig from "@/config/app-config";
 import {
-  FightCardsResponse,
+  type FightCardsResponse,
   FightCardsResponseSchema,
 } from "@/types/fight-cards-schema.types";
 

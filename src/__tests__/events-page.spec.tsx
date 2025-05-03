@@ -1,12 +1,14 @@
-import EventsPage, { metadata } from "@/app/events/page";
 import { render, screen } from "@testing-library/react";
+import EventsPage, { metadata } from "@/app/events/page";
 
 jest.mock("@/components/fights-carousel/fights-carousel", () =>
-  jest.fn(() => <div data-testid="fights-carousel">Mocked Fights Carousel</div>)
+  jest.fn(() => (
+    <div data-testid="fights-carousel">Mocked Fights Carousel</div>
+  )),
 );
 
 jest.mock("@/components/shared/gradient-heading", () =>
-  jest.fn(() => <h1 data-testid="gradient-heading">MMA Events</h1>)
+  jest.fn(() => <h1 data-testid="gradient-heading">MMA Events</h1>),
 );
 
 describe("EventsPage", () => {
@@ -33,10 +35,10 @@ describe("EventsPage", () => {
       expect(metadata.openGraph.title).toBe("MMA Events | Fight Tracker");
       expect(metadata.openGraph.description).toBe("Info about MMA events");
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/events"
+        "https://fight-tracker.vercel.app/events",
       );
     }
   });

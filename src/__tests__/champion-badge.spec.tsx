@@ -1,5 +1,5 @@
-import ChampionBadge from "@/components/division/division-champion-badge";
 import { render, screen } from "@testing-library/react";
+import ChampionBadge from "@/components/division/division-champion-badge";
 
 describe("ChampionBadge", () => {
   test("renders correctly", () => {

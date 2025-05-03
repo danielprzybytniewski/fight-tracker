@@ -1,8 +1,8 @@
-import FavoritesPage, { metadata } from "@/app/favorites/page";
 import { render, screen } from "@testing-library/react";
+import FavoritesPage, { metadata } from "@/app/favorites/page";
 
 jest.mock("@/components/favorites/favorites-container", () =>
-  jest.fn(() => <div>Mocked FavoritesContainer</div>)
+  jest.fn(() => <div>Mocked FavoritesContainer</div>),
 );
 
 describe("FavoritesPage", () => {
@@ -24,16 +24,16 @@ describe("FavoritesPage", () => {
   test("sets the correct OpenGraph metadata", () => {
     if (metadata.openGraph) {
       expect(metadata.openGraph.title).toBe(
-        "Favorite Fighters | Fight Tracker"
+        "Favorite Fighters | Fight Tracker",
       );
       expect(metadata.openGraph.description).toBe(
-        "Check out your favorite fighters"
+        "Check out your favorite fighters",
       );
       expect(metadata.openGraph.images).toContain(
-        "https://fight-tracker.vercel.app/images/og-image.png"
+        "https://fight-tracker.vercel.app/images/og-image.png",
       );
       expect(metadata.openGraph.url).toBe(
-        "https://fight-tracker.vercel.app/favorites"
+        "https://fight-tracker.vercel.app/favorites",
       );
     }
   });

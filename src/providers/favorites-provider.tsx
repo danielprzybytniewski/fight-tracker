@@ -1,10 +1,10 @@
 "use client";
+import { createContext, useEffect, useState } from "react";
 import {
   ToastResetContent,
   ToastToggleContent,
 } from "@/components/favorites/favorites-toast-content";
-import { Fighter } from "@/types/rankings-schema.types";
-import { createContext, useEffect, useState } from "react";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 type CustomToastProps = {
   title?: string;
@@ -18,14 +18,14 @@ type FavoritesContextType = {
   toggleFavorite: (fighter: Fighter) => void;
   toggleFavoriteWithToast: (
     fighter: Fighter,
-    toast: (props: CustomToastProps) => void
+    toast: (props: CustomToastProps) => void,
   ) => void;
   resetFavorites: () => void;
   resetFavoritesWithToast: (toast: (props: CustomToastProps) => void) => void;
 };
 
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const FavoritesProvider = ({
@@ -51,7 +51,7 @@ export const FavoritesProvider = ({
 
       localStorage.setItem(
         "favoriteFighters",
-        JSON.stringify(updatedFavorites)
+        JSON.stringify(updatedFavorites),
       );
       return updatedFavorites;
     });
@@ -62,7 +62,7 @@ export const FavoritesProvider = ({
 
   const toggleFavoriteWithToast = (
     fighter: Fighter,
-    toast: (props: CustomToastProps) => void
+    toast: (props: CustomToastProps) => void,
   ) => {
     toggleFavorite(fighter);
     const isFav = isFavorite(fighter);
@@ -84,7 +84,7 @@ export const FavoritesProvider = ({
   };
 
   const resetFavoritesWithToast = (
-    toast: (props: CustomToastProps) => void
+    toast: (props: CustomToastProps) => void,
   ) => {
     resetFavorites();
 

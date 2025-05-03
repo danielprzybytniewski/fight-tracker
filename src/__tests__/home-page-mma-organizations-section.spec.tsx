@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import HomePageMmaOrganizationsSection from "@/components/home-page/home-page-mma-organizations-section";
 import { logoImageKeys } from "@/components/home-page/home-page-data";
+import HomePageMmaOrganizationsSection from "@/components/home-page/home-page-mma-organizations-section";
 
 describe("HomePageMmaOrganizationsSection", () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe("HomePageMmaOrganizationsSection", () => {
 
   test("renders carousel correctly", () => {
     expect(
-      screen.getByTestId("mma-organizations-carousel")
+      screen.getByTestId("mma-organizations-carousel"),
     ).toBeInTheDocument();
   });
 

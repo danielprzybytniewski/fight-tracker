@@ -1,7 +1,7 @@
-import BackButton from "@/components/shared/back-button";
+import { useRouter } from "next/navigation";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useRouter } from "next/navigation";
+import BackButton from "@/components/shared/back-button";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

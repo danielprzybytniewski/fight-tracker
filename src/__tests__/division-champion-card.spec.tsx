@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import DivisionChampionCard from "@/components/division/division-champion-card";
 import { mockDivisionWithChampion } from "@/__mocks__/mock-data";
+import DivisionChampionCard from "@/components/division/division-champion-card";
 
 jest.mock("@/components/division/division-champion-badge", () =>
-  jest.fn(() => <div data-testid="champion-badge">MockedChampionBadge</div>)
+  jest.fn(() => <div data-testid="champion-badge">MockedChampionBadge</div>),
 );
 
 describe("DivisionChampionCard", () => {
@@ -14,7 +14,7 @@ describe("DivisionChampionCard", () => {
 
   test("renders the champion's name", () => {
     expect(
-      screen.getByText(mockDivisionWithChampion.champion.championName)
+      screen.getByText(mockDivisionWithChampion.champion.championName),
     ).toBeInTheDocument();
   });
 
@@ -25,12 +25,12 @@ describe("DivisionChampionCard", () => {
       expect(image).toHaveAttribute(
         "src",
         expect.stringContaining(
-          encodeURIComponent(mockDivisionWithChampion.champion.imgUrl)
-        )
+          encodeURIComponent(mockDivisionWithChampion.champion.imgUrl),
+        ),
       );
       expect(image).toHaveAttribute(
         "alt",
-        mockDivisionWithChampion.champion.championName
+        mockDivisionWithChampion.champion.championName,
       );
     }
   });
@@ -46,7 +46,7 @@ describe("DivisionChampionCard", () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveAttribute(
       "href",
-      `/athlete/${mockDivisionWithChampion.champion.id}`
+      `/athlete/${mockDivisionWithChampion.champion.id}`,
     );
   });
 

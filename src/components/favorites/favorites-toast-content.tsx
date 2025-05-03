@@ -1,6 +1,6 @@
 "use client";
-import { CircleX, CircleCheck } from "lucide-react";
-import { Fighter } from "@/types/rankings-schema.types";
+import { CircleCheck, CircleX } from "lucide-react";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 type ToastToggleContentProps = {
   fighter: Fighter;

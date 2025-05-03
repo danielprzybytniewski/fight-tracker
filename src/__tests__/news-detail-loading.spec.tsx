@@ -1,5 +1,5 @@
-import NewsDetailLoading from "@/app/news/[slug]/loading";
 import { render, screen } from "@testing-library/react";
+import NewsDetailLoading from "@/app/news/[slug]/loading";
 
 describe("NewsDetailLoading", () => {
   test("renders correctly", () => {

@@ -1,13 +1,13 @@
-import { Roboto } from "next/font/google";
 import type { Metadata } from "next";
+import { Roboto } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
-import { ThemeProvider } from "@/providers/theme-provider";
-import ReactQueryProvider from "@/providers/react-query-provider";
-import { FavoritesProvider } from "@/providers/favorites-provider";
+import Navbar from "@/components/navbar/navbar";
 import { Toaster } from "@/components/ui/toaster";
 import { createMetadata } from "@/lib/create-metadata";
+import { FavoritesProvider } from "@/providers/favorites-provider";
+import ReactQueryProvider from "@/providers/react-query-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "700", "900"],
@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} antialiased bg-gray-200 dark:bg-gray-800`}
+        className={`${roboto.className} bg-gray-200 antialiased dark:bg-gray-800`}
       >
         <ReactQueryProvider>
           <ThemeProvider
@@ -38,9 +38,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <FavoritesProvider>
-              <div className="flex flex-col min-h-screen">
+              <div className="flex min-h-screen flex-col">
                 <Navbar />
-                <main className="container mx-auto flex-1 pt-20 pb-16">
+                <main className="container mx-auto flex-1 pb-16 pt-20">
                   {children}
                 </main>
                 <Footer />

@@ -1,5 +1,5 @@
-import GradientHeading from "@/components/shared/gradient-heading";
 import { render, screen } from "@testing-library/react";
+import GradientHeading from "@/components/shared/gradient-heading";
 
 describe("GradientHeading", () => {
   test("renders with default size and spacing", () => {
@@ -27,7 +27,7 @@ describe("GradientHeading", () => {
     render(
       <GradientHeading size="large" spacing="large">
         Large Spaced Heading
-      </GradientHeading>
+      </GradientHeading>,
     );
     const heading = screen.getByText("Large Spaced Heading");
     expect(heading).toBeInTheDocument();
@@ -38,7 +38,7 @@ describe("GradientHeading", () => {
     render(
       <GradientHeading className="custom-class">
         Custom Class Heading
-      </GradientHeading>
+      </GradientHeading>,
     );
     const heading = screen.getByText("Custom Class Heading");
     expect(heading).toBeInTheDocument();

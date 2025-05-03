@@ -1,13 +1,13 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useFightersFiltersAndPagination } from "@/hooks/use-fighters-filters-and-pagination";
 import FightersContainer from "@/components/fighters/fighters-container";
+import { useFightersFiltersAndPagination } from "@/hooks/use-fighters-filters-and-pagination";
 
 jest.mock("@/hooks/use-fighters-filters-and-pagination");
 jest.mock("@/hooks/use-media-query");
 
 jest.mock("@/components/shared/gradient-heading", () =>
-  jest.fn(() => <h1 data-testid="gradient-heading">UFC Fighters</h1>)
+  jest.fn(() => <h1 data-testid="gradient-heading">UFC Fighters</h1>),
 );
 
 jest.mock("@/hooks/use-toast", () => ({
@@ -46,7 +46,7 @@ describe("FightersContainer", () => {
         initialCategory={null}
         initialCategories={mockInitialCategories}
         initialPage={1}
-      />
+      />,
     );
   };
 
@@ -80,7 +80,7 @@ describe("FightersContainer", () => {
     expect(screen.getByText(/fighter 2/i)).toBeInTheDocument();
     expect(screen.getByRole("textbox")).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /select category/i })
+      screen.getByRole("button", { name: /select category/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("navigation")).toBeInTheDocument();
   });

@@ -1,9 +1,9 @@
+import { inchesToCm, poundsToKg } from "@/lib/unit-conversion";
 import {
-  DetailItem,
-  Fighter,
+  type DetailItem,
+  type Fighter,
   NOT_AVAILABLE,
 } from "@/types/rankings-schema.types";
-import { inchesToCm, poundsToKg } from "@/lib/unit-conversion";
 
 export const getGeneralDetails = (fighter: Fighter): DetailItem[] => [
   {

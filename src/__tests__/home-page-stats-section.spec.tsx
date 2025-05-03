@@ -1,6 +1,6 @@
+import { render, screen } from "@testing-library/react";
 import { stats } from "@/components/home-page/home-page-data";
 import HomePageStatsSection from "@/components/home-page/home-page-stats-section";
-import { render, screen } from "@testing-library/react";
 
 describe("HomePageStatsSection", () => {
   test("renders all stats with correct values and labels", () => {

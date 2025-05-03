@@ -1,7 +1,7 @@
-import ModeToggler from "@/components/navbar/mode-toggler";
+import { useTheme } from "next-themes";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useTheme } from "next-themes";
+import ModeToggler from "@/components/navbar/mode-toggler";
 
 jest.mock("next-themes", () => ({
   useTheme: jest.fn(),

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import HomePageFeaturesSection from "@/components/home-page/home-page-features-section";
 import { features } from "@/components/home-page/home-page-data";
+import HomePageFeaturesSection from "@/components/home-page/home-page-features-section";
 
 describe("HomePageFeaturesSection", () => {
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe("HomePageFeaturesSection", () => {
     });
 
     const lucideIcons = screen.getAllByText((_, element) =>
-      element ? element.classList.contains("lucide") : false
+      element ? element.classList.contains("lucide") : false,
     );
     expect(lucideIcons).toHaveLength(features.length);
   });

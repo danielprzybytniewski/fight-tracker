@@ -21,7 +21,7 @@ describe("FavoritesHeader", () => {
   test("renders correct heading", () => {
     renderComponent();
     expect(
-      screen.getByRole("heading", { name: /favorite fighters/i })
+      screen.getByRole("heading", { name: /favorite fighters/i }),
     ).toBeInTheDocument();
   });
 
@@ -33,14 +33,14 @@ describe("FavoritesHeader", () => {
   test("renders reset button when there are favorites", () => {
     renderComponent();
     expect(
-      screen.getByRole("button", { name: /reset favorites/i })
+      screen.getByRole("button", { name: /reset favorites/i }),
     ).toBeInTheDocument();
   });
 
   test("does not render reset button when there are no favorites", () => {
     renderComponent({ favoritesCount: 0 });
     expect(
-      screen.queryByRole("button", { name: /reset favorites/i })
+      screen.queryByRole("button", { name: /reset favorites/i }),
     ).not.toBeInTheDocument();
   });
 

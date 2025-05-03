@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import FighterCard from "@/components/fighters/fighter-card";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useToast } from "@/hooks/use-toast";
-import { Fighter } from "@/types/rankings-schema.types";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 jest.mock("@/hooks/use-favorites");
 jest.mock("@/hooks/use-toast");
@@ -74,7 +74,7 @@ describe("FighterCard", () => {
     if (fighterCardMock.imgUrl) {
       expect(image).toHaveAttribute(
         "src",
-        expect.stringContaining(encodeURIComponent(fighterCardMock.imgUrl))
+        expect.stringContaining(encodeURIComponent(fighterCardMock.imgUrl)),
       );
       expect(image).toHaveAttribute("alt", fighterCardMock.name);
     }
@@ -120,7 +120,7 @@ describe("FighterCard", () => {
 
     expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
       fighterCardMock,
-      mockToast
+      mockToast,
     );
   });
 
@@ -135,7 +135,7 @@ describe("FighterCard", () => {
     await waitFor(() => {
       expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
         fighterCardMock,
-        mockToast
+        mockToast,
       );
     });
   });

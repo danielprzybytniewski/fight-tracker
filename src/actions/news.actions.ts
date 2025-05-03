@@ -5,7 +5,7 @@ import { fetchWithCacheAndValidation } from "@/lib";
 import slugify from "@/lib/slugify";
 import {
   NewsApiResponseSchema,
-  NewsDetailData,
+  type NewsDetailData,
 } from "@/types/news-schema.types";
 
 const MMA_NEWS_BASE_URL = appConfig.mmaNewsApiHost;
@@ -16,14 +16,14 @@ export async function getNews(): Promise<NewsDetailData[]> {
     "",
     NewsApiResponseSchema,
     "Invalid news data received from API",
-    { cache: "force-cache" }
+    { cache: "force-cache" },
   );
 
   return data.articles;
 }
 
 export async function getNewsBySlug(
-  slug: string
+  slug: string,
 ): Promise<NewsDetailData | null> {
   const allNews = await getNews();
 

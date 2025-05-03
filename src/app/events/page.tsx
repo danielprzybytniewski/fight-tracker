@@ -1,7 +1,7 @@
+import type { Metadata } from "next";
 import FightsCarousel from "@/components/fights-carousel/fights-carousel";
 import GradientHeading from "@/components/shared/gradient-heading";
 import { createMetadata } from "@/lib/create-metadata";
-import { Metadata } from "next";
 
 export const metadata: Metadata = createMetadata({
   title: "MMA Events",

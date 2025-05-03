@@ -1,5 +1,3 @@
-import type { Feature, Overview, Stats } from "@/types/home-page.types";
-import { routesConfig } from "@/config/routes-config";
 import {
   BarChart2,
   Crown,
@@ -14,6 +12,8 @@ import {
   User,
   UserRoundSearch,
 } from "lucide-react";
+import { routesConfig } from "@/config/routes-config";
+import type { Feature, Overview, Stats } from "@/types/home-page.types";
 
 export const features: Feature[] = [
   {

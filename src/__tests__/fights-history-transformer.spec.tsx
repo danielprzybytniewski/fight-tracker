@@ -3,7 +3,7 @@ import {
   sortFightsByDate,
   transformFightDetails,
 } from "@/lib/fights-history-transformer";
-import {
+import type {
   Fight,
   TransformedFightDetails,
 } from "@/types/fights-history-schema.types";
@@ -87,7 +87,7 @@ describe("fightsHistoryTransformer", () => {
       };
       const result = transformFightDetails(
         fightWithSinglePartLocation,
-        "Brandon Moreno"
+        "Brandon Moreno",
       );
 
       expect(result.locationDisplay).toBe("USA");

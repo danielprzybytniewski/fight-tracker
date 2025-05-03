@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import { getNewsBySlug } from "@/actions/news.actions";
 import NewsDetail from "@/components/news/news-detail";
 import { formatSlugToReadableText } from "@/lib";
 import { createMetadata } from "@/lib/create-metadata";
-import { Metadata } from "next";
 
 type Params = {
   slug: string;

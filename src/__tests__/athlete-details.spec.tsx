@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import AthleteDetails from "@/components/athlete/athlete-details";
-import { DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 import {
   mockAdditionalDetails,
   mockGeneralDetails,
 } from "@/__mocks__/mock-data";
+import AthleteDetails from "@/components/athlete/athlete-details";
+import { type DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 jest.mock("@/components/athlete/athlete-detail-card", () =>
   jest.fn(({ label, value }: DetailItem) => (
@@ -12,7 +12,7 @@ jest.mock("@/components/athlete/athlete-detail-card", () =>
       <h2>{label}</h2>
       <p>{value || NOT_AVAILABLE}</p>
     </div>
-  ))
+  )),
 );
 
 describe("AthleteDetails", () => {
@@ -22,7 +22,7 @@ describe("AthleteDetails", () => {
       <AthleteDetails
         generalDetails={mockGeneralDetails}
         additionalDetails={mockAdditionalDetails}
-      />
+      />,
     );
   });
 
@@ -53,7 +53,7 @@ describe("AthleteDetails", () => {
       mockGeneralDetails.length + mockAdditionalDetails.length;
 
     expect(screen.getAllByTestId("athlete-detail-card").length).toBe(
-      totalDetails
+      totalDetails,
     );
   });
 });

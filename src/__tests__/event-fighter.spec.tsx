@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import fallbackImage from "@/public/images/og-image.png";
 import EventFighter from "@/components/events/event-fighter";
-import { FightCardsFighter } from "@/types/fight-cards-schema.types";
+import fallbackImage from "@/public/images/og-image.png";
+import type { FightCardsFighter } from "@/types/fight-cards-schema.types";
 
 describe("EventFighter", () => {
   const mockEventFighter: FightCardsFighter = {
@@ -22,7 +22,7 @@ describe("EventFighter", () => {
     expect(fighterImage).toBeInTheDocument();
     expect(fighterImage).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockEventFighter.picture))
+      expect.stringContaining(encodeURIComponent(mockEventFighter.picture)),
     );
     expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
   });
@@ -34,7 +34,7 @@ describe("EventFighter", () => {
     expect(fighterImage).toBeInTheDocument();
     expect(fighterImage).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(fallbackImage.src))
+      expect.stringContaining(encodeURIComponent(fallbackImage.src)),
     );
     expect(fighterImage).toHaveAttribute("alt", mockEventFighter.name);
   });
@@ -55,7 +55,7 @@ describe("EventFighter", () => {
     expect(countryImage).toBeInTheDocument();
     expect(countryImage).toHaveAttribute(
       "src",
-      expect.stringContaining(encodeURIComponent(mockEventFighter.country))
+      expect.stringContaining(encodeURIComponent(mockEventFighter.country)),
     );
   });
 

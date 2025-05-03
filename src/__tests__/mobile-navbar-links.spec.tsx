@@ -1,6 +1,6 @@
+import { render, screen } from "@testing-library/react";
 import MobileNavbarLinks from "@/components/navbar/mobile-navbar-links";
 import { useActiveLink } from "@/hooks/use-active-link";
-import { render, screen } from "@testing-library/react";
 
 jest.mock("@/hooks/use-active-link", () => ({
   useActiveLink: jest.fn(),
@@ -16,7 +16,7 @@ describe("MobileNavbarLinks", () => {
     jest.clearAllMocks();
     mockUseActiveLink.mockReturnValue(false);
     render(
-      <MobileNavbarLinks href={href} label={label} onItemClick={onItemClick} />
+      <MobileNavbarLinks href={href} label={label} onItemClick={onItemClick} />,
     );
   });
 
@@ -29,7 +29,7 @@ describe("MobileNavbarLinks", () => {
   test("applies active state classes when link is active", () => {
     mockUseActiveLink.mockReturnValue(true);
     render(
-      <MobileNavbarLinks href={href} label={label} onItemClick={onItemClick} />
+      <MobileNavbarLinks href={href} label={label} onItemClick={onItemClick} />,
     );
 
     const links = screen.getAllByRole("link", { name: label });

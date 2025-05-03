@@ -1,11 +1,11 @@
-import appConfig from "@/config/app-config";
+import { z } from "zod";
 import { mockFightCards } from "@/__mocks__/mock-data";
 import { fetchFightsCards } from "@/actions/fight-cards.actions";
+import appConfig from "@/config/app-config";
 import {
-  FightCardsResponse,
+  type FightCardsResponse,
   FightCardsResponseSchema,
 } from "@/types/fight-cards-schema.types";
-import { z } from "zod";
 
 const mockApiUrl = appConfig.fightCardsApiHost;
 
@@ -43,7 +43,7 @@ describe("fetchFightCards", () => {
     mockFetch({ ok: false, json: jest.fn() });
 
     await expect(fetchFightsCards()).rejects.toThrow(
-      "Network response was not ok"
+      "Network response was not ok",
     );
     expect(fetch).toHaveBeenCalledWith(mockApiUrl);
   });
@@ -64,7 +64,7 @@ describe("fetchFightCards", () => {
     console.error = jest.fn();
 
     await expect(fetchFightsCards()).rejects.toThrow(
-      "Invalid data format received from API"
+      "Invalid data format received from API",
     );
     expect(console.error).toHaveBeenCalledWith("Validation errors:", [
       { message: "Invalid data format" },

@@ -1,4 +1,4 @@
-import {
+import type {
   Fight,
   FightResult,
   TransformedFightDetails,
@@ -61,7 +61,7 @@ export function sortFightsByDate(fights: Fight[]): Fight[] {
 
 export function transformFightDetails(
   fight: Fight,
-  mainFighterName: string
+  mainFighterName: string,
 ): TransformedFightDetails {
   const opponentName =
     fight.fighter1Name === mainFighterName

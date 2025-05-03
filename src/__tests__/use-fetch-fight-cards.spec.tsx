@@ -1,8 +1,8 @@
-import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { renderHook, waitFor } from "@testing-library/react";
+import { mockFightCards } from "@/__mocks__/mock-data";
 import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import { mockFightCards } from "@/__mocks__/mock-data";
 
 jest.mock("@/actions/fight-cards.actions");
 

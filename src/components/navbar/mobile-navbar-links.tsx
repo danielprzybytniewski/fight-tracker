@@ -1,8 +1,8 @@
-import { useActiveLink } from "@/hooks/use-active-link";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { useActiveLink } from "@/hooks/use-active-link";
 import { navbarItemVariants } from "@/lib/framer-motion-variants";
+import { cn } from "@/lib/utils";
 
 type MobileNavbarLinksProps = {
   href: string;
@@ -22,10 +22,8 @@ export default function MobileNavbarLinks({
       <Link
         href={href}
         className={cn(
-          `text-lg md:text-xl text-gray-900 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors 
-          duration-200
-         `,
-          isActive && "font-bold"
+          `text-lg text-gray-900 transition-colors duration-200 hover:text-gray-500 dark:text-gray-100 dark:hover:text-gray-400 md:text-xl`,
+          isActive && "font-bold",
         )}
         onClick={onItemClick}
       >

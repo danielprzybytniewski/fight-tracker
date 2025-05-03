@@ -1,7 +1,7 @@
 "use client";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 
 export default function ModeToggler() {
   const { theme, setTheme } = useTheme();
@@ -19,7 +19,7 @@ export default function ModeToggler() {
   return (
     <button
       onClick={toggleTheme}
-      className="focus-visible:ring-0 hover:opacity-70 sm:py-2"
+      className="hover:opacity-70 focus-visible:ring-0 sm:py-2"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (

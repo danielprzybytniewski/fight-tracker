@@ -1,12 +1,12 @@
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import slugify from "@/lib/slugify";
+import { cn } from "@/lib/utils";
 
 type FightersCategoryFilterProps = {
   categories: string[];
@@ -37,10 +37,8 @@ export default function FightersCategoryFilter({
             className={cn(
               "text-sm transition-colors duration-200",
               selectedCategory && isValidCategory
-                ? `bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 border-gray-500 
-                dark:border-gray-400 `
-                : `bg-gray-50 dark:bg-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50
-                 dark:hover:bg-gray-600`
+                ? `border-gray-500 bg-gray-200 hover:bg-gray-300 dark:border-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600`
+                : `bg-gray-50 hover:bg-gray-200 hover:text-gray-800 dark:bg-gray-800 dark:hover:bg-gray-600 dark:hover:text-gray-50`,
             )}
           >
             {categoryLabel}
@@ -50,9 +48,9 @@ export default function FightersCategoryFilter({
           <DropdownMenuItem
             onClick={() => onCategoryChange(null)}
             className={cn(
-              "cursor-pointer hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-700 transition-colors duration-200",
+              "cursor-pointer transition-colors duration-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-50",
               selectedCategory === null &&
-                "font-semibold bg-gray-100 dark:bg-gray-800"
+                "bg-gray-100 font-semibold dark:bg-gray-800",
             )}
           >
             All
@@ -62,9 +60,9 @@ export default function FightersCategoryFilter({
               key={category}
               onClick={() => onCategoryChange(category)}
               className={cn(
-                "cursor-pointer hover:text-gray-800 hover:bg-gray-200 dark:hover:text-gray-50 dark:hover:bg-gray-700 transition-colors duration-200",
+                "cursor-pointer transition-colors duration-200 hover:bg-gray-200 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-gray-50",
                 selectedCategory === slugify(category) &&
-                  "font-semibold bg-gray-100 dark:bg-gray-800"
+                  "bg-gray-100 font-semibold dark:bg-gray-800",
               )}
             >
               {category}

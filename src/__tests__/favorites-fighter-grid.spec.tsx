@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { Fighter } from "@/types/rankings-schema.types";
-import FavoritesFighterGrid from "@/components/favorites/favorites-fighter-grid";
 import { mockFavoriteFighters } from "@/__mocks__/mock-data";
+import FavoritesFighterGrid from "@/components/favorites/favorites-fighter-grid";
+import type { Fighter } from "@/types/rankings-schema.types";
 
 describe("FavoritesFighterGrid", () => {
   const mockToggleFavoriteWithToast = jest.fn();
@@ -18,7 +18,7 @@ describe("FavoritesFighterGrid", () => {
       <FavoritesFighterGrid
         favorites={favorites}
         toggleFavoriteWithToast={toggleFavoriteWithToast}
-      />
+      />,
     );
   };
 
@@ -34,12 +34,12 @@ describe("FavoritesFighterGrid", () => {
 
     if (mockFavoriteFighters[0].nickname) {
       expect(
-        screen.getByText(`"${mockFavoriteFighters[0].nickname}"`)
+        screen.getByText(`"${mockFavoriteFighters[0].nickname}"`),
       ).toBeInTheDocument();
     }
 
     const firstFighterCategory = screen.getByText(
-      mockFavoriteFighters[0].category
+      mockFavoriteFighters[0].category,
     );
     expect(firstFighterCategory).toBeInTheDocument();
   });
@@ -54,13 +54,13 @@ describe("FavoritesFighterGrid", () => {
       expect(firstFighterImage).toHaveAttribute(
         "src",
         expect.stringContaining(
-          encodeURIComponent(mockFavoriteFighters[0].imgUrl)
-        )
+          encodeURIComponent(mockFavoriteFighters[0].imgUrl),
+        ),
       );
 
       expect(firstFighterImage).toHaveAttribute(
         "alt",
-        mockFavoriteFighters[0].name
+        mockFavoriteFighters[0].name,
       );
     }
   });
@@ -69,13 +69,13 @@ describe("FavoritesFighterGrid", () => {
     renderComponent({ favorites: mockFavoriteFighters });
 
     const firstFighterWins = screen.getByText(
-      `${mockFavoriteFighters[0].wins}W`
+      `${mockFavoriteFighters[0].wins}W`,
     );
     const firstFighterLosses = screen.getByText(
-      `${mockFavoriteFighters[0].losses}L`
+      `${mockFavoriteFighters[0].losses}L`,
     );
     const firstFighterDraws = screen.getByText(
-      `${mockFavoriteFighters[0].draws}D`
+      `${mockFavoriteFighters[0].draws}D`,
     );
 
     expect(firstFighterWins).toBeInTheDocument();
@@ -115,11 +115,11 @@ describe("FavoritesFighterGrid", () => {
     await user.click(
       screen.getByRole("button", {
         name: `Remove ${mockFavoriteFighters[0].name} from favorites`,
-      })
+      }),
     );
 
     expect(mockToggleFavoriteWithToast).toHaveBeenCalledWith(
-      mockFavoriteFighters[0]
+      mockFavoriteFighters[0],
     );
   });
 });

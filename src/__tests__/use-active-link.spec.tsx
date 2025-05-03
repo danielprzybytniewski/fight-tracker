@@ -1,6 +1,6 @@
-import { useActiveLink } from "@/hooks/use-active-link";
-import { renderHook } from "@testing-library/react";
 import { usePathname } from "next/navigation";
+import { renderHook } from "@testing-library/react";
+import { useActiveLink } from "@/hooks/use-active-link";
 
 jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),

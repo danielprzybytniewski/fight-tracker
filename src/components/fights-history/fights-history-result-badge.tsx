@@ -1,7 +1,7 @@
+import { cva, VariantProps } from "class-variance-authority";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { FightResult } from "@/types/fights-history-schema.types";
-import { VariantProps, cva } from "class-variance-authority";
+import type { FightResult } from "@/types/fights-history-schema.types";
 
 const fightResultBadgeVariants = cva(
   "py-0 sm:py-1 text-xs text-gray-100 rounded pointer-events-none",
@@ -13,7 +13,7 @@ const fightResultBadgeVariants = cva(
         loss: "bg-red-600",
       },
     },
-  }
+  },
 );
 
 const FightsHistoryResultBadge = ({

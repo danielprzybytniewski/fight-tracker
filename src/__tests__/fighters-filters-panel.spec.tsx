@@ -1,6 +1,6 @@
-import FightersFiltersPanel from "@/components/fighters/fighters-filters-panel";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import FightersFiltersPanel from "@/components/fighters/fighters-filters-panel";
 
 jest.mock("@/components/fighters/fighters-search-bar", () => {
   return jest.fn(({ searchValue, onSearch }) => (
@@ -31,7 +31,7 @@ jest.mock("@/components/fighters/fighters-category-filter", () => {
 });
 
 describe("FightersFiltersPanel", () => {
-  const mockProps = {
+  const defaultProps = {
     searchQuery: "initial search",
     selectedCategory: "heavyweight",
     categories: ["Heavyweight", "Lightweight", "Featherweight"],
@@ -41,7 +41,7 @@ describe("FightersFiltersPanel", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    render(<FightersFiltersPanel {...mockProps} />);
+    render(<FightersFiltersPanel {...defaultProps} />);
   });
 
   test("renders both the search bar and category filter components correctly", () => {
@@ -51,7 +51,7 @@ describe("FightersFiltersPanel", () => {
 
   test("passes search value to FightersSearchBar correctly", () => {
     const searchInput = screen.getByRole("textbox");
-    expect(searchInput).toHaveValue(mockProps.searchQuery);
+    expect(searchInput).toHaveValue(defaultProps.searchQuery);
   });
 
   test("calls onSearchChange when typing into the search input", async () => {
@@ -61,16 +61,16 @@ describe("FightersFiltersPanel", () => {
     await user.clear(searchInput);
     await user.type(searchInput, "test query");
 
-    expect(mockProps.onSearchChange).toHaveBeenCalled();
+    expect(defaultProps.onSearchChange).toHaveBeenCalled();
   });
 
   test("passes categories and selectedCategory props correctly to FightersCategoryFilter", () => {
     expect(screen.getByTestId("selected-category")).toHaveTextContent(
-      mockProps.selectedCategory
+      defaultProps.selectedCategory,
     );
 
     const categoriesList = screen.getByTestId("categories-list");
-    mockProps.categories.forEach((category) => {
+    defaultProps.categories.forEach((category) => {
       expect(within(categoriesList).getByText(category)).toBeInTheDocument();
     });
   });
@@ -81,6 +81,6 @@ describe("FightersFiltersPanel", () => {
 
     await user.click(categoryButton);
 
-    expect(mockProps.onCategoryChange).toHaveBeenCalledWith("test-category");
+    expect(defaultProps.onCategoryChange).toHaveBeenCalledWith("test-category");
   });
 });

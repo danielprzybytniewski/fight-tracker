@@ -1,14 +1,14 @@
-import HomePageFeatureCard from "@/components/home-page/home-page-feature-card";
 import { features } from "@/components/home-page/home-page-data";
+import HomePageFeatureCard from "@/components/home-page/home-page-feature-card";
 
 export default function HomePageFeaturesSection() {
   return (
-    <section className="py-10 bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-50 py-10 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="mb-8 text-2xl md:text-3xl font-bold text-center">
+        <h2 className="mb-8 text-center text-2xl font-bold md:text-3xl">
           Features
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <HomePageFeatureCard
               key={feature.title}

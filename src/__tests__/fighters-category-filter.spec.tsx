@@ -1,6 +1,6 @@
-import FightersCategoryFilter from "@/components/fighters/fighters-category-filter";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import FightersCategoryFilter from "@/components/fighters/fighters-category-filter";
 import slugify from "@/lib/slugify";
 
 const categories = ["Heavyweight", "Middleweight", "Lightweight"];
@@ -16,7 +16,7 @@ describe("FightersCategoryFilter", () => {
         selectedCategory={null}
         onCategoryChange={onCategoryChange}
         {...props}
-      />
+      />,
     );
 
   beforeEach(() => {

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { mockNewsItem } from "@/__mocks__/mock-data";
 import NewsPreviewItem from "@/components/news/news-preview-item";
 import { getFirstImageUrl } from "@/components/news/news-utils";
 import { useUnoptimizedImage } from "@/hooks/use-unoptimized-image";
 import slugify from "@/lib/slugify";
-import { mockNewsItem } from "@/__mocks__/mock-data";
 
 jest.mock("@/hooks/use-unoptimized-image", () => ({
   useUnoptimizedImage: jest.fn(),
@@ -22,7 +22,7 @@ describe("NewsPreviewItem", () => {
     jest.clearAllMocks();
     (slugify as jest.Mock).mockReturnValue("exciting-mma-news");
     (getFirstImageUrl as jest.Mock).mockReturnValue(
-      "https://example.com/image.jpg"
+      "https://example.com/image.jpg",
     );
     (useUnoptimizedImage as jest.Mock).mockReturnValue({
       unoptimized: false,
@@ -40,8 +40,8 @@ describe("NewsPreviewItem", () => {
     expect(image).toHaveAttribute(
       "src",
       expect.stringContaining(
-        encodeURIComponent("https://example.com/image.jpg")
-      )
+        encodeURIComponent("https://example.com/image.jpg"),
+      ),
     );
     expect(image).toHaveAttribute("alt", mockNewsItem.title);
   });

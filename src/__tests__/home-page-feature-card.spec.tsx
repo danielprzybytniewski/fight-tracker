@@ -3,11 +3,11 @@ import HomePageFeatureCard from "@/components/home-page/home-page-feature-card";
 import type { Feature } from "@/types/home-page.types";
 
 jest.mock("@/components/home-page/home-page-feature-icon", () =>
-  jest.fn(() => <div data-testid="feature-icon">Mock Feature Icon</div>)
+  jest.fn(() => <div data-testid="feature-icon">Mock Feature Icon</div>),
 );
 
 describe("HomePageFeatureCard", () => {
-  const mockProps: Feature = {
+  const defaultProps: Feature = {
     icon: "User",
     title: "Fighters",
     description:
@@ -16,14 +16,14 @@ describe("HomePageFeatureCard", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    render(<HomePageFeatureCard {...mockProps} />);
+    render(<HomePageFeatureCard {...defaultProps} />);
   });
 
   test("renders title and description correctly", () => {
-    const titleElement = screen.getByText(mockProps.title);
+    const titleElement = screen.getByText(defaultProps.title);
     expect(titleElement).toBeInTheDocument();
 
-    const descriptionElement = screen.getByText(mockProps.description);
+    const descriptionElement = screen.getByText(defaultProps.description);
     expect(descriptionElement).toBeInTheDocument();
   });
 

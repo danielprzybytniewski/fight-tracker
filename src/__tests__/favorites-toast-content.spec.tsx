@@ -8,7 +8,7 @@ import {
 describe("FavoritesToastContent", () => {
   test("renders ToastToggleContent for add action", () => {
     render(
-      <ToastToggleContent fighter={mockFavoriteFighters[0]} actionType="add" />
+      <ToastToggleContent fighter={mockFavoriteFighters[0]} actionType="add" />,
     );
 
     expect(screen.getByText(/added to/i)).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("FavoritesToastContent", () => {
       <ToastToggleContent
         fighter={mockFavoriteFighters[0]}
         actionType="remove"
-      />
+      />,
     );
 
     expect(screen.getByText(/removed from/i)).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("FavoritesToastContent", () => {
     render(<ToastResetContent />);
 
     expect(
-      screen.getByText("All fighters removed from favorites!")
+      screen.getByText("All fighters removed from favorites!"),
     ).toBeInTheDocument();
   });
 });

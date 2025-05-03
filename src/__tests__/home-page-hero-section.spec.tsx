@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import HomePageHeroSection from "@/components/home-page/home-page-hero-section";
 
 jest.mock("@/components/fights-carousel/fights-carousel", () =>
-  jest.fn(() => <div data-testid="fights-carousel">Mock Fights Carousel</div>)
+  jest.fn(() => <div data-testid="fights-carousel">Mock Fights Carousel</div>),
 );
 
 describe("HomePageHeroSection", () => {

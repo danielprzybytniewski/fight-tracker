@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import LoadingContainer from "@/components/shared/loading-container";
 
 jest.mock("@/components/shared/loading-spinner", () =>
-  jest.fn(() => <div role="status" aria-label="Loading..."></div>)
+  jest.fn(() => <div role="status" aria-label="Loading..."></div>),
 );
 
 describe("LoadingContainer", () => {

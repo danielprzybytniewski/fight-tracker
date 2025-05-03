@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import RankingsCard from "@/components/rankings/rankings-card";
 import { mockDivision } from "@/__mocks__/mock-data";
+import RankingsCard from "@/components/rankings/rankings-card";
 
 describe("RankingsCard", () => {
   beforeEach(() => {
@@ -23,8 +23,8 @@ describe("RankingsCard", () => {
       expect(image).toHaveAttribute(
         "src",
         expect.stringContaining(
-          encodeURIComponent(mockDivision.champion.imgUrl)
-        )
+          encodeURIComponent(mockDivision.champion.imgUrl),
+        ),
       );
       expect(image).toHaveAttribute("alt", mockDivision.champion.championName);
     }

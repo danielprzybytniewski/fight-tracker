@@ -29,7 +29,7 @@ describe("Footer", () => {
 
     expect(linkElement).toHaveAttribute(
       "href",
-      "https://github.com/danielprzybytniewski/fight-tracker"
+      "https://github.com/danielprzybytniewski/fight-tracker",
     );
   });
 });

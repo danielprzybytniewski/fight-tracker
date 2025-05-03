@@ -1,20 +1,20 @@
-import { CardContent } from "@/components/ui/card";
 import {
   Calendar,
+  Clock2,
+  Clock12,
   MapPin,
-  User,
-  Weight,
   ShieldCheck,
   Sword,
-  Clock12,
-  Clock2,
+  User,
+  Weight,
 } from "lucide-react";
-import {
+import FightsHistoryDetails from "@/components/fights-history/fights-history-details";
+import FightsHistoryResultBadge from "@/components/fights-history/fights-history-result-badge";
+import { CardContent } from "@/components/ui/card";
+import type {
   Fight,
   TransformedFightDetails,
 } from "@/types/fights-history-schema.types";
-import FightsHistoryResultBadge from "@/components/fights-history/fights-history-result-badge";
-import FightsHistoryDetails from "@/components/fights-history/fights-history-details";
 
 export type FightsHistoryCardContentProps = TransformedFightDetails & {
   fight: Fight;

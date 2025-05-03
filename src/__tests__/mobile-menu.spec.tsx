@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import MobileMenu from "@/components/navbar/mobile-menu";
 
 jest.mock("@/components/navbar/change-logo", () =>
-  jest.fn(() => <div data-testid="change-logo">Logo</div>)
+  jest.fn(() => <div data-testid="change-logo">Logo</div>),
 );
 
 jest.mock("@/components/navbar/mobile-navbar-items", () =>
@@ -11,7 +11,7 @@ jest.mock("@/components/navbar/mobile-navbar-items", () =>
     <div data-testid="mobile-navbar-items" onClick={onItemClick}>
       Mobile Navbar Items
     </div>
-  ))
+  )),
 );
 
 const getToggleButton = () =>

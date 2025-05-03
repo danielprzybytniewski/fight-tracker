@@ -9,11 +9,13 @@ describe("NotFound", () => {
 
   test("renders the not found message and image", () => {
     expect(
-      screen.getByRole("heading", { name: "Page Not Found" })
+      screen.getByRole("heading", { name: "Page Not Found" }),
     ).toBeInTheDocument();
 
     expect(
-      screen.getByText("Sorry, we could not find the page you are looking for.")
+      screen.getByText(
+        "Sorry, we could not find the page you are looking for.",
+      ),
     ).toBeInTheDocument();
 
     expect(screen.getByRole("img", { name: "not found" })).toBeInTheDocument();

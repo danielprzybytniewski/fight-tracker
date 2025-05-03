@@ -5,11 +5,11 @@ import NewsList from "@/components/news/news-list";
 jest.mock("@/components/news/news-preview-item", () =>
   jest.fn(({ newsItem }) => (
     <div data-testid="news-preview-item">{newsItem.title}</div>
-  ))
+  )),
 );
 
 jest.mock("@/components/shared/gradient-heading", () =>
-  jest.fn(() => <h1 data-testid="gradient-heading">News</h1>)
+  jest.fn(() => <h1 data-testid="gradient-heading">News</h1>),
 );
 
 describe("NewsList", () => {

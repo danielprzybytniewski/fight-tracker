@@ -1,7 +1,10 @@
 "use client";
-import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
-import LoadingContainer from "@/components/shared/loading-container";
+import Link from "next/link";
+import EventFighterSeparator from "@/components/events/event-fighter-separator";
+import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
 import ErrorFightCards from "@/components/shared/error-fight-cards";
+import LoadingContainer from "@/components/shared/loading-container";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -9,11 +12,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Link from "next/link";
-import FightsCarouselFighterProfile from "@/components/fights-carousel/fights-carousel-fighter-profile";
-import { Button } from "@/components/ui/button";
-import EventFighterSeparator from "@/components/events/event-fighter-separator";
 import { routesConfig } from "@/config/routes-config";
+import { useFetchFightCards } from "@/hooks/use-fetch-fight-cards";
 import slugify from "@/lib/slugify";
 
 export default function FightsCarousel() {
@@ -33,9 +33,9 @@ export default function FightsCarousel() {
   }
 
   return (
-    <div className="flex items-center justify-center py-10 px-4 md:px-6">
+    <div className="flex items-center justify-center px-4 py-10 md:px-6">
       <Carousel
-        className="overflow-hidden w-full max-w-5xl relative rounded-3xl bg-gray-100 dark:bg-gray-900 shadow-xl"
+        className="relative w-full max-w-5xl overflow-hidden rounded-3xl bg-gray-100 shadow-xl dark:bg-gray-900"
         data-testid="fights-carousel"
       >
         <CarouselContent>
@@ -46,17 +46,17 @@ export default function FightsCarousel() {
             return (
               <CarouselItem
                 key={event.title}
-                className="flex flex-col items-center justify-items-start md:justify-center h-auto p-5 md:p-8 text-center"
+                className="flex h-auto flex-col items-center justify-items-start p-5 text-center md:justify-center md:p-8"
               >
                 <Link
                   href={routesConfig.event(slug)}
-                  className="text-lg md:text-2xl uppercase font-extrabold text-gray-800 dark:text-gray-100 hover:text-gray-500 dark:hover:text-gray-400 transition-colors duration-200"
+                  className="text-lg font-extrabold uppercase text-gray-800 transition-colors duration-200 hover:text-gray-500 dark:text-gray-100 dark:hover:text-gray-400 md:text-2xl"
                 >
                   {event.title}
                 </Link>
-                <div className="flex flex-col md:flex-row justify-between w-full mt-6 p-6 md:p-10 border-t border-gray-300 dark:border-gray-700">
+                <div className="mt-6 flex w-full flex-col justify-between border-t border-gray-300 p-6 dark:border-gray-700 md:flex-row md:p-10">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
-                  <div className="flex flex-col items-center justify-center h-full md:w-full mx-4 mt-4 mb-6">
+                  <div className="mx-4 mb-6 mt-4 flex h-full flex-col items-center justify-center md:w-full">
                     <EventFighterSeparator
                       isMainCard={true}
                       weight={firstFight.weight}
@@ -64,8 +64,7 @@ export default function FightsCarousel() {
                     <Button
                       asChild
                       variant="outline"
-                      className="sm:mt-4 h-7 md:h-8 px-2 md:px-3 py-1 md:py-2 text-xs md:text-base border-gray-300 dark:border-gray-700 hover:border-gray-600 dark:hover:border-gray-300 text-gray-800 dark:text-gray-100 dark:bg-gray-800 
-                      hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+                      className="h-7 border-gray-300 px-2 py-1 text-xs text-gray-800 transition-colors duration-200 hover:border-gray-600 hover:bg-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:hover:border-gray-300 dark:hover:bg-gray-600 sm:mt-4 md:h-8 md:px-3 md:py-2 md:text-base"
                     >
                       <Link href={routesConfig.event(slug)}>
                         View Fight Card
@@ -78,8 +77,8 @@ export default function FightsCarousel() {
             );
           })}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/3 sm:top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-colors duration-200" />
-        <CarouselNext className="absolute right-4 top-1/3 sm:top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 transition-colors duration-200" />
+        <CarouselPrevious className="absolute left-4 top-1/3 -translate-y-1/2 bg-gray-200 text-gray-800 transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 sm:top-1/2" />
+        <CarouselNext className="absolute right-4 top-1/3 -translate-y-1/2 bg-gray-200 text-gray-800 transition-colors duration-200 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 sm:top-1/2" />
       </Carousel>
     </div>
   );

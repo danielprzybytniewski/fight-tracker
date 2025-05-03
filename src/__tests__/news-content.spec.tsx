@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import NewsContent from "@/components/news/news-content";
 import {
   generateMockNewsImages,
   mockNewsParagraphs,
 } from "@/__mocks__/mock-data";
+import NewsContent from "@/components/news/news-content";
 
 jest.mock("@/components/news/news-image", () =>
-  jest.fn(() => <div data-testid="mock-news-image" />)
+  jest.fn(() => <div data-testid="mock-news-image" />),
 );
 
 jest.mock("@/components/news/news-paragraph", () =>
-  jest.fn(() => <p data-testid="mock-news-paragraph">Mock Paragraph</p>)
+  jest.fn(() => <p data-testid="mock-news-paragraph">Mock Paragraph</p>),
 );
 
 describe("NewsContent", () => {
@@ -19,7 +19,7 @@ describe("NewsContent", () => {
       <NewsContent
         images={generateMockNewsImages(3)}
         paragraphs={mockNewsParagraphs}
-      />
+      />,
     );
     expect(screen.getByTestId("mock-news-image")).toBeInTheDocument();
     expect(screen.getAllByTestId("mock-news-image")).toHaveLength(1);
@@ -30,7 +30,7 @@ describe("NewsContent", () => {
       <NewsContent
         images={generateMockNewsImages(5)}
         paragraphs={mockNewsParagraphs}
-      />
+      />,
     );
     expect(screen.getAllByTestId("mock-news-image")).toHaveLength(5);
   });
@@ -46,7 +46,7 @@ describe("NewsContent", () => {
       <NewsContent
         images={generateMockNewsImages(2)}
         paragraphs={mockNewsParagraphs}
-      />
+      />,
     );
     expect(screen.getAllByTestId("mock-news-paragraph")).toHaveLength(10);
   });
@@ -56,7 +56,7 @@ describe("NewsContent", () => {
       <NewsContent
         images={generateMockNewsImages(8)}
         paragraphs={mockNewsParagraphs}
-      />
+      />,
     );
     expect(screen.queryByTestId("mock-news-paragraph")).toBeNull();
   });

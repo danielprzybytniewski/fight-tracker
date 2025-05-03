@@ -1,14 +1,14 @@
-import { mockLinks } from "@/__mocks__/mock-data";
-import MobileNavbarItems from "@/components/navbar/mobile-navbar-items";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { mockLinks } from "@/__mocks__/mock-data";
+import MobileNavbarItems from "@/components/navbar/mobile-navbar-items";
 
 jest.mock("@/components/favorites/favorites-counter", () =>
-  jest.fn(() => <div data-testid="favorites-counter">Favorites</div>)
+  jest.fn(() => <div data-testid="favorites-counter">Favorites</div>),
 );
 
 jest.mock("@/components/navbar/mode-toggler", () =>
-  jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>)
+  jest.fn(() => <div data-testid="mode-toggler">Mode Toggler</div>),
 );
 
 describe("MobileNavbarItems", () => {

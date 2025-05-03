@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Fight Tracker
 
-## Getting Started
+Fight Tracker is a modern web application designed to deliver an outstanding experience for tracking top MMA fighters, rankings, events and news.
 
-First, run the development server:
+- **90%+ test coverage** achieved with **Jest** and **React Testing Library**, ensuring high reliability and maintainability.
+- Built with **Next.js 15**, utilizing its advanced features for optimal performance, scalability and a modern development experience.
+- Fully typed with **TypeScript** and validated with **Zod** for robust type safety and runtime validation.
+- Utilizes **Tailwind CSS** for rapid and responsive design, **Radix UI** for accessible components, **Shadcn** for enhanced styling capabilities and **Framer Motion** for smooth animations, ensuring a visually appealing and interactive user experience.
+- Implements modern best practices for clean, maintainable and scalable code, including **Server Actions**, **Client-side and Server-side Fetching**, **Caching**, **Performance and Image Optimization**, **Error Handling**, **SEO**, **Accessibility**, **DRY**.
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ git clone https://github.com/danielprzybytniewski/fight-tracker.git
+$ npm install
+$ cp .env.example .env
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Development mode
+$ npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Production build
+$ npm run build
+$ npm run start
+```
 
-## Learn More
+## Running the tests
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Run all tests
+$ npm run test
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Watch mode for tests
+$ npm run test:watch
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Test coverage report
+$ npm run test:coverage
+```
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.

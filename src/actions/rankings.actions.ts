@@ -2,15 +2,13 @@
 
 import appConfig from "@/config/app-config";
 import { fetchWithCacheAndValidation } from "@/lib";
-import type {
-  DivisionWithChampion,
-  DivisionWithChampionAndFighters,
-  Fighter,
-  FightersResponse,
-} from "@/types/rankings-schema.types";
 import {
   DivisionSchema,
+  type DivisionWithChampion,
+  type DivisionWithChampionAndFighters,
+  type Fighter,
   FighterSchema,
+  type FightersResponse,
   FightersResponseSchema,
   RankingsResponseSchema,
 } from "@/types/rankings-schema.types";

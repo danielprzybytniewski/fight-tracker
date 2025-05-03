@@ -3,8 +3,7 @@ import {
   getAdditionalDetails,
   getGeneralDetails,
 } from "@/lib/athlete-get-details";
-import type { Fighter } from "@/types/rankings-schema.types";
-import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
+import { type Fighter, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 jest.mock("@/lib/unit-conversion", () => ({
   inchesToCm: jest.fn((inches) => `${inches * 2.54} cm`),

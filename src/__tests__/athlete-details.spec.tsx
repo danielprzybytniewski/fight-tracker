@@ -4,8 +4,7 @@ import {
   mockGeneralDetails,
 } from "@/__mocks__/mock-data";
 import AthleteDetails from "@/components/athlete/athlete-details";
-import type { DetailItem } from "@/types/rankings-schema.types";
-import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
+import { type DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 jest.mock("@/components/athlete/athlete-detail-card", () =>
   jest.fn(({ label, value }: DetailItem) => (

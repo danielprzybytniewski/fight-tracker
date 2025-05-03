@@ -3,8 +3,10 @@
 import appConfig from "@/config/app-config";
 import { fetchWithCacheAndValidation } from "@/lib";
 import slugify from "@/lib/slugify";
-import type { NewsDetailData } from "@/types/news-schema.types";
-import { NewsApiResponseSchema } from "@/types/news-schema.types";
+import {
+  NewsApiResponseSchema,
+  type NewsDetailData,
+} from "@/types/news-schema.types";
 
 const MMA_NEWS_BASE_URL = appConfig.mmaNewsApiHost;
 

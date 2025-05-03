@@ -2,8 +2,10 @@ import { z } from "zod";
 import { mockFightCards } from "@/__mocks__/mock-data";
 import { fetchFightsCards } from "@/actions/fight-cards.actions";
 import appConfig from "@/config/app-config";
-import type { FightCardsResponse } from "@/types/fight-cards-schema.types";
-import { FightCardsResponseSchema } from "@/types/fight-cards-schema.types";
+import {
+  type FightCardsResponse,
+  FightCardsResponseSchema,
+} from "@/types/fight-cards-schema.types";
 
 const mockApiUrl = appConfig.fightCardsApiHost;
 

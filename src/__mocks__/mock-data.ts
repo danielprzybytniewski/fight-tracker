@@ -9,13 +9,13 @@ import type {
   NewsContentData,
   NewsDetailData,
 } from "@/types/news-schema.types";
-import type {
-  DetailItem,
-  Division,
-  DivisionWithChampion,
-  Fighter,
+import {
+  type DetailItem,
+  type Division,
+  type DivisionWithChampion,
+  type Fighter,
+  NOT_AVAILABLE,
 } from "@/types/rankings-schema.types";
-import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 export const mockFightCards: FightCardsEvent[] = [
   {

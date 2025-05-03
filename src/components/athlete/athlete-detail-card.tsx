@@ -1,5 +1,4 @@
-import type { DetailItem } from "@/types/rankings-schema.types";
-import { NOT_AVAILABLE } from "@/types/rankings-schema.types";
+import { type DetailItem, NOT_AVAILABLE } from "@/types/rankings-schema.types";
 
 export default function AthleteDetailCard({ label, value }: DetailItem) {
   return (

@@ -31,7 +31,7 @@ export default function HomePageOverviewSection({
           )}
         >
           <div className="w-full lg:w-1/2">
-            <h2 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-gray-100 md:text-3xl lg:text-left">
+            <h2 className="mb-6 text-center text-3xl font-extrabold text-gray-800 dark:text-gray-100 md:text-4xl lg:text-left">
               {title}
             </h2>
             <p className="mb-8 text-sm text-gray-600 dark:text-gray-400 md:text-base">

@@ -10,7 +10,7 @@ import {
 
 export default function HomePageMmaOrganizationsSection() {
   return (
-    <section className="flex justify-center bg-gray-300 dark:bg-gray-600">
+    <section className="flex justify-center bg-gray-300 py-4 dark:bg-gray-600">
       <Carousel
         className="w-full"
         data-testid="mma-organizations-carousel"

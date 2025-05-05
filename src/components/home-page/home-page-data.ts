@@ -95,12 +95,12 @@ export const overviewSections: Overview[] = [
   {
     title: "Best MMA events",
     description:
-      "Discover 9 major MMA events from the world’s top federations, including UFC, PFL, RIZIN and ONE. Explore fight cards for each event, featuring over 115 fights.",
+      "Discover 17 major MMA events from the world’s top federations, including UFC, PFL, RIZIN and ONE. Explore fight cards for each event, featuring over 195 fights.",
     items: [
-      { icon: Globe, text: "9 major MMA events from top federations" },
+      { icon: Globe, text: "17 major MMA events from top federations" },
       { icon: Medal, text: "Includes UFC, PFL, RIZIN and ONE events" },
       { icon: BarChart2, text: "View fight cards for each event" },
-      { icon: Grab, text: "Over 115 fights available to explore" },
+      { icon: Grab, text: "Over 195 fights available to explore" },
     ],
     linkHref: routesConfig.events,
     linkText: "View Events",
@@ -159,8 +159,8 @@ export const stats: Stats[] = [
   { value: "170+", label: "UFC Fighters" },
   { value: "1930+", label: "UFC Fights History" },
   { value: "13", label: "UFC Divisions" },
-  { value: "9", label: "MMA Events" },
-  { value: "115+", label: "MMA Fights" },
+  { value: "17", label: "MMA Events" },
+  { value: "195+", label: "MMA Fights" },
   { value: "105+", label: "MMA News" },
 ];
 

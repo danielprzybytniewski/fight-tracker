@@ -1,3 +1,4 @@
+import HomePageCTASection from "@/components/home-page/home-page-cta-section";
 import { overviewSections } from "@/components/home-page/home-page-data";
 import HomePageFeaturesSection from "@/components/home-page/home-page-features-section";
 import HomePageHeroSection from "@/components/home-page/home-page-hero-section";
@@ -15,6 +16,7 @@ export default function HomePage() {
       ))}
       <HomePageStatsSection />
       <HomePageMmaOrganizationsSection />
+      <HomePageCTASection />
     </div>
   );
 }

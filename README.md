@@ -8,6 +8,8 @@ Fight Tracker is a modern web application designed to deliver an outstanding exp
 - Utilizes **Tailwind CSS** for rapid and responsive design, **Radix UI** for accessible components, **Shadcn** for enhanced styling capabilities and **Framer Motion** for smooth animations, ensuring a visually appealing and interactive user experience
 - Implements modern best practices for clean, maintainable and scalable code, including **Server Actions**, **Client-side and Server-side Fetching**, **Caching**, **Performance and Image Optimization**, **Error Handling**, **SEO**, **Accessibility**, **DRY**, **KISS**
 
+![showcase-fighters](public/images/docs/fighters.jpg)
+
 ## Installation
 
 ```bash
@@ -45,10 +47,12 @@ $ npm run test:coverage
 
 This project is licensed under the MIT License.
 
-![showcase-fighters](public/images/home-page/showcase-fighters.webp)
+## Screenshots
 
-![showcase-rankings](public/images/home-page/showcase-rankings.webp)
+![showcase-news](public/images/docs/news.jpg)
 
-![showcase-events](public/images/home-page/showcase-events.webp)
+![showcase-fighter-profile](public/images/docs/fighter-profile.jpg)
 
-![showcase-favorites](public/images/home-page/showcase-favorites.webp)
+![showcase-fights-history](public/images/docs/fights-history.jpg)
+
+![showcase-events](public/images/docs/events.jpg)

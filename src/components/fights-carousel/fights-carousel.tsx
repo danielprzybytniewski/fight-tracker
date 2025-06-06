@@ -33,7 +33,7 @@ export default function FightsCarousel() {
   }
 
   return (
-    <div className="flex items-center justify-center px-4 py-10 md:px-6">
+    <div className="flex items-center justify-center px-4 py-5 md:px-6 md:py-10">
       <Carousel
         className="relative w-full max-w-5xl overflow-hidden rounded-3xl bg-gray-100 shadow-xl dark:bg-gray-900"
         data-testid="fights-carousel"
@@ -46,7 +46,7 @@ export default function FightsCarousel() {
             return (
               <CarouselItem
                 key={event.title}
-                className="flex h-auto flex-col items-center justify-items-start p-5 text-center md:justify-center md:p-8"
+                className="flex h-auto flex-col items-center justify-items-start p-4 pb-0 text-center md:justify-center md:p-6"
               >
                 <Link
                   href={routesConfig.event(slug)}
@@ -54,7 +54,7 @@ export default function FightsCarousel() {
                 >
                   {event.title}
                 </Link>
-                <div className="mt-6 flex w-full flex-col justify-between border-t border-gray-300 p-6 dark:border-gray-700 md:flex-row md:p-10">
+                <div className="mt-2 flex w-full flex-col justify-between border-t border-gray-300 p-6 dark:border-gray-700 md:mt-6 md:flex-row md:p-10 md:pb-6">
                   <FightsCarouselFighterProfile fighter={firstFight.fighterA} />
                   <div className="mx-4 mb-6 mt-4 flex h-full flex-col items-center justify-center md:w-full">
                     <EventFighterSeparator

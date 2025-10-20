@@ -10,6 +10,10 @@ jest.mock("next/font/google", () => ({
   })),
 }));
 
+jest.mock("@vercel/analytics/next", () => ({
+  Analytics: () => null,
+}));
+
 const MockLayout = ({ children }: { children: React.ReactNode }) => (
   <ReactQueryProvider>
     <ThemeProvider>

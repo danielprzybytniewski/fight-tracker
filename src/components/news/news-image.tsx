@@ -45,7 +45,7 @@ export default function NewsImage({ src }: NewsImageProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
             unoptimized={unoptimized}
             onError={handleImageLoadError}
-            className="object-cover transition-transform duration-300 hover:scale-[1.02] hover:cursor-zoom-in"
+            className="object-cover object-top transition-transform duration-300 hover:scale-[1.02] hover:cursor-zoom-in"
           />
         </div>
       </div>
